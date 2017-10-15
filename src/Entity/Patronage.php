@@ -145,7 +145,7 @@ class Patronage
             'private investor',
         ];
 
-        return $name[$organization - 1];
+        return $name[$organization];
     }
 
 }
