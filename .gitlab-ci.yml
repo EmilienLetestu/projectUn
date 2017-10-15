@@ -1,0 +1,21 @@
+stages:
+    - unit_tests
+    - functional_tests
+    - performances_tests
+    - server_config
+    - deployment
+
+unit_tests:
+    stage: unit_tests
+
+functional_tests:
+    stage: functional_tests
+
+performances_tests:
+    stage: performances_tests
+
+server_config:
+    stage: server_config
+
+deployment:
+  stage: deployment

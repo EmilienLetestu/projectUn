@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div>
+        <h1>{{ story.title }}</h1>
+    </div>
+
+    <div id="abstract">
+        <h2>The project in few a words</h2>
+         <p>{{ story.abstract }}</p>
+    </div>
+
+    <div id="plot">
+        <h3>A Climate Story #{{ story.id }}</h3>
+        <p>{{ story.plot }}</p>
+    </div>
+
+    <div id="moreContainer">
+
+        <div class="more" id="contact">
+            <h3>Contact the author</h3>
+            <ul class="list-unstyled">
+                <li>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                        {{ story.contactEmail }}
+                </li>
+                <li>
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        {{ story.contactPLace }}
+                </li>
+                <li>
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                        {{ story.contactPhone }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="more" id="moreTopic">
+            <h3>Other stories about {{ story.topic.type }}</h3>
+            {% for story in sameTopic|slice(0,5) %}
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+
+        <div class="more" id="moreCountry">
+            <h3>Other stories set in {{ story.country|country}}</h3>
+            {% for story in sameCountry|slice(0,5) %}
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+
+        <div class="more" id="moreYear">
+            <h3>Other stories started in {{ story.year}}</h3>
+            {% for story in sameYear|shuffle|slice(0,5) %}
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

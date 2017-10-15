@@ -1,0 +1,102 @@
+body, #wrapper
+{
+    min-height: 100vh;
+}
+
+main
+{
+    flex: 1;
+}
+
+a,
+a:hover,
+a:active,
+a:visited
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+
+h1
+{
+    text-align: center;
+    padding: 5%;
+    font-size: 3.5em;
+}
+
+.navbar-brand i
+{
+    position: relative;
+    top: 4px;
+    color: #FFFFFF;
+    font-size: inherit;
+}
+
+.navbar
+{
+    background-color: #5e5e5e;
+    -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+}
+
+
+.navbar-brand
+{
+    color: #FFFFFF;
+    font-size: 2rem;
+}
+
+.pageHeader
+{
+    padding: 3%;
+}
+#addForm
+{
+    width:50%;
+    margin-left: 25%;
+}
+
+#abstract h2,
+#plot     h3
+{
+    font-size: 2em;
+    text-align: center;
+    padding-bottom: 2%;
+    padding-top:2%;
+}
+
+#contact,
+.more
+{
+    padding: 2%;
+}
+
+#contact h3,
+.more h3
+{
+    font-size: 1.5em;
+
+}
+
+#contact ul,
+.more ul
+{
+    font-size: 1.2em;
+}
+
+#contact i
+{
+ color : #5e5e5e;
+}
+
+
+#abstract p,
+#plot p
+{
+    font-size: 1.5em;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+

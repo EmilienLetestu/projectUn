@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <script src="https://use.fontawesome.com/707b54fdb6.js"></script>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+        {% block stylesheets %}
+            <link href="{{ asset("css/unitedStyle.css") }}" rel="stylesheet">
+        {% endblock %}
+    </head>
+    <body>
+    <div class="d-flex flex-column" id="wrapper">
+        <nav class="navbar navbar-toggleable-md navbar-fixed-top">
+            <a class="navbar-brand" href="{{ path('home') }}">
+                <i class="fa fa-home" aria-hidden="true">
+                    Climate Stories
+                </i>
+            </a>
+            <div class="search-bar">
+                <form class="form-inline">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Rechercher" aria-describedby="basic-addon1">
+                        <span class="input-group-addon" id="basic-addon1"><i class="material-icons">search</i></span>
+                    </div>
+                </form>
+            </div>
+        </nav>
+        <main class="container-fluid py-3 w-100" id="app">
+
+            {% for label, messages in app.flashes(['denied','error','success','warning']) %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ label }}" style="font-size: 2em">
+                        <p>{{ message }}</p>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+
+            {% block body %}
+
+            {% endblock %}
+        </main>
+    </div>
+        {% block javascripts %}
+        {% endblock %}
+    </body>
+</html>
