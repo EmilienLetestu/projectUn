@@ -58,8 +58,5 @@ class StoryTest extends TestCase
         static::assertEquals($phone,    $story->getContactPhone());
         static::assertEquals($country,  $story->getCountry());
         static::assertEquals($year,     $story->getYear());
-
-
-
     }
 }
