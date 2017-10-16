@@ -19,13 +19,9 @@ class IndexController extends Controller
     {
         $view = $this->get('App\Managers\StoryManager')->fetchForBrowsing();
 
-       $repo = $this->getDoctrine()->getRepository(Story::class);
-        $t =$repo->finAllWithSamePatronage($organization = 1);
-
-        dump($t);
-
         return $this->render('home.html.twig',[
-            'storyList'=>$view]
+            'storyList'=>$view
+            ]
         );
     }
 
@@ -47,7 +43,26 @@ class IndexController extends Controller
         $view = $this->get('App\Services\AddStory')->processAndAdd($request);
 
         return $this->render('addStory.html.twig',[
-                'form'=>$view]
+                'form'=>$view
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function register(Request $request)
+    {
+        $view = $this->get('App\Services\Register')->registerUser($request);
+        if($view === 'home')
+        {
+            return $this->redirectToRoute($view);
+        }
+
+        return $this->render('connectionForms.html.twig', [
+            'form' => $view
+            ]
         );
     }
 }
