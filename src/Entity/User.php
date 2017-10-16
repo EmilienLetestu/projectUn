@@ -78,6 +78,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
+     * @ORM\column(type="string", length=40)
+     */
+    private $confirmationToken;
+
+    /**
+     * @var
      * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="user")
      */
     private $stories;
@@ -94,11 +100,14 @@ class User implements AdvancedUserInterface, \Serializable
 
 
     /**
-     * @param mixed $name
+     * @param string $name
+     * @return User
      */
-    public function setName($name)
+    public function setName(string $name) :User
     {
-        $this->name = $name;
+        $this->name = ucfirst(strip_tags(mb_strtolower($name)));
+
+        return $this;
     }
 
     /**
@@ -110,11 +119,14 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @param mixed $surname
+     * @param string $surname
+     * @return User
      */
-    public function setSurname($surname)
+    public function setSurname(string $surname) :User
     {
-        $this->surname = $surname;
+        $this->surname = ucfirst(strip_tags(mb_strtolower($surname)));
+
+        return $this;
     }
 
     /**
@@ -128,7 +140,7 @@ class User implements AdvancedUserInterface, \Serializable
     /**
      * @param mixed $email
      */
-    public function setEmail($email)
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
@@ -141,12 +153,16 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->email;
     }
 
+
     /**
-     * @param mixed $pswd
+     * @param string $pswd
+     * @return User
      */
-    public function setPswd($pswd)
+    public function setPswd(string $pswd) :User
     {
-        $this->pswd = $pswd;
+        $this->pswd = password_hash($pswd, PASSWORD_BCRYPT);
+
+        return $this;
     }
 
 
@@ -159,9 +175,10 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @param mixed $role
+     * @param $role
+     * @return User
      */
-    public function setRole($role)
+    public function setRole($role) :User
     {
         $this->role = $role;
     }
@@ -176,11 +193,14 @@ class User implements AdvancedUserInterface, \Serializable
 
 
     /**
-     * @param mixed $registeredOn
+     * @param $format
+     * @return User
      */
-    public function setRegisteredOn($registeredOn)
+    public function setRegisteredOn($format):User
     {
-        $this->registeredOn = $registeredOn;
+        $this->registeredOn = new \DateTime(date($format));
+
+        return $this;
     }
 
     /**
@@ -192,9 +212,10 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @param mixed $activated
+     * @param $activated
+     * @return User
      */
-    public function setActivated($activated)
+    public function setActivated($activated):User
     {
         $this->activated = $activated;
     }
@@ -208,9 +229,10 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @param bool $deactivated
+     * @param $deactivated
+     * @return User
      */
-    public function setDeactivated($deactivated)
+    public function setDeactivated($deactivated):User
     {
         $this->deactivated = $deactivated;
     }
@@ -218,6 +240,27 @@ class User implements AdvancedUserInterface, \Serializable
     public function getDeactivated()
     {
         return $this->deactivated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getConfirmationToken()
+    {
+        return $this->confirmationToken;
+    }
+
+    /**
+     * @param int $length
+     * @return User
+     */
+    public function setConfirmationToken(int $length) :User
+    {
+
+        $confirmationToken = $this->generateConfirmationToken($length);
+        $this->confirmationToken = $confirmationToken;
+
+        return $this;
     }
 
     /**---------------------- entity relation management------------------------*/
@@ -347,6 +390,18 @@ class User implements AdvancedUserInterface, \Serializable
     public function isCredentialsNonExpired()
     {
         return true;
+    }
+
+    /**---------------------- private methods------------------------*/
+
+    /**
+     * @param int $length
+     * @return string
+     */
+    private function generateConfirmationToken(int $length) :string
+    {
+        $strToRandom = ('abcdefghijklmnoptqrdtuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789');
+        return substr(str_shuffle(str_repeat($strToRandom, $length)), 0, $length);
     }
 
 
