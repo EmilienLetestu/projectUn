@@ -184,7 +184,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setRole($role) :User
     {
-        $this->role = $role;
+        $this->role = strtoupper($role);
 
         return $this;
     }
@@ -321,7 +321,9 @@ class User implements AdvancedUserInterface, \Serializable
 
     public function getRoles()
     {
-        return $this->getRole();
+       $role = $this->getRole();
+
+        return ["ROLE_{$role}"];
     }
 
     /**
@@ -356,7 +358,7 @@ class User implements AdvancedUserInterface, \Serializable
     public function isAccountNonLocked()
     {
 
-        return $this->getDeactivated();
+        return $this->getDeactivated() ? false : true;
     }
 
     /**
@@ -390,7 +392,7 @@ class User implements AdvancedUserInterface, \Serializable
             $this->name,
             $this->surname,
             $this->email
-            ) = $this->unserialize($serialized)
+            ) = unserialize($serialized)
         ;
     }
 

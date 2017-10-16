@@ -1,18 +1,33 @@
 security:
-    # https://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN: [ROLE_USER]
+
     providers:
-        in_memory: { memory: ~ }
-    firewalls:
-        dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
-            security: false
         main:
-            anonymous: ~
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        main:
+            provider: main
+            pattern: ^/
+            anonymous: true
+            form_login:
+                login_path: login
+                check_path: login_check
+            logout:
+                path: logout
+                target: login
+            remember_me:
+                secret: '%env(SECRET)%'
+                lifetime: 259200
+                path: /
+                httponly: true
 
-            # activate different ways to authenticate
-
-            # http_basic: ~
-            # https://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
-
-            # form_login: ~
-            # https://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    access_control:
+        - { path: ^/story, roles: ROLE_USER }
+        - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }

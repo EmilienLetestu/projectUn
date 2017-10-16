@@ -12,6 +12,11 @@ use App\Entity\Story;
 use App\Entity\Topic;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
+
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+
 
 class IndexController extends Controller
 {
@@ -25,6 +30,31 @@ class IndexController extends Controller
         );
     }
 
+
+    /**
+     * @param Request $request
+     * @param AuthenticationUtils $authUtils
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
+    public function login(Request $request, AuthenticationUtils $authUtils)
+    {
+        $view = $this->get('App\Services\Login')->processLogin($request, $authUtils);
+
+        if($view === 'home')
+        {
+            return $this->redirectToRoute($view);
+        }
+
+        return $this->render('connectionForms.html.twig', [
+                'last_username' =>$view[0],
+                'error' => $view[1]]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function story(Request $request)
     {
         $view = $this->get('App\Managers\StoryManager')->fetchForReading($request);
@@ -38,6 +68,10 @@ class IndexController extends Controller
         );
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function addStory(Request $request)
     {
         $view = $this->get('App\Services\AddStory')->processAndAdd($request);
@@ -76,4 +110,5 @@ class IndexController extends Controller
 
         return $this->redirectToRoute('home');
     }
+
 }

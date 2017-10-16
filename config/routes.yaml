@@ -11,7 +11,7 @@ story:
         storyId: \d+
 
 addStory:
-    path: /add-story
+    path: /story/add-story
     defaults:
        _controller: App\Controller\IndexController::addStory
 
@@ -19,6 +19,17 @@ resgister:
     path: /register
     defaults:
         _controller: App\Controller\IndexController::register
+
+login:
+    path: /login
+    defaults:
+        _controller: App\Controller\IndexController::login
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
 
 validation:
     path: /validation/{expireOn}/{email}/{token}
