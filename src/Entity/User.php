@@ -138,11 +138,15 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
-     * @param mixed $email
+     * @param string $email
+     * @return $this
      */
     public function setEmail(string $email)
     {
         $this->email = $email;
+
+        return $this;
+
     }
 
     /**
@@ -181,6 +185,8 @@ class User implements AdvancedUserInterface, \Serializable
     public function setRole($role) :User
     {
         $this->role = $role;
+
+        return $this;
     }
 
     /**
@@ -218,6 +224,8 @@ class User implements AdvancedUserInterface, \Serializable
     public function setActivated($activated):User
     {
         $this->activated = $activated;
+
+        return $this;
     }
 
     /**
@@ -235,6 +243,8 @@ class User implements AdvancedUserInterface, \Serializable
     public function setDeactivated($deactivated):User
     {
         $this->deactivated = $deactivated;
+
+        return $this;
     }
 
     public function getDeactivated()
