@@ -65,4 +65,15 @@ class IndexController extends Controller
             ]
         );
     }
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function activation(Request $request)
+    {
+        $this->get('App\Services\Activation')->ActivateUserAccount($request);
+
+        return $this->redirectToRoute('home');
+    }
 }
