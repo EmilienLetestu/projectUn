@@ -15,7 +15,7 @@ addStory:
     defaults:
        _controller: App\Controller\IndexController::addStory
 
-resgister:
+register:
     path: /register
     defaults:
         _controller: App\Controller\IndexController::register
