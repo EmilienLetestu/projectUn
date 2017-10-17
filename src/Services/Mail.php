@@ -71,4 +71,31 @@ class Mail
                 'text/html');
         return $message;
     }
+
+    /**
+     * @param $name
+     * @param $surname
+     * @param $token
+     * @param $email
+     * @param $sender
+     * @return \Swift_Message
+     */
+    public function newPswdMail($name,$surname,$token,$email,$sender)
+    {
+        $message = (new \Swift_Message('Modification du mot de passe'));
+        $message
+            ->setFrom($sender)
+            ->setTo($email)
+            ->setBody($this->twig->render('newPswdMail.html.twig', [
+                'name'    => $name,
+                'surname' => $surname,
+                'token'   => $token,
+                'email'   => $email,
+                'expireOn'=> date('Y-m-d', strtotime('+2 day'))
+            ]),
+                'text/html'
+            )
+        ;
+        return $message;
+    }
 }

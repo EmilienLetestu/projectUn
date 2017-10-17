@@ -84,8 +84,8 @@ class RegisterType extends AbstractType
                                                                              'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
                                                                              'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'])
             ],
-                'label'  => 'Mot de passe',
-                'mapped' => false
+                                                            'label'  => 'Mot de passe',
+                                                            'mapped' => false
             ])
 
             ->add('termsAgreement', CheckboxType::class,['label'     => 'J\'accepte les conditions générales d\'utilisation',
