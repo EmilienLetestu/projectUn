@@ -26,6 +26,19 @@
                     </div>
                 </form>
             </div>
+            {% if  not is_granted('ROLE_USER') %}
+                <div class="nav navbar-nav ml-auto" id="connection">
+                    <a class="btn btn-default" href="{{ path('register') }}">Register</a>
+                    <a class="btn btn-outline" href="{{ path('login') }}">Sign in</a>
+                </div>
+            {% endif %}
+
+            {% if is_granted('ROLE_USER') %}
+                <div class="nav navbar-nav ml-auto" id="connection">
+                    <a class="btn btn-outline" href="{{ path('logout') }}">Logout</a>
+                </div>
+            {% endif %}
+
         </nav>
         <main class="container-fluid py-3 w-100" id="app">
 
