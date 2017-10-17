@@ -30,12 +30,14 @@ class Activation
      * @param EntityManager $doctrine
      * @param Session $session
      * @param Mail $mailService
+     * @param Tools $tools
      * @param \Swift_Mailer $swift
      */
     public  function __construct(
         EntityManager $doctrine,
         Session       $session,
-        Mail         $mailService,
+        Mail          $mailService,
+        Tools         $tools,
         \Swift_Mailer $swift
 
     )
@@ -43,6 +45,7 @@ class Activation
         $this->doctrine    = $doctrine;
         $this->session     = $session;
         $this->mailService = $mailService;
+        $this->tools       = $tools;
         $this->swift       = $swift;
 
     }
@@ -67,7 +70,7 @@ class Activation
         ]);
 
 
-        $stillValid = $this->isLinkStillValid($date);
+        $stillValid = $this->tools->isLinkStillValid($date);
 
         if($stillValid === false)
         {
@@ -100,20 +103,6 @@ class Activation
         return $this->session->getFlashBag()
             ->add('success','Votre compte est activé !')
             ;
-    }
-
-    /**
-     * @param $date
-     * @return bool
-     * check if generated link as expired
-     */
-    private function isLinkStillValid($date)
-    {
-        $today = new \DateTime();
-        $dateFromLink = new \DateTime($date);
-        $diff = $dateFromLink->diff($today)->days;
-
-        return $diff < 2 ? true : false;
     }
 
 }
