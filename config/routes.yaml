@@ -31,6 +31,20 @@ login_check:
 logout:
     path: /logout
 
+lostPassword:
+    path: /lost-password
+    defaults:
+            _controller: App\Controller\IndexController::newPswdMail
+
+resetPswd:
+    path: /lost-password/{expireOn}/{email}/{token}
+    defaults:
+        _controller: App\Controller\IndexController::newPswdProcess
+    requirements:
+        expireOn: ^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])
+        email: ^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$
+        token: ([^']{40,})
+
 validation:
     path: /validation/{expireOn}/{email}/{token}
     defaults:
