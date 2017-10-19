@@ -17,11 +17,11 @@
         </div>
         <div class="form-group row">
             {{ form_label(form.patronage.organization) }}
-            {{ form_widget(form.patronage.organization) }}
+            {{ form_widget(form.patronage.organization,{'attr':{'class':'form-control'}}) }}
         </div>
          <div class="form-group row">
              {{ form_label(form.patronage.identity) }}
-            {{ form_widget(form.patronage.identity) }}
+            {{ form_widget(form.patronage.identity,{'attr':{'class':'form-control'}}) }}
         </div>
         <div class="form-group row">
             {{ form_label(form.year) }}
@@ -33,11 +33,11 @@
         </div>
         <div class="form-group row">
             {{ form_label(form.abstract) }}
-            {{ form_widget(form.abstract ,{'attr':{'class':'form-control', 'rows':'3'}}) }}
+            {{ form_widget(form.abstract ,{'attr':{'class':'form-control'}}) }}
         </div>
         <div class="form-group row">
             {{ form_label(form.plot) }}
-            {{ form_widget(form.plot ,{'attr':{'class':'form-control', 'rows':'6'}}) }}
+            {{ form_widget(form.plot ,{'attr':{'class':'form-control'}}) }}
         </div>
         <div class="form-group row">
             {{ form_label(form.contactEmail) }}

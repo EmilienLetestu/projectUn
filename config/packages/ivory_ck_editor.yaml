@@ -1,9 +1,15 @@
 ivory_ck_editor:
-    default_config: simple_toolbar
     configs:
-        simple_toolbar:
+        project_narrative:
+            height: '900px'
             toolbar:
-                - ['Bold', 'Italic', 'Strike', 'Link']
+                - ['Bold', 'Italic', 'Strike']
                 - ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent']
                 - ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo']
-                - ['Source']
+
+        abstract:
+            height: '200px'
+            toolbar:
+                - ['Bold', 'Italic', 'Strike']
+                - ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent']
+                - ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo']

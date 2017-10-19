@@ -31,10 +31,12 @@ class StoryType extends AbstractType
                                                        'label' => 'Title'
             ])
             ->add('abstract', CKEditorType::class,['constraints'=>[new NotBlank()],
-                                                             'label' => 'Abstract'
+                                                   'config_name' => 'abstract',
+                                                   'label'  => 'Abstract'
             ])
             ->add('plot', CKEditorType::class,['constraints'=>[new NotBlank()],
-                                                          'label' => 'Project Narrative'
+                                               'config_name' => 'project_narrative',
+                                               'label'  => 'Project narrative'
             ])
             ->add('contactEmail', EmailType::class,['constraints'=>[new NotBlank()],
                                                              'label' => 'Your e-mail address'
