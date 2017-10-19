@@ -73,19 +73,19 @@ class Story
 
     /**
      * @var
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     private $contactEmail;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $contactPlace;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $contactPhone;
 
@@ -97,13 +97,13 @@ class Story
 
     /**
      * @var
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", length=5)
      */
     private $country;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=4, nullable=true)
      */
     private $year = null;
 

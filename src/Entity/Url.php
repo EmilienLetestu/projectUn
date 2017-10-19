@@ -29,13 +29,13 @@ class Url
 
     /**
      * @var
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=200)
      */
     private $href;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=20)
+     * @ORM\Column(type="string", length=50)
      */
     private $alt;
 

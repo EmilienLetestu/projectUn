@@ -42,7 +42,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
-     * @ORM\column(type="string", length=255)
+     * @ORM\column(type="string", length=100)
      */
     private $email;
 

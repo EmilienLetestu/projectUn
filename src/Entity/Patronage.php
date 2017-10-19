@@ -31,13 +31,13 @@ class Patronage
 
     /**
      * @var
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=30)
      */
     private $organization;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $identity;
 
