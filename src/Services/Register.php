@@ -52,8 +52,6 @@ class Register
         if($registerForm->isSubmitted() && $registerForm->isValid())
         {
 
-
-
             $emailInDb = $this->mailService
                 ->checkMailAvailability($user->getEmail())
             ;

@@ -10,12 +10,14 @@ namespace App\Services;
 
 use App\Entity\Patronage;
 use App\Entity\Story;
+use App\Entity\User;
 use App\Form\StoryType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 
 class AddStory
@@ -24,24 +26,28 @@ class AddStory
     private $doctrine;
     private $session;
     private $requestStack;
+    private $token;
 
     public function __construct(
         FormFactory   $formFactory,
         EntityManager $doctrine,
         Session       $session,
-        RequestStack  $requestStack
+        RequestStack  $requestStack,
+        TokenStorage  $token
     )
     {
         $this->formFactory  = $formFactory;
         $this->doctrine     = $doctrine;
         $this->session      = $session;
         $this->requestStack = $requestStack;
+        $this->token        = $token;
     }
 
     public function processAndAdd(Request $request)
     {
         $story = new Story();
         $patronage = new Patronage();
+        $user = new User();
 
         $form = $this->formFactory->create(StoryType::class, $story);
 
@@ -57,11 +63,16 @@ class AddStory
             //get submitted data from child form for "patronage"
             $patronageData = $form->get("patronage")->getData();
             $patronage->setOrganization($patronageData['organization']);
-            $patronage->setIdentity('identity');
+            $patronage->setIdentity($patronageData['identity']);
 
             //handle entity relation between patronage and story
             $story->setPatronage($patronage);
             $patronage->addStory($story);
+
+            //get user id and link user to story
+            $user = $this->token->getToken()->getUser();
+            $user->addStory($story);
+            $story->setUser($user);
 
             //persist
             $this->doctrine->persist($patronage);

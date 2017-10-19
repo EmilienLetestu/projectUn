@@ -26,6 +26,7 @@
                     </div>
                 </form>
             </div>
+
             {% if  not is_granted('ROLE_USER') %}
                 <div class="nav navbar-nav ml-auto" id="connection">
                     <a class="btn btn-default" href="{{ path('register') }}">Register</a>

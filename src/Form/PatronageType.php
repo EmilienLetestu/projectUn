@@ -22,12 +22,12 @@ class PatronageType extends AbstractType
     {
         $builder
             ->add('organization',ChoiceType::class,['constraints' => [new NotBlank()],
-                'choices' => ['ong'             => '1',
-                             'company'          => '2',
-                             'town hall'        => '3',
-                             'county'           => '4',
-                             'association'      => '5',
-                             'private investor' => '6',
+                'choices' => ['ong'             => 'ong',
+                             'company'          => 'company',
+                             'town hall'        => 'town hall',
+                             'county'           => 'county',
+                             'association'      => 'association',
+                             'private investor' => 'private investor',
                 ],
                 'label' => 'project investor'
             ])

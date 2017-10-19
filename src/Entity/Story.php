@@ -42,6 +42,13 @@ class Story
 
     /**
      * @var
+     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="stories")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @var
      * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story")
      */
     private $urls;
@@ -112,11 +119,12 @@ class Story
     }
 
     /**
-     * @param mixed $topic
+     * @param $topic
+     * @return mixed
      */
     public function setTopic($topic)
     {
-        $this->topic = $topic;
+      return  $this->topic = $topic;
     }
 
     /**
@@ -130,10 +138,11 @@ class Story
 
     /**
      * @param $patronage
+     * @return mixed
      */
     public function setPatronage($patronage)
     {
-        $this->patronage = $patronage;
+      return $this->patronage = $patronage;
 
     }
 
@@ -146,11 +155,29 @@ class Story
     }
 
     /**
-     * @param mixed $title
+     * @param $user
+     * @return mixed
+     */
+    public function setUser($user)
+    {
+      return  $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param $title
+     * @return mixed
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        return $this->title = $title;
     }
 
     /**
@@ -162,11 +189,12 @@ class Story
     }
 
     /**
-     * @param mixed $abstract
+     * @param $abstract
+     * @return mixed
      */
     public function setAbstract($abstract)
     {
-        $this->abstract = $abstract;
+       return $this->abstract = $abstract;
     }
     /**
      * @return mixed
@@ -177,11 +205,12 @@ class Story
     }
 
     /**
-     * @param mixed $plot
+     * @param $plot
+     * @return mixed
      */
     public function setPlot($plot)
     {
-        $this->plot = $plot;
+       return $this->plot = $plot;
     }
 
     /**
@@ -194,10 +223,11 @@ class Story
 
     /**
      * @param $contactEmail
+     * @return mixed
      */
     public function setContactEmail($contactEmail)
     {
-        $this->contactEmail = $contactEmail;
+       return $this->contactEmail = $contactEmail;
     }
 
     /**
@@ -209,11 +239,12 @@ class Story
     }
 
     /**
-     * @param mixed $contactPlace
+     * @param $contactPlace
+     * @return mixed
      */
     public function setContactPlace($contactPlace)
     {
-        $this->contactPlace = $contactPlace;
+       return $this->contactPlace = $contactPlace;
     }
 
     /**
@@ -225,11 +256,12 @@ class Story
     }
 
     /**
-     * @param mixed $contactPhone
+     * @param $contactPhone
+     * @return mixed
      */
     public function setContactPhone($contactPhone)
     {
-        $this->contactPhone = $contactPhone;
+      return  $this->contactPhone = $contactPhone;
     }
 
     /**
@@ -243,10 +275,11 @@ class Story
 
     /**
      * @param $format
+     * @return \DateTime
      */
     public function setCreatedOn($format)
     {
-        $this->createdOn = new \DateTime(date($format));
+      return $this->createdOn = new \DateTime(date($format));
     }
 
     /**
@@ -258,11 +291,12 @@ class Story
     }
 
     /**
-     * @param mixed $country
+     * @param $country
+     * @return mixed
      */
     public function setCountry($country)
     {
-        $this->country = $country;
+        return $this->country = $country;
     }
 
     /**
@@ -275,10 +309,11 @@ class Story
 
     /**
      * @param $year
+     * @return mixed
      */
     public function setYear($year)
     {
-        $this->year = $year;
+       return $this->year = $year;
     }
 
     /**
@@ -325,14 +360,5 @@ class Story
     {
         return $this->urls;
     }
-
-    /**
-     * @param mixed $urls
-     */
-    public function setUrls($urls)
-    {
-        $this->urls = $urls;
-    }
-
 
 }

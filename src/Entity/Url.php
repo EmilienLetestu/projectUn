@@ -58,11 +58,12 @@ class Url
     }
 
     /**
-     * @param mixed $href
+     * @param $href
+     * @return $this
      */
     public function setHref($href)
     {
-        $this->href = $href;
+       return $this->href = $href;
     }
 
     /**
@@ -74,11 +75,12 @@ class Url
     }
 
     /**
-     * @param mixed $alt
+     * @param $alt
+     * @return $this
      */
     public function setAlt($alt)
     {
-        $this->alt = $alt;
+       return $this->alt = $alt;
     }
 
     /**
@@ -90,11 +92,12 @@ class Url
     }
 
     /**
-     * @param mixed $story
+     * @param $story
+     * @return mixed
      */
     public function setStory($story)
     {
-        $this->story = $story;
+       return $this->story = $story;
     }
 
 

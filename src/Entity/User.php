@@ -105,9 +105,8 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setName(string $name) :User
     {
-        $this->name = ucfirst(strip_tags(mb_strtolower($name)));
+       return $this->name = ucfirst(strip_tags(mb_strtolower($name)));
 
-        return $this;
     }
 
     /**
@@ -124,9 +123,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setSurname(string $surname) :User
     {
-        $this->surname = ucfirst(strip_tags(mb_strtolower($surname)));
-
-        return $this;
+        return $this->surname = ucfirst(strip_tags(mb_strtolower($surname)));
     }
 
     /**
@@ -139,14 +136,11 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @param string $email
-     * @return $this
+     * @return User
      */
     public function setEmail(string $email)
     {
-        $this->email = $email;
-
-        return $this;
-
+      return  $this->email = $email;
     }
 
     /**
@@ -164,9 +158,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setPswd(string $pswd) :User
     {
-        $this->pswd = password_hash($pswd, PASSWORD_BCRYPT);
-
-        return $this;
+       return $this->pswd = password_hash($pswd, PASSWORD_BCRYPT);
     }
 
 
@@ -184,9 +176,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setRole($role) :User
     {
-        $this->role = strtoupper($role);
-
-        return $this;
+      return  $this->role = strtoupper($role);
     }
 
     /**
@@ -202,11 +192,9 @@ class User implements AdvancedUserInterface, \Serializable
      * @param $format
      * @return User
      */
-    public function setRegisteredOn($format):User
+    public function setRegisteredOn($format)
     {
-        $this->registeredOn = new \DateTime(date($format));
-
-        return $this;
+       return $this->registeredOn = new \DateTime(date($format));
     }
 
     /**
@@ -223,9 +211,8 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setActivated($activated):User
     {
-        $this->activated = $activated;
+       return $this->activated = $activated;
 
-        return $this;
     }
 
     /**
@@ -242,9 +229,7 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setDeactivated($deactivated):User
     {
-        $this->deactivated = $deactivated;
-
-        return $this;
+       return $this->deactivated = $deactivated;
     }
 
     public function getDeactivated()
@@ -266,7 +251,6 @@ class User implements AdvancedUserInterface, \Serializable
      */
     public function setConfirmationToken(int $length) :User
     {
-
         $confirmationToken = $this->generateConfirmationToken($length);
         $this->confirmationToken = $confirmationToken;
 
