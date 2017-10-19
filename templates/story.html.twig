@@ -7,12 +7,12 @@
 
     <div id="abstract">
         <h2>The project in a few words</h2>
-         <p>{{ story.abstract }}</p>
+         <p>{{ story.abstract|raw }}</p>
     </div>
 
     <div id="plot">
         <h3>A Climate Story #{{ story.id }}</h3>
-        <p>{{ story.plot }}</p>
+        <p>{{ story.plot|raw }}</p>
     </div>
 
     <div id="moreContainer">

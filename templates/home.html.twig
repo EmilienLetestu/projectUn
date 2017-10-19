@@ -24,7 +24,7 @@
               <tr>
                   <th>{{ story.title }}</th>
                   <th>{{ story.topic.type }}</th>
-                  <th>{{ story.abstract|slice(0,150) }}....</th>
+                  <th>{{ story.abstract|slice(0,150)|raw }}....</th>
                   <th>{{ story.contactEmail }}</th>
                   <th><a href="{{ path('story',{'storyId':story.id}) }}" class="btn btn-outline">read story</a></th>
               </tr>
