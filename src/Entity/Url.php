@@ -9,7 +9,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class Url
@@ -29,20 +28,20 @@ class Url
 
     /**
      * @var
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=200,nullable=true)
      */
-    private $href;
+    private $href=null;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=50)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
-    private $alt;
+    private $alt=null;
 
     /**
      * @var
      * @ORM\ManyToOne(targetEntity="App\Entity\Story", inversedBy="urls")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="story_id", referencedColumnName="id")
      */
     private $story;
 

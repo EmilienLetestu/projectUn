@@ -334,15 +334,14 @@ class Story
         $this->urls = new ArrayCollection();
     }
 
+
     /**
      * @param Url $url
-     * @return $this
      */
     public function addUrl(Url $url)
     {
-        $this->urls[] = $url;
+       $this->urls[] = $url;
 
-        return $this;
     }
 
     /**
@@ -350,7 +349,7 @@ class Story
      */
     public function removeUrl(Url $url)
     {
-        $this->urls->removeElement($url);
+      $this->urls->removeElement($url);
     }
 
     /**

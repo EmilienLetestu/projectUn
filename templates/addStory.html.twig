@@ -51,7 +51,10 @@
             {{ form_label(form.contactPhone) }}
             {{ form_widget(form.contactPhone ,{'attr':{'class':'form-control'}}) }}
         </div>
-
+        {#<div>
+            {{ form_row(form.urls) }}
+            <a href="#" id="add_url" class="btn btn-default">Ajouter une catégorie</a>
+        </div>#}
         <div class="form-group row">
             <button class="btn btn-success" type="submit">Valider</button>
         </div>
@@ -60,3 +63,54 @@
 
 {% endblock %}
 
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+        var $container = $('#story_urls');
+        var index = $container.find(':input').length;
+
+        $('#add_url').click(function(e) {
+
+            addUrl($container);
+            e.preventDefault();
+            return false;
+        });
+        if (index == 0) {
+
+            addUrl($container);
+
+        } else {
+            $container.children('div').each(function() {
+                addDeleteLink($(this));
+            });
+
+        }
+        function addUrl($container) {
+            var template = $container.attr('data-prototype')
+                    .replace(/__name__label__/g, 'Catégorie n°' + (index+1))
+                    .replace(/__name__/g,        index)
+                ;
+
+            var $prototype = $(template);
+            addDeleteLink($prototype);
+            $container.append($prototype);
+            index++;
+        }
+
+        function addDeleteLink($prototype) {
+            var $deleteLink = $('<a href="#" class="btn btn-danger">Supprimer</a>');
+            $prototype.append($deleteLink);
+            $deleteLink.click(function(e) {
+                $prototype.remove();
+                e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+
+                return false;
+            });
+        }
+    });
+    </script>
+
+    {% endblock %}

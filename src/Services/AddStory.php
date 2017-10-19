@@ -10,6 +10,7 @@ namespace App\Services;
 
 use App\Entity\Patronage;
 use App\Entity\Story;
+use App\Entity\Url;
 use App\Entity\User;
 use App\Form\StoryType;
 use Doctrine\ORM\EntityManager;
@@ -64,6 +65,16 @@ class AddStory
             $patronageData = $form->get("patronage")->getData();
             $patronage->setOrganization($patronageData['organization']);
             $patronage->setIdentity($patronageData['identity']);
+
+            /**url
+            $urls = $form->get("urls")->getData();
+            foreach ($urls as $value)
+            {
+                $url = new Url();
+                $url->setHref($value);
+                $url->setStory($story);
+                $this->doctrine->persist($url);
+            }**/
 
             //handle entity relation between patronage and story
             $story->setPatronage($patronage);

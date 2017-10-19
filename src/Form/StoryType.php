@@ -52,7 +52,8 @@ class StoryType extends AbstractType
             ->add('country', CountryType::class,['label'=>'This story set in'
             ])
             ->add('year', TextType::class,['label'  => 'This story started in'])
-            ->add('patronage', PatronageType::class);
+            ->add('patronage', PatronageType::class)
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
