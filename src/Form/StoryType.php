@@ -8,6 +8,7 @@
 namespace App\Form;
 
 
+use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\AbstractType;
@@ -29,10 +30,10 @@ class StoryType extends AbstractType
             ->add('title', TextType::class,['constraints'=>[new NotBlank()],
                                                        'label' => 'Title'
             ])
-            ->add('abstract', TextareaType::class,['constraints'=>[new NotBlank()],
+            ->add('abstract', CKEditorType::class,['constraints'=>[new NotBlank()],
                                                              'label' => 'Abstract'
             ])
-            ->add('plot', TextareaType::class,['constraints'=>[new NotBlank()],
+            ->add('plot', CKEditorType::class,['constraints'=>[new NotBlank()],
                                                           'label' => 'Project Narrative'
             ])
             ->add('contactEmail', EmailType::class,['constraints'=>[new NotBlank()],
