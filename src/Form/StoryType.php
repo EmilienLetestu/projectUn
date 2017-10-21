@@ -15,7 +15,6 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 
@@ -27,35 +26,59 @@ class StoryType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', TextType::class,['constraints'=>[new NotBlank()],
-                                                       'label' => 'Title'
+            ->add('title', TextType::class,[
+                'constraints'=>[new NotBlank()],
+                'label'      => 'Title'
             ])
-            ->add('abstract', CKEditorType::class,['constraints'=>[new NotBlank()],
-                                                   'config_name' => 'abstract',
-                                                   'label'  => 'Abstract'
+            ->add('abstract', CKEditorType::class,[
+                'constraints' =>[new NotBlank()],
+                'config_name' => 'abstract',
+                'label'       => 'Abstract'
             ])
-            ->add('plot', CKEditorType::class,['constraints'=>[new NotBlank()],
-                                               'config_name' => 'project_narrative',
-                                               'label'  => 'Project narrative'
+            ->add('plot', CKEditorType::class,[
+                'constraints' =>[new NotBlank()],
+                'config_name' => 'project_narrative',
+                'label'       => 'Project narrative'
             ])
-            ->add('contactEmail', EmailType::class,['constraints'=>[new NotBlank()],
-                                                             'label' => 'Your e-mail address'
+            ->add('contactEmail', EmailType::class,[
+                'constraints'=>[new NotBlank()],
+                'label'      => 'Your e-mail address'
             ])
-            ->add('contactPlace', TextType::class,['label' => 'Where to meet you'
+            ->add('contactPlace', TextType::class,[
+                'label'    => 'Where to meet you',
+                'required' => false
             ])
-            ->add('contactPhone', TextType::class,['label' => 'Your phone number'
+            ->add('contactPhone', TextType::class,[
+                'label'    => 'Your phone number',
+                'required' => false
             ])
-            ->add('topic', EntityType::class, ['constraints' =>[new NotBlank()],
-                                                          'class' => 'App:Topic',
-                                                          'choice_label' => 'type'
+            ->add('topic', EntityType::class,[
+                'constraints'  =>[new NotBlank()],
+                'class'        => 'App:Topic',
+                'choice_label' => 'type'
             ])
-            ->add('country', CountryType::class,['label'=>'This story set in'
+            ->add('country', CountryType::class,[
+                'label'=>'This story set in'
             ])
-            ->add('year', TextType::class,['label'  => 'This story started in'])
-            ->add('patronage', PatronageType::class)
+            ->add('year', TextType::class,[
+                'label'    => 'This story started in',
+                'required' => false
+            ])
+            ->add('patronage', EntityType::class,[
+                'constraints'  =>[new NotBlank()],
+                'class'        => 'App:Patronage',
+                'choice_label' => 'organization'
+            ])
+            ->add('investor', TextType::class,[
+                'constraints'=>[new NotBlank()],
+                'label'      =>'Investor name',
+                'required'   => false
+            ])
+            ->add('url', LinkType::class,[
+                'mapped'=>false
+            ]);
         ;
     }
-
     public function configureOptions(OptionsResolver $resolver)
     {
        $resolver->setDefaults(['data-class'=> 'App\Entity\Story']);
