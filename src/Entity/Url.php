@@ -28,6 +28,13 @@ class Url
 
     /**
      * @var
+     * @ORM\ManyToOne(targetEntity="App\Entity\Story", inversedBy="urls")
+     * @ORM\JoinColumn(name="story_id", referencedColumnName="id",nullable=true)
+     */
+    private $story = null;
+
+    /**
+     * @var
      * @ORM\Column(type="string", length=200,nullable=true)
      */
     private $href = null;
@@ -46,6 +53,23 @@ class Url
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * @param $story
+     * @return mixed
+     */
+    public function setStory($story)
+    {
+        return $this->story = $story;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStory()
+    {
+        return $this->story;
     }
 
     /**

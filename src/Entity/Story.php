@@ -48,11 +48,6 @@ class Story
      */
     private $user;
 
-    /**
-     * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story", cascade="all",orphanRemoval=true)
-     */
-    private $urls;
 
     /**
      * @var
@@ -86,7 +81,7 @@ class Story
 
     /**
      * @var
-     * @ORM\Column(type="string", length=100, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $contactPhone = null;
 
@@ -110,7 +105,7 @@ class Story
 
     /**
      * @var
-     * @ORM\Column(type="string" length=100, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $investor = null;
 
@@ -346,44 +341,4 @@ class Story
     {
         return $this->investor;
     }
-
-    /**------------------------ relation management -------------------**/
-
-    /**
-     * Story constructor.
-     */
-    public function __construct()
-    {
-        $this->urls = new ArrayCollection();
-    }
-
-
-    /**
-     * @param Url $url
-     * @return $this
-     */
-    public function addUrl(Url $url)
-    {
-       $this->urls[] = $url;
-       $url->setStory($this);
-       return $this;
-
-    }
-
-    /**
-     * @param Url $url
-     */
-    public function removeUrl(Url $url)
-    {
-      $this->urls->removeElement($url);
-    }
-
-    /**
-     * @return ArrayCollection
-     */
-    public function getUrls()
-    {
-        return $this->urls;
-    }
-
 }

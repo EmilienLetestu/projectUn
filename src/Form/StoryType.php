@@ -16,9 +16,12 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
 class StoryType extends AbstractType
@@ -27,37 +30,59 @@ class StoryType extends AbstractType
     {
         $builder
             ->add('title', TextType::class,[
-                'constraints'=>[new NotBlank()],
+                'constraints'=>[new NotBlank(),
+                                new Length(['min' => 3,
+                                            'max' => 100,
+                                ])
+                ],
                 'label'      => 'Title'
             ])
             ->add('abstract', CKEditorType::class,[
-                'constraints' =>[new NotBlank()],
+                'constraints' =>[new NotBlank()
+                ],
                 'config_name' => 'abstract',
                 'label'       => 'Abstract'
             ])
             ->add('plot', CKEditorType::class,[
-                'constraints' =>[new NotBlank()],
+                'constraints' =>[new NotBlank()
+                ],
                 'config_name' => 'project_narrative',
                 'label'       => 'Project narrative'
             ])
             ->add('contactEmail', EmailType::class,[
-                'constraints'=>[new NotBlank()],
+                'constraints' => [new NotBlank(),
+                                  new Email(),
+                                  new Length(['min' => 3,
+                                              'max' => 100
+                                ])
+                ],
                 'label'      => 'Your e-mail address'
             ])
             ->add('contactPlace', TextType::class,[
+                'constraints' => [new Length(['min' => 3,
+                                              'max' => 100
+                                ])
+                ],
                 'label'    => 'Where to meet you',
                 'required' => false
             ])
             ->add('contactPhone', TextType::class,[
+                'constraints' => [new Length(['min' => 8,
+                                             'max' => 20
+                                ])
+                ],
                 'label'    => 'Your phone number',
                 'required' => false
             ])
             ->add('topic', EntityType::class,[
-                'constraints'  =>[new NotBlank()],
+                'constraints'  =>[new NotBlank()
+                ],
                 'class'        => 'App:Topic',
                 'choice_label' => 'type'
             ])
             ->add('country', CountryType::class,[
+                'constraints' =>[new NotBlank()
+                ],
                 'label'=>'This story set in'
             ])
             ->add('year', TextType::class,[
@@ -65,17 +90,26 @@ class StoryType extends AbstractType
                 'required' => false
             ])
             ->add('patronage', EntityType::class,[
-                'constraints'  =>[new NotBlank()],
+                'constraints'  =>[new NotBlank()
+                ],
                 'class'        => 'App:Patronage',
                 'choice_label' => 'organization'
             ])
             ->add('investor', TextType::class,[
-                'constraints'=>[new NotBlank()],
+                'constraints' =>[new Length(['min' => 2,
+                                             'max' => 100
+                               ])
+                ],
                 'label'      =>'Investor name',
                 'required'   => false
             ])
-            ->add('url', LinkType::class,[
-                'mapped'=>false
+            ->add('url', UrlType::class,[
+                'constraints' =>[new Length(['min' => 10,
+                                             'max' => 200
+                                ])
+                ],
+                'required' => false,
+                'mapped'   => false
             ]);
         ;
     }
