@@ -6,8 +6,9 @@
  * Time: 14:59
  */
 namespace  App\Entity;
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Class Story
@@ -49,7 +50,7 @@ class Story
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story")
+     * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story", cascade="all",orphanRemoval=true)
      */
     private $urls;
 
@@ -81,13 +82,13 @@ class Story
      * @var
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $contactPlace;
+    private $contactPlace = null;
 
     /**
      * @var
      * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $contactPhone;
+    private $contactPhone = null;
 
     /**
      * @var
@@ -106,6 +107,12 @@ class Story
      * @ORM\Column(type="string", length=4, nullable=true)
      */
     private $year = null;
+
+    /**
+     * @var
+     * @ORM\Column(type="string" length=100, nullable=true)
+     */
+    private $investor = null;
 
 
     /**-------------------setters and getters-----------------------**/
@@ -134,7 +141,6 @@ class Story
     {
         return $this->topic;
     }
-
 
     /**
      * @param $patronage
@@ -265,7 +271,7 @@ class Story
     }
 
     /**
-     * @return mixed
+     * @return null
      */
     public function getContactPhone()
     {
@@ -317,17 +323,34 @@ class Story
     }
 
     /**
-     * @return mixed
+     * @return null
      */
     public function getYear()
     {
         return $this->year;
     }
 
+    /**
+     * @param $investor
+     * @return mixed
+     */
+    public function setInvestor($investor)
+    {
+        return $this->investor = $investor;
+    }
+
+    /**
+     * @return null
+     */
+    public function getInvestor()
+    {
+        return $this->investor;
+    }
+
     /**------------------------ relation management -------------------**/
 
     /**
-     * Topic constructor.
+     * Story constructor.
      */
     public function __construct()
     {
@@ -337,10 +360,13 @@ class Story
 
     /**
      * @param Url $url
+     * @return $this
      */
     public function addUrl(Url $url)
     {
        $this->urls[] = $url;
+       $url->setStory($this);
+       return $this;
 
     }
 

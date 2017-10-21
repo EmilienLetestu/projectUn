@@ -30,20 +30,12 @@ class Url
      * @var
      * @ORM\Column(type="string", length=200,nullable=true)
      */
-    private $href=null;
+    private $href = null;
 
     /**
-     * @var
-     * @ORM\Column(type="string", length=50, nullable=true)
+     * @var null
      */
-    private $alt=null;
-
-    /**
-     * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Story", inversedBy="urls")
-     * @ORM\JoinColumn(name="story_id", referencedColumnName="id")
-     */
-    private $story;
+    private $alt = null;
 
 
     /**------------------------ setters and getters -------------------**/
@@ -75,7 +67,7 @@ class Url
 
     /**
      * @param $alt
-     * @return $this
+     * @return mixed
      */
     public function setAlt($alt)
     {
@@ -83,30 +75,11 @@ class Url
     }
 
     /**
-     * @return mixed
+     * @return null
      */
     public function getAlt()
     {
         return $this->alt;
     }
-
-    /**
-     * @param $story
-     * @return mixed
-     */
-    public function setStory($story)
-    {
-       return $this->story = $story;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getStory()
-    {
-        return $this->story;
-    }
-
 
 }
