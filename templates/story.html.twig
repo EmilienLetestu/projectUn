@@ -67,5 +67,16 @@
                 </ul>
             {% endfor %}
         </div>
+
+        <div class="more" id="morePatronage">
+            <h3>Other stories supported by {{ story.patronage.organization }}</h3>
+            {% for story in samePatronage|shuffle|slice(0,5) %}
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

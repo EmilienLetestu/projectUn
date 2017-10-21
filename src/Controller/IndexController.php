@@ -60,10 +60,11 @@ class IndexController extends Controller
         $view = $this->get('App\Managers\StoryManager')->fetchForReading($request);
 
         return $this->render('story.html.twig',[
-            'story'       => $view[0],
-            'sameTopic'   => $view[1],
-            'sameCountry' => $view[2],
-            'sameYear'    => $view[3],
+            'story'         => $view[0],
+            'sameTopic'     => $view[1],
+            'sameCountry'   => $view[2],
+            'sameYear'      => $view[3],
+            'samePatronage' => $view[4]
             ]
         );
     }
