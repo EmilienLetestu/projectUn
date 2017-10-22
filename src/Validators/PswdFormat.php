@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraint;
 
 class PswdFormat extends Constraint
 {
-    public $message = "Le mot de passe doit contenir entre 6 et 30 caractères";
+    public $message = "Password must contains between 6 up to 30 characters";
 
     public function validatedBy()
     {

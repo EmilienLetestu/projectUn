@@ -34,6 +34,7 @@ class StoryTest extends TestCase
         $phone   = '0677887489';
         $country = 'jp';
         $year    = '2015';
+        $investor = 'Mr Joint Venture';
 
         $today = new \DateTime(date('Y-m-d'));
 
@@ -47,6 +48,7 @@ class StoryTest extends TestCase
         $story->setContactPhone($phone);
         $story->setCountry($country);
         $story->setYear($year);
+        $story->setInvestor($investor);
 
         //test
         static::assertEquals($abstract, $story->getAbstract());
@@ -58,5 +60,6 @@ class StoryTest extends TestCase
         static::assertEquals($phone,    $story->getContactPhone());
         static::assertEquals($country,  $story->getCountry());
         static::assertEquals($year,     $story->getYear());
+        static::assertEquals($investor, $story->getInvestor());
     }
 }

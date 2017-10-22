@@ -72,11 +72,17 @@ h1
     padding: 3%;
 }
 
-/*------- add story form --------*/
+/*------- form --------*/
 
 #addForm
 {
     width:50%;
+    margin-left: 25%;
+}
+
+.connectionForm
+{
+    width: 50%;
     margin-left: 25%;
 }
 
