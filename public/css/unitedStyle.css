@@ -24,7 +24,7 @@ h1
     padding: 5%;
     font-size: 3.5em;
 }
-
+/*------- nav bar --------*/
 .navbar-brand i
 {
     position: relative;
@@ -41,21 +41,118 @@ h1
     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 }
 
-
 .navbar-brand
 {
     color: #FFFFFF;
     font-size: 2rem;
 }
 
+.nav-link
+{
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    position: relative;
+    top: 6px;
+    margin-left: 20%;
+}
+.navbar-nav
+{
+    padding-left: 10%;
+}
+
+#logout
+{
+    border-color: #FFFFFF;
+    color: #FFFFFF;
+}
+/*------- page header --------*/
+
 .pageHeader
 {
     padding: 3%;
 }
+
+/*------- add story form --------*/
+
 #addForm
 {
     width:50%;
     margin-left: 25%;
+}
+
+/*------- story card --------*/
+#cardHolder
+{
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+}
+.storyCard
+{
+    width: 30%;
+    margin: 1.5%;
+    margin-block-end: 30px;
+    -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+
+}
+
+.storyCard li
+{
+    margin-left: 5%;
+    font-size: 0.9em;
+}
+
+.storyCard i
+{
+    color: #0f74a8;
+}
+.storyCard h3
+{
+    text-align: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    color: #FFFFFF;
+}
+
+.cardHeader
+{
+    background-color: #0f74a8;
+}
+
+.storyCard p
+{
+    text-align: justify;
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-right:3%;
+}
+
+.cardLink
+{
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+.cardLink a
+{
+    border-color: #0f74a8;
+}
+
+/*------- story --------*/
+
+#storyBody
+{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+#storyBody p
+{
+    font-size: 1.3em;
 }
 
 #abstract h2,
@@ -91,12 +188,4 @@ h1
  color : #5e5e5e;
 }
 
-
-#abstract p,
-#plot p
-{
-    font-size: 1.5em;
-    padding-left: 2%;
-    padding-right: 2%;
-}
 

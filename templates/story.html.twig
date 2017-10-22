@@ -1,31 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div>
-        <h1>{{ story.title }}</h1>
+    <div id="storyBody">
+        <div>
+            <h1>{{ story.title }}</h1>
+        </div>
+
+        <div id="abstract">
+            <h2>The project in a few words</h2>
+            <p>{{ story.abstract|raw }}</p>
+        </div>
+
+        <div id="plot">
+            <h3>A Climate Story #{{ story.id }}</h3>
+            <p>{{ story.plot|raw }}</p>
+        </div>
+
+        <div id="extResources">
+            <h4>More about {{ story.title }}</h4>
+            <ul class="list-unstyled">
+                {% for url in extResources %}
+                    <li>
+                        <a href="{{url.href}}">Link {{ loop.index }} </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
-    <div id="abstract">
-        <h2>The project in a few words</h2>
-         <p>{{ story.abstract|raw }}</p>
-    </div>
-
-    <div id="plot">
-        <h3>A Climate Story #{{ story.id }}</h3>
-        <p>{{ story.plot|raw }}</p>
-    </div>
-
-    <div id="extResources">
-        <h4>More about {{ story.title }}</h4>
-        <ul class="list-unstyled">
-        {% for url in extResources %}
-            <li>
-                <a href="{{url.href}}">Link {{ loop.index }} </a>
-            </li>
-        {% endfor %}
-        </ul>
-    </div>
-    
     <div id="moreContainer">
 
         <div class="more" id="contact">
