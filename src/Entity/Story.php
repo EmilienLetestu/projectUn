@@ -43,7 +43,7 @@ class Story
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="stories")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="stories")
      * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
