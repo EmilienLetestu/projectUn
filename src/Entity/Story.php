@@ -48,7 +48,6 @@ class Story
      */
     private $user;
 
-
     /**
      * @var
      * @ORM\Column(type="string", length=100)
@@ -109,6 +108,11 @@ class Story
      */
     private $investor = null;
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="App\Entity\Url",mappedBy="story")
+     */
+    private $urls;
 
     /**-------------------setters and getters-----------------------**/
 
@@ -340,5 +344,44 @@ class Story
     public function getInvestor()
     {
         return $this->investor;
+    }
+
+    /**------------------------ relation management -------------------**/
+
+    /**
+     * Story constructor.
+     */
+    public function __construct()
+    {
+        $this->urls =  new  ArrayCollection();
+    }
+
+    /**
+     * @param Url $url
+     * @return $this
+     */
+    public function addUrl(Url $url)
+    {
+        $this->urls[] = $url;
+
+        $url->setStory($this);
+
+        return $this;
+    }
+
+    /**
+     * @param Url $url
+     */
+    public function removeUrl(Url $url)
+    {
+        $this->urls->removeElement($url);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getUrls()
+    {
+        return $this->urls;
     }
 }

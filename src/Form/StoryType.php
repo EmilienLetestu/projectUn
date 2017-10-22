@@ -103,14 +103,14 @@ class StoryType extends AbstractType
                 'label'      =>'Investor name',
                 'required'   => false
             ])
-            ->add('url', UrlType::class,[
-                'constraints' =>[new Length(['min' => 10,
-                                             'max' => 200
-                                ])
-                ],
-                'required' => false,
-                'mapped'   => false
-            ]);
+            ->add('urls',CollectionType::class,[
+                'entry_type' => UrlType::class,
+                'allow_add'    => true,
+                'allow_delete' => true,
+                'by_reference' => false,
+                'mapped'       => false,
+                'required'     => false
+            ])
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

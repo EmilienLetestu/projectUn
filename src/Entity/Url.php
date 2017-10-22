@@ -56,10 +56,10 @@ class Url
     }
 
     /**
-     * @param $story
-     * @return mixed
+     * @param Story $story
+     * @return Story
      */
-    public function setStory($story)
+    public function setStory(Story $story)
     {
         return $this->story = $story;
     }

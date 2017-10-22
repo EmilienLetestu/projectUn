@@ -50,7 +50,7 @@ class AddStory
     public function processAndAdd(Request $request)
     {
         $story = new Story();
-        $url = new  Url();
+
 
         $form = $this->formFactory->create(StoryType::class, $story);
         $form->handleRequest($request);
@@ -68,21 +68,26 @@ class AddStory
             $story->setUser($user);
 
             //check if url need to be persist
-            $href = $form->get('url')->getData();
-            if($href !== null)
-            {
-                $url->setHref($href);
-                $url->setStory($story);
-                $this->doctrine->persist($url);
-                $this->doctrine->persist($story);
-                $this->doctrine->flush();
+            $href = $form->get('urls')->getData();
 
+            if($href[0] !== null)
+            {
+                foreach ($href as $key=>$value)
+                {
+                    $url = new Url();
+                    $url->setHref($value);
+                    $story->addUrl($url);
+                    $this->doctrine->persist($url);
+                    $this->doctrine->persist($story);
+                    $this->doctrine->flush();
+                }
                 $this->session->getFlashBag()->add(
                     'success',
                     'Your story was successfully added to our database')
                 ;
                 return $form->createView();
             }
+
             //persist
             $this->doctrine->persist($story);
             $this->doctrine->flush();
