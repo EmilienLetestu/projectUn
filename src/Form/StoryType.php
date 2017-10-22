@@ -117,6 +117,4 @@ class StoryType extends AbstractType
     {
        $resolver->setDefaults(['data-class'=> 'App\Entity\Story']);
     }
-
-
 }

@@ -9,6 +9,7 @@ namespace App\Managers;
 
 use App\Entity\Patronage;
 use App\Entity\Story;
+use App\Entity\Url;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -46,16 +47,19 @@ class StoryManager
         $id = $request->attributes->get('storyId');
 
         //get story to display
-        $repo = $this->doctrine->getRepository(Story::class);
-        $story = $repo->findOneBy(['id'=>$id]);
+        $repoStory = $this->doctrine->getRepository(Story::class);
+        $story = $repoStory->findOneBy(['id'=>$id]);
+        //get url repo
+        $repoUrl = $this->doctrine->getRepository(Url::class);
 
         //return story to display and related stories
         return [
             $story,
-            $repo->findAllWithSameTopic($story->getTopic()->getId(), $id),
-            $repo->findAllWithSameCountry($story->getCountry(), $id),
-            $repo->findAllWithSameYear($story->getYear(), $id),
-            $repo->findAllWithSamePatronage($story->getPatronage()->getId(),$id)
+            $repoStory->findAllWithSameTopic($story->getTopic()->getId(), $id),
+            $repoStory->findAllWithSameCountry($story->getCountry(), $id),
+            $repoStory->findAllWithSameYear($story->getYear(), $id),
+            $repoStory->findAllWithSamePatronage($story->getPatronage()->getId(),$id),
+            $repoUrl->findBy(['story'=>$id])
         ];
     }
 
