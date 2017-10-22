@@ -4,20 +4,20 @@
 
 
       {% if app.request.get('_route') == 'login' %}
-        <div>
+        <div class="connectionForm">
         {% if error %}
             <div class="alert alert-warning">{{ error.message }}</div>
         {% endif %}
             <form action="{{ path('login_check') }}" method="post">
-                <div class="form-group">
+                <div class="form-group row">
                     <label for="username">Email</label>
-                    <input type="text" id="username" name="_username" value="{{ last_username }}"/>
+                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"/>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <label for="password">Mot de passe</label>
-                    <input type="password" id="password" name="_password"/>
+                    <input class="form-control" type="password" id="password" name="_password"/>
                 </div>
-                <div class="form-group">
+                <div class="form-group row">
                     <input type="checkbox" id="remember_me" name="_remember_me" checked />
                     <label for="remember_me">Se souvenir de moi</label>
                 </div>
@@ -30,31 +30,37 @@
       {% endif %}
 
      {% if app.request.get('_route') == 'register' %}
-        <div>
+        <div class="connectionForm">
             {{ form_start(form ,{'attr':{'id':'registerForm'}}) }}
         <div class="form-group row">
             {{ form_label(form.name) }}
-            {{ form_widget(form.name) }}
+            {{ form_widget(form.name ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.name) }}
         </div>
         <div class="form-group row">
             {{ form_label(form.surname) }}
-            {{ form_widget(form.surname) }}
+            {{ form_widget(form.surname ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.surname) }}
         </div>
         <div class="form-group row">
             {{ form_label(form.email) }}
-            {{ form_widget(form.email) }}
+            {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.email) }}
         </div>
         <div class="form-group row">
             {{ form_label(form.pswd) }}
-            {{ form_widget(form.pswd) }}
+            {{ form_widget(form.pswd ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.pswd) }}
         </div>
         <div class="form-group row">
             {{ form_label(form.confirmPswd) }}
-            {{ form_widget(form.confirmPswd)}}
+            {{ form_widget(form.confirmPswd ,{'attr':{'class':'form-control'}})}}
+            {{ form_errors(form.confirmPswd) }}
         </div>
         <div class="form-group row">
             {{ form_label(form.termsAgreement) }}
-            {{ form_widget(form.termsAgreement)}}
+            {{ form_widget(form.termsAgreement ,{'attr':{'class':'form-control'}})}}
+            {{ form_errors(form.termsAgreement)}}
         </div>
         <div class="form-group row">
             <button class="btn btn-success" type="submit">Envoyer</button>
@@ -64,11 +70,12 @@
      {% endif %}
 
       {% if app.request.attributes.get('_route') == 'lostPassword' %}
-        <div>
+        <div class="connectionForm">
             {{ form_start(form, {'attr':{'id':'asNewForm'}}) }}
-            <div class="form-group">
+            <div class="form-group row">
                 {{ form_label(form.email) }}
-                {{ form_widget(form.email) }}
+                {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.email) }}
             </div>
             <div class="form-group">
                 <button class="btn btn-success" type="submit">Valider</button>
@@ -80,13 +87,15 @@
     {%if app.request.attributes.get('_route') == 'resetPswd' %}
         <div>
             {{ form_start(form)}}
-            <div class="form-group">
+            <div class="form-group row">
                 {{ form_label(form.pswd) }}
-                {{ form_widget(form.pswd) }}
+                {{ form_widget(form.pswd ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.pswd) }}
             </div>
-            <div class="form-group">
+            <div class="form-group row">
                 {{ form_label(form.confirmPswd) }}
-                {{ form_widget(form.confirmPswd) }}
+                {{ form_widget(form.confirmPswd ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.confirmPswd) }}
             </div>
             <div class="form-group">
                 <button class="btn btn-success" type="submit">Valider</button>

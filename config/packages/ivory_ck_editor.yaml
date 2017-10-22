@@ -1,0 +1,15 @@
+ivory_ck_editor:
+    configs:
+        project_narrative:
+            height: '900px'
+            toolbar:
+                - ['Bold', 'Italic', 'Strike']
+                - ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent']
+                - ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo']
+
+        abstract:
+            height: '200px'
+            toolbar:
+                - ['Bold', 'Italic', 'Strike']
+                - ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent']
+                - ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo']

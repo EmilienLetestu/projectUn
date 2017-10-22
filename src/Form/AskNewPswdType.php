@@ -22,10 +22,11 @@ class AskNewPswdType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('email', EmailType::class, ['constraints' => [new NotBlank(),
-                                                                          new Email(['message' => 'Ceci n\'est pas un email valide'])
-                                                                         ],
-                                                         'label'=>'Email'
+            ->add('email', EmailType::class, [
+                'constraints' => [new NotBlank(),
+                                  new Email()
+                                 ],
+                'label'=>'Email'
             ])
         ;
     }

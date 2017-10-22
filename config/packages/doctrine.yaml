@@ -2,8 +2,7 @@ doctrine:
     dbal:
         url: '%env(DATABASE_URL_DEV)%'
         password: '%env(DATABASE_PASSWORD)%'
-        driver: pdo_mysql
-        #server_version: 10.0
+
 
     orm:
         auto_generate_proxy_classes: '%kernel.debug%'

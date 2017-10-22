@@ -6,8 +6,9 @@
  * Time: 14:59
  */
 namespace  App\Entity;
-use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Class Story
@@ -42,9 +43,10 @@ class Story
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story")
+     * @ORM\ManyToOne(targetEntity="App\Entity\user", inversedBy="stories")
+     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
-    private $urls;
+    private $user;
 
     /**
      * @var
@@ -66,21 +68,21 @@ class Story
 
     /**
      * @var
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=100)
      */
     private $contactEmail;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=100, nullable=true)
      */
-    private $contactPlace;
+    private $contactPlace = null;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=20, nullable=true)
      */
-    private $contactPhone;
+    private $contactPhone = null;
 
     /**
      * @var
@@ -90,16 +92,27 @@ class Story
 
     /**
      * @var
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", length=5)
      */
     private $country;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=10, nullable=true)
+     * @ORM\Column(type="string", length=4, nullable=true)
      */
     private $year = null;
 
+    /**
+     * @var
+     * @ORM\Column(type="string", length=100, nullable=true)
+     */
+    private $investor = null;
+
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="App\Entity\Url",mappedBy="story")
+     */
+    private $urls;
 
     /**-------------------setters and getters-----------------------**/
 
@@ -112,11 +125,12 @@ class Story
     }
 
     /**
-     * @param mixed $topic
+     * @param $topic
+     * @return mixed
      */
     public function setTopic($topic)
     {
-        $this->topic = $topic;
+      return  $this->topic = $topic;
     }
 
     /**
@@ -127,13 +141,13 @@ class Story
         return $this->topic;
     }
 
-
     /**
      * @param $patronage
+     * @return mixed
      */
     public function setPatronage($patronage)
     {
-        $this->patronage = $patronage;
+      return $this->patronage = $patronage;
 
     }
 
@@ -146,11 +160,29 @@ class Story
     }
 
     /**
-     * @param mixed $title
+     * @param $user
+     * @return mixed
+     */
+    public function setUser($user)
+    {
+      return  $this->user = $user;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param $title
+     * @return mixed
      */
     public function setTitle($title)
     {
-        $this->title = $title;
+        return $this->title = $title;
     }
 
     /**
@@ -162,11 +194,12 @@ class Story
     }
 
     /**
-     * @param mixed $abstract
+     * @param $abstract
+     * @return mixed
      */
     public function setAbstract($abstract)
     {
-        $this->abstract = $abstract;
+       return $this->abstract = $abstract;
     }
     /**
      * @return mixed
@@ -177,11 +210,12 @@ class Story
     }
 
     /**
-     * @param mixed $plot
+     * @param $plot
+     * @return mixed
      */
     public function setPlot($plot)
     {
-        $this->plot = $plot;
+       return $this->plot = $plot;
     }
 
     /**
@@ -194,10 +228,11 @@ class Story
 
     /**
      * @param $contactEmail
+     * @return mixed
      */
     public function setContactEmail($contactEmail)
     {
-        $this->contactEmail = $contactEmail;
+       return $this->contactEmail = $contactEmail;
     }
 
     /**
@@ -209,11 +244,12 @@ class Story
     }
 
     /**
-     * @param mixed $contactPlace
+     * @param $contactPlace
+     * @return mixed
      */
     public function setContactPlace($contactPlace)
     {
-        $this->contactPlace = $contactPlace;
+       return $this->contactPlace = $contactPlace;
     }
 
     /**
@@ -225,15 +261,16 @@ class Story
     }
 
     /**
-     * @param mixed $contactPhone
+     * @param $contactPhone
+     * @return mixed
      */
     public function setContactPhone($contactPhone)
     {
-        $this->contactPhone = $contactPhone;
+      return  $this->contactPhone = $contactPhone;
     }
 
     /**
-     * @return mixed
+     * @return null
      */
     public function getContactPhone()
     {
@@ -243,10 +280,11 @@ class Story
 
     /**
      * @param $format
+     * @return \DateTime
      */
     public function setCreatedOn($format)
     {
-        $this->createdOn = new \DateTime(date($format));
+      return $this->createdOn = new \DateTime(date($format));
     }
 
     /**
@@ -258,11 +296,12 @@ class Story
     }
 
     /**
-     * @param mixed $country
+     * @param $country
+     * @return mixed
      */
     public function setCountry($country)
     {
-        $this->country = $country;
+        return $this->country = $country;
     }
 
     /**
@@ -275,28 +314,46 @@ class Story
 
     /**
      * @param $year
+     * @return mixed
      */
     public function setYear($year)
     {
-        $this->year = $year;
+       return $this->year = $year;
     }
 
     /**
-     * @return mixed
+     * @return null
      */
     public function getYear()
     {
         return $this->year;
     }
 
+    /**
+     * @param $investor
+     * @return mixed
+     */
+    public function setInvestor($investor)
+    {
+        return $this->investor = $investor;
+    }
+
+    /**
+     * @return null
+     */
+    public function getInvestor()
+    {
+        return $this->investor;
+    }
+
     /**------------------------ relation management -------------------**/
 
     /**
-     * Topic constructor.
+     * Story constructor.
      */
     public function __construct()
     {
-        $this->urls = new ArrayCollection();
+        $this->urls =  new  ArrayCollection();
     }
 
     /**
@@ -306,6 +363,8 @@ class Story
     public function addUrl(Url $url)
     {
         $this->urls[] = $url;
+
+        $url->setStory($this);
 
         return $this;
     }
@@ -325,14 +384,4 @@ class Story
     {
         return $this->urls;
     }
-
-    /**
-     * @param mixed $urls
-     */
-    public function setUrls($urls)
-    {
-        $this->urls = $urls;
-    }
-
-
 }

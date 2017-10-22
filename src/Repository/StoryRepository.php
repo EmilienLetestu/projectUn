@@ -34,6 +34,8 @@ class StoryRepository extends EntityRepository
     }
 
     /**
+     * fetch all stories sets in one given country but ignore one with specific id
+     * will be used to create links
      * @param $country
      * @param $id
      * @return array
@@ -49,6 +51,13 @@ class StoryRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * fetch all stories starting in one given year but ignore one with specific id
+     * will be used to create links
+     * @param $year
+     * @param $id
+     * @return array
+     */
     public function findAllWithSameYear($year, $id)
     {
         $queryBuilder = $this->createQueryBuilder('s');
@@ -61,19 +70,20 @@ class StoryRepository extends EntityRepository
 
     }
 
-    public function finAllWithSamePatronage($organization)
+    /**
+     * fetch all stories sharing one given patronage but ignore one with specific id
+     * will be used to create links
+     * @param $patronageId
+     * @param $id
+     * @return array
+     */
+    public function findAllWithSamePatronage($patronageId,$id)
     {
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
-            ->innerJoin('s.patronage','p')
-            ->addSelect('p')
-        ;
-
-        $queryBuilder->where($queryBuilder
-            ->expr()
-            ->in('p.organization',$organization)
-        );
-
+            ->where($queryBuilder->expr()->notIn('s.id',$id))
+            ->andWhere('s.patronage = :id')
+            ->SetParameter('id',$patronageId);
         return $queryBuilder->getQuery()->getResult();
     }
 }

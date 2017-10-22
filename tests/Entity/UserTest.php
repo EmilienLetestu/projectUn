@@ -55,6 +55,5 @@ class UserTest extends TestCase
         static::assertTrue($user->isAccountNonLocked());
         static::assertFalse($user->isEnabled());
         static::assertEquals(["ROLE_USER"],$user->getRoles());
-
     }
 }

@@ -18,13 +18,17 @@
                     Climate Stories
                 </i>
             </a>
-            <div class="search-bar">
-                <form class="form-inline">
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Rechercher" aria-describedby="basic-addon1">
-                        <span class="input-group-addon" id="basic-addon1"><i class="material-icons">search</i></span>
-                    </div>
-                </form>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {% if is_granted('ROLE_USER') %}
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a href="{{ path('addStory')}}" class="nav-link">Add your story</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Browse</a>
+                        </li>
+                    </ul>
+                {% endif %}
             </div>
             {% if  not is_granted('ROLE_USER') %}
                 <div class="nav navbar-nav ml-auto" id="connection">
@@ -35,7 +39,10 @@
 
             {% if is_granted('ROLE_USER') %}
                 <div class="nav navbar-nav ml-auto" id="connection">
-                    <a class="btn btn-outline" href="{{ path('logout') }}">Logout</a>
+                    <a class="btn" id="logout" href="{{ path('logout') }}">
+                        <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        Logout
+                    </a>
                 </div>
             {% endif %}
 

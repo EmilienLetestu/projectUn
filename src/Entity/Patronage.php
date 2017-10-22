@@ -31,15 +31,10 @@ class Patronage
 
     /**
      * @var
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=30)
      */
     private $organization;
 
-    /**
-     * @var
-     * @ORM\Column(type="string", length=50, nullable=true)
-     */
-    private $identity;
 
     /**
      * @var
@@ -59,43 +54,22 @@ class Patronage
 
     /**
      * @param $organization
+     * @return mixed
      */
     public function setOrganization($organization)
     {
-        $this->organization = $organization;
+       return $this->organization = $organization;
     }
 
 
     /**
-     * @param null $display
      * @return mixed
      */
-    public function getOrganization($display = null)
+    public function getOrganization()
     {
-        if($display !== null)
-        {
-            $org = $this->organization;
-            return $this->displayOrganizationName($org - 1);
-        }
         return $this->organization;
     }
 
-
-    /**
-     * @param mixed $identity
-     */
-    public function setIdentity($identity)
-    {
-        $this->identity = $identity;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getIdentity()
-    {
-        return $this->identity;
-    }
 
     /**------------------------ relation management -------------------**/
 
@@ -132,20 +106,6 @@ class Patronage
     public function getStories()
     {
         return $this->stories;
-    }
-
-    private function displayOrganizationName($organization)
-    {
-        $name = [
-            'ong',
-            'company',
-            'town hall',
-            'county',
-            'association',
-            'private investor',
-        ];
-
-        return $name[$organization];
     }
 
 }

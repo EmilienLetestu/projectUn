@@ -1,18 +1,31 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div>
-        <h1>{{ story.title }}</h1>
-    </div>
+    <div id="storyBody">
+        <div>
+            <h1>{{ story.title }}</h1>
+        </div>
 
-    <div id="abstract">
-        <h2>The project in few a words</h2>
-         <p>{{ story.abstract }}</p>
-    </div>
+        <div id="abstract">
+            <h2>The project in a few words</h2>
+            <p>{{ story.abstract|raw }}</p>
+        </div>
 
-    <div id="plot">
-        <h3>A Climate Story #{{ story.id }}</h3>
-        <p>{{ story.plot }}</p>
+        <div id="plot">
+            <h3>A Climate Story #{{ story.id }}</h3>
+            <p>{{ story.plot|raw }}</p>
+        </div>
+
+        <div id="extResources">
+            <h4>More about {{ story.title }}</h4>
+            <ul class="list-unstyled">
+                {% for url in extResources %}
+                    <li>
+                        <a href="{{url.href}}">Link {{ loop.index }} </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 
     <div id="moreContainer">
@@ -60,6 +73,17 @@
         <div class="more" id="moreYear">
             <h3>Other stories started in {{ story.year}}</h3>
             {% for story in sameYear|shuffle|slice(0,5) %}
+                <ul class="list-unstyled">
+                    <li>
+                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
+                    </li>
+                </ul>
+            {% endfor %}
+        </div>
+
+        <div class="more" id="morePatronage">
+            <h3>Other stories supported by {{ story.patronage.organization }}</h3>
+            {% for story in samePatronage|shuffle|slice(0,5) %}
                 <ul class="list-unstyled">
                     <li>
                         <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>

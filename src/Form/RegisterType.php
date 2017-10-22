@@ -34,63 +34,55 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class,['constraints'=>[new NotBlank(),
-                                                           new Type('string'),
-                                                           new Length([
-                                                               'min'        => 3,
-                                                               'max'        => 30,
-                                                               'minMessage' => 'Le prénom doit comporter 3 lettres au minimun',
-                                                               'maxMessage' => 'Le prénom ne peut excéder 30 lettres']),
-                                                           ],
-                                            'label' => 'Prénom'
+            ->add('name', TextType::class,[
+                'constraints'=>[new NotBlank(),
+                                new Type('string'),
+                                new Length(['min' => 3,
+                                            'max' => 30
+                                ])
+                ],
+                'label' => 'Name'
             ])
-
-            ->add('surname', TextType::class,['constraints'=>[new NotBlank(),
-                                                              new Type('string'),
-                                                              new Length([
-                                                                   'min'        => 3,
-                                                                   'max'        => 30,
-                                                                   'minMessage' => 'Le prénom doit comporter 3 lettres au minimun',
-                                                                   'maxMessage' => 'Le prénom ne peut excéder 30 lettres']),
-                                                              ],
-                                            'label' => 'Nom'
+            ->add('surname', TextType::class,[
+                'constraints'=>[new NotBlank(),
+                                new Type('string'),
+                                new Length(['min' => 3,
+                                            'max' => 30
+                                ])
+                ],
+                'label' => 'Surname'
             ])
-
-            ->add('email', EmailType::class,['constraints'=>[new NotBlank(),
-                                                                       new Email([
-                                                                           'message' => 'Ceci n\'est pas un email valide']),
-                                                                       ],
-                                                        'label' => 'E-mail'
+            ->add('email', EmailType::class,[
+                'constraints'=>[new NotBlank(),
+                                new Email()
+                ],
+                'label' => 'E-mail'
             ])
-
-            ->add('pswd', PasswordType::class,['constraints'=>[new NotBlank(),
-                                                                         new PswdFormat(),
-                                                                         new Type('string'),
-                                                                         new Length([
-                                                                             'min'        => 6,
-                                                                             'max'        => 30,
-                                                                             'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
-                                                                             'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'])
-                                                                         ],
-                                                           'label' => 'Mot de passe'
+            ->add('pswd', PasswordType::class,[
+                'constraints'=>[new NotBlank(),
+                                new PswdFormat(),
+                                new Type('string'),
+                                new Length(['min' => 6,
+                                            'max' => 30
+                                ])
+                ],
+                'label' => 'Mot de passe'
             ])
-
-            ->add('confirmPswd', PasswordType::class,['constraints'=>[new NotBlank(),
-                                                                         new PswdFormat(),
-                                                                         new Type('string'),
-                                                                         new Length([
-                                                                             'min'        => 6,
-                                                                             'max'        => 30,
-                                                                             'minMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères',
-                                                                             'maxMessage' => 'Le mot de passe doit être composé de 6 à 30 caractères'])
-            ],
-                                                            'label'  => 'Mot de passe',
-                                                            'mapped' => false
+            ->add('confirmPswd', PasswordType::class,[
+                'constraints'=>[new NotBlank(),
+                                new PswdFormat(),
+                                new Type('string'),
+                                new Length(['min' => 6,
+                                            'max' => 30
+                                ])
+                ],
+                'label'  => 'Mot de passe',
+                'mapped' => false
             ])
-
-            ->add('termsAgreement', CheckboxType::class,['label'     => 'J\'accepte les conditions générales d\'utilisation',
-                                                                    'required'  => true,
-                                                                     'mapped'   => false
+            ->add('termsAgreement', CheckboxType::class,[
+                'label' => 'J\'accepte les conditions générales d\'utilisation',
+                'required'  => true,
+                'mapped'    => false
             ])
         ;
     }

@@ -9,7 +9,6 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class Url
@@ -29,22 +28,21 @@ class Url
 
     /**
      * @var
-     * @ORM\Column(type="string", length=50)
-     */
-    private $href;
-
-    /**
-     * @var
-     * @ORM\Column(type="string", length=20)
-     */
-    private $alt;
-
-    /**
-     * @var
      * @ORM\ManyToOne(targetEntity="App\Entity\Story", inversedBy="urls")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(name="story_id", referencedColumnName="id",nullable=true)
      */
-    private $story;
+    private $story = null;
+
+    /**
+     * @var
+     * @ORM\Column(type="string", length=200,nullable=true)
+     */
+    private $href = null;
+
+    /**
+     * @var null
+     */
+    private $alt = null;
 
 
     /**------------------------ setters and getters -------------------**/
@@ -58,11 +56,29 @@ class Url
     }
 
     /**
-     * @param mixed $href
+     * @param Story $story
+     * @return Story
+     */
+    public function setStory(Story $story)
+    {
+        return $this->story = $story;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStory()
+    {
+        return $this->story;
+    }
+
+    /**
+     * @param $href
+     * @return $this
      */
     public function setHref($href)
     {
-        $this->href = $href;
+       return $this->href = $href;
     }
 
     /**
@@ -74,37 +90,20 @@ class Url
     }
 
     /**
-     * @param mixed $alt
+     * @param $alt
+     * @return mixed
      */
     public function setAlt($alt)
     {
-        $this->alt = $alt;
+       return $this->alt = $alt;
     }
 
     /**
-     * @return mixed
+     * @return null
      */
     public function getAlt()
     {
         return $this->alt;
     }
-
-    /**
-     * @param mixed $story
-     */
-    public function setStory($story)
-    {
-        $this->story = $story;
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getStory()
-    {
-        return $this->story;
-    }
-
 
 }
