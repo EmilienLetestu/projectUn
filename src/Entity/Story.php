@@ -9,6 +9,8 @@ namespace  App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Intl\Intl;
+
 
 /**
  * Class Story
@@ -110,7 +112,7 @@ class Story
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Url",mappedBy="story")
+     * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story", cascade={"persist", "remove"})
      */
     private $urls;
 
@@ -383,5 +385,27 @@ class Story
     public function getUrls()
     {
         return $this->urls;
+    }
+
+    /**---------------------- view methods------------------------*/
+
+    public function getTopicType()
+    {
+        return $this->getTopic()->getType();
+    }
+
+    public function getAuthor()
+    {
+        return $this->getUser()->getFullName();
+    }
+
+    public function getPatronageBy()
+    {
+        return $this->getPatronage()->getOrganization();
+    }
+
+    public function getCountryName()
+    {
+        return  $country = Intl::getRegionBundle()->getCountryName($this->getCountry());
     }
 }

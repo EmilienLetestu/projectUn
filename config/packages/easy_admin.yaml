@@ -1,7 +1,37 @@
 easy_admin:
+   list:
+      title: 'List of %%entity_label%%'
    entities:
-       # List the entity class name you want to manage
-      - App\Entity\User
-      - App\Entity\Story
-      - App\Entity\Topic
-      - App\Entity\Patronage
+       User:
+           class: App\Entity\User
+           label: 'members'
+           list:
+               fields:
+                   - 'id'
+                   - 'fullname'
+                   - { property: 'email', type: 'email'}
+                   - { property: 'activated', label: 'Activate'}
+                   - { property: 'deactivated', label: 'Deactivate', type: toggle }
+                   - 'role'
+                   - { property: 'registeredOn', format: 'm/d/Y' }
+       Story:
+           class: App\Entity\Story
+           label: 'stories'
+           list:
+               fields:
+                   - 'id'
+                   - 'topicType'
+                   - 'author'
+                   - 'patronage by'
+                   - { property: 'countryName', label: 'Country' }
+                   - { property: 'createdOn', format: 'm/d/Y' }
+           show:
+              fields: ['abstract']
+
+       Topic:
+           class: App\Entity\Topic
+           label: 'topics'
+       Patronage:
+           class: App\Entity\Patronage
+           label: 'patronages'
+   site_name: Climate stories bank

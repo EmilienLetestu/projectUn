@@ -35,7 +35,7 @@ class Topic
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="topic")
+     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="topic", cascade={"persist", "remove"})
      */
     private $stories;
 
@@ -103,4 +103,5 @@ class Topic
     {
         return $this->stories;
     }
+
 }

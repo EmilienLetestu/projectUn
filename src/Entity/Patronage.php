@@ -38,7 +38,7 @@ class Patronage
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="patronage")
+     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="patronage", cascade={"persist", "remove"})
      */
     private $stories;
 

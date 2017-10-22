@@ -84,7 +84,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="user")
+     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="user", cascade={"persist", "remove"})
      */
     private $stories;
 
@@ -400,5 +400,11 @@ class User implements AdvancedUserInterface, \Serializable
         return substr(str_shuffle(str_repeat($strToRandom, $length)), 0, $length);
     }
 
+    /**---------------------- view methods------------------------*/
+
+    public function getFullName()
+    {
+        return $this->getName().' '.$this->getSurname();
+    }
 
 }
