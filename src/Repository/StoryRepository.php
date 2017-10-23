@@ -10,6 +10,7 @@ namespace  App\Repository;
 
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class StoryRepository extends EntityRepository
 {
@@ -91,6 +92,12 @@ class StoryRepository extends EntityRepository
         return $queryBuilder->getQuery()->getResult();
     }
 
+    /**
+     * @param $order
+     * @param $sort
+     * @param $limit
+     * @return array
+     */
     public function findLastPublished($order,$sort,$limit)
     {
         $queryBuilder = $this->createQueryBuilder('s');
@@ -101,4 +108,22 @@ class StoryRepository extends EntityRepository
         ;
         return $queryBuilder->getQuery()->getResult();
     }
+
+    /**
+     * @param $firstR
+     * @param $limit
+     * @return Paginator
+     */
+    public function findAllForBrowser($firstR,$limit)
+    {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder
+            ->select('s')
+            ->andWhere('s.validated = 1')
+            ->setFirstResult($firstR)
+            ->setMaxResults($limit)
+        ;
+        return new Paginator($queryBuilder);
+    }
+
 }

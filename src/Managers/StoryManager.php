@@ -7,23 +7,30 @@
  */
 namespace App\Managers;
 
-use App\Entity\Patronage;
 use App\Entity\Story;
 use App\Entity\Url;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StoryManager
 {
     private $doctrine;
+    private $session;
 
     /**
      * StoryManager constructor.
      * @param EntityManager $doctrine
+     * @param Session $session
      */
-    public function __construct(EntityManager $doctrine)
+    public function __construct(
+        EntityManager $doctrine,
+        Session       $session
+    )
     {
         $this->doctrine = $doctrine;
+        $this->session = $session;
     }
 
     /**
@@ -35,6 +42,39 @@ class StoryManager
             ->findLastPublished('ASC','createdOn',9);
 
         return $storyList;
+    }
+
+    /**
+     * @param Request $request
+     * @param $limit
+     * @return mixed
+     */
+    public function fetchForBrowser(Request $request,$limit)
+    {
+        //get current page number from url param
+        $pageNumber = $request->attributes->get('pageNumber');
+
+        //find where to start
+        $firstR = ($pageNumber-1)*$limit;
+
+        //fetch stories to display
+        $storyList = $this->doctrine->getRepository(Story::class)
+            ->findAllForBrowser($firstR,$limit);
+
+        //calculate the total number of pages
+        $totalPage = ceil(count($storyList)/$limit);
+
+        if($pageNumber > $totalPage)
+        {
+            throw new NotFoundHttpException('This page doesn\'t exist yet');
+        }
+
+        return [
+            $storyList,
+            $pageNumber,
+            $totalPage
+            ]
+        ;
     }
 
     /**

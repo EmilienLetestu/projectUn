@@ -75,11 +75,12 @@ class IndexController extends Controller
      */
     public function addStory(Request $request)
     {
-        $view = $this->get('App\Services\AddStory')->processAndAdd($request);
+        $view = $this->get('App\Services\AddStory')
+            ->processAndAdd($request)
+        ;
 
-        return $this->render('addStory.html.twig',[
-                'form'=>$view
-            ]
+        return $this->render('addStory.html.twig',
+            ['form'=>$view]
         );
     }
 
@@ -89,15 +90,17 @@ class IndexController extends Controller
      */
     public function register(Request $request)
     {
-        $view = $this->get('App\Services\Register')->registerUser($request);
+        $view = $this->get('App\Services\Register')
+            ->registerUser($request)
+        ;
+
         if($view === 'home')
         {
             return $this->redirectToRoute($view);
         }
 
-        return $this->render('connectionForms.html.twig', [
-            'form' => $view
-            ]
+        return $this->render('connectionForms.html.twig',
+            ['form' => $view]
         );
     }
 
@@ -107,7 +110,9 @@ class IndexController extends Controller
      */
     public function activation(Request $request)
     {
-        $this->get('App\Services\Activation')->ActivateUserAccount($request);
+        $this->get('App\Services\Activation')
+             ->ActivateUserAccount($request)
+        ;
 
         return $this->redirectToRoute('home');
     }
@@ -118,7 +123,9 @@ class IndexController extends Controller
      */
     public function newPswdMail(Request $request)
     {
-        $view = $this->get('App\Services\RenewPswd')->askNew($request);
+        $view = $this->get('App\Services\RenewPswd')
+            ->askNew($request)
+        ;
 
         return $this->render(
             'connectionForms.html.twig',
@@ -132,7 +139,9 @@ class IndexController extends Controller
      */
     public function newPswdProcess(Request $request)
     {
-        $view = $this->get('App\Services\RenewPswd')->newPswd($request);
+        $view = $this->get('App\Services\RenewPswd')
+            ->newPswd($request)
+        ;
 
         if($view === 'home')
         {
@@ -145,9 +154,25 @@ class IndexController extends Controller
         );
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function browse(Request $request)
     {
-        return $this->render('storyBrowser.html.twig');
+        $view = $this->get('App\Managers\StoryManager')
+            ->fetchForBrowser(
+            $request,
+            $limit = 5)
+        ;
+
+        return $this->render(
+            'storyBrowser.html.twig',
+            ['stories'    => $view[0],
+             'pageNumber' => $view[1],
+             'totalPage'  => $view[2]
+            ]
+        );
     }
 
 
