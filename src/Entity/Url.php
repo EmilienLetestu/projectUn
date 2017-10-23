@@ -28,7 +28,7 @@ class Url
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Story", inversedBy="urls", cascade={"persist", "remove"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Story", inversedBy="urls")
      * @ORM\JoinColumn(name="story_id", referencedColumnName="id",nullable=true)
      */
     private $story = null;
