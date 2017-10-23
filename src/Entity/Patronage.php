@@ -18,7 +18,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Entity
  * @ORM\Table(name="patronage")
  */
-class Patronage
+class Patronage implements \Serializable
 {
     /**
      * @var
@@ -108,5 +108,29 @@ class Patronage
         return $this->stories;
     }
 
+    /**---------------------- serialize------------------------*/
+
+    /**
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->getId(),
+            $this->getOrganization(),
+        ]);
+    }
+
+    /**
+     * @param string $serialized
+     */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->organization
+            ) = unserialize($serialized)
+        ;
+    }
 }
 

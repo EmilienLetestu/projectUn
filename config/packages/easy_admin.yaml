@@ -1,6 +1,10 @@
 easy_admin:
    list:
       title: 'List of %%entity_label%%'
+      actions:
+          - { name: edit, icon: pencil-square-o, label: ' '}
+          - { name: show, icon: 'info-circle', label: ' '}
+          - { name: delete, icon: trash-o, label: ' ' }
    entities:
        User:
            class: App\Entity\User
@@ -14,6 +18,18 @@ easy_admin:
                    - { property: 'deactivated', label: 'Deactivate', type: toggle }
                    - 'role'
                    - { property: 'registeredOn', format: 'm/d/Y' }
+           show:
+               fields:
+                    - 'id'
+                    - 'fullname'
+                    - { property: 'email', type: 'email'}
+                    - { property: 'activated', label: 'Activate'}
+                    - 'role'
+                    - { property: 'registeredOn', format: 'm/d/Y' }
+           edit:
+               fields:
+                   - 'role'
+
        Story:
            class: App\Entity\Story
            label: 'stories'
@@ -26,12 +42,56 @@ easy_admin:
                    - { property: 'countryName', label: 'Country' }
                    - { property: 'createdOn', format: 'm/d/Y' }
            show:
-              fields: ['abstract']
+               fields:
+                   - { property: 'abstract', type: 'raw' }
+                   - { property: 'plot', type: 'raw' }
+                   - { property: 'countryName', label: 'Country' }
+                   - { property: 'createdOn', format: 'm/d/Y' }
+                   - 'author'
+                   - 'topicType'
+                   - 'patronage by'
+           edit:
+               fields:
+                   - { property: 'abstract'}
+                   - { property: 'plot'}
 
        Topic:
            class: App\Entity\Topic
            label: 'topics'
+           list:
+               fields:
+                   - 'id'
+                   - 'type'
+                   - { property: 'stories', label: 'Number of related stories' }
+           show:
+               fields:
+                   - 'id'
+                   - 'type'
+           edit:
+               fields:
+                   - 'type'
+           new:
+               fields:
+                   - 'type'
+
        Patronage:
            class: App\Entity\Patronage
            label: 'patronages'
+           list:
+               fields:
+                   - 'id'
+                   - 'organization'
+                   - { property: 'stories', label: 'Number of related stories' }
+           show:
+               fields:
+                   - 'id'
+                   - 'organization'
+           edit:
+               fields:
+                   - 'organization'
+           new:
+               fields:
+                   - 'organization'
+
+
    site_name: Climate stories bank

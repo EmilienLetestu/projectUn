@@ -7,32 +7,32 @@
     </div>
     <div class="well">
         {{ form_start(form ,{'attr':{'id':'addForm'}}) }}
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.topic) }}
             {{ form_widget(form.topic ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.topic) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.country) }}
             {{ form_widget(form.country ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.country) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.patronage) }}
             {{ form_widget(form.patronage,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.patronage) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.investor) }}
             {{ form_widget(form.investor,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.investor) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.year) }}
             {{ form_widget(form.year ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.year) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.title) }}
             {{ form_widget(form.title ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.title) }}
@@ -42,31 +42,31 @@
             {{ form_widget(form.abstract ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.abstract) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.plot) }}
             {{ form_widget(form.plot ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.plot) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.contactEmail) }}
             {{ form_widget(form.contactEmail ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.contactEmail) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.contactPlace) }}
             {{ form_widget(form.contactPlace ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.contactPlace) }}
         </div>
-        <div class="form-group">
+        <div class="form-group row">
             {{ form_label(form.contactPhone) }}
             {{ form_widget(form.contactPhone ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.contactPhone) }}
         </div>
-
+        <div class="form-group row">
             {{ form_row(form.urls) }}
-            <a href="#" id="add_url" class="btn btn-default">Ajouter une catégorie</a>
-
-        <div class="form-group">
+            <a href="#" id="add_url" class="btn btn-default">add a link</a>
+        </div>
+        <div class="form-group row">
             <button class="btn btn-success" type="submit">Valider</button>
         </div>
         {{ form_end(form) }}

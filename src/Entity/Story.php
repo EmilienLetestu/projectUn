@@ -19,7 +19,7 @@ use Symfony\Component\Intl\Intl;
  * @ORM\Table(name="story")
  * @ORM\Entity(repositoryClass="App\Repository\StoryRepository")
  */
-class Story
+class Story implements \Serializable
 {
     /**
      * @var
@@ -387,6 +387,47 @@ class Story
         return $this->urls;
     }
 
+    /**---------------------- serialize------------------------*/
+
+    /**
+     * @return string
+     */
+    public function serialize()
+    {
+        return serialize([
+            $this->getId(),
+            $this->getAbstract(),
+            $this->getPlot(),
+            $this->getContactEmail(),
+            $this->getCountryName(),
+            $this->getCreatedOn(),
+            $this->getInvestor(),
+            $this->getAuthor(),
+            $this->getContactPhone(),
+            $this->getContactPlace()
+        ]);
+    }
+
+    /**
+     * @param string $serialized
+     */
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->abstract,
+            $this->plot,
+            $this->contactEmail,
+            $this->countryName,
+            $this->createdOn,
+            $this->investor,
+            $this->author,
+            $this->contactPhone,
+            $this->contactPlace
+            ) = unserialize($serialized)
+        ;
+    }
+
     /**---------------------- view methods------------------------*/
 
     public function getTopicType()
@@ -408,4 +449,5 @@ class Story
     {
         return  $country = Intl::getRegionBundle()->getCountryName($this->getCountry());
     }
+
 }
