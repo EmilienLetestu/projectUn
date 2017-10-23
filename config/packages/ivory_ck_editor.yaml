@@ -6,6 +6,7 @@ ivory_ck_editor:
                 - ['Bold', 'Italic', 'Strike']
                 - ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent']
                 - ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo']
+            extraPlugins: 'wordcount'
 
         abstract:
             height: '200px'
@@ -13,3 +14,9 @@ ivory_ck_editor:
                 - ['Bold', 'Italic', 'Strike']
                 - ['BulletedList', 'NumberedList', '-', 'Outdent', 'Indent']
                 - ['Copy', 'Paste', 'PasteFromWord', '-', 'Undo', 'Redo']
+            extraPlugins: 'wordcount'
+
+    plugins:
+        wordcount:
+           path: '/bundles/wordcount/'
+           filename: 'plugin.js'
