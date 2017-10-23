@@ -21,7 +21,7 @@
             <ul class="list-unstyled">
                 {% for url in extResources %}
                     <li>
-                        <a href="{{url.href}}">Link {{ loop.index }} </a>
+                        <a href="{{url.href}}" title="{{ url.alt }}">Visit {{ url.alt }}</a>
                     </li>
                 {% endfor %}
             </ul>

@@ -41,6 +41,7 @@ class Url
 
     /**
      * @var null
+     * @ORM\Column(type="string", length=100,nullable=true)
      */
     private $alt = null;
 
@@ -90,11 +91,12 @@ class Url
     }
 
     /**
-     * @param $alt
+     * @param $href
      * @return mixed
      */
-    public function setAlt($alt)
+    public function setAlt($href)
     {
+       $alt = $this->makeAlt($href);
        return $this->alt = $alt;
     }
 
@@ -104,6 +106,16 @@ class Url
     public function getAlt()
     {
         return $this->alt;
+    }
+
+    /**
+     * @param $href
+     * @return mixed
+     */
+    private function makeAlt($href)
+    {
+       $alt = parse_url($href);
+       return $alt['host'];
     }
 
 }

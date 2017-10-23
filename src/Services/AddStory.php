@@ -76,6 +76,7 @@ class AddStory
                 {
                     $url = new Url();
                     $url->setHref($value);
+                    $url->setAlt($value);
                     $story->addUrl($url);
                     $this->doctrine->persist($url);
                     $this->doctrine->persist($story);
