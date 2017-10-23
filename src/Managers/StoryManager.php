@@ -39,7 +39,7 @@ class StoryManager
     public function fetchForHome()
     {
         $storyList = $this->doctrine->getRepository(Story::class)
-            ->findLastPublished('ASC','createdOn',9);
+            ->findLastPublished('ASC','createdOn',6);
 
         return $storyList;
     }

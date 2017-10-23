@@ -65,6 +65,18 @@ h1
     border-color: #FFFFFF;
     color: #FFFFFF;
 }
+
+#active
+{
+    border-bottom: solid 1px ;
+}
+
+.nav-link:hover
+{
+    color: #FFFFFF;
+    border-color: #0f74a8 !important;
+    border-bottom: solid 2px;
+}
 /*------- page header --------*/
 
 .pageHeader
@@ -194,4 +206,15 @@ h1
  color : #5e5e5e;
 }
 
+/*------- pagination --------*/
 
+#currentPage
+{
+   text-decoration: underline;
+   color: #5e5e5e;
+}
+
+#pageLinks
+{
+    color:  #0f74a8;
+}

@@ -24,7 +24,8 @@ class IndexController extends Controller
     {
         $view = $this->get('App\Managers\StoryManager')->fetchForHome();
         return $this->render('home.html.twig',[
-            'storyList'=>$view
+            'stories'=>$view,
+            'page'   =>'home'
             ]
         );
     }
@@ -80,7 +81,9 @@ class IndexController extends Controller
         ;
 
         return $this->render('addStory.html.twig',
-            ['form'=>$view]
+            ['form'=>$view,
+             'page'=>'addStory'
+            ]
         );
     }
 
@@ -167,10 +170,11 @@ class IndexController extends Controller
         ;
 
         return $this->render(
-            'storyBrowser.html.twig',
+            'pagination.html.twig',
             ['stories'    => $view[0],
              'pageNumber' => $view[1],
-             'totalPage'  => $view[2]
+             'totalPage'  => $view[2],
+             'page'       => 'browse'
             ]
         );
     }
