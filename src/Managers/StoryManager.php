@@ -29,10 +29,10 @@ class StoryManager
     /**
      * @return array
      */
-    public function fetchForBrowsing()
+    public function fetchForHome()
     {
         $storyList = $this->doctrine->getRepository(Story::class)
-            ->findAll();
+            ->findLastPublished('ASC','createdOn',9);
 
         return $storyList;
     }

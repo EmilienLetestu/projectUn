@@ -116,6 +116,12 @@ class Story implements \Serializable
      */
     private $urls;
 
+    /**
+     * @var
+     * @ORM\Column(type="boolean", options={"default"=false})
+     */
+    private $validated = false;
+
     /**-------------------setters and getters-----------------------**/
 
     /**
@@ -346,6 +352,23 @@ class Story implements \Serializable
     public function getInvestor()
     {
         return $this->investor;
+    }
+
+    /**
+     * @param $validated
+     * @return mixed
+     */
+    public function setValidated($validated)
+    {
+        return $this->validated = $validated;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getValidated()
+    {
+        return $this->validated;
     }
 
     /**------------------------ relation management -------------------**/

@@ -22,7 +22,7 @@ class IndexController extends Controller
 {
     public function home(Request $request)
     {
-        $view = $this->get('App\Managers\StoryManager')->fetchForBrowsing();
+        $view = $this->get('App\Managers\StoryManager')->fetchForHome();
 
         return $this->render('home.html.twig',[
             'storyList'=>$view

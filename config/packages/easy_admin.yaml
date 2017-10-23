@@ -41,6 +41,7 @@ easy_admin:
                    - 'patronage by'
                    - { property: 'countryName', label: 'Country' }
                    - { property: 'createdOn', format: 'm/d/Y' }
+                   - { property: 'validated', type: toggle }
            show:
                fields:
                    - { property: 'abstract', type: 'raw' }

@@ -26,6 +26,7 @@ class StoryRepository extends EntityRepository
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
             ->where($queryBuilder->expr()->notIn('s.id',$id))
+            ->andWhere('s.validated = 1')
             ->andWhere('s.topic = :id')
             ->setParameter('id',$topicId);
         return(
@@ -46,6 +47,7 @@ class StoryRepository extends EntityRepository
         $queryBuilder
             ->where($queryBuilder->expr()->notIn('s.id',$id))
             ->andWhere('s.country = :country')
+            ->andWhere('s.validated = 1')
             ->setParameter('country',$country);
 
         return $queryBuilder->getQuery()->getResult();
@@ -64,6 +66,7 @@ class StoryRepository extends EntityRepository
         $queryBuilder
             ->where($queryBuilder->expr()->notIn('s.id',$id))
             ->andWhere('s.year = :year')
+            ->andWhere('s.validated = 1')
             ->setParameter('year',$year);
 
         return $queryBuilder->getQuery()->getResult();
@@ -82,8 +85,20 @@ class StoryRepository extends EntityRepository
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
             ->where($queryBuilder->expr()->notIn('s.id',$id))
+            ->andWhere('s.validated = 1')
             ->andWhere('s.patronage = :id')
             ->SetParameter('id',$patronageId);
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function findLastPublished($order,$sort,$limit)
+    {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder
+            ->andWhere('s.validated = 1')
+            ->orderBy("s.{$sort}","{$order}")
+            ->setMaxResults($limit)
+        ;
         return $queryBuilder->getQuery()->getResult();
     }
 }
