@@ -112,7 +112,7 @@ class Story implements \Serializable
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $urls;
 

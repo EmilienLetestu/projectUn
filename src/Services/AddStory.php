@@ -68,27 +68,12 @@ class AddStory
             $story->setUser($user);
 
             //check if url need to be persist
-            $href = $form->get('urls')->getData();
-
-            if($href[0] !== null)
+            $urls = $form->get('urls')->getData();
+            $href = array_filter($urls);
+            if(!empty($href))
             {
-                foreach ($href as $key=>$value)
-                {
-                    $url = new Url();
-                    $url->setHref($value);
-                    $url->setAlt($value);
-                    $story->addUrl($url);
-                    $this->doctrine->persist($url);
-                    $this->doctrine->persist($story);
-                    $this->doctrine->flush();
-                }
-                $this->session->getFlashBag()->add(
-                    'success',
-                    'Your story was successfully added to our database')
-                ;
-                return $form->createView();
+                $this->processWithUrl($form,$story,$href);
             }
-
             //persist
             $this->doctrine->persist($story);
             $this->doctrine->flush();
@@ -99,6 +84,21 @@ class AddStory
             return $form->createView();
         }
 
+        return $form->createView();
+    }
+
+    public function processWithUrl($form,$story,$href)
+    {
+        foreach ($href as $key=>$value)
+        {
+            $url = new Url();
+            $url->setHref($value);
+            $url->setAlt($value);
+            $story->addUrl($url);
+            $this->doctrine->persist($url);
+            $this->doctrine->persist($story);
+            $this->doctrine->flush();
+        }
         return $form->createView();
     }
 }
