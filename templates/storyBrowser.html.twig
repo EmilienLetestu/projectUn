@@ -1,1 +1,41 @@
 {% extends 'base.html.twig' %}
+
+{% block body %}
+
+    <div class="cardHolder">
+    {% for story in stories %}
+        <div class="storyCard">
+            <div class="cardHeader">
+                <h3>{{ story.title }}</h3>
+            </div>
+            <p>{{ story.abstract|slice(0,150)|raw }}....</p>
+            <div class="cardLink">
+                <a href="{{ path('story',{'storyId':story.id}) }}" class="btn">Read story</a>
+            </div>
+            <div class="cardFooter">
+                <ul class="list-inline">
+                    <li class="list-inline-item">
+                        <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                        {{ story.topic.type }}
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-user-o" aria-hidden="true"></i>
+                        {{ story.user.name}} {{ story.user.surname}}
+                    </li>
+                    <li class="list-inline-item">
+                        <i class="fa fa-globe" aria-hidden="true"></i>
+                        {{ story.country|country}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    {% if pageNumber > 1 %}
+        <a class="btn" href="{{ path('browse',{'pageNumber': pageNumber - 1}) }}">Previous Story</a>
+    {% endif %}
+    {% if totalPage > 1 and pageNumber < totalPage %}
+        <a class="btn" href="{{ path('browse',{'pageNumber': pageNumber + 1}) }}">Next Story</a>
+    {% endif %}
+
+{% endblock %}

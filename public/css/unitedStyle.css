@@ -87,7 +87,7 @@ h1
 }
 
 /*------- story card --------*/
-#cardHolder
+.cardHolder
 {
     display: flex;
     flex-flow: wrap;
