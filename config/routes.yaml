@@ -54,14 +54,17 @@ validation:
         email: ^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$
         token: ([^']{40,}
 
+browse:
+    path: /browse-stories/page/{pageNumber}
+    defaults:
+        _controller: App\Controller\IndexController::browse
+    requirements:
+        pageNumber: \d+
+
 admin:
     resource: "@EasyAdminBundle/Controller/"
     type: annotation
     prefix: /admin
-
-
-
-
 
 # first, run composer req annotations
 #controllers:

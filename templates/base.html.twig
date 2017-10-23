@@ -25,7 +25,7 @@
                             <a href="{{ path('addStory')}}" class="nav-link">Add your story</a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">Browse</a>
+                            <a href={{ path('browse', {'pageNumber':1})}} class="nav-link">Browse</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ path('admin') }}" class="nav-link">Administration</a>

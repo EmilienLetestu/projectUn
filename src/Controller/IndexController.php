@@ -145,6 +145,11 @@ class IndexController extends Controller
         );
     }
 
+    public function browse(Request $request)
+    {
+        return $this->render('storyBrowser.html.twig');
+    }
+
 
 
 }
