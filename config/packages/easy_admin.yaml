@@ -1,4 +1,12 @@
 easy_admin:
+   design:
+       menu:
+           - { label: 'Back to homepage', route: 'home', icon: home }
+           - { entity: 'User'}
+           - { entity: 'Story'}
+           - { entity: 'Topic'}
+           - { entity: 'Patronage'}
+
    list:
       title: 'List of %%entity_label%%'
       actions:
@@ -8,7 +16,7 @@ easy_admin:
    entities:
        User:
            class: App\Entity\User
-           label: 'members'
+           label: 'Members'
            list:
                fields:
                    - 'id'
@@ -26,16 +34,22 @@ easy_admin:
                     - { property: 'activated', label: 'Activate'}
                     - 'role'
                     - { property: 'registeredOn', format: 'm/d/Y' }
+               actions:
+                    - { name: edit, icon: pencil, label: 'Edit'}
+                    - { name: delete, icon: trash-o, label: 'Delete'}
            edit:
                fields:
                    - 'role'
+               actions:
+               - { name: delete, icon: trash-o, label: 'Delete'}
 
        Story:
            class: App\Entity\Story
-           label: 'stories'
+           label: 'Stories'
            list:
                fields:
                    - 'id'
+                   - 'title'
                    - 'topicType'
                    - 'author'
                    - 'patronage by'
@@ -44,6 +58,7 @@ easy_admin:
                    - { property: 'validated', type: toggle }
            show:
                fields:
+                   - 'title'
                    - { property: 'abstract', type: 'raw' }
                    - { property: 'plot', type: 'raw' }
                    - { property: 'countryName', label: 'Country' }
@@ -51,14 +66,20 @@ easy_admin:
                    - 'author'
                    - 'topicType'
                    - 'patronage by'
+               actions:
+                   - { name: edit, icon: pencil, label: 'Edit'}
+                   - { name: delete, icon: trash-o, label: 'Delete'}
            edit:
                fields:
+                   - { property: 'title'}
                    - { property: 'abstract'}
                    - { property: 'plot'}
+               actions:
+                   - { name: delete, icon: trash-o, label: 'Delete'}
 
        Topic:
            class: App\Entity\Topic
-           label: 'topics'
+           label: 'Topics'
            list:
                fields:
                    - 'id'
@@ -68,16 +89,23 @@ easy_admin:
                fields:
                    - 'id'
                    - 'type'
+               actions:
+                   - { name: edit, icon: pencil, label: 'Edit'}
+                   - { name: delete, icon: trash-o, label: 'Delete'}
            edit:
                fields:
                    - 'type'
+               actions:
+                   - { name: delete, icon: trash-o, label: 'Delete'}
            new:
                fields:
                    - 'type'
+               actions:
+                   - { name: delete, icon: trash-o, label: 'Delete'}
 
        Patronage:
            class: App\Entity\Patronage
-           label: 'patronages'
+           label: 'Patronages'
            list:
                fields:
                    - 'id'
@@ -87,12 +115,19 @@ easy_admin:
                fields:
                    - 'id'
                    - 'organization'
+               actions:
+                   - { name: edit, icon: pencil, label: 'Edit'}
+                   - { name: delete, icon: trash-o, label: 'Delete'}
            edit:
                fields:
                    - 'organization'
+               actions:
+                   - { name: delete, icon: trash-o, label: 'Delete'}
            new:
                fields:
                    - 'organization'
+               actions:
+                   - { name: delete, icon: trash-o, label: 'Delete'}
 
 
    site_name: Climate stories bank
