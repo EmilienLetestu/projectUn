@@ -9,7 +9,9 @@ namespace App\Managers;
 
 use App\Entity\Story;
 use App\Entity\Url;
+use App\Form\SearchType;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -18,19 +20,23 @@ class StoryManager
 {
     private $doctrine;
     private $session;
+    private $formFactory;
 
     /**
      * StoryManager constructor.
      * @param EntityManager $doctrine
      * @param Session $session
+     * @param FormFactory $formFactory
      */
     public function __construct(
         EntityManager $doctrine,
-        Session       $session
+        Session       $session,
+        FormFactory   $formFactory
     )
     {
-        $this->doctrine = $doctrine;
-        $this->session = $session;
+        $this->doctrine    = $doctrine;
+        $this->session     = $session;
+        $this->formFactory = $formFactory;
     }
 
     /**
@@ -63,6 +69,8 @@ class StoryManager
      */
     public function fetchForBrowser(Request $request,$limit)
     {
+        //create search form
+        $filter = $this->formFactory->create(SearchType::class);
         //get current page number from url param
         $pageNumber = $request->attributes->get('pageNumber');
 
@@ -84,7 +92,8 @@ class StoryManager
         return [
             $storyList,
             $pageNumber,
-            $totalPage
+            $totalPage,
+            $filter->createView()
             ]
         ;
     }

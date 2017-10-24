@@ -30,7 +30,6 @@ class IndexController extends Controller
         );
     }
 
-
     /**
      * @param Request $request
      * @param AuthenticationUtils $authUtils
@@ -170,9 +169,10 @@ class IndexController extends Controller
         ;
 
         return $this->render('pagination.html.twig',[
-            'stories'    => $view[0],
+             'stories'    => $view[0],
              'pageNumber' => $view[1],
-             'totalPage'  => $view[2]
+             'totalPage'  => $view[2],
+             'filter'     => $view[3]
             ]
         );
     }

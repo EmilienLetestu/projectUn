@@ -1,7 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Our climate stories safe holds <b>{{ stories|length }} stories</b></h1>
+    <h1 class="storyCount">Our climate stories safe holds <b>{{ stories|length }} stories</b></h1>
+
+    <div id="filter">
+        {{ form_start(filter,{'attr':{'class':'form-inline'}}) }}
+        <div class="form-group ">
+            {{ form_widget(filter.topic ,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(filter.patronage,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(filter.country ,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" type="submit">search</button>
+        </div>
+        {{ form_end(filter) }}
+    </div>
+
     {{ include('storyCard.html.twig') }}
 
     {% if pageNumber > 1 %}
