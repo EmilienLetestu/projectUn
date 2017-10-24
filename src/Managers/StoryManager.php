@@ -38,10 +38,22 @@ class StoryManager
      */
     public function fetchForHome()
     {
-        $storyList = $this->doctrine->getRepository(Story::class)
-            ->findLastPublished('ASC','createdOn',6);
+        $repository = $this->doctrine->getRepository(Story::class);
+            if(!$this->session->get('total'))
+            {
 
-        return $storyList;
+               $total = $repository-> countStories();
+               $this->session->set('total',$total[0]);
+
+               return [
+                   $repository->findLastPublished('ASC','createdOn',6),
+                   $this->session->get('total')
+               ];
+            }
+            return [
+                $repository ->findLastPublished('ASC','createdOn',6),
+                $this->session->get('total')
+            ];
     }
 
     /**

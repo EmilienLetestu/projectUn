@@ -126,4 +126,14 @@ class StoryRepository extends EntityRepository
         return new Paginator($queryBuilder);
     }
 
+    public function countStories()
+    {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder
+            ->select('count(s.id)')
+            ->Where('s.validated = 1')
+        ;
+        return $queryBuilder->getQuery()->getScalarResult();
+    }
+
 }

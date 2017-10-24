@@ -20,12 +20,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class IndexController extends Controller
 {
-    public function home(Request $request)
+    public function home()
     {
         $view = $this->get('App\Managers\StoryManager')->fetchForHome();
         return $this->render('home.html.twig',[
-            'stories'=>$view,
-            'page'   =>'home'
+            'stories'=>$view[0],
+            'total'  =>$view[1]
             ]
         );
     }
@@ -45,7 +45,7 @@ class IndexController extends Controller
             return $this->redirectToRoute($view);
         }
 
-        return $this->render('connectionForms.html.twig', [
+        return $this->render('connectionForms.html.twig',[
                 'last_username' =>$view[0],
                 'error' => $view[1]]
         );
@@ -80,9 +80,8 @@ class IndexController extends Controller
             ->processAndAdd($request)
         ;
 
-        return $this->render('addStory.html.twig',
-            ['form'=>$view,
-             'page'=>'addStory'
+        return $this->render('addStory.html.twig',[
+            'form'=>$view
             ]
         );
     }
@@ -102,8 +101,9 @@ class IndexController extends Controller
             return $this->redirectToRoute($view);
         }
 
-        return $this->render('connectionForms.html.twig',
-            ['form' => $view]
+        return $this->render('connectionForms.html.twig',[
+            'form' => $view
+            ]
         );
     }
 
@@ -130,9 +130,9 @@ class IndexController extends Controller
             ->askNew($request)
         ;
 
-        return $this->render(
-            'connectionForms.html.twig',
-            ['form'=>$view]
+        return $this->render('connectionForms.html.twig',[
+            'form'=>$view
+            ]
         );
     }
 
@@ -151,9 +151,9 @@ class IndexController extends Controller
             return $this->redirectToRoute($view);
         }
 
-        return $this->render(
-            'connectionForms.html.twig',
-            ['form'=> $view]
+        return $this->render('connectionForms.html.twig',[
+            'form'=> $view
+            ]
         );
     }
 
@@ -169,12 +169,10 @@ class IndexController extends Controller
             $limit = 5)
         ;
 
-        return $this->render(
-            'pagination.html.twig',
-            ['stories'    => $view[0],
+        return $this->render('pagination.html.twig',[
+            'stories'    => $view[0],
              'pageNumber' => $view[1],
-             'totalPage'  => $view[2],
-             'page'       => 'browse'
+             'totalPage'  => $view[2]
             ]
         );
     }

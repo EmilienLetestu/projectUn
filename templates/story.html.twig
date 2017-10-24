@@ -50,7 +50,7 @@
 
         <div class="more" id="moreTopic">
             <h3>Other stories about {{ story.topic.type }}</h3>
-            {% for story in sameTopic|slice(0,5) %}
+            {% for story in sameTopic|shuffle|slice(0,3) %}
                 <ul class="list-unstyled">
                     <li>
                         <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
@@ -61,7 +61,7 @@
 
         <div class="more" id="moreCountry">
             <h3>Other stories set in {{ story.country|country}}</h3>
-            {% for story in sameCountry|slice(0,5) %}
+            {% for story in sameCountry|shuffle|slice(0,3) %}
                 <ul class="list-unstyled">
                     <li>
                         <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
@@ -72,7 +72,7 @@
 
         <div class="more" id="moreYear">
             <h3>Other stories started in {{ story.year}}</h3>
-            {% for story in sameYear|shuffle|slice(0,5) %}
+            {% for story in sameYear|shuffle|slice(0,3) %}
                 <ul class="list-unstyled">
                     <li>
                         <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
@@ -83,7 +83,7 @@
 
         <div class="more" id="morePatronage">
             <h3>Other stories supported by {{ story.patronage.organization }}</h3>
-            {% for story in samePatronage|shuffle|slice(0,5) %}
+            {% for story in samePatronage|shuffle|slice(0,3) %}
                 <ul class="list-unstyled">
                     <li>
                         <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>

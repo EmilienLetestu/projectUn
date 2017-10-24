@@ -17,7 +17,6 @@ a:visited
     color: inherit;
 }
 
-
 h1
 {
     text-align: center;
@@ -77,6 +76,32 @@ h1
     border-color: #0f74a8 !important;
     border-bottom: solid 2px;
 }
+
+/*------- footer -------*/
+
+footer
+{
+    background-color: #5e5e5e;
+}
+
+#footerItem
+{
+    height: 100px;
+    padding-top: 2%;
+}
+
+#footerItem ul
+{
+    color: #FFFFFF;
+    font-size: 1.1em;
+}
+
+#footerItem li:nth-child(2)
+{
+    margin-left: 40%;
+}
+
+
 /*------- page header --------*/
 
 .pageHeader
