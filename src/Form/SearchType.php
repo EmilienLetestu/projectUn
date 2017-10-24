@@ -20,14 +20,20 @@ class SearchType extends AbstractType
        $builder
            ->add('topic', EntityType::class,[
                'class'        => 'App:Topic',
-               'choice_label' => 'type'
+               'choice_label' => 'type',
+               'placeholder'  => 'Choose a topic',
+               'required'     => false
            ])
            ->add('patronage', EntityType::class,[
                'class'        => 'App:Patronage',
-               'choice_label' => 'organization'
+               'choice_label' => 'organization',
+               'placeholder' => 'Choose a patronage',
+               'required'     => false
            ])
            ->add('country', CountryType::class,[
-               'label'=>'Filter by country'
+               'label'=>'Filter by country',
+               'placeholder' => 'Choose a country',
+               'required'     => false
            ]);
     }
 }

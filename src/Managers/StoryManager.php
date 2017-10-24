@@ -69,13 +69,38 @@ class StoryManager
      */
     public function fetchForBrowser(Request $request,$limit)
     {
-        //create search form
-        $filter = $this->formFactory->create(SearchType::class);
         //get current page number from url param
         $pageNumber = $request->attributes->get('pageNumber');
 
         //find where to start
         $firstR = ($pageNumber-1)*$limit;
+
+        //create search form
+        $filter = $this->formFactory->create(SearchType::class);
+
+        //get requested filters
+        $filter->handleRequest($request);
+
+        if($filter->isSubmitted() && $filter->isValid())
+        {
+            //get all submitted data
+            $country = $filter->get('country')->getData();
+            $topic   = $filter->get('topic')->getData();
+            $patronage = $filter->get('patronage')->getData();
+            $storyList = $this->doctrine->getRepository(Story::class)
+            ->findAllForBrowser($firstR,$limit,$country,$topic,$patronage);
+
+            $totalPage = ceil(count($storyList)/$limit);
+            return [
+                $storyList,
+                $pageNumber,
+                $totalPage,
+                $filter->createView()
+            ]
+                ;
+
+
+        }
 
         //fetch stories to display
         $storyList = $this->doctrine->getRepository(Story::class)
@@ -83,12 +108,10 @@ class StoryManager
 
         //calculate the total number of pages
         $totalPage = ceil(count($storyList)/$limit);
-
         if($pageNumber > $totalPage)
         {
             throw new NotFoundHttpException('This page doesn\'t exist yet');
         }
-
         return [
             $storyList,
             $pageNumber,
