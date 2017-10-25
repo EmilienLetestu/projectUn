@@ -100,7 +100,6 @@ class StoryManager
             ]
                 ;
         }
-
         //fetch stories to display
         $storyList = $this->doctrine->getRepository(Story::class)
             ->findAllForBrowser($firstR,$limit);

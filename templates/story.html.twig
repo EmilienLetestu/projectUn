@@ -16,6 +16,7 @@
             <p>{{ story.plot|raw }}</p>
         </div>
 
+        {% if extResources != null %}
         <div id="extResources">
             <h4>More about {{ story.title }}</h4>
             <ul class="list-unstyled">
@@ -26,6 +27,8 @@
                 {% endfor %}
             </ul>
         </div>
+        {% endif %}
+
     </div>
 
     <div id="moreContainer">
@@ -48,6 +51,7 @@
             </ul>
         </div>
 
+        {% if sameTopic != null %}
         <div class="more" id="moreTopic">
             <h3>Other stories about {{ story.topic.type }}</h3>
             {% for story in sameTopic|shuffle|slice(0,3) %}
@@ -58,7 +62,9 @@
                 </ul>
             {% endfor %}
         </div>
+        {% endif %}
 
+        {% if sameCountry != null %}
         <div class="more" id="moreCountry">
             <h3>Other stories set in {{ story.country|country}}</h3>
             {% for story in sameCountry|shuffle|slice(0,3) %}
@@ -69,7 +75,9 @@
                 </ul>
             {% endfor %}
         </div>
+        {% endif %}
 
+        {% if sameYear != null %}
         <div class="more" id="moreYear">
             <h3>Other stories started in {{ story.year}}</h3>
             {% for story in sameYear|shuffle|slice(0,3) %}
@@ -80,7 +88,9 @@
                 </ul>
             {% endfor %}
         </div>
+        {% endif %}
 
+        {% if samePatronage != null %}
         <div class="more" id="morePatronage">
             <h3>Other stories supported by {{ story.patronage.organization }}</h3>
             {% for story in samePatronage|shuffle|slice(0,3) %}
@@ -91,5 +101,7 @@
                 </ul>
             {% endfor %}
         </div>
+        {% endif %}
     </div>
+
 {% endblock %}

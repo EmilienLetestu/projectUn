@@ -167,12 +167,12 @@ class IndexController extends Controller
             $request,
             $limit = 5)
         ;
-
         return $this->render('pagination.html.twig',[
              'stories'    => $view[0],
              'pageNumber' => $view[1],
              'totalPage'  => $view[2],
-             'filter'     => $view[3]
+             'filter'     => $view[3],
+             'title'      => $view[4]
             ]
         );
     }
