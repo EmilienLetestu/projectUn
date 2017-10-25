@@ -11,6 +11,7 @@ use App\Entity\Story;
 use App\Entity\Topic;
 use App\Entity\Url;
 use App\Form\SearchType;
+use App\Services\Tools;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,6 +34,7 @@ class StoryManager
         EntityManager $doctrine,
         Session       $session,
         FormFactory   $formFactory
+
     )
     {
         $this->doctrine    = $doctrine;
@@ -90,15 +92,14 @@ class StoryManager
             $storyList = $this->doctrine->getRepository(Story::class)
             ->findAllForBrowser($firstR,$limit,$country,$topic,$patronage);
 
-            dump($storyList);
-
             $totalPage = ceil(count($storyList)/$limit);
+            $spelling = (count($storyList) > 0 ? 'story' : 'stories');
             return [
                 $storyList,
                 $pageNumber,
                 $totalPage,
                 $filter->createView(),
-                $title = 'countResult'
+                $title = 'We found '.count($storyList)
             ];
         }
         //get current page number from url param
@@ -121,7 +122,7 @@ class StoryManager
             $pageNumber,
             $totalPage,
             $filter->createView(),
-            $title = 'countTotal'
+            $title = 'Our climate stories safe  holds '.count($storyList)
             ]
         ;
     }

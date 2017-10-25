@@ -1,6 +1,24 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+
+    <div id="storyTags">
+        <ul class="list-inline">
+            <li class="list-inline-item pull-left">
+                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+                {{ story.topic.type }}
+            </li>
+            <li class="list-inline-item">
+                <i class="fa fa-user-o" aria-hidden="true"></i>
+                {{ story.user.name}} {{ story.user.surname}}
+            </li>
+            <li class="list-inline-item pull-right">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+                {{ story.country|country}}
+            </li>
+        </ul>
+    </div>
+
     <div id="storyBody">
         <div>
             <h1>{{ story.title }}</h1>
@@ -16,12 +34,34 @@
             <p>{{ story.plot|raw }}</p>
         </div>
 
+        <div id="contact">
+            <h3>About the author</h3>
+            <ul class="list-inline">
+                <li class="list-inline-item">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    {{ story.user.fullName }}
+                </li>
+                <li class="list-inline-item">
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    {{ story.contactEmail }}
+                </li>
+                <li class="list-inline-item">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    {{ story.contactPLace | default('------------') }}
+                </li>
+                <li class="list-inline-item">
+                    <i class="fa fa-phone" aria-hidden="true"></i>
+                    {{ story.contactPhone | default('------------') }}
+                </li>
+            </ul>
+        </div>
+
         {% if extResources != null %}
         <div id="extResources">
             <h4>More about {{ story.title }}</h4>
-            <ul class="list-unstyled">
+            <ul class="list-inline">
                 {% for url in extResources %}
-                    <li>
+                    <li class="list-inline-item">
                         <a href="{{url.href}}" title="{{ url.alt }}">Visit {{ url.alt }}</a>
                     </li>
                 {% endfor %}
@@ -32,28 +72,9 @@
     </div>
 
     <div id="moreContainer">
-
-        <div class="more" id="contact">
-            <h3>Contact the author</h3>
-            <ul class="list-unstyled">
-                <li>
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
-                        {{ story.contactEmail }}
-                </li>
-                <li>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        {{ story.contactPLace }}
-                </li>
-                <li>
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                        {{ story.contactPhone }}
-                </li>
-            </ul>
-        </div>
-
         {% if sameTopic != null %}
         <div class="more" id="moreTopic">
-            <h3>Other stories about {{ story.topic.type }}</h3>
+            <h3>Stories about {{ story.topic.type }}</h3>
             {% for story in sameTopic|shuffle|slice(0,3) %}
                 <ul class="list-unstyled">
                     <li>
@@ -66,7 +87,7 @@
 
         {% if sameCountry != null %}
         <div class="more" id="moreCountry">
-            <h3>Other stories set in {{ story.country|country}}</h3>
+            <h3>Stories set in {{ story.country|country}}</h3>
             {% for story in sameCountry|shuffle|slice(0,3) %}
                 <ul class="list-unstyled">
                     <li>
@@ -79,7 +100,7 @@
 
         {% if sameYear != null %}
         <div class="more" id="moreYear">
-            <h3>Other stories started in {{ story.year}}</h3>
+            <h3>Stories started in {{ story.year}}</h3>
             {% for story in sameYear|shuffle|slice(0,3) %}
                 <ul class="list-unstyled">
                     <li>
@@ -92,7 +113,7 @@
 
         {% if samePatronage != null %}
         <div class="more" id="morePatronage">
-            <h3>Other stories supported by {{ story.patronage.organization }}</h3>
+            <h3>Stories supported by {{ story.patronage.organization }}</h3>
             {% for story in samePatronage|shuffle|slice(0,3) %}
                 <ul class="list-unstyled">
                     <li>

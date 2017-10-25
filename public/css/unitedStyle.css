@@ -23,6 +23,12 @@ h1
     padding: 5%;
     font-size: 3.5em;
 }
+
+.container-fluid
+{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
 /*------- nav bar --------*/
 .navbar-brand i
 {
@@ -52,7 +58,6 @@ h1
     font-size: 1.2rem;
     position: relative;
     top: 6px;
-    margin-left: 20%;
 }
 .navbar-nav
 {
@@ -201,6 +206,18 @@ footer
 
 /*------- story --------*/
 
+#storyTags
+{
+    width: 100%;
+    border-bottom: solid #5fdda1 1px;
+}
+
+#storyTags li:nth-child(2)
+{
+    position: relative;
+    left: 35%;
+}
+
 #storyBody
 {
     padding-left: 2%;
@@ -221,6 +238,20 @@ footer
     padding-top:2%;
 }
 
+#moreContainer
+{
+    display: flex;
+    flex-flow: wrap;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
+}
+
+.more
+{
+    min-height: 200px;
+}
+
 #contact,
 .more
 {
@@ -234,7 +265,24 @@ footer
 
 }
 
+#contact h3,
+#extResources h4
+{
+    text-align: center;
+}
+
+#contact .list-inline-item:not(:last-child)
+{
+    margin-right: 19%;
+}
+
+#contact ul
+{
+    margin-top: 5%;
+}
+
 #contact ul,
+#extResources ul,
 .more ul
 {
     font-size: 1.2em;
@@ -243,6 +291,16 @@ footer
 #contact i
 {
  color : #5e5e5e;
+}
+
+#extResources
+{
+    margin:5%;
+}
+
+#extResources ul
+{
+    margin:5%;
 }
 
 /*------- pagination --------*/
