@@ -36,22 +36,6 @@ class StoryRepository extends EntityRepository
     }
 
     /**
-     * @param $topicId
-     * @return array
-     */
-    public function findAllWithTopic($topicId)
-    {
-        $queryBuilder = $this->createQueryBuilder('s');
-        $queryBuilder
-            ->andWhere('s.validated = 1')
-            ->andWhere('s.topic = :id')
-            ->setParameter('id',$topicId);
-        return(
-        $queryBuilder->getQuery()->getResult()
-        );
-    }
-
-    /**
      * fetch all stories sets in one given country but ignore one with specific id
      * will be used to create links
      * @param $country
@@ -63,21 +47,6 @@ class StoryRepository extends EntityRepository
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
             ->where($queryBuilder->expr()->notIn('s.id',$id))
-            ->andWhere('s.country = :country')
-            ->andWhere('s.validated = 1')
-            ->setParameter('country',$country);
-
-        return $queryBuilder->getQuery()->getResult();
-    }
-
-    /**
-     * @param $country
-     * @return array
-     */
-    public function findAllWithCountry($country)
-    {
-        $queryBuilder = $this->createQueryBuilder('s');
-        $queryBuilder
             ->andWhere('s.country = :country')
             ->andWhere('s.validated = 1')
             ->setParameter('country',$country);
@@ -124,21 +93,6 @@ class StoryRepository extends EntityRepository
     }
 
     /**
-     * fetch all stories sharing one given patronage
-     * @param $patronageId
-     * @return array
-     */
-    public function findAllWithPatronage($patronageId)
-    {
-        $queryBuilder = $this->createQueryBuilder('s');
-        $queryBuilder
-            ->andWhere('s.validated = 1')
-            ->andWhere('s.patronage = :id')
-            ->SetParameter('id',$patronageId);
-        return $queryBuilder->getQuery()->getResult();
-    }
-
-    /**
      * @param $order
      * @param $sort
      * @param $limit
@@ -164,8 +118,7 @@ class StoryRepository extends EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
-            ->select('s')
-            ->andWhere('s.validated = 1');
+            ->select('s');
             if($country !== null)
             {
                 $queryBuilder
@@ -177,18 +130,18 @@ class StoryRepository extends EntityRepository
             if($topic !== null)
             {
                 $queryBuilder
-                    ->andWhere('s.topic = :id')
+                    ->andWhere('s.topic = :topic')
                     ->setFirstResult($firstR)
                     ->setMaxResults($limit)
-                    ->setParameter('id',$topic);
+                    ->setParameter('topic',$topic);
             }
             if($patronage !== null)
             {
                 $queryBuilder
-                    ->andWhere('s.patronage = :id')
+                    ->andWhere('s.patronage = :patronage')
                     ->setFirstResult($firstR)
                     ->setMaxResults($limit)
-                    ->setParameter('id',$patronage);
+                    ->setParameter('patronage',$patronage);
             }
             $queryBuilder
             ->setFirstResult($firstR)

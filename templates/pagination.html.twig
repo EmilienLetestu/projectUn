@@ -8,7 +8,7 @@
         <h1 class="storyCount"><b>{{ stories|length }} stories</b> found</h1>
     {% endif %}
     <div id="filter">
-        {{ form_start(filter,{'attr':{'class':'form-inline'}}) }}
+        {{ form_start(filter,{'attr':{'class':'form-inline'}, 'action': path('browse', {'pageNumber' : 1})}) }}
         <div class="form-group ">
             {{ form_widget(filter.topic ,{'attr':{'class':'form-control'}}) }}
         </div>
@@ -20,7 +20,6 @@
         </div>
         <div class="form-group">
             <button class="btn btn-success" type="submit">search</button>
-            <a class="btn btn-warning" href="{{ path('browse',{'pageNumber': 1})}}"> reset filter</a>
         </div>
         {{ form_end(filter) }}
     </div>
