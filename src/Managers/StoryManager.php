@@ -95,11 +95,10 @@ class StoryManager
                 $storyList,
                 $pageNumber,
                 $totalPage,
-                $filter->createView()
+                $filter->createView(),
+                $title = 'countResult'
             ]
                 ;
-
-
         }
 
         //fetch stories to display
@@ -116,7 +115,8 @@ class StoryManager
             $storyList,
             $pageNumber,
             $totalPage,
-            $filter->createView()
+            $filter->createView(),
+            $title = 'countTotal'
             ]
         ;
     }
