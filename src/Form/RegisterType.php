@@ -65,7 +65,7 @@ class RegisterType extends AbstractType
                                             'max' => 30
                                 ])
                 ],
-                'label' => 'Mot de passe'
+                'label' => 'Password'
             ])
             ->add('confirmPswd', PasswordType::class,[
                 'constraints'=>[new NotBlank(),
@@ -75,11 +75,11 @@ class RegisterType extends AbstractType
                                             'max' => 30
                                 ])
                 ],
-                'label'  => 'Mot de passe',
+                'label'  => 'Password',
                 'mapped' => false
             ])
             ->add('termsAgreement', CheckboxType::class,[
-                'label' => 'J\'accepte les conditions générales d\'utilisation',
+                'label' => 'I accept terms and conditions ',
                 'required'  => true,
                 'mapped'    => false
             ])
