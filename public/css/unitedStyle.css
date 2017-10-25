@@ -142,6 +142,33 @@ footer
     padding-top: 2%;
 }
 
+.invalid,
+.invalid_sign
+{
+    color: #ff3b1e;
+}
+
+.invalid_sign i,
+.valid_sign i
+{
+    margin-left: 2%;
+    font-size: 1.5em
+}
+
+.invalid_sign,
+.valid_sign
+{
+    position: relative;
+    left: 100%;
+    top: -30px;
+    padding-left: 1%;
+}
+
+.valid_sign i
+{
+  color: #5fdda1;
+}
+
 /*------- story card --------*/
 .cardHolder
 {

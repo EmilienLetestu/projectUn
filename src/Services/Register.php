@@ -67,10 +67,9 @@ class Register
             }
 
             //hydrate with submitted data
-            $user
-                ->setRegisteredOn('Y-m-d')
-                ->setRole('user')
-                ->setConfirmationToken(40)
+            $user->setRegisteredOn('Y-m-d');
+            $user->setRole('user');
+            $user->setConfirmationToken(40);
             ;
 
 

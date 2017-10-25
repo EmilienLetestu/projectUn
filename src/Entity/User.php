@@ -103,7 +103,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param string $name
      * @return User
      */
-    public function setName(string $name) :User
+    public function setName($name)
     {
        return $this->name = ucfirst(strip_tags(mb_strtolower($name)));
 
@@ -121,7 +121,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param string $surname
      * @return User
      */
-    public function setSurname(string $surname) :User
+    public function setSurname($surname)
     {
         return $this->surname = ucfirst(strip_tags(mb_strtolower($surname)));
     }
@@ -138,7 +138,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param string $email
      * @return User
      */
-    public function setEmail(string $email)
+    public function setEmail($email)
     {
       return  $this->email = $email;
     }
@@ -156,7 +156,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param string $pswd
      * @return User
      */
-    public function setPswd(string $pswd) :User
+    public function setPswd($pswd)
     {
        return $this->pswd = password_hash($pswd, PASSWORD_BCRYPT);
     }
@@ -174,7 +174,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param $role
      * @return User
      */
-    public function setRole($role) :User
+    public function setRole($role)
     {
       return  $this->role = strtoupper($role);
     }
@@ -209,7 +209,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param $activated
      * @return User
      */
-    public function setActivated($activated):User
+    public function setActivated($activated)
     {
        return $this->activated = $activated;
 
@@ -227,7 +227,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param $deactivated
      * @return User
      */
-    public function setDeactivated($deactivated):User
+    public function setDeactivated($deactivated)
     {
        return $this->deactivated = $deactivated;
     }
@@ -249,7 +249,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @param int $length
      * @return User
      */
-    public function setConfirmationToken(int $length) :User
+    public function setConfirmationToken($length)
     {
         $confirmationToken = $this->generateConfirmationToken($length);
         $this->confirmationToken = $confirmationToken;
