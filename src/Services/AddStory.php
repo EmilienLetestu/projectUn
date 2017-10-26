@@ -64,8 +64,13 @@ class AddStory
 
             //get user id and link user to story
             $user = $this->token->getToken()->getUser();
+            $role = $user->getRole();
             $user->addStory($story);
             $story->setUser($user);
+
+            //check role to validate story
+            $validate =  $role === 'ADMIN' ? true : false;
+            $story->setValidated($validate);
 
             //check if url need to be persist
             $urls = $form->get('urls')->getData();
@@ -87,6 +92,12 @@ class AddStory
         return $form->createView();
     }
 
+    /**
+     * @param $form
+     * @param $story
+     * @param $href
+     * @return mixed
+     */
     public function processWithUrl($form,$story,$href)
     {
         foreach ($href as $key=>$value)
@@ -100,5 +111,9 @@ class AddStory
             $this->doctrine->flush();
         }
         return $form->createView();
+    }
+
+    public function storyValidationRule()
+    {
     }
 }
