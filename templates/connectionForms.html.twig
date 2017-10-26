@@ -33,68 +33,75 @@
      {% if app.request.get('_route') == 'register' %}
         <div class="connectionForm">
             {{ form_start(form ,{'attr':{'id':'registerForm'}}) }}
-        <div class="form-group row">
-            {{ form_label(form.name) }}
-            {{ form_widget(form.name ,{'attr':{'class':'form-control'}}) }}
-            {{ form_errors(form.name) }}
-            <span class="invalid_sign" id="invalid_name_icon" style="display: none">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </span>
-            <span class="valid_sign" id="valid_name_icon" style="display: none">
-                <i class="fa fa-check" aria-hidden="true"></i>
-            </span>
-            <span class="invalid" id="invalid_name" style="display: none">Between 3 up to 30 letters</span>
-        </div>
-        <div class="form-group row">
-            {{ form_label(form.surname) }}
-            {{ form_widget(form.surname ,{'attr':{'class':'form-control'}}) }}
-            {{ form_errors(form.surname) }}
-            <span class="invalid_sign" id="invalid_surname_icon" style="display: none">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </span>
-            <span class="valid_sign" id="valid_surname_icon" style="display: none">
-                <i class="fa fa-check" aria-hidden="true"></i>
-            </span>
-            <span class="invalid" id="invalid_surname" style="display: none">Between 3 up to 30 letters</span>
-        </div>
-        <div class="form-group row">
-            {{ form_label(form.email) }}
-            {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
-            {{ form_errors(form.email) }}
-        </div>
-        <div class="form-group row">
-            {{ form_label(form.pswd) }}
-            {{ form_widget(form.pswd ,{'attr':{'class':'form-control'}}) }}
-            {{ form_errors(form.pswd) }}
-            <span class="invalid_sign" id="invalid_pswd_icon" style="display: none">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </span>
-            <span class="valid_sign" id="valid_pswd_icon" style="display: none">
-                <i class="fa fa-check" aria-hidden="true"></i>
-            </span>
-            <span class="invalid" id="invalid_pswd" style="display: none">Between 6 up to 30 letters</span>
-        </div>
-        <div class="form-group row">
-            {{ form_label(form.confirmPswd) }}
-            {{ form_widget(form.confirmPswd ,{'attr':{'class':'form-control'}})}}
-            {{ form_errors(form.confirmPswd) }}
-            <span class="invalid_sign" id="invalid_confirm_icon" style="display: none">
-                <i class="fa fa-times" aria-hidden="true"></i>
-            </span>
-            <span class="valid_sign" id="valid_confirm_icon" style="display: none">
-                <i class="fa fa-check" aria-hidden="true"></i>
-            </span>
-            <span class="invalid" id="invalid_confirm" style="display: none">Password doesn't match</span>
-        </div>
-        <div class="form-group row">
-            {{ form_label(form.termsAgreement) }}
-            {{ form_widget(form.termsAgreement)}}
-            {{ form_errors(form.termsAgreement)}}
-        </div>
-        <div class="form-group row">
-            <button class="btn btn-success" id="registerBtn" type="submit">Submit</button>
-        </div>
-        {{ form_end(form) }}
+            <div class="form-group row">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.name) }}
+                <span class="invalid_sign" id="invalid_name_icon" style="display: none">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+                <span class="valid_sign" id="valid_name_icon" style="display: none">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <span class="invalid" id="invalid_name" style="display: none">Between 3 up to 30 letters</span>
+            </div>
+            <div class="form-group row">
+                {{ form_label(form.surname) }}
+                {{ form_widget(form.surname ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.surname,{'attr':{'class':'invalid'}}) }}
+                <span class="invalid_sign" id="invalid_surname_icon" style="display: none">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+                <span class="valid_sign" id="valid_surname_icon" style="display: none">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <span class="invalid" id="invalid_surname" style="display: none">Between 3 up to 30 letters</span>
+            </div>
+            <div class="form-group row">
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.email,{'attr':{'class':'invalid'}}) }}
+                <span class="invalid_sign" id="invalid_email_icon" style="display: none">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+                <span class="valid_sign" id="valid_email_icon" style="display: none">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <span class="invalid" id="invalid_email" style="display: none">Enter a valid email</span>
+            </div>
+            <div class="form-group row">
+                {{ form_label(form.pswd) }}
+                {{ form_widget(form.pswd,{'attr':{'class':'form-control'}}) }}
+                {{ form_errors(form.pswd, {'attr':{'class':'invalid'}}) }}
+                <span class="invalid_sign" id="invalid_pswd_icon" style="display: none">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+                <span class="valid_sign" id="valid_pswd_icon" style="display: none">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <span class="invalid" id="invalid_pswd" style="display: none">Between 6 up to 30 letters</span>
+            </div>
+            <div class="form-group row">
+                {{ form_label(form.confirmPswd) }}
+                {{ form_widget(form.confirmPswd ,{'attr':{'class':'form-control'}})}}
+                {{ form_errors(form.confirmPswd,{'attr':{'class':'invalid'}}) }}
+                <span class="invalid_sign" id="invalid_confirm_icon" style="display: none">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+                <span class="valid_sign" id="valid_confirm_icon" style="display: none">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <span class="invalid" id="invalid_confirm" style="display: none">Password doesn't match</span>
+            </div>
+            <div class="form-group row">
+                {{ form_label(form.termsAgreement) }}
+                {{ form_widget(form.termsAgreement)}}
+                {{ form_errors(form.termsAgreement)}}
+            </div>
+            <div class="form-group row">
+                <button class="btn btn-success" id="registerBtn" type="submit">Submit</button>
+            </div>
+            {{ form_end(form) }}
         </div>
      {% endif %}
 
@@ -105,9 +112,16 @@
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.email) }}
+                <span class="invalid_sign" id="invalid_email_icon" style="display: none">
+                    <i class="fa fa-times" aria-hidden="true"></i>
+                </span>
+                <span class="valid_sign" id="valid_email_icon" style="display: none">
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+                <span class="invalid" id="invalid_email" style="display: none">Enter a valid email</span>
             </div>
             <div class="form-group">
-                <button class="btn btn-success" type="submit">Submit</button>
+                <button class="btn btn-success" id="lostPswdBtn" type="submit">Submit</button>
             </div>
             {{ form_end(form) }}
         </div>
