@@ -84,7 +84,7 @@ class RenewPswd
             {
                 $this->session->getFlashBag()
                     ->add('denied',
-                        'Adresse e-mail inconnue'
+                        'Unknown email address'
                     )
                 ;
                 return $askResetForm->createView();
@@ -125,7 +125,7 @@ class RenewPswd
         {
             $this->session->getFlashBag()
                 ->add('denied',
-                    'Adresse e-mail inconnue'
+                    'Unknown email address'
                 )
             ;
             return $redirect = 'home';
@@ -138,7 +138,7 @@ class RenewPswd
         {
             $this->session->getFlashBag()
                 ->add('denied',
-                    'Votre lien a expiré, un nouvel email vous à été envoyé'
+                    'Expired link, a new one has been sent to you'
                 )
             ;
             //prepare email and send it
@@ -169,7 +169,7 @@ class RenewPswd
             //msg flash
             $this->session->getFlashBag()
                 ->add('success',
-                    'Le mot de passe  été modifier'
+                    'Password changed'
                 )
             ;
 

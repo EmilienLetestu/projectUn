@@ -86,14 +86,14 @@ class Activation
             $this->swift->send($message);
 
             return $this->session->getFlashBag()
-                ->add('denied','L\'email a expiré, un nouvel email à été envoyé.')
+                ->add('denied','Expired link, a new one has been sent to you')
                 ;
         }
 
         if(!$user)
         {
             return $this->session->getFlashBag()
-                ->add('error','Utilisateur inconnu')
+                ->add('error','Unknown user')
                 ;
         }
 
@@ -101,7 +101,7 @@ class Activation
         $this->doctrine->flush();
 
         return $this->session->getFlashBag()
-            ->add('success','Votre compte est activé !')
+            ->add('success','Your account has been activated !')
             ;
     }
 

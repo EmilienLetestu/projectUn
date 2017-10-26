@@ -60,7 +60,7 @@ class Register
             {
                 $this->session->getFlashBag()
                     ->add('denied',
-                        'Cette email est déjà utilisé'
+                        'This email is already used'
                     )
                 ;
                 return $registerForm->createView();
@@ -91,7 +91,7 @@ class Register
 
             $this->session->getFlashBag()
                 ->add('success',
-                    'Compte créé avec succès ! Un email d\'activation à été envoyé.'
+                    'Account created ! An activation email has been sent to you '
                 )
             ;
 
