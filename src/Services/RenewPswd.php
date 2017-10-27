@@ -45,7 +45,7 @@ class RenewPswd
         FormFactory   $formFactory,
         EntityManager $doctrine,
         RequestStack  $requestStack,
-        Mail         $mailService,
+        Mail          $mailService,
         Tools         $tools,
         \Swift_Mailer $swift,
         Session       $session,
@@ -94,8 +94,7 @@ class RenewPswd
                 $user->getName(),
                 $user->getSurname(),
                 $user->getConfirmationToken(),
-                $user->getEmail(),
-                $sender="lost_password@climateStories.com"
+                'eletestu@gmail.com'
             );
             $this->swift->send($message);
         }
@@ -178,7 +177,4 @@ class RenewPswd
 
         return $resetForm->createView();
     }
-
-
-
 }

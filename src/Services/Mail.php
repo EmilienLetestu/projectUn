@@ -57,7 +57,7 @@ class Mail
      */
     public function validationMail($name,$surname,$token,$email,$sender)
     {
-        $message = (new \Swift_Message('Activation de votre compte Nao'));
+        $message = (new \Swift_Message('Account activation'));
         $message
             ->setFrom($sender)
             ->setTo($email)
@@ -82,7 +82,7 @@ class Mail
      */
     public function newPswdMail($name,$surname,$token,$email,$sender)
     {
-        $message = (new \Swift_Message('Modification du mot de passe'));
+        $message = (new \Swift_Message('lost password'));
         $message
             ->setFrom($sender)
             ->setTo($email)
