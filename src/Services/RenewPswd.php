@@ -94,7 +94,8 @@ class RenewPswd
                 $user->getName(),
                 $user->getSurname(),
                 $user->getConfirmationToken(),
-                'eletestu@gmail.com'
+                $user->getEmail(),
+                $sender="lost_password@climateStories.com"
             );
             $this->swift->send($message);
         }
