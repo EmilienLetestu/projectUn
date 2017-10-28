@@ -7,14 +7,13 @@
  */
 namespace App\Form;
 
-
-use Ivory\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -37,16 +36,14 @@ class StoryType extends AbstractType
                 ],
                 'label'      => 'Title'
             ])
-            ->add('abstract', CKEditorType::class,[
+            ->add('abstract', TextareaType::class,[
                 'constraints' =>[new NotBlank()
                 ],
-                'config_name' => 'abstract',
                 'label'       => 'Abstract'
             ])
-            ->add('plot', CKEditorType::class,[
+            ->add('plot', TextareaType::class,[
                 'constraints' =>[new NotBlank()
                 ],
-                'config_name' => 'project_narrative',
                 'label'       => 'Project narrative'
             ])
             ->add('contactEmail', EmailType::class,[
