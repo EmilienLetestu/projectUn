@@ -6,6 +6,8 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <script src="https://use.fontawesome.com/707b54fdb6.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script>tinymce.init({ selector:'textarea' });</script>
         <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
         {% block stylesheets %}
             <link href="{{ asset("css/unitedStyle.css") }}" rel="stylesheet">
