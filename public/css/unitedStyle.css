@@ -123,6 +123,16 @@ footer
     margin-left: 25%;
 }
 
+#abstract textarea
+{
+    height: 280px;
+}
+
+#plot textarea
+{
+    height: 400px;
+}
+
 #filter .form-inline
 {
     padding-bottom: 10%;
