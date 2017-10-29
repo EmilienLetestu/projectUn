@@ -7,6 +7,7 @@
  */
 namespace App\Form;
 
+use App\Validators\WordLimit;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\AbstractType;
@@ -30,19 +31,21 @@ class StoryType extends AbstractType
         $builder
             ->add('title', TextType::class,[
                 'constraints'=>[new NotBlank(),
-                                new Length(['min' => 3,
+                                new Length(['min' => 5,
                                             'max' => 100,
                                 ])
                 ],
                 'label'      => 'Title'
             ])
             ->add('abstract', TextareaType::class,[
-                'constraints' =>[new NotBlank()
+                'constraints' =>[new NotBlank(),
+                                 new WordLimit(['limit'=>70])
                 ],
                 'label'       => 'Abstract'
             ])
             ->add('plot', TextareaType::class,[
-                'constraints' =>[new NotBlank()
+                'constraints' =>[new NotBlank(),
+                                 new WordLimit(['limit'=>200])
                 ],
                 'label'       => 'Project narrative'
             ])
@@ -56,7 +59,7 @@ class StoryType extends AbstractType
                 'label'      => 'Your e-mail address'
             ])
             ->add('contactPlace', TextType::class,[
-                'constraints' => [new Length(['min' => 3,
+                'constraints' => [new Length(['min' => 10,
                                               'max' => 100
                                 ])
                 ],

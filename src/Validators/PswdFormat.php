@@ -6,9 +6,7 @@
  * Time: 13:46
  */
 namespace App\Validators;
-
 use Symfony\Component\Validator\Constraint;
-
 
 class PswdFormat extends Constraint
 {
@@ -16,6 +14,6 @@ class PswdFormat extends Constraint
 
     public function validatedBy()
     {
-        return get_class($this) . 'Validator';
+        return get_class($this).'Validator';
     }
 }

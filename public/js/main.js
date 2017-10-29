@@ -229,7 +229,7 @@ $(document).ready(function () {
             $('#valid_plot_icon').hide();
             validate = false;
         }
-        else if (countPlot === 0)
+        else if (countPlot == 0)
         {
             $('#invalid_plot').hide();
             $('#invalid_plot_icon').hide();
@@ -243,7 +243,7 @@ $(document).ready(function () {
             $('#valid_plot_icon').show();
         }
 
-        if(title.val().length < 3 || title.val().length > 100)
+        if(title.val().length < 5 || title.val().length > 100)
         {
 
             title.css('border-color','#F54041');
@@ -295,7 +295,7 @@ $(document).ready(function () {
             $('#invalid_email_icon').hide();
             $('#valid_email_icon').show();
         }
-        if(place.val().length > 0 && place.val().length < 2 || place.val().length > 100)
+        if(place.val().length > 0 && place.val().length < 10 || place.val().length > 100)
         {
             place.css('border-color','#F54041');
             $('#invalid_place').show();
