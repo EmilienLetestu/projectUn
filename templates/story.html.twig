@@ -123,6 +123,12 @@
             {% endfor %}
         </div>
         {% endif %}
+        {% if previous != null %}
+         <a class="btn" href="{{ path('story',{'storyId':previous|join('|')}) }}">Previous</a>
+        {% endif %}
+        {% if next != null %}
+            <a class="btn" href="{{ path('story',{'storyId':next|join('|')}) }}">Next</a>
+        {% endif %}
     </div>
 
 {% endblock %}

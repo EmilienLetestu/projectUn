@@ -164,4 +164,39 @@ class StoryRepository extends EntityRepository
         return $queryBuilder->getQuery()->getScalarResult();
     }
 
+
+    /**
+     * will be used on any given story page to create link to next story
+     * @param $id
+     * @return array
+     */
+    public function findNext($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder
+            ->select('s.id')
+            ->andWhere('s.id > :id')
+            ->setMaxResults(1)
+            ->setParameter('id',$id)
+        ;
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
+
+    /**
+     * will be used on any given story page to create link previous story
+     * @param $id
+     * @return array
+     */
+    public function findPrevious($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder
+            ->select('s.id')
+            ->andWhere('s.id < :id')
+            ->setMaxResults(1)
+            ->orderBy('s.id','DESC')
+            ->setParameter('id',$id)
+        ;
+        return $queryBuilder->getQuery()->getOneOrNullResult();
+    }
 }

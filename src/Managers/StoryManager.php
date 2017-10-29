@@ -48,12 +48,11 @@ class StoryManager
     public function fetchForHome()
     {
         $repository = $this->doctrine->getRepository(Story::class);
-        $total = $repository-> countStories();
-
+        $repository-> countStories();
 
         return [
-            $repository ->findLastPublished('ASC','createdOn',6),
-            $total
+            $repository ->findLastPublished('DESC','createdOn',6),
+            $repository-> countStories()
         ];
     }
 
@@ -141,7 +140,9 @@ class StoryManager
             $repoStory->findAllWithSameCountry($story->getCountry(), $id),
             $repoStory->findAllWithSameYear($story->getYear(), $id),
             $repoStory->findAllWithSamePatronage($story->getPatronage()->getId(),$id),
-            $repoUrl->findBy(['story'=>$id])
+            $repoUrl->findBy(['story'=>$id]),
+            $repoStory->findNext($id),
+            $repoStory->findPrevious($id)
         ];
     }
 

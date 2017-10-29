@@ -64,7 +64,9 @@ class IndexController extends Controller
             'sameCountry'   => $view[2],
             'sameYear'      => $view[3],
             'samePatronage' => $view[4],
-            'extResources'  => $view[5]
+            'extResources'  => $view[5],
+            'next'          => $view[6],
+            'previous'      => $view[7]
             ]
         );
     }
