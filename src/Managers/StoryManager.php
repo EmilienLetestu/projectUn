@@ -48,20 +48,12 @@ class StoryManager
     public function fetchForHome()
     {
         $repository = $this->doctrine->getRepository(Story::class);
-            if(!$this->session->get('total'))
-            {
+        $total = $repository-> countStories();
 
-               $total = $repository-> countStories();
-               $this->session->set('total',$total[0]);
 
-               return [
-                   $repository->findLastPublished('ASC','createdOn',6),
-                   $this->session->get('total')
-               ];
-            }
         return [
             $repository ->findLastPublished('ASC','createdOn',6),
-            $this->session->get('total')
+            $total
         ];
     }
 
