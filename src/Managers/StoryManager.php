@@ -92,12 +92,11 @@ class StoryManager
             $storyList = $this->doctrine->getRepository(Story::class)
             ->findAllForBrowser($firstR,$limit,$country,$topic,$patronage);
 
-            $totalPage = ceil(count($storyList)/$limit);
-            $spelling = (count($storyList) > 0 ? 'story' : 'stories');
+
             return [
                 $storyList,
                 $pageNumber,
-                $totalPage,
+                $totalPage = ceil(count($storyList)/$limit),
                 $filter->createView(),
                 $title = 'We found '.count($storyList)
             ];

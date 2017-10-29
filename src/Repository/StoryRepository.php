@@ -118,7 +118,8 @@ class StoryRepository extends EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
-            ->select('s');
+            ->select('s')
+            ->andWhere('s.validated = 1');
             if($country !== null)
             {
                 $queryBuilder
