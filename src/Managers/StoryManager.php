@@ -138,6 +138,7 @@ class StoryManager
         //get story to display
         $repoStory = $this->doctrine->getRepository(Story::class);
         $story = $repoStory->findOneBy(['id'=>$id]);
+
         //get url repo
         $repoUrl = $this->doctrine->getRepository(Url::class);
 

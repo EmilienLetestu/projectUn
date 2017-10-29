@@ -11,6 +11,7 @@ use App\Validators\WordLimit;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -31,7 +32,7 @@ class StoryType extends AbstractType
         $builder
             ->add('title', TextType::class,[
                 'constraints'=>[new NotBlank(),
-                                new Length(['min' => 5,
+                                new Length(['min' => 3,
                                             'max' => 100,
                                 ])
                 ],
@@ -41,12 +42,14 @@ class StoryType extends AbstractType
                 'constraints' =>[new NotBlank(),
                                  new WordLimit(['limit'=>70])
                 ],
+                'required'    => false,
                 'label'       => 'Abstract'
             ])
             ->add('plot', TextareaType::class,[
                 'constraints' =>[new NotBlank(),
                                  new WordLimit(['limit'=>200])
                 ],
+                'required'    => false,
                 'label'       => 'Project narrative'
             ])
             ->add('contactEmail', EmailType::class,[
@@ -59,7 +62,7 @@ class StoryType extends AbstractType
                 'label'      => 'Your e-mail address'
             ])
             ->add('contactPlace', TextType::class,[
-                'constraints' => [new Length(['min' => 10,
+                'constraints' => [new Length(['min' => 3,
                                               'max' => 100
                                 ])
                 ],
@@ -85,9 +88,11 @@ class StoryType extends AbstractType
                 ],
                 'label'=>'This story set in'
             ])
-            ->add('year', TextType::class,[
-                'label'    => 'This story started in',
-                'required' => false
+            ->add('year', ChoiceType::class,[
+                'choices'     => array_combine(\range(2015, date('Y')),\range(2015, date('Y'))),
+                'label'       => 'This story started in',
+                'placeholder' => 'Choose a year',
+                'required'    => false
             ])
             ->add('patronage', EntityType::class,[
                 'constraints'  =>[new NotBlank()

@@ -200,50 +200,7 @@ $(document).ready(function () {
         var trimPlot  = splitPlot[1].trim();
         var countPlot = parseInt(trimPlot);
 
-        if(countAbstract > 70)
-        {
-            $('#abstract').find('.mce-tinymce').css('border-color','#F54041');
-            $('#invalid_abstract').show();
-            $('#invalid_abstract_icon').show();
-            $('#valid_abstract_icon').hide();
-            validate = false;
-        }
-        else if (countAbstract == 0)
-        {
-            $('#invalid_abstract').hide();
-            $('#invalid_abstract_icon').hide();
-            $('#valid_abstract_icon').hide();
-        }
-        else
-        {
-            $('#abstract').find('.mce-tinymce').css('border-color','#5fdda1');
-            $('#invalid_abstract').hide();
-            $('#invalid_abstract_icon').hide();
-            $('#valid_abstract_icon').show();
-        }
-        if(countPlot > 200)
-        {
-            $('#plot').find('.mce-tinymce').css('border-color','#F54041');
-            $('#invalid_plot').show();
-            $('#invalid_plot_icon').show();
-            $('#valid_plot_icon').hide();
-            validate = false;
-        }
-        else if (countPlot == 0)
-        {
-            $('#invalid_plot').hide();
-            $('#invalid_plot_icon').hide();
-            $('#valid_plot_icon').hide();
-        }
-        else
-        {
-            $('#plot').find('.mce-tinymce').css('border-color','#5fdda1');
-            $('#invalid_plot').hide();
-            $('#invalid_plot_icon').hide();
-            $('#valid_plot_icon').show();
-        }
-
-        if(title.val().length < 5 || title.val().length > 100)
+        if(title.val().length < 3 || title.val().length > 100)
         {
 
             title.css('border-color','#F54041');
@@ -295,7 +252,7 @@ $(document).ready(function () {
             $('#invalid_email_icon').hide();
             $('#valid_email_icon').show();
         }
-        if(place.val().length > 0 && place.val().length < 10 || place.val().length > 100)
+        if(place.val().length > 0 && place.val().length < 2 || place.val().length > 100)
         {
             place.css('border-color','#F54041');
             $('#invalid_place').show();
@@ -337,7 +294,36 @@ $(document).ready(function () {
             $('#invalid_phone_icon').hide();
             $('#valid_phone_icon').show();
         }
-
+        if(countAbstract == 0 ||countAbstract > 70)
+        {
+            $('#abstract').find('.mce-tinymce').css('border-color','#F54041');
+            $('#invalid_abstract').show();
+            $('#invalid_abstract_icon').show();
+            $('#valid_abstract_icon').hide();
+            validate = false;
+        }
+        else
+        {
+            $('#abstract').find('.mce-tinymce').css('border-color','#5fdda1');
+            $('#invalid_abstract').hide();
+            $('#invalid_abstract_icon').hide();
+            $('#valid_abstract_icon').show();
+        }
+        if(countPlot == 0 || countPlot > 200)
+        {
+            $('#plot').find('.mce-tinymce').css('border-color','#F54041');
+            $('#invalid_plot').show();
+            $('#invalid_plot_icon').show();
+            $('#valid_plot_icon').hide();
+            validate = false;
+        }
+        else
+        {
+            $('#plot').find('.mce-tinymce').css('border-color','#5fdda1');
+            $('#invalid_plot').hide();
+            $('#invalid_plot_icon').hide();
+            $('#valid_plot_icon').show();
+        }
         return validate;
     });
 
