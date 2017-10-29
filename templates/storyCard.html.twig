@@ -5,7 +5,7 @@
             <div class="cardHeader">
                 <h3>{{ story.title }}</h3>
             </div>
-            <p>{{ story.abstract|slice(0,150)|raw }}....</p>
+            <p>{{ story.abstract|slice(0,150)|striptags}}....</p>
             <div class="cardLink">
                 <a href="{{ path('story',{'storyId':story.id}) }}" class="btn">Read story</a>
             </div>
