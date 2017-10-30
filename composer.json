@@ -18,6 +18,7 @@
     "license": "proprietary",
     "require": {
         "php": "^7.0.8",
+        "javiereguiluz/easyadmin-bundle": "^1.17",
         "phpunit/phpunit": "^6.4",
         "sensio/framework-extra-bundle": "^5.0",
         "symfony/asset": "^3.3",
