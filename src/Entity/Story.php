@@ -470,6 +470,6 @@ class Story implements \Serializable
 
     public function getCountryName()
     {
-        return  $country = Intl::getRegionBundle()->getCountryName($this->getCountry());
+        return  Intl::getRegionBundle()->getCountryName($this->getCountry());
     }
 }

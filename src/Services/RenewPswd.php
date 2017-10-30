@@ -119,7 +119,7 @@ class RenewPswd
                     'Unknown email address'
                 )
             ;
-            return $redirect = 'home';
+            return 'home';
         }
 
         //check if mail still valid
