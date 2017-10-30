@@ -3,7 +3,7 @@
 /* -------------------------------------------------*/
 
 
-/* == _mobile.scss (des smartphones aux phablettes) */
+/* == _mobile.scss (target devices : mobiles and tablets) */
 
 
 /* -----GENERAL-----*/
@@ -50,7 +50,7 @@ mark {
 	background: #ff0;
 }
 
-/* -----BOUTONS-----*/
+/* -----BUTTONS-----*/
 
 .btn {
 	@include button-general;

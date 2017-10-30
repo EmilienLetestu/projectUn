@@ -49,7 +49,7 @@ figure {
 }
 
 
-/* fixer une largeur maximale  de 100 % aux éléments potentiellement problématiques */
+/* set all potentially problematics elements to maximum width */
 
 img,
 table,
@@ -65,13 +65,13 @@ embed,
 video {
     max-width: 100%;
 }
-/* conserver le ratio des images et empêcher les débordements de boîtes dûs aux border ou padding */
+/* keep image ratio and avoid overlapping */
 
 img {
     height: auto;
 }
 
-/* TYPOGRAPHIE */
+/* FONT */
 
 /* base font-size corresponds to 10px and is adapted to rem unit */
 
@@ -152,7 +152,7 @@ h6,
     line-height: 1.3125;
 }
 
-/* gestion des mots longs */
+/* long words handler */
 
 textarea,
 table,
