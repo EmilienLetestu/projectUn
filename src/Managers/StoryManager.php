@@ -21,24 +21,20 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class StoryManager
 {
     private $doctrine;
-    private $session;
     private $formFactory;
 
     /**
      * StoryManager constructor.
      * @param EntityManager $doctrine
-     * @param Session $session
      * @param FormFactory $formFactory
      */
     public function __construct(
         EntityManager $doctrine,
-        Session       $session,
         FormFactory   $formFactory
 
     )
     {
         $this->doctrine    = $doctrine;
-        $this->session     = $session;
         $this->formFactory = $formFactory;
     }
 

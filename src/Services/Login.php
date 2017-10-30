@@ -17,7 +17,6 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class Login
 {
     private $authCheck;
-    private $doctrine;
 
     /**
      * Login constructor.

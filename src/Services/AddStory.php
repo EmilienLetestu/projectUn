@@ -99,7 +99,7 @@ class AddStory
      * @param $href
      * @return mixed
      */
-    public function processWithUrl($form,Story $story,$href)
+    public function processWithUrl(FormInterface $form,Story $story,$href)
     {
         foreach ($href as $key=>$value)
         {
