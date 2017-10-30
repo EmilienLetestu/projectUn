@@ -1,19 +1,6 @@
 {
-    "authors": [
-        {
-            "name": "Emilien Letestu",
-            "email": "eletestu@gmail.com",
-            "role": "Developer"
-        },
-        {
-            "name": "Guillaume Loulier",
-            "role": "Developer"
-        },
-        {
-            "name": "Jordane Lacroix",
-            "role": "UX/UI designer"
-        }
-    ],
+    "name": "onu",
+    "description": "A b to b website about C.O.P. friendly projects",
     "type": "project",
     "license": "proprietary",
     "require": {
