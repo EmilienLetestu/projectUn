@@ -78,7 +78,7 @@ class AddStory
             $href = array_filter($urls);
             if(!empty($href))
             {
-                $this->processWithUrl($form,Story::class,$href);
+                $this->processWithUrl($form,$story,$href);
             }
             //persist
             $this->doctrine->persist($story);
