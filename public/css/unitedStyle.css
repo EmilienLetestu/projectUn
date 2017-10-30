@@ -407,4 +407,8 @@ footer
         width: 100%;
     }
 
+    .storyCard li {
+        font-size: 0.7em;
+    }
+
 }

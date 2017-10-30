@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/* -------------------------------- */
+
+/* == _desktop.scss (grands écrans) */
+
+/* -------------------------------- */
+
+@media (min-width: 64.063em) {
+    body:before {
+        @include bandeau-resolution;
+        content: "Version Ordinateur";   
+    }    
+}
+/* Fin de @media (max-width: 64.063em) /* = min-width 1025px */
