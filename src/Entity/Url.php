@@ -117,5 +117,4 @@ class Url
        $alt = parse_url($href);
        return $alt['host'];
     }
-
 }

@@ -472,5 +472,4 @@ class Story implements \Serializable
     {
         return  $country = Intl::getRegionBundle()->getCountryName($this->getCountry());
     }
-
 }

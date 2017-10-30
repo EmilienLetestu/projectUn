@@ -129,5 +129,4 @@ easy_admin:
                actions:
                    - { name: delete, icon: trash-o, label: 'Delete'}
 
-
    site_name: Climate stories bank

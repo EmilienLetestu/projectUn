@@ -23,47 +23,38 @@ class RenewPswd
 {
     private $formFactory;
     private $doctrine;
-    private $requestStack;
     private $mailService;
     private $tools;
     private $swift;
     private $session;
-    private $token;
 
     /**
      * UpdatePswd constructor.
      * @param FormFactory $formFactory
      * @param EntityManager $doctrine
-     * @param RequestStack $requestStack
      * @param Mail $mailService
      * @param Tools $tools
      * @param \Swift_Mailer $swift
      * @param Session $session
-     * @param TokenStorage $token
      */
     public function __construct(
         FormFactory   $formFactory,
         EntityManager $doctrine,
-        RequestStack  $requestStack,
         Mail          $mailService,
         Tools         $tools,
         \Swift_Mailer $swift,
-        Session       $session,
-        TokenStorage  $token
+        Session       $session
     )
     {
         $this->formFactory  = $formFactory;
         $this->doctrine     = $doctrine;
-        $this->requestStack = $requestStack;
         $this->mailService  = $mailService;
         $this->tools        = $tools;
         $this->swift        = $swift;
         $this->session      = $session;
-        $this->token        = $token;
     }
 
     /**
-     * Send an email to renew a lost password
      * @param Request $request
      * @return \Symfony\Component\Form\FormView
      */
@@ -95,7 +86,7 @@ class RenewPswd
                 $user->getSurname(),
                 $user->getConfirmationToken(),
                 $user->getEmail(),
-                $sender="lost_password@climateStories.com"
+                "lost_password@climateStories.com"
             );
             $this->swift->send($message);
         }
@@ -147,7 +138,7 @@ class RenewPswd
                 $user->getSurname(),
                 $user->getConfirmationToken(),
                 $user->getEmail(),
-                $sender="lost_password@climateStories.com"
+                "lost_password@climateStories.com"
             );
             $this->swift->send($message);
 
@@ -173,7 +164,7 @@ class RenewPswd
                 )
             ;
 
-            return $redirect = 'home';
+            return 'home';
         }
 
         return $resetForm->createView();

@@ -21,10 +21,6 @@ class CountryNameExtension extends \Twig_Extension
 
     public function countryFilter($isoCode)
     {
-      return  $country = Intl::getRegionBundle()->getCountryName($isoCode);
+      return Intl::getRegionBundle()->getCountryName($isoCode);
     }
-
-
-
-
 }

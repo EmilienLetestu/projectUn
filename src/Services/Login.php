@@ -11,49 +11,32 @@ namespace App\Services;
 use Doctrine\ORM\EntityManager;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class Login
 {
     private $authCheck;
-    private $session;
-    private $token;
     private $doctrine;
 
     /**
      * Login constructor.
      * @param AuthorizationChecker $authCheck
-     * @param Session $session
-     * @param TokenStorage $token
-     * @param EntityManager $doctrine
      */
-    public function  __construct(
-        AuthorizationChecker $authCheck,
-        Session              $session,
-        TokenStorage         $token,
-        EntityManager        $doctrine
-
-    )
+    public function  __construct(AuthorizationChecker $authCheck)
     {
         $this->authCheck  = $authCheck;
-        $this->session    = $session;
-        $this->token      = $token;
-        $this->doctrine   = $doctrine;
     }
 
     /**
-     * @param Request $request
      * @param AuthenticationUtils $authUtils
      * @return array|string
      */
-    public function processLogin(Request $request,AuthenticationUtils $authUtils)
+    public function processLogin(AuthenticationUtils $authUtils)
     {
         if ( $this->authCheck->isGranted('IS_AUTHENTICATED_REMEMBERED'))
         {
-            return $redirect = 'home';
+            return 'home';
         }
 
         // get the login error if there is one

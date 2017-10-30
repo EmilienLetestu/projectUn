@@ -19,15 +19,21 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class Register
 {
     private $formFactory;
-    private $requestStack;
     private $doctrine;
     private $swift;
     private $mailService;
     private $session;
 
+    /**
+     * Register constructor.
+     * @param FormFactory $formFactory
+     * @param EntityManager $doctrine
+     * @param \Swift_Mailer $swift
+     * @param Session $session
+     * @param Mail $mailService
+     */
     public function __construct(
         FormFactory   $formFactory,
-        RequestStack  $requestStack,
         EntityManager $doctrine,
         \Swift_Mailer $swift,
         Session       $session,
@@ -35,7 +41,6 @@ class Register
     )
     {
         $this->formFactory  = $formFactory;
-        $this->requestStack = $requestStack;
         $this->doctrine     = $doctrine;
         $this->swift        = $swift;
         $this->session      = $session;
@@ -72,14 +77,13 @@ class Register
             $user->setConfirmationToken(40);
             ;
 
-
             //prepare email
             $message = $this->mailService->validationMail(
                 $user->getName(),
                 $user->getSurname(),
                 $user->getConfirmationToken(),
                 $user->getEmail(),
-                $sender = "activation@climateStories.com"
+                "activation@climateStories.com"
             );
 
             //save
@@ -95,7 +99,7 @@ class Register
                 )
             ;
 
-            return $redirect = 'home';
+            return 'home';
         }
 
         return $registerForm->createView();

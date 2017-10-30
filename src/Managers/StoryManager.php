@@ -89,7 +89,7 @@ class StoryManager
                 $pageNumber,
                 $totalPage = ceil(count($storyList)/$limit),
                 $filter->createView(),
-                $title = 'We found '.count($storyList)
+                'We found '.count($storyList)
             ];
         }
         //get current page number from url param
@@ -112,7 +112,7 @@ class StoryManager
             $pageNumber,
             $totalPage,
             $filter->createView(),
-            $title = 'Our climate stories safe  holds '.count($storyList)
+            'Our climate stories safe  holds '.count($storyList)
             ]
         ;
     }

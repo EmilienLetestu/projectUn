@@ -80,7 +80,7 @@ class Activation
                 $user->getSurname(),
                 $user->getConfirmationToken(),
                 $user->getEmail(),
-                $sender = "activation@climateStories.com"
+                "activation@climateStories.com"
             );
 
             $this->swift->send($message);
@@ -104,5 +104,4 @@ class Activation
             ->add('success','Your account has been activated !')
             ;
     }
-
 }

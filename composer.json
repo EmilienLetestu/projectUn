@@ -1,4 +1,19 @@
 {
+    "authors": [
+        {
+            "name": "Emilien Letestu",
+            "email": "eletestu@gmail.com",
+            "role": "Developer"
+        },
+        {
+            "name": "Guillaume Loulier",
+            "role": "Developer"
+        },
+        {
+            "name": "Jordane Lacroix",
+            "role": "UX/UI designer"
+        }
+    ],
     "type": "project",
     "license": "proprietary",
     "require": {

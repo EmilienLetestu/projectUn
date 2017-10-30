@@ -37,7 +37,7 @@ class IndexController extends Controller
      */
     public function login(Request $request, AuthenticationUtils $authUtils)
     {
-        $view = $this->get('App\Services\Login')->processLogin($request, $authUtils);
+        $view = $this->get('App\Services\Login')->processLogin($authUtils);
 
         if($view === 'home')
         {
@@ -165,9 +165,7 @@ class IndexController extends Controller
     public function browse(Request $request)
     {
         $view = $this->get('App\Managers\StoryManager')
-            ->fetchForBrowser(
-            $request,
-            $limit = 5)
+            ->fetchForBrowser($request,5)
         ;
 
         return $this->render('pagination.html.twig',[
@@ -179,5 +177,4 @@ class IndexController extends Controller
             ]
         );
     }
-
 }

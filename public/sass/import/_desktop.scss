@@ -9,7 +9,66 @@
 @media (min-width: 64.063em) {
     body:before {
         @include bandeau-resolution;
-        content: "Version Ordinateur";   
-    }    
+        content: "Version Ordinateur";
+    }
+
+    .cardHolder {
+        display: flex;
+        flex-flow: wrap;
+        align-items: center;
+        align-content: space-between;
+        justify-content: center;
+    }
+    .storyCard {
+        width: 30%;
+        margin: 1.5%;
+        margin-block-end: 30px;
+        -webkit-box-shadow: $shadow !important;
+        -moz-box-shadow: $shadow !important;
+        box-shadow: $shadow !important;
+        height: 250px;
+        ul {
+            display: flex;
+            justify-content: space-evenly;
+        }
+        li {
+            font-size: 0.9em;
+        }
+        i {
+            color: $primary-color-card;
+        }
+        h3 {
+            text-align: center;
+            padding-top: 2%;
+            padding-bottom: 2%;
+            color: $primary-color-light-card;
+        }
+        p {
+            text-align: justify;
+            margin-top: 5%;
+            margin-left: 3%;
+            margin-right:3%;
+            height: 80px;
+        }
+    }
+
+    .cardHeader
+    {
+        background-color: $primary-color-card;
+    }
+
+    .cardLink
+    {
+        text-align: center;
+        margin-bottom: 3%;
+        a
+        {
+            border-color: $primary-color-card;
+        }
+    }
+
+
+
+
 }
 /* end of @media (max-width: 64.063em) /* = min-width 1025px */

@@ -15,7 +15,11 @@ use App\Entity\User;
 use App\Form\StoryType;
 use App\Form\TryType;
 use Doctrine\ORM\EntityManager;
+use phpDocumentor\Reflection\Types\Object_;
+use Symfony\Component\Form\Form;
+use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormFactory;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -27,21 +31,18 @@ class AddStory
     private $formFactory;
     private $doctrine;
     private $session;
-    private $requestStack;
     private $token;
 
     public function __construct(
         FormFactory   $formFactory,
         EntityManager $doctrine,
         Session       $session,
-        RequestStack  $requestStack,
         TokenStorage  $token
     )
     {
         $this->formFactory  = $formFactory;
         $this->doctrine     = $doctrine;
         $this->session      = $session;
-        $this->requestStack = $requestStack;
         $this->token        = $token;
     }
 
@@ -58,7 +59,7 @@ class AddStory
         if($form->isSubmitted() && $form->isValid())
         {
             //generate date
-            $story->setCreatedOn($format='Y-m-d');
+            $story->setCreatedOn('Y-m-d');
             //prepare repo
             $this->doctrine->getRepository(Story::class);
 
@@ -77,7 +78,7 @@ class AddStory
             $href = array_filter($urls);
             if(!empty($href))
             {
-                $this->processWithUrl($form,$story,$href);
+                $this->processWithUrl($form,Story::class,$href);
             }
             //persist
             $this->doctrine->persist($story);
@@ -94,11 +95,11 @@ class AddStory
 
     /**
      * @param $form
-     * @param $story
+     * @param Story $story
      * @param $href
      * @return mixed
      */
-    public function processWithUrl($form,$story,$href)
+    public function processWithUrl($form,Story $story,$href)
     {
         foreach ($href as $key=>$value)
         {
@@ -108,12 +109,8 @@ class AddStory
             $story->addUrl($url);
             $this->doctrine->persist($url);
             $this->doctrine->persist($story);
-            $this->doctrine->flush();
         }
+        $this->doctrine->flush();
         return $form->createView();
-    }
-
-    public function storyValidationRule()
-    {
     }
 }
