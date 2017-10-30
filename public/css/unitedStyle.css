@@ -179,6 +179,11 @@ footer
   color: #5fdda1;
 }
 
+.invalidBack ul
+{
+    color:#F54041;
+    list-style: none;
+}
 /*------- story card --------*/
 .cardHolder
 {
@@ -196,12 +201,15 @@ footer
     -webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
-
+}
+.storyCard ul
+{
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .storyCard li
 {
-    margin-left: 5%;
     font-size: 0.9em;
 }
 
@@ -364,8 +372,39 @@ footer
     padding: 0;
 }
 
-.invalidBack ul
-{
-    color:#F54041;
-    list-style: none;
+
+/*----------------------------------------------------- mobile ------------------------------------------------------*/
+
+@media screen and (max-width: 640px) {
+
+    /*------- form --------*/
+    #filter
+    {
+        height:250px;
+        padding: 5% ;
+    }
+
+    #filter .form-group
+    {
+        width: 100%;
+    }
+
+    #filter .form-inline
+    {
+        padding:  0;
+    }
+
+    #filterBtn,
+    #resetBtn
+    {
+        width: 50% !important;
+    }
+
+
+    /*------- story card --------*/
+    .storyCard
+    {
+        width: 100%;
+    }
+
 }
