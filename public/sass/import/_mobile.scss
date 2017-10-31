@@ -90,7 +90,7 @@ h2 {
 	left: 0;
 	position: absolute;
 	width: 100%;
-	background-color: $primary-color-light;
+	background-color: $primary-color-dark;
 }
 
 .main{
@@ -99,7 +99,7 @@ h2 {
 
 /*--- navbar ----*/
 .navbar {
-	background: $primary-color-light;
+	background: $primary-color;
 }
 
 .navbar-brand{
@@ -323,13 +323,13 @@ h2 {
 	padding: 2%;
 }
 
-#abstract,
-#plot{
+#storyAbstract,
+#storyPlot{
 	text-align: justify;
 	font-size: 1.8rem;
 }
 
-#plot{
+#storyPlot{
 	columns:3;
 	column-gap: 25px;
 	padding-top: 4%;
