@@ -13,6 +13,9 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class Fixtures extends Fixture
 {
+    /**
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         $user = new User();

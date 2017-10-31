@@ -100,6 +100,9 @@ h2 {
 /*--- navbar ----*/
 .navbar {
 	background: $primary-color;
+	-webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+	box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 }
 
 .navbar-brand{
@@ -187,7 +190,7 @@ h2 {
 	-webkit-box-shadow: $shadow !important;
 	-moz-box-shadow: $shadow !important;
 	box-shadow: $shadow !important;
-	height: 250px;
+	height: 280px;
 	ul {
 		display: flex;
 		justify-content: space-evenly;
@@ -202,7 +205,7 @@ h2 {
 		text-align: center;
 		padding-top: 2%;
 		padding-bottom: 2%;
-		color: #ffffff;
+		color: $secondary-color;
 	}
 	p {
 		text-align: justify;
@@ -214,12 +217,12 @@ h2 {
 }
 
 .cardHeader {
-	background-color: $secondary-color;
+	background-color: $primary-color;
 }
 
 .cardLink {
 	text-align: center;
-	margin-bottom: 3%;
+	padding-bottom: 5%;
 	a {
 		border-color: $secondary-color-light;
 		color: $secondary-color-dark;
@@ -229,6 +232,9 @@ h2 {
 		background-color: $secondary-color ;
 		border-bottom-color: transparent;
 	}
+}
+.cardFooter{
+	border-top: solid 1px $secondary-color;
 }
 
 /*------- home ---------*/
@@ -254,6 +260,7 @@ h2 {
 #pageLinks	a:hover {
  	color: $primary-color-dark !important;
 	text-decoration: underline $primary-color-dark;
+	zoom: 120%;
 }
 
 #nextBtn,
@@ -274,11 +281,16 @@ h2 {
 }
 
 /*--------FORM---------*/
+#filter{
+	border-bottom: 1px solid $secondary-color-dark;
+	border-top: 1px solid $secondary-color-dark;
+}
 
 #filterBtn .btn{
 	border-color: $secondary-color-light !important;
 	color: $secondary-color-light !important;
 }
+
 
 #filterBtn .btn:hover{
 	border-color: #FFFFFF !important;
@@ -295,14 +307,22 @@ h2 {
 #resetBtn .btn:hover{
 	border-color: $secondary-color-light !important;
 	color: $secondary-color-light !important;
+	background-color: #FFFFFF;
 }
 
 #filter  select:focus {
 		border-color: $secondary-color-light !important;
 	}
 #filter	select:hover {
-		border-color: $secondary-color-light !important;
+		border-color: $secondary-color !important;
 	}
+#filter select{
+	border-color: $secondary-color-dark;
+	background: transparent;
+}
+#filter select option:checked{
+	color: $secondary-color-dark;
+}
 /*------story-------*/
 #storyTags{
 	position: fixed;
