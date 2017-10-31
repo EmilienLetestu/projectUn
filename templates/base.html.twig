@@ -16,85 +16,89 @@
         {% endblock %}
     </head>
     <body>
-        <div class="d-flex flex-column" id="wrapper">
-            <nav class="navbar navbar-toggleable-md navbar-fixed-top">
-                <a class="navbar-brand" href="{{ path('home') }}">
-                    <i class="fa fa-home" aria-hidden="true">
-                        Climate Stories Bank
-                    </i>
-                </a>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    {% if is_granted('ROLE_USER') %}
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item active">
-                                <a href="{{ path('addStory')}}" class="nav-link"
-                                 {% if app.request.attributes.get('_route') == 'addStory' %}
-                                    id="active"
-                                  {% endif %}>
-                                Add your story
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ path('browse', {'pageNumber':1})}}" class="nav-link"
-                                {% if app.request.attributes.get('_route') == 'browse' %}
-                                    id="active"
-                                {% endif %}>
-                                    Browse
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ path('admin') }}" class="nav-link">
-                                    Administration
-                                </a>
-                            </li>
-                        </ul>
-                    {% endif %}
+        <nav class="navbar navbar-fixed-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ path('home') }}">
+                        <i class="fa fa-home" aria-hidden="true">
+                            Climate Stories Bank
+                        </i>
+                    </a>
                 </div>
-                {% if  not is_granted('ROLE_USER') %}
-                    <div class="nav navbar-nav ml-auto" id="connection">
-                        <a class="btn btn-default" href="{{ path('register') }}">Register</a>
-                        <a class="btn btn-outline" href="{{ path('login') }}">Sign in</a>
-                    </div>
-                {% endif %}
-
                 {% if is_granted('ROLE_USER') %}
-                    <div class="nav navbar-nav ml-auto" id="connection">
-                        <a class="btn" id="logout" href="{{ path('logout') }}">
-                            <i class="fa fa-sign-out" aria-hidden="true"></i>
-                            Logout
-                         </a>
-                    </div>
+                <ul class="nav navbar-nav">
+                    <li class="nav-item">
+                        <a href="{{ path('addStory')}}" class="nav-link"
+                            {% if app.request.attributes.get('_route') == 'addStory' %}
+                                id="active"
+                            {% endif %}>
+                            Add your story
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('browse', {'pageNumber':1})}}" class="nav-link"
+                            {% if app.request.attributes.get('_route') == 'browse' %}
+                                id="active"
+                            {% endif %}>
+                            Browse
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ path('admin') }}" class="nav-link">
+                            Administration
+                        </a>
+                    </li>
+                </ul>
                 {% endif %}
-
-            </nav>
-                <main class="container-fluid py-3 w-100" id="app">
-                    {% for label, messages in app.flashes(['denied','error','success','warning']) %}
-                        {% for message in messages %}
-                            <div class="alert alert-{{ label }}" style="font-size: 2em">
-                                <p>{{ message }}</p>
-                            </div>
-                        {% endfor %}
+                {% if  not is_granted('ROLE_USER') %}
+                <ul class="nav navbar-nav navbar-right" id="connection">
+                    <li>
+                        <a class="btn btn-default" href="{{ path('register') }}">Register</a>
+                    </li>
+                     <li>
+                         <a class="btn btn-outline" href="{{ path('login') }}">Sign in</a>
+                     </li>
+                 </ul>
+                {% endif %}
+                {% if is_granted('ROLE_USER') %}
+                <ul class="nav navbar-nav navbar-right" id="connection">
+                    <li>
+                        <a class="btn" id="logout" href="{{ path('logout') }}">
+                            <i class="fa fa-sign-out" aria-hidden="true">
+                                Logout
+                            </i>
+                        </a>
+                    </li>
+                </ul>
+                {% endif %}
+            </div>
+        </nav>
+        <div class="page-wrap">
+                {% for label, messages in app.flashes(['denied','error','success','warning']) %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}" style="font-size: 2em">
+                            <p>{{ message }}</p>
+                        </div>
                     {% endfor %}
+                {% endfor %}
 
                 {% block body %}
 
                 {% endblock %}
-                </main>
-            <footer class="container-fluid w-100">
-                <div id="footerItem">
-                   <ul class="list-inline">
-                       <li class="list-inline-item pull-left">Contact us</li>
-                       <li class="list-inline-item">Legal Notice</li>
-                       <li class="list-inline-item pull-right">Partnership</li>
-                   </ul>
+                {% block javascripts %}
+
+                {% endblock %}
+                <div class="footer col-sm-12">
+                    <div id="footerItem">
+                        <ul class="list-inline">
+                            <li class="list-inline-item pull-left">Contact us</li>
+                            <li class="list-inline-item">Legal Notice</li>
+                            <li class="list-inline-item pull-right">Partnership</li>
+                        </ul>
+                    </div>
                 </div>
-            </footer>
         </div>
-        {% block javascripts %}
-        {% endblock %}
     </body>
 </html>
 
-{% if app.request.attributes.get('_route') == 'browse' %}
 
-{% endif %}

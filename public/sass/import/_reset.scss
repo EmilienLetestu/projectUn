@@ -20,10 +20,16 @@ body {
 	overflow-x:hidden;
 }
 
+.footer {
+    position:fixed;
+    bottom:0;
+}
+
 html,
 body {
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 ul,
 ol {
@@ -47,7 +53,6 @@ svg:not(:root) {
 figure {
     margin: 0;
 }
-
 
 /* set all potentially problematics elements to maximum width */
 

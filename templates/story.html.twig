@@ -124,10 +124,10 @@
         </div>
         {% endif %}
         {% if previous != null %}
-         <a class="btn" href="{{ path('story',{'storyId':previous|join('|')}) }}">Previous</a>
+         <a class="btn pull-left" href="{{ path('story',{'storyId':previous|join('|')}) }}">Previous</a>
         {% endif %}
         {% if next != null %}
-            <a class="btn" href="{{ path('story',{'storyId':next|join('|')}) }}">Next</a>
+            <a class="btn pull-right" href="{{ path('story',{'storyId':next|join('|')}) }}">Next</a>
         {% endif %}
     </div>
 {% endblock %}
