@@ -58,7 +58,7 @@ mark {
 
 .btn
 {
-	background: $btn-backgrd-primary;
+	background: #ffffff;
 }
 
 /* -----LAYOUT-----*/
@@ -68,6 +68,163 @@ mark {
 	width: 100%;
 	display: block;
 	text-align: center;
+}
+
+.page-wrap {
+	box-sizing: border-box;
+	min-height: 100%;
+	padding: 0 0 100px;
+	position: relative;
+}
+
+.footer{
+	bottom: 0;
+	height: 100px;
+	left: 0;
+	position: absolute;
+	width: 100%;
+	background-color: $primary-color-light;
+}
+
+/*--- navbar ----*/
+.navbar {
+	background: $primary-color-light;
+}
+
+.navbar-brand{
+	margin-right: 100px;
+}
+
+.navbar-brand,
+.nav-link {
+	color: #FFFFFF;
+}
+
+#active {
+	border-bottom: solid 2px ;
+}
+
+.navbar-brand:hover,
+.navbar-brand:focus{
+	color: $secondary-color-light;
+}
+
+.nav-link:hover,
+.nav-link:focus{
+	color: $secondary-color-light;
+	border-color: $secondary-color-light!important;
+	border-bottom: solid 2px;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+	background-color:$primary-color-light ;
+}
+
+#logout,
+#registerBtn,
+#signInBtn {
+	padding: 10px !important;
+	margin-top: 5px;
+	margin-right: 10px;
+}
+
+#logout,
+#signInBtn{
+	color: $secondary-color-light;
+	border: solid 1px $secondary-color-light;
+}
+
+#logout:hover,
+#signInBtn:hover{
+	color: #FFFFFF;
+	border: solid 1px #FFFFFF;
+	background: $secondary-color-light;
+}
+
+#registerBtn{
+	color: $primary-color;
+	border: solid 1px $primary-color;
+}
+
+#registerBtn:hover{
+	color: #FFFFFF;
+	border: solid 1px #FFFFFF;
+	background: $primary-color;
+}
+
+/*------- footer elements -------*/
+#footerItem ul {
+	color: #FFFFFF;
+	font-size: 1.5rem;
+	display: flex;
+	justify-content: space-between;
+	padding-top: 2%;
+}
+
+/*------- card ---------*/
+.cardHolder {
+	display: flex;
+	flex-flow: wrap;
+	align-items: center;
+	align-content: space-between;
+	justify-content: center;
+}
+
+.storyCard {
+	width: 30%;
+	margin: 1.5%;
+	margin-block-end: 30px;
+	-webkit-box-shadow: $shadow !important;
+	-moz-box-shadow: $shadow !important;
+	box-shadow: $shadow !important;
+	height: 250px;
+	ul {
+		display: flex;
+		justify-content: space-evenly;
+	}
+	li {
+		font-size: 0.9em;
+	}
+	i {
+		color: $secondary-color;
+	}
+	h3 {
+		text-align: center;
+		padding-top: 2%;
+		padding-bottom: 2%;
+		color: #ffffff;
+	}
+	p {
+		text-align: justify;
+		margin-top: 5%;
+		margin-left: 3%;
+		margin-right:3%;
+		height: 80px;
+	}
+}
+
+.cardHeader
+{
+	background-color: $secondary-color;
+}
+
+.cardLink
+{
+	text-align: center;
+	margin-bottom: 3%;
+	a
+	{
+		border-color: $secondary-color;
+	}
+}
+
+/*------- home ---------*/
+
+.storyCount
+{
+	text-align: center;
+	margin-bottom: 5%;
+	margin-top: 5%;
+	padding: 0;
 }
 
 /* -----MOBILE-----*/

@@ -14,15 +14,7 @@ html {
 
 * {
   box-sizing: inherit;
-}
-
-body {
-	overflow-x:hidden;
-}
-
-.footer {
-    position:fixed;
-    bottom:0;
+  font-family: 'Roboto', sans-serif;
 }
 
 html,
@@ -31,6 +23,7 @@ body {
     padding: 0;
     height: 100%;
 }
+
 ul,
 ol {
     padding-left: 2em;
@@ -117,21 +110,21 @@ figure {
 h1,
 .h1-like {
     margin: 0.6563em 0 0 0;
-    font-size: 2.2857em;
+    font-size: 5rem;
     /* equiv 32px */
     line-height: 1.3126;
 }
 h2,
 .h2-like {
     margin: 0.75em 0 0 0;
-    font-size: 2em;
+    font-size: 4rem;
     /* equiv 28px */
     line-height: 1.5;
 }
 h3,
 .h3-like {
     margin: 0.875em 0 0 0;
-    font-size: 1.7143em;
+    font-size: 2rem;
     /* equiv 24px */
     line-height: 1.75;
 }
