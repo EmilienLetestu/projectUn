@@ -50,14 +50,21 @@ mark {
 	background: #ff0;
 }
 
+h1{
+	text-align: center;
+}
+
+h2 {
+	text-align: center;
+}
+
 /* -----BUTTONS-----*/
 
 .btn {
 	@include button-general;
 }
 
-.btn
-{
+.btn {
 	background: #ffffff;
 }
 
@@ -84,6 +91,10 @@ mark {
 	position: absolute;
 	width: 100%;
 	background-color: $primary-color-light;
+}
+
+.main{
+	margin-bottom: 2.5%;
 }
 
 /*--- navbar ----*/
@@ -202,52 +213,223 @@ mark {
 	}
 }
 
-.cardHeader
-{
+.cardHeader {
 	background-color: $secondary-color;
 }
 
-.cardLink
-{
+.cardLink {
 	text-align: center;
 	margin-bottom: 3%;
-	a
-	{
-		border-color: $secondary-color;
+	a {
+		border-color: $secondary-color-light;
+		color: $secondary-color-dark;
+	}
+	a:hover{
+		color: #FFFFFF;
+		background-color: $secondary-color ;
+		border-bottom-color: transparent;
 	}
 }
 
 /*------- home ---------*/
 
-.storyCount
-{
+.storyCount {
 	text-align: center;
 	margin-bottom: 5%;
 	margin-top: 5%;
 	padding: 0;
 }
 
-/* -----MOBILE-----*/
+/*------- pagination --------*/
 
-body:before {
-	@include bandeau-resolution;
-	content: "Version mobile";
+#currentPage {
+	text-decoration: underline $primary-color-dark;
 }
 
-/* Fin de @media (min-width: 20em) = min-width 320px */
 
-.wrapper {
-	#section1 {
-		nav {
-			ul {}
-		}
+#pageLinks a {
+	color: $secondary-color-dark !important;
+}
+
+#pageLinks	a:hover {
+ 	color: $primary-color-dark !important;
+	text-decoration: underline $primary-color-dark;
+}
+
+#nextBtn,
+#nextStory,
+#prevStory,
+#previousBtn{
+	border-color: $secondary-color-dark !important;
+	color: $secondary-color-dark !important;
+}
+
+#nextBtn:hover,
+#nextStory:hover,
+#prevStory:hover,
+#previousBtn:hover{
+	border-color: transparent !important;
+	color: #FFFFFF !important;
+	background-color: $secondary-color-dark;
+}
+
+/*--------FORM---------*/
+
+#filterBtn .btn{
+	border-color: $secondary-color-light !important;
+	color: $secondary-color-light !important;
+}
+
+#filterBtn .btn:hover{
+	border-color: #FFFFFF !important;
+	color: #FFFFFF !important;
+	background-color: $secondary-color-light;
+}
+
+#resetBtn .btn{
+	border-color: #FFFFFF !important;
+	color: #FFFFFF !important;
+	background-color: $secondary-color-light;
+}
+
+#resetBtn .btn:hover{
+	border-color: $secondary-color-light !important;
+	color: $secondary-color-light !important;
+}
+
+#filter  select:focus {
+		border-color: $secondary-color-light !important;
 	}
-	#section2 {}
+#filter	select:hover {
+		border-color: $secondary-color-light !important;
+	}
+/*------story-------*/
+#storyTags{
+	position: fixed;
+	top:6%;
+	border-bottom: 1px solid $secondary-color;
+	width:100%;
+	font-size: 1.5rem ;
+	background-color: #FFFFFF;
+	i{
+		color: $secondary-color;
+	}
+	ul{
+		display: flex;
+		justify-content: space-between;
+	}
+}
+#storyBody{
+	padding: 2%;
+}
+
+#abstract,
+#plot{
+	text-align: justify;
+	font-size: 1.8rem;
+}
+
+#plot{
+	columns:3;
+	column-gap: 25px;
+	padding-top: 4%;
+	padding-bottom: 3%;
+	h3{
+		column-span: all;
+		-webkit-column-span: all;
+	}
+}
+
+#moreStory{
+	display: flex;
+	justify-content: space-around;
+	border-bottom: 1px solid $secondary-color-dark;
+	border-top: 1px solid $secondary-color-dark;
+	padding-bottom: 2%;
+}
+#contact,
+#extResources{
+	width: 45%;
+
+}
+#contact{
+	h3{
+		text-align: center;
+		padding-bottom: 2%;
+	}
+	ul{
+		display: flex;
+		justify-content: space-around;
+		font-size: 1.5rem;
+	}
+	i{
+		color: $secondary-color;
+	}
+}
+
+#extResources{
+	h3{
+		text-align: center;
+		padding-bottom: 2%;
+	}
+	ul{
+		display: flex;
+		justify-content: space-around;
+		font-size: 1.5rem;
+	}
+}
+
+#moreContainer{
+	.cardHolder{
+		display: flex;
+		flex-flow: column;
+	}
 
 }
 
-/* @media query optionnelle (max-width: 640px)*/
 
-@media (max-width: 640px) {}
+	/* -----MOBILE-----*/
+
+	body:before {
+		@include bandeau-resolution;
+		content: "Version mobile";
+	}
+
+	/* Fin de @media (min-width: 20em) = min-width 320px */
+
+	.wrapper {
+		#section1 {
+			nav {
+				ul {}
+			}
+		}
+		#section2 {}
+
+	}
+
+	/* @media query optionnelle (max-width: 640px)*/
+
+	@media (max-width: 640px) {
+
+		/*------- story card --------*/
+		.storyCard
+		{
+			width: 100%;
+		}
+
+		.storyCard li {
+			font-size: 0.7em;
+		}
+		/*------story-------*/
+		#storyTags{
+			font-size: 1rem ;
+		}
+		#abstract,
+		#plot{
+			font-size: 1.2rem;
+		}
+
+	}
+
 
 /* Fin de @media query optionnelle (max-width: 640px)*/

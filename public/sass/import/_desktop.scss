@@ -13,4 +13,28 @@
     }
 }
 
+h1{
+    padding-bottom: 4%;
+    padding-top: 4%;
+}
+
+
+/*-----form-----*/
+
+#filter {
+    margin-bottom: 5%;
+    background-color: $primary-color-light;
+    height: 150px;
+    padding-top: 4%;
+    padding-left: 6%;
+    .form-inline {
+        padding-bottom: 10%;
+        padding-left: 10%;
+    }
+    .form-group {
+        padding-left: 3%;
+    }
+}
+
+
 /* end of @media (max-width: 64.063em) /* = min-width 1025px */

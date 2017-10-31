@@ -33,16 +33,17 @@
             <h3>A Climate Story #{{ story.id }}</h3>
             <p>{{ story.plot|raw }}</p>
         </div>
-
+    </div>
+        <div id="moreStory">
         <div id="contact">
             <h3>About the author</h3>
             <ul class="list-inline">
                 <li class="list-inline-item">
-                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <i class="fa fa-user-o" aria-hidden="true"></i>
                     {{ story.user.fullName }}
                 </li>
                 <li class="list-inline-item">
-                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    <i class="fa fa-envelope-o" aria-hidden="true"></i>
                     {{ story.contactEmail }}
                 </li>
                 <li class="list-inline-item">
@@ -58,7 +59,7 @@
 
         {% if extResources != null %}
         <div id="extResources">
-            <h4>More about {{ story.title }}</h4>
+            <h3>More about {{ story.title }}</h3>
             <ul class="list-inline">
                 {% for url in extResources %}
                     <li class="list-inline-item">
@@ -68,66 +69,49 @@
             </ul>
         </div>
         {% endif %}
-
-    </div>
+        </div>
 
     <div id="moreContainer">
         {% if sameTopic != null %}
         <div class="more" id="moreTopic">
             <h3>Stories about {{ story.topic.type }}</h3>
-            {% for story in sameTopic|shuffle|slice(0,3) %}
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
-                    </li>
-                </ul>
-            {% endfor %}
+            {% set stories = sameTopic|shuffle|slice(0,3) %}
+                {{ include('storyCard.html.twig') }}
         </div>
         {% endif %}
 
         {% if sameCountry != null %}
         <div class="more" id="moreCountry">
             <h3>Stories set in {{ story.country|country}}</h3>
-            {% for story in sameCountry|shuffle|slice(0,3) %}
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
-                    </li>
-                </ul>
-            {% endfor %}
+            {% set stories = sameCountry|shuffle|slice(0,3) %}
+                {{ include('storyCard.html.twig') }}
         </div>
         {% endif %}
 
         {% if sameYear != null %}
         <div class="more" id="moreYear">
             <h3>Stories started in {{ story.year}}</h3>
-            {% for story in sameYear|shuffle|slice(0,3) %}
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
-                    </li>
-                </ul>
-            {% endfor %}
+            {% set stories = sameYear|shuffle|slice(0,3) %}
+                {{ include('storyCard.html.twig') }}
         </div>
         {% endif %}
 
         {% if samePatronage != null %}
         <div class="more" id="morePatronage">
             <h3>Stories supported by {{ story.patronage.organization }}</h3>
-            {% for story in samePatronage|shuffle|slice(0,3) %}
-                <ul class="list-unstyled">
-                    <li>
-                        <a href="{{ path('story',{'storyId':story.id}) }}">{{ story.title }}</a>
-                    </li>
-                </ul>
-            {% endfor %}
+            {% set stories = samePatronage|shuffle|slice(0,3) %}
+                {{ include('storyCard.html.twig') }}
         </div>
         {% endif %}
+    </div>
         {% if previous != null %}
-         <a class="btn pull-left" href="{{ path('story',{'storyId':previous|join('|')}) }}">Previous</a>
+             <a class="btn pull-left" href="{{ path('story',{'storyId':previous|join('|')}) }}" id="prevStory">
+                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
+             </a>
         {% endif %}
         {% if next != null %}
-            <a class="btn pull-right" href="{{ path('story',{'storyId':next|join('|')}) }}">Next</a>
+                <a class="btn pull-right" href="{{ path('story',{'storyId':next|join('|')}) }}" id="nextStory">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
         {% endif %}
-    </div>
 {% endblock %}
