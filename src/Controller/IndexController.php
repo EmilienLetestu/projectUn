@@ -8,8 +8,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Story;
-use App\Entity\Topic;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -23,6 +21,7 @@ class IndexController extends Controller
     public function home()
     {
         $view = $this->get('App\Managers\StoryManager')->fetchForHome();
+
         return $this->render('home.html.twig',[
             'stories'=>$view[0],
             'total'  =>$view[1]
@@ -178,3 +177,4 @@ class IndexController extends Controller
         );
     }
 }
+
