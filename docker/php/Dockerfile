@@ -28,8 +28,10 @@ RUN pecl install apcu \
 
 # Composer
 COPY ./install-composer.sh /usr/local/bin/docker-app-install-composer
-RUN chmod +x /usr/local/bin/docker-app-install-composer \
-    && docker-app-install-composer \
+
+RUN chmod +x /usr/local/bin/docker-app-install-composer
+
+RUN docker-app-install-composer \
     && mv composer.phar /usr/local/bin/composer
 
 ENV COMPOSER_ALLOW_SUPERUSER 1
