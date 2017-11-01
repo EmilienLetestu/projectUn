@@ -17,6 +17,29 @@ h1{
     padding-bottom: 4%;
     padding-top: 4%;
 }
+/*-----home-----*/
+
+#speech{
+    padding:3%;
+    background-color: $primary-color-light;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    color: #FFFFFF;
+    p{
+        text-align: justify;
+        font-size: 1.8rem;
+    }
+    h2{
+        font-size: 5rem;
+        margin-top: 5%;
+    }
+}
+
+/*-----card-----*/
+
+.cardHolder{
+    margin-top: 3%;
+}
 /*-----form-----*/
 
 #filter {
