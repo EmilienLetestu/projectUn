@@ -9,7 +9,7 @@ before_script:
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
     - mkdir -p ~/.ssh
     - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SERVER_PUBLIC_KEY")
+    - ssh-add <(echo "$SERVER_PRIVATE_KEY")
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
 unit_tests:
