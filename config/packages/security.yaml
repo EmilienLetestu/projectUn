@@ -23,7 +23,7 @@ security:
                 path: logout
                 target: login
             remember_me:
-                secret: '%env(SECRET)%'
+                secret: '%env(APP_SECRET)%'
                 lifetime: 259200
                 path: /
                 httponly: true
