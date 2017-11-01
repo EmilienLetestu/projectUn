@@ -3,7 +3,7 @@
 {% block body %}
 
     <div>
-        <h1 class="storyCount">{{ title }} stories</h1>
+        <h1 class="storyCount">{{ title }} {{ stories|length > 1 ? 'stories' : 'story'  }}</h1>
     </div>
 
     <div id="filter">

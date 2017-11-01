@@ -2,8 +2,9 @@
 
 {% block body %}
 
-    <h2 class="storyCount">Our climate stories safe holds <b>{{ total[0]|join('|') }} stories</b></h2>
-{{ include('storyCard.html.twig') }}
+    <h2 class="storyCount">Our climate stories safe holds <b>{{ total[0]|join('|') }} {{ total[0]|join('|') > 1 ? 'stories' : 'story' }}</b></h2>
+
+    {{ include('storyCard.html.twig') }}
 
 {% endblock %}
 {% block javascripts %}
