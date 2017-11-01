@@ -1,7 +1,7 @@
 stages:
-#    - unit_tests
-#    - functional_tests
-#    - performances_tests
+    - unit_tests
+    - functional_tests
+    - performances_tests
     - server_config
     - deployment
 
@@ -12,14 +12,20 @@ before_script:
     - ssh-add <(echo "$SERVER_PRIVATE_KEY")
     - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
-#unit_tests:
-#    stage: unit_tests
-#
-#functional_tests:
-#    stage: functional_tests
-#
-#performances_tests:
-#    stage: performances_tests
+unit_tests:
+    stage: unit_tests
+    script:
+        - echo 'Hello World'
+
+functional_tests:
+    stage: functional_tests
+    script:
+        - echo 'Hello World'
+
+performances_tests:
+    stage: performances_tests
+    script:
+        - echo 'Hello World'
 
 server_config:
     stage: server_config
@@ -27,6 +33,7 @@ server_config:
         - master
     script:
         - echo 'server configuration in progress'
+        - ls -l
         - ssh -i ~/.ssh/my-ssh-key.pub $server_user@$server_host "su mkdir -p /home/$SERVER_OWNER/www/$PROJECT_NAME"
         - ssh -i ~/.ssh/my-ssh-key.pub $server_user@$server_host "su ln -s -f /home/$SERVER_OWNER/www/$PROJECT_NAME /var/www/$PROJECT_NAME"
         - ssh -i ~/.ssh/my-ssh-key.pub $server_user@$server_host "su chown -hR $SERVER_OWNER:users /home/$SERVER_OWNER/www/$PROJECT_NAME && su chmod -R 777 /home/$SERVER_OWNER/www/$PROJECT_NAME"
