@@ -36,28 +36,22 @@ class ExceptionListener
         $exception = $event->getException();
         $response = new Response();
 
-        if($exception->getCode() === '404')
+        if($exception instanceof HttpExceptionInterface && $exception->getStatusCode() === 404)
         {
             $template = $this->twig->render('error.html.twig',[
-                $message = 'This page doesn\'t exist yet !',
-                $link    = 'home'
-            ]);
-            $response->setContent($template);
-        }
-        if($exception->getCode() === '500')
-        {
-            $template = $this->twig->render('error.html.twig',[
-                $message = 'We are experiencing technical issues, please try again later on.',
-                $link    = null
+               'message'=>'This page doesn\'t exist yet !',
             ]);
             $response->setContent($template);
         }
 
-        $template = $this->twig->render('error.html.twig',[
-            $message = $exception->getMessage(),
-            $link    = 'home'
-        ]);
-        $response->setContent($template);
+       else {
+            $template = $this->twig->render('error.html.twig',[
+                'message' => 'We are experiencing technical issues, please try again later on.',
+            ]);
+            $response->setContent($template);
+        }
+
         $event->setResponse($response);
     }
 }
+

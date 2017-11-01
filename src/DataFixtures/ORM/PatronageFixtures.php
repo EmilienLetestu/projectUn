@@ -7,13 +7,12 @@
  * Time: 20:08
  */
 namespace App\DataFixtures\ORM;
+
 use App\Entity\Patronage;
-use App\Entity\Topic;
-use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 
-class Fixtures extends Fixture
+class PatronageFixtures extends Fixture
 {
     /**
      * feed db with all needed data on first launch
@@ -24,35 +23,6 @@ class Fixtures extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-        //create admin
-        $user = new User();
-        $user->setEmail('');
-        $user->setName('');
-        $user->setSurname('');
-        $user->setActivated(true);
-        $user->setPswd('');
-        $user->setRole('ADMIN');
-        $user->setConfirmationToken(40);
-        $user->setRegisteredOn('Y-m-d');
-        $manager->persist($user);
-
-        //create topics
-        $topicList = [
-            'human settlements',
-            'ocean',
-            'water',
-            'energy',
-            'agriculture',
-            'forests',
-            'industries'
-        ];
-        foreach ($topicList as $key => $value)
-        {
-            $topic = new Topic();
-            $topic->setType($value);
-            $manager->persist($topic);
-        }
-
         //create patronages
         $patronageList = [
             'ngo',
