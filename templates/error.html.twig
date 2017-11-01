@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% bloc body %}
+
+{% if message is defined %}
+<div class="msgErrorPage">
+    <p>{{ message }}</p>
+</div>
+{% endif %}
+
+{% if link is defined or link != null %}
+<div>
+    <a class="btn btn-warning" href="{{ path(link) }}">Back to homepage</a>
+</div>
+{% endif %}
+
+{% endblock %}

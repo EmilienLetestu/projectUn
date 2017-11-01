@@ -39,3 +39,7 @@ services:
     App\Twig\:
         resource: '../src/Twig'
         tags: ['twig.extension']
+
+    App\EventListener\:
+        resource: '../src/EventListener'
+        public: true

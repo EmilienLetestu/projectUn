@@ -364,6 +364,7 @@ class User implements AdvancedUserInterface, \Serializable
             $this->getSurname(),
             $this->getEmail(),
             $this->getRole(),
+            $this->getStories()
         ]);
     }
 
@@ -377,7 +378,8 @@ class User implements AdvancedUserInterface, \Serializable
             $this->name,
             $this->surname,
             $this->email,
-            $this->role
+            $this->role,
+            $this->stories
             ) = unserialize($serialized)
         ;
     }

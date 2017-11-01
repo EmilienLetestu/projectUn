@@ -69,7 +69,7 @@ easy_admin:
                actions:
                    - { name: edit, icon: pencil, label: 'Edit'}
                    - { name: delete, icon: trash-o, label: 'Delete'}
-           edit:
+           form:
                fields:
                    - { property: 'title'}
                    - { property: 'abstract'}
