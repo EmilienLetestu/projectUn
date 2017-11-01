@@ -2,15 +2,15 @@ stages:
     - unit_tests
     - functional_tests
     - performances_tests
-    - server_config
-    - deployment
+#    - server_config
+#    - deployment
 
-before_script:
-    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-    - mkdir -p ~/.ssh
-    - eval $(ssh-agent -s)
-    - ssh-add <(echo "$SERVER_PRIVATE_KEY")
-    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+#before_script:
+#    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+#    - mkdir -p ~/.ssh
+#    - eval $(ssh-agent -s)
+#    - ssh-add <(echo "$SERVER_PRIVATE_KEY")
+#    - '[[ -f /.dockerenv ]] && echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
 
 unit_tests:
     stage: unit_tests
@@ -27,26 +27,26 @@ performances_tests:
     script:
         - echo 'Hello World'
 
-server_config:
-    stage: server_config
-    only:
-        - master
-    script:
-        - echo 'server configuration in progress'
-        - ls -l
-        - ssh -i "$SERVER_PUBLIC_KEY" $server_user@$server_host "su mkdir -p /home/$SERVER_OWNER/www/$PROJECT_NAME"
-        - ssh -i "$SERVER_PUBLIC_KEY" $server_user@$server_host "su ln -s -f /home/$SERVER_OWNER/www/$PROJECT_NAME /var/www/$PROJECT_NAME"
-        - ssh -i "$SERVER_PUBLIC_KEY" $server_user@$server_host "su chown -hR $SERVER_OWNER:users /home/$SERVER_OWNER/www/$PROJECT_NAME && su chmod -R 777 /home/$SERVER_OWNER/www/$PROJECT_NAME"
-        - echo 'Projet folder created and configured'
-
-deployment:
-  stage: deployment
-  only:
-      - master
-  script:
-      - echo 'Deployment in progress'
-      - scp -r ./* $server_user@$server_host:/home/$SERVER_OWNER/www/$PROJECT_NAME
-      - ssh -i ~/.ssh/my-ssh-key $server_user@$server_host "cd /home/$SERVER_OWNER/www/$PROJECT_NAME && composer install && composer dump-autoload -o"
-      - ssh -i ~/.ssh/my-ssh-key $server_user@$server_host "rm -rf /home/$SERVER_OWNER/www/$PROJECT_NAME/var/cache/*"
-      - ssh -i ~/.ssh/my-ssh-key $server_user@$server_host "systemctl status apache2.service"
-      - echo 'Project binaries moved and installed'
+#server_config:
+#    stage: server_config
+#    only:
+#        - master
+#    script:
+#        - echo 'server configuration in progress'
+#        - ls -l
+#        - ssh $server_user@$server_host "su mkdir -p /home/$SERVER_OWNER/www/$PROJECT_NAME"
+#        - ssh $server_user@$server_host "su ln -s -f /home/$SERVER_OWNER/www/$PROJECT_NAME /var/www/$PROJECT_NAME"
+#        - ssh $server_user@$server_host "su chown -hR $SERVER_OWNER:users /home/$SERVER_OWNER/www/$PROJECT_NAME && su chmod -R 777 /home/$SERVER_OWNER/www/$PROJECT_NAME"
+#        - echo 'Projet folder created and configured'
+#
+#deployment:
+#  stage: deployment
+#  only:
+#      - master
+#  script:
+#      - echo 'Deployment in progress'
+#      - scp -r ./* $server_user@$server_host:/home/$SERVER_OWNER/www/$PROJECT_NAME
+#      - ssh -i ~/.ssh/my-ssh-key $server_user@$server_host "cd /home/$SERVER_OWNER/www/$PROJECT_NAME && composer install && composer dump-autoload -o"
+#      - ssh -i ~/.ssh/my-ssh-key $server_user@$server_host "rm -rf /home/$SERVER_OWNER/www/$PROJECT_NAME/var/cache/*"
+#      - ssh -i ~/.ssh/my-ssh-key $server_user@$server_host "systemctl status apache2.service"
+#      - echo 'Project binaries moved and installed'
