@@ -79,7 +79,6 @@
                 </div>
             </div>
         </nav>
-        <div class="main">
             {% for label, messages in app.flashes(['denied','error','success','warning']) %}
                 {% for message in messages %}
                     <div class="alert alert-{{ label }}" style="font-size: 2em">
@@ -93,6 +92,7 @@
                 {% block javascripts %}
 
                 {% endblock %}
+           <div class="push"></div>
         </div>
          <div class="footer col-sm-12">
              <div id="footerItem">
@@ -103,7 +103,6 @@
                  </ul>
              </div>
          </div>
-       </div>
     </body>
 </html>
 

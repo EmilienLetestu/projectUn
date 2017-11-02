@@ -84,8 +84,11 @@ h2 {
 .page-wrap {
 	box-sizing: border-box;
 	min-height: 100%;
+	height: auto !important;
+	height: 100%;
 	padding: 0 0 100px;
 	position: relative;
+	margin: 0 auto -100px;
 }
 
 .footer{
@@ -93,10 +96,10 @@ h2 {
 	background-color: $primary-color-dark;
 	height:100px;
 }
-
-.main{
-	margin-bottom: 2.5%;
+.footer, .push {
+	height: 100px;
 }
+
 
 /*--- navbar ----*/
 .navbar {

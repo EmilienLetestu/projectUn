@@ -346,4 +346,5 @@ $(document).ready(function () {
     $('#showPart3').click(function () {
         $('.part3').toggle();
     });
+
 });
