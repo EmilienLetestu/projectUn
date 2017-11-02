@@ -106,10 +106,6 @@ h2 {
 	box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 }
 
-.navbar-brand{
-	margin-right: 100px;
-}
-
 .navbar-brand,
 .nav-link {
 	color: #FFFFFF;
@@ -524,11 +520,23 @@ h1,
 }
 
 #moreContainer{
+	display: flex;
+	.storyCard{
+		width: 90%;
+	}
 	.cardHolder{
-		display: flex;
-		flex-flow: column;
+		display: block;
+	}
+	h3{
+		text-align: center;
 	}
 
+}
+#moreCountry,
+#moreYear,
+#morePatronage,
+#moreTopic{
+	flex-shrink:25;
 }
 
 
