@@ -32,7 +32,7 @@ class StoryType extends AbstractType
         $builder
             ->add('title', TextType::class,[
                 'constraints'=>[new NotBlank(),
-                                new Length(['min' => 3,
+                                new Length(['min' => 5,
                                             'max' => 100,
                                 ])
                 ],

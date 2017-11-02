@@ -19,7 +19,7 @@ class WordLimitValidator extends ConstraintValidator
         $limit = $constraint->getLimit();
         if($count > $limit)
         {
-            $this->context->buildViolation($constraint->message.$limit.' words')
+            $this->context->buildViolation($constraint->message.$limit.' words'.$count)
                 ->addViolation()
             ;
         }

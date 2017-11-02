@@ -210,7 +210,7 @@ $(document).ready(function () {
         var trimPlot  = splitPlot[1].trim();
         var countPlot = parseInt(trimPlot);
 
-        if(title.val().length < 3 || title.val().length > 100)
+        if(title.val().length < 5 || title.val().length > 100)
         {
 
             title.css('border-color','#F54041');
@@ -337,4 +337,13 @@ $(document).ready(function () {
         return validate;
     });
 
+    $('#showPart1').click(function () {
+        $('.part1').toggle();
+    });
+    $('#showPart2').click(function () {
+        $('.part2').toggle();
+    });
+    $('#showPart3').click(function () {
+        $('.part3').toggle();
+    });
 });
