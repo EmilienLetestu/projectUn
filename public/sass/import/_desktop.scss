@@ -6,13 +6,6 @@
 
 /* -------------------------------- */
 
-@media (min-width: 64.063em) {
-    body:before {
-        @include bandeau-resolution;
-        content: "Version Ordinateur";
-    }
-}
-
 h1{
     padding-bottom: 4%;
     padding-top: 4%;
@@ -27,10 +20,8 @@ h1{
     color: #FFFFFF;
     p{
         text-align: justify;
-        font-size: 1.8rem;
-    }
+           }
     h2{
-        font-size: 5rem;
         margin-top: 5%;
     }
 }
@@ -44,7 +35,6 @@ h1{
 
 #filter {
     margin-bottom: 5%;
-    height: 150px;
     padding-top: 4%;
     padding-left: 6%;
     .form-inline {

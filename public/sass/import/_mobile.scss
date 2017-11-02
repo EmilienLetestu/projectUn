@@ -248,6 +248,17 @@ h1,
 #intro h2{
 	text-align: center;
 	text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
+	font-size: 5rem;
+}
+#speech{
+	p{
+		font-size: 1.8rem;
+	}
+}
+
+#homeStories{
+	border-top: solid 1px $secondary-color-dark;
+	margin-top: 5%;
 }
 
 #homeLinks{
@@ -269,7 +280,6 @@ h1,
 		color: $primary-color;
 		font-weight: 900;
 	}
-;
 }
 
 
@@ -344,6 +354,7 @@ h1,
 #filter{
 	border-bottom: 1px solid $secondary-color-dark;
 	border-top: 1px solid $secondary-color-dark;
+	height:150px;
 }
 
 #filterBtn .btn{
@@ -532,38 +543,39 @@ h1,
 	}
 
 }
-#moreCountry,
-#moreYear,
-#morePatronage,
-#moreTopic{
-	flex-shrink:25;
-}
-
-
 	/* -----MOBILE-----*/
-
-	body:before {
-		@include bandeau-resolution;
-		content: "Version mobile";
-	}
-
-	/* Fin de @media (min-width: 20em) = min-width 320px */
-
-	.wrapper {
-		#section1 {
-			nav {
-				ul {}
-			}
-		}
-		#section2 {}
-
-	}
 
 	/* @media query optionnelle (max-width: 640px)*/
 
 	@media (max-width: 640px) {
 
+		/*------------ nav -------------*/
+		#signInLink,
+		#registerLink,
+		#logout{
+			margin-left: 2%;
+		}
+		/*------------ home -----------*/
+
+		#intro{
+			margin-top: 15%;
+		}
+		#speech {
+			p{
+				font-size: 1.5rem;
+			}
+			h2 {
+				font-size: 2.1rem;
+			}
+		}
 		/*------- story card --------*/
+		h1{
+			font-size: 2rem;
+		}
+		h2,
+		.h2-like{
+			font-size: 1.8rem;
+		}
 		.storyCard
 		{
 			width: 100%;
@@ -589,7 +601,26 @@ h1,
 		.invalid{
 			margin-left: -10%;
 		}
-
+		#filter{
+			padding-top: 10% !important;
+			padding-left: 0!important;
+			height: 250px;
+			.form-inline{
+				width: 95%;
+				padding-left: 5%!important;
+			}
+			.form-group{
+				padding-left: 0!important;
+			}
+		}
+		#resetBtn{
+			position: relative;
+			top: -49px;
+			left: 215px;
+		}
+		.storyCount{
+			margin-top: 15%;
+		}
 	}
 
 
