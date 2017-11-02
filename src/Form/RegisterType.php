@@ -75,7 +75,7 @@ class RegisterType extends AbstractType
                                             'max' => 30
                                 ])
                 ],
-                'label'  => 'Password',
+                'label'  => 'Verify password',
                 'mapped' => false
             ])
             ->add('termsAgreement', CheckboxType::class,[

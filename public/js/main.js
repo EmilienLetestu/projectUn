@@ -14,6 +14,14 @@ $(document).ready(function () {
 
     //check form value before submit
     // register form
+
+    $('#register_pswd').blur(function () {
+
+        if($('#register_pswd').val().length >= 6)
+        {
+            $('#confirm').show();
+        }
+    });
     $('#registerBtn').click(function () {
 
         var validate = true;
@@ -182,6 +190,8 @@ $(document).ready(function () {
     });
 
     //story form
+
+
     $('#addStoryBtn').click(function () {
         var validate = true;
         var title    = $('#story_title');

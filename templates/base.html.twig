@@ -55,10 +55,10 @@
                 {% if  not is_granted('ROLE_USER') %}
                 <ul class="nav navbar-nav navbar-right" id="connection">
                     <li>
-                        <a class="btn" href="{{ path('register') }}" id="registerBtn">Register</a>
+                        <a class="btn" href="{{ path('register') }}" id="registerLink">Register</a>
                     </li>
                      <li>
-                         <a class="btn" href="{{ path('login') }}" id="signInBtn" >Sign in</a>
+                         <a class="btn" href="{{ path('login') }}" id="signInLink" >Sign in</a>
                      </li>
                  </ul>
                 {% endif %}
@@ -83,24 +83,23 @@
                     </div>
                 {% endfor %}
             {% endfor %}
+            {% block body %}
 
-                {% block body %}
+            {% endblock %}
+            {% block javascripts %}
 
-                {% endblock %}
-                {% block javascripts %}
-
-                {% endblock %}
-                <div class="footer col-sm-12">
-                    <div id="footerItem">
-                        <ul class="list-inline">
-                            <li class="list-inline-item pull-left">Contact us</li>
-                            <li class="list-inline-item">Legal Notice</li>
-                            <li class="list-inline-item pull-right">Partnership</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            {% endblock %}
         </div>
+         <div class="footer col-sm-12">
+             <div id="footerItem">
+                 <ul class="list-inline">
+                     <li class="list-inline-item pull-left">Contact us</li>
+                     <li class="list-inline-item">Legal Notice</li>
+                     <li class="list-inline-item pull-right">Partnership</li>
+                 </ul>
+             </div>
+         </div>
+       </div>
     </body>
 </html>
 
