@@ -23,10 +23,9 @@ class IndexController extends Controller
         $view = $this->get('App\Builders\HomePageBuilder')->buildHome();
 
         return $this->render('home.html.twig',[
-
             'stories'=>$view[0][0],
             'total'  =>$view[0][1],
-            'searchForm'  =>$view[1]
+            'filter'  =>$view[1]
             ]
         );
     }
@@ -47,7 +46,8 @@ class IndexController extends Controller
 
         return $this->render('connectionForms.html.twig',[
                 'last_username' =>$view[0],
-                'error' => $view[1]]
+                'error' => $view[1]
+            ]
         );
     }
 

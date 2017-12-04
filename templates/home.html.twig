@@ -33,6 +33,32 @@
         </div>
     </div>
 
+    <div id="filterHome">
+        {{ form_start(filter,{'attr':{'class':'form-inline'}, 'action': path('browse', {'pageNumber' : 1})}) }}
+        <div class="form-group ">
+            {{ form_widget(filter.topic ,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(filter.patronage,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(filter.country ,{'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="form-group" id="filterBtn">
+            <button class="btn btn-success" type="submit">
+                <i class="fa fa-search " aria-hidden="true"></i>
+                search
+            </button>
+        </div>
+        <div class="form-group" id="resetBtnHome">
+            <a class="btn" href="{{ path('browse', {'pageNumber':1})}}">
+                <i class="fa fa-power-off " aria-hidden="true"></i>
+                reset
+            </a>
+        </div>
+        {{ form_end(filter) }}
+    </div>
+
 {% endblock %}
 {% block javascripts %}
 
