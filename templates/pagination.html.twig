@@ -37,7 +37,7 @@
 
         {% if pageNumber > 1 %}
         <div id="previous">
-            <a class="pull-left btn" href="{{ path('browse',{'pageNumber': pageNumber - 1}) }}" id="previousBtn">
+            <a class="pull-left btn" href="{{ path('browse',{'pageNumber': pageNumber - 1, 'country': country, 'topic': topic, 'patronage': patronage}) }}" id="previousBtn">
                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
             </a>
         </div>
@@ -45,7 +45,7 @@
 
         {% if totalPage > 1 and pageNumber < totalPage %}
         <div id="nextPrevious">
-            <a class="pull-right btn" href="{{ path('browse',{'pageNumber': pageNumber + 1}) }}" id ="nextBtn">
+            <a class="pull-right btn" href="{{ path('browse',{'pageNumber': pageNumber + 1,  'country': country, 'topic': topic, 'patronage': patronage}) }}" id ="nextBtn">
                 <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </a>
         </div>
@@ -55,7 +55,7 @@
             <ul class="list-inline">
                 {% for i in 1..totalPage %}
                     <li class="list-inline-item" {{ pageNumber == i ? 'id="currentPage"' }}>
-                        <a href="{{ path('browse',{'pageNumber': i}) }}">{{ i }}</a>
+                        <a href="{{ path('browse',{'pageNumber': i, 'country': country, 'topic': topic, 'patronage': patronage}) }}">{{ i }}</a>
                     </li>
                 {% endfor %}
             </ul>
