@@ -99,6 +99,12 @@ class Story implements \Serializable
     private $country;
 
     /**
+     * @ORM\Column(type="text", length=30)
+     * @var
+     */
+    private $worldArea;
+
+    /**
      * @var
      * @ORM\Column(type="string", length=4, nullable=true)
      */
@@ -109,6 +115,7 @@ class Story implements \Serializable
      * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $investor = null;
+
 
     /**
      * @var
@@ -321,6 +328,23 @@ class Story implements \Serializable
     }
 
     /**
+     * @param $worldArea
+     * @return mixed
+     */
+    public function setWorldArea($worldArea)
+    {
+        return $this->worldArea = $worldArea;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getWorldArea()
+    {
+        return $this->worldArea;
+    }
+
+    /**
      * @param $year
      * @return mixed
      */
@@ -423,6 +447,7 @@ class Story implements \Serializable
             $this->getPlot(),
             $this->getContactEmail(),
             $this->getCountryName(),
+            $this->getWorldArea(),
             $this->getCreatedOn(),
             $this->getInvestor(),
             $this->getAuthor(),
@@ -442,6 +467,7 @@ class Story implements \Serializable
             $this->plot,
             $this->contactEmail,
             $this->countryName,
+            $this->worldArea,
             $this->createdOn,
             $this->investor,
             $this->author,
