@@ -83,10 +83,22 @@ class StoryType extends AbstractType
                 'class'        => 'App:Topic',
                 'choice_label' => 'type'
             ])
+            ->add('worldArea', ChoiceType::class,[
+                'choices' => ['Africa'        => 1,
+                              'Asia'          => 2,
+                              'Europe'        => 3,
+                              'North America' => 4,
+                              'South America' => 5,
+                              'Oceania'       => 6
+                ],
+                'placeholder' => 'Choose a world area',
+                'label' => 'In which part of the world this story is sets'
+            ])
             ->add('country', CountryType::class,[
                 'constraints' =>[new NotBlank()
                 ],
-                'label'=>'This story set in'
+                'placeholder' => 'Choose a country',
+                'label'=>'Is this story related to a specific country'
             ])
             ->add('year', ChoiceType::class,[
                 'choices'     => array_combine(\range(2015, date('Y')),\range(2015, date('Y'))),
