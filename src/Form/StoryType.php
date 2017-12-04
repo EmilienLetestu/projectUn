@@ -84,6 +84,8 @@ class StoryType extends AbstractType
                 'choice_label' => 'type'
             ])
             ->add('worldArea', ChoiceType::class,[
+                'constraints' =>[new NotBlank()
+                ],
                 'choices' => ['Africa'        => 1,
                               'Asia'          => 2,
                               'Europe'        => 3,
@@ -95,10 +97,9 @@ class StoryType extends AbstractType
                 'label' => 'In which part of the world this story is sets'
             ])
             ->add('country', CountryType::class,[
-                'constraints' =>[new NotBlank()
-                ],
                 'placeholder' => 'Choose a country',
-                'label'=>'Is this story related to a specific country'
+                'label'       =>'Is this story related to a specific country',
+                'required'    => false
             ])
             ->add('year', ChoiceType::class,[
                 'choices'     => array_combine(\range(2015, date('Y')),\range(2015, date('Y'))),
