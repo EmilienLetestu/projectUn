@@ -23,6 +23,7 @@ class StoryManager
 {
     private $doctrine;
     private $formFactory;
+    private $router;
 
     /**
      * StoryManager constructor.
@@ -31,12 +32,14 @@ class StoryManager
      */
     public function __construct(
         EntityManager $doctrine,
-        FormFactory   $formFactory
+        FormFactory   $formFactory,
+        Router        $router
 
     )
     {
         $this->doctrine    = $doctrine;
         $this->formFactory = $formFactory;
+        $this->router      = $router;
     }
 
     /**
@@ -60,36 +63,6 @@ class StoryManager
      */
     public function fetchForBrowser(Request $request,$limit)
     {
-        //create search form
-        $filter = $this->formFactory->create(SearchType::class);
-
-        //get requested filters
-        $filter->handleRequest($request);
-
-        if($filter->isSubmitted() && $filter->isValid())
-        {
-            //get current page number from url param
-            $pageNumber = $request->attributes->get('pageNumber');
-            //find where to start
-            $firstR = ($pageNumber-1)*$limit;
-            //get all submitted data
-            $country = $filter->get('country')->getData();
-            $topic   = $filter->get('topic')->getData();
-            $patronage = $filter->get('patronage')->getData();
-
-            $storyList = $this->doctrine->getRepository(Story::class)
-            ->findAllForBrowser($firstR,$limit,$country,$topic,$patronage);
-
-            return [
-                $storyList,
-                $pageNumber,
-                $totalPage = ceil(count($storyList)/$limit),
-                $filter->createView(),
-                'We found '.count($storyList)
-            ];
-
-        }
-
         //get current page number from url param
         $pageNumber = $request->attributes->get('pageNumber');
 
@@ -110,9 +83,63 @@ class StoryManager
             $pageNumber,
             $totalPage,
             $this->createSearchForm(),
-            'Our climate stories safe  holds '.count($storyList)
+            'Our climate stories safe  holds '.count($storyList),
+            null,
+            null,
+            null
         ];
     }
+
+    public function fetchWithFilter(Request $request, $limit)
+    {
+
+        //get current page number from url param
+        $pageNumber = $request->attributes->get('pageNumber');
+        $country    = $request->attributes->get('country');
+        $topic      = $request->attributes->get('topic');
+        $patronage  = $request->attributes->get('patronage');
+
+        //find where to start
+        $firstR = ($pageNumber-1)*$limit;
+
+        //fetch filtered story
+        $storyList = $this->doctrine->getRepository(Story::class)
+            ->findAllForBrowser($firstR,$limit,$country,$topic,$patronage);
+
+        return [
+            $storyList,
+            $pageNumber,
+            $totalPage = ceil(count($storyList)/$limit),
+            $this->createSearchForm(),
+            'We found '.count($storyList),
+            $country,
+            $topic,
+            $patronage
+        ];
+    }
+
+    public function processFilterForm(Request $request, $limit)
+    {
+        $filter = $this->formFactory->create(SearchType::class);
+        $filter->handleRequest($request);
+
+        if($filter->isSubmitted() && $filter->isValid())
+        {
+            $country = $filter->get('country')->getData();
+            $topic   = $filter->get('topic')->getData();
+            $patronage = $filter->get('patronage')->getData();
+
+
+            return [
+                $country === null ? 'all' : $country,
+                $topic === null ? 'all':$topic->getId(),
+                $patronage === null ? 'all':$patronage->getId()
+
+            ];
+
+        }
+    }
+
 
 
     /**
