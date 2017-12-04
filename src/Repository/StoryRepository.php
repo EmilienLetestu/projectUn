@@ -120,15 +120,16 @@ class StoryRepository extends EntityRepository
         $queryBuilder
             ->select('s')
             ->andWhere('s.validated = 1');
-            if($country !== null)
+            if( $country !== null && $country !== 'all' )
             {
                 $queryBuilder
                     ->andWhere('s.country = :country')
                     ->setFirstResult($firstR)
                     ->setMaxResults($limit)
-                    ->setParameter('country',$country);
+                    ->setParameter('country',$country)
+                ;
             }
-            if($topic !== null)
+            if($topic !== null && $topic !== 'all')
             {
                 $queryBuilder
                     ->andWhere('s.topic = :topic')
@@ -136,7 +137,7 @@ class StoryRepository extends EntityRepository
                     ->setMaxResults($limit)
                     ->setParameter('topic',$topic);
             }
-            if($patronage !== null)
+            if($patronage !== null && $patronage !== 'all')
             {
                 $queryBuilder
                     ->andWhere('s.patronage = :patronage')
