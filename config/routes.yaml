@@ -55,12 +55,18 @@ validation:
         token: ([^']{40,})
 
 browse:
-    path: /browse-stories/page/{pageNumber}
+    path: /browse-stories/page/{pageNumber}/{filter}
     defaults:
         _controller: App\Controller\IndexController::browse
+        filter: null
     requirements:
         pageNumber: \d+
 
+search:
+    path: /search
+    defaults:
+        _controller: App\Controller\IndexController::search
+        
 admin:
     resource: "@EasyAdminBundle/Controller/"
     type: annotation
