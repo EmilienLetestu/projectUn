@@ -94,9 +94,9 @@ class Story implements \Serializable
 
     /**
      * @var
-     * @ORM\Column(type="text", length=5)
+     * @ORM\Column(type="text", length=5, nullable=true)
      */
-    private $country;
+    private $country = null;
 
     /**
      * @ORM\Column(type="text", length=30)
