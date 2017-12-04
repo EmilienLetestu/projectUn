@@ -142,4 +142,13 @@ class StoryManager
         ];
     }
 
+    /**
+     * @return \Symfony\Component\Form\FormView
+     */
+    public function createSearchForm()
+    {
+        $filter = $this->formFactory->create(SearchType::class);
+        return  $filter->createView();
+    }
+
 }
