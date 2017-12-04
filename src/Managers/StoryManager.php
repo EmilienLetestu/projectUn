@@ -13,6 +13,7 @@ use App\Entity\Url;
 use App\Form\SearchType;
 use App\Services\Tools;
 use Doctrine\ORM\EntityManager;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
@@ -79,7 +80,6 @@ class StoryManager
             $storyList = $this->doctrine->getRepository(Story::class)
             ->findAllForBrowser($firstR,$limit,$country,$topic,$patronage);
 
-
             return [
                 $storyList,
                 $pageNumber,
@@ -87,7 +87,9 @@ class StoryManager
                 $filter->createView(),
                 'We found '.count($storyList)
             ];
+
         }
+
         //get current page number from url param
         $pageNumber = $request->attributes->get('pageNumber');
 
@@ -107,11 +109,11 @@ class StoryManager
             $storyList,
             $pageNumber,
             $totalPage,
-            $filter->createView(),
+            $this->createSearchForm(),
             'Our climate stories safe  holds '.count($storyList)
-            ]
-        ;
+        ];
     }
+
 
     /**
      * @param Request $request

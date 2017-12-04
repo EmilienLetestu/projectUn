@@ -174,7 +174,7 @@ class IndexController extends Controller
              'pageNumber' => $view[1],
              'totalPage'  => $view[2],
              'filter'     => $view[3],
-             'title'      => $view[4]
+             'title'      => $view[4],
             ]
         );
     }
