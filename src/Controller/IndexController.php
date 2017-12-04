@@ -20,11 +20,13 @@ class IndexController extends Controller
 {
     public function home()
     {
-        $view = $this->get('App\Managers\StoryManager')->fetchForHome();
+        $view = $this->get('App\Builders\HomePageBuilder')->buildHome();
 
         return $this->render('home.html.twig',[
-            'stories'=>$view[0],
-            'total'  =>$view[1]
+
+            'stories'=>$view[0][0],
+            'total'  =>$view[0][1],
+            'searchForm'  =>$view[1]
             ]
         );
     }
