@@ -34,7 +34,7 @@
     </div>
 
     <div id="filterHome">
-        {{ form_start(filter,{'attr':{'class':'form-inline'}, 'action': path('browse', {'pageNumber' : 1})}) }}
+        {{ form_start(filter,{'attr':{'class':'form-inline'}, 'action': path('search') }) }}
         <div class="form-group ">
             {{ form_widget(filter.topic ,{'attr':{'class':'form-control'}}) }}
         </div>
