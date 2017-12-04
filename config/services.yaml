@@ -40,6 +40,10 @@ services:
         resource: '../src/Twig'
         tags: ['twig.extension']
 
+    App\Builders\:
+        resource: '../src/Builders'
+        public: true
+
    # App\EventListener\:
    #     resource: '../src/EventListener'
    #     tags:
