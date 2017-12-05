@@ -477,7 +477,7 @@ class Story implements \Serializable
         ;
     }
 
-    /**---------------------- view methods------------------------*/
+    /**---------------------- view methods (admin)------------------------*/
 
     public function getTopicType()
     {
@@ -497,5 +497,19 @@ class Story implements \Serializable
     public function getCountryName()
     {
         return  Intl::getRegionBundle()->getCountryName($this->getCountry());
+    }
+
+    public function getWorldAreaName()
+    {
+        $worldArea = [
+            '1' =>  'Africa',
+            '2' =>  'Asia',
+            '3' =>  'Europe',
+            '4' =>  'North America',
+            '5' =>  'South America',
+            '6' =>  'Oceania'
+        ];
+
+        return $worldArea[$this->getWorldArea()];
     }
 }
