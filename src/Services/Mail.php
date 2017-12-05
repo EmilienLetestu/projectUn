@@ -102,7 +102,7 @@ class Mail
      * @param $role
      * @return \Swift_Message
      */
-    public function upDatedRoleMail($name,$surname,$email,$sender,$role)
+    public function updatedRoleMail($name,$surname,$email,$sender,$role)
     {
         $message = (new \Swift_Message('updated privileges'));
         $message
