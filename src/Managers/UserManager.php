@@ -10,6 +10,7 @@ namespace App\Managers;
 
 
 use App\Entity\User;
+use App\Services\Mail;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -17,14 +18,21 @@ class UserManager
 {
     private $doctrine;
     private $session;
+    private $mailService;
+    private $swift;
 
     public function __construct(
         EntityManager $doctrine,
-        Session       $session
+        Session       $session,
+        Mail          $mailService,
+        \Swift_Mailer $swift
+
     )
     {
-        $this->doctrine = $doctrine;
-        $this->session  = $session;
+        $this->doctrine    = $doctrine;
+        $this->session     = $session;
+        $this->mailService = $mailService;
+        $this->swift       = $swift;
     }
 
 
@@ -54,10 +62,22 @@ class UserManager
 
         $this->doctrine->flush();
 
+        $mail = $this->mailService->updatedRoleMail(
+                $user->getName(),
+                $user->getSurname(),
+                $user->getEmail(),
+                'admin@climateStories.com',
+                $user->getRole()
+        );
+
+       $this->swift->send($mail);
+
        return $this->session->getFlashBag()
            ->add('succes',
             $user->getFullname().'User has been granted '.$user->getRole().' privileges'
            )
       ;
     }
+
+
 }
