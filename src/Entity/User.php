@@ -80,6 +80,12 @@ class User implements AdvancedUserInterface, \Serializable
      * @var
      * @ORM\column(type="boolean", options={"default"=false})
      */
+    private $claimEdit;
+
+    /**
+     * @var
+     * @ORM\column(type="boolean", options={"default"=false})
+     */
     private $activated = false;
 
     /**
@@ -199,6 +205,22 @@ class User implements AdvancedUserInterface, \Serializable
         return $this->role;
     }
 
+    /**
+     * @param $claimEdit
+     * @return mixed
+     */
+    public function setClaimEdit($claimEdit)
+    {
+        return $this->claimEdit = $claimEdit;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getClaimEdit()
+    {
+        return $this->claimEdit;
+    }
 
     /**
      * @param $format
