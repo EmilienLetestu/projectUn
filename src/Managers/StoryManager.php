@@ -23,7 +23,6 @@ class StoryManager
 {
     private $doctrine;
     private $formFactory;
-    private $router;
 
     /**
      * StoryManager constructor.
@@ -32,14 +31,13 @@ class StoryManager
      */
     public function __construct(
         EntityManager $doctrine,
-        FormFactory   $formFactory,
-        Router        $router
+        FormFactory   $formFactory
 
     )
     {
         $this->doctrine    = $doctrine;
         $this->formFactory = $formFactory;
-        $this->router      = $router;
+
     }
 
     /**
@@ -86,6 +84,7 @@ class StoryManager
             'Our climate stories safe  holds '.count($storyList),
             null,
             null,
+            null,
             null
         ];
     }
@@ -95,6 +94,7 @@ class StoryManager
 
         //get current page number from url param
         $pageNumber = $request->attributes->get('pageNumber');
+        $worldArea  = $request->attributes->get('worldArea');
         $country    = $request->attributes->get('country');
         $topic      = $request->attributes->get('topic');
         $patronage  = $request->attributes->get('patronage');
@@ -104,7 +104,7 @@ class StoryManager
 
         //fetch filtered story
         $storyList = $this->doctrine->getRepository(Story::class)
-            ->findAllForBrowser($firstR,$limit,$country,$topic,$patronage);
+            ->findAllForBrowser($firstR,$limit,$worldArea,$country,$topic,$patronage);
 
         return [
             $storyList,
@@ -114,27 +114,30 @@ class StoryManager
             'We found '.count($storyList),
             $country,
             $topic,
-            $patronage
+            $patronage,
+            $worldArea
         ];
     }
 
-    public function processFilterForm(Request $request, $limit)
+    public function processFilterForm(Request $request)
     {
         $filter = $this->formFactory->create(SearchType::class);
         $filter->handleRequest($request);
 
         if($filter->isSubmitted() && $filter->isValid())
         {
-            $country = $filter->get('country')->getData();
-            $topic   = $filter->get('topic')->getData();
+            $country   = $filter->get('country')->getData();
+            $topic     = $filter->get('topic')->getData();
             $patronage = $filter->get('patronage')->getData();
+            $worldArea = $filter->get('worldArea')->getData();
+
 
 
             return [
-                $country === null ? 'all' : $country,
-                $topic === null ? 'all':$topic->getId(),
-                $patronage === null ? 'all':$patronage->getId()
-
+                $worldArea === null ? 'all' : $worldArea,
+                $country   === null ? 'all' : $country,
+                $topic     === null ? 'all' : $topic->getId(),
+                $patronage === null ? 'all' : $patronage->getId()
             ];
 
         }
@@ -181,3 +184,4 @@ class StoryManager
     }
 
 }
+
