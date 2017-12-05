@@ -18,7 +18,23 @@ class AdminController extends BaseAdminController
         $id = $this->request->query->get('id');
         $entity = $this->em->getRepository(User::class)->find($id);
 
-        $entity->setRole('EDIT');
+        if($entity->getRole() === 'ADMIN')
+        {
+            $this->addFlash('denied',
+                'you can\'t update administrator privileges'
+            );
+            return $this->redirectToRoute('admin',[
+                'action' => 'show',
+                'entity' => $this->request->query->get('entity'),
+                'id' => $id
+            ]);
+        }
+
+        $entity->getRole() === 'EDIT' ?
+            $entity->setRole('USER') :
+            $entity->setRole('EDIT')
+        ;
+
         $this->em->flush();
 
         $this->addFlash('succes',
