@@ -9,9 +9,11 @@
 namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class SearchType extends AbstractType
 {
@@ -27,12 +29,24 @@ class SearchType extends AbstractType
            ->add('patronage', EntityType::class,[
                'class'        => 'App:Patronage',
                'choice_label' => 'organization',
-               'placeholder' => 'Choose a patronage',
+               'placeholder'  => 'Choose a patronage',
                'required'     => false
            ])
            ->add('country', CountryType::class,[
                'label'=>'Filter by country',
-               'placeholder' => 'Choose a country',
+               'placeholder'  => 'Choose a country',
+               'required'     => false
+           ])
+           ->add('worldArea', ChoiceType::class,[
+               'choices' => [
+                   'Africa'        => 1,
+                   'Asia'          => 2,
+                   'Europe'        => 3,
+                   'North America' => 4,
+                   'South America' => 5,
+                   'Oceania'       => 6
+               ],
+               'placeholder' => 'Choose a world area',
                'required'     => false
            ]);
     }
