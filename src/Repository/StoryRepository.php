@@ -112,14 +112,35 @@ class StoryRepository extends EntityRepository
     /**
      * @param $firstR
      * @param $limit
+     * @param null $worldArea
+     * @param null $country
+     * @param null $topic
+     * @param null $patronage
      * @return Paginator
      */
-    public function findAllForBrowser($firstR,$limit,$country = null,$topic = null,$patronage = null)
+    public function findAllForBrowser(
+        $firstR,
+        $limit,
+        $worldArea=null,
+        $country = null,
+        $topic = null,
+        $patronage = null
+    )
     {
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
             ->select('s')
             ->andWhere('s.validated = 1');
+
+            if( $worldArea !== null && $worldArea !== 'all' )
+            {
+                $queryBuilder
+                    ->andWhere('s.worldArea = :worldArea')
+                    ->setFirstResult($firstR)
+                    ->setMaxResults($limit)
+                    ->setParameter('worldArea',$worldArea)
+                ;
+            }
             if( $country !== null && $country !== 'all' )
             {
                 $queryBuilder
