@@ -53,6 +53,7 @@ easy_admin:
                    - 'topicType'
                    - 'author'
                    - 'patronage by'
+                   - { property: 'worldAreaName', label: 'Area' }
                    - { property: 'countryName', label: 'Country' }
                    - { property: 'createdOn', format: 'm/d/Y' }
                    - { property: 'validated', type: toggle }
@@ -61,6 +62,7 @@ easy_admin:
                    - 'title'
                    - { property: 'abstract', type: 'raw' }
                    - { property: 'plot', type: 'raw' }
+                   - { property: 'worldAreaName', label: 'Area' }
                    - { property: 'countryName', label: 'Country' }
                    - { property: 'createdOn', format: 'm/d/Y' }
                    - 'author'
