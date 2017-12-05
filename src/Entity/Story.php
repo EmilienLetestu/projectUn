@@ -99,7 +99,7 @@ class Story implements \Serializable
     private $country = null;
 
     /**
-     * @ORM\Column(type="text", length=30)
+     * @ORM\Column(type="integer")
      * @var
      */
     private $worldArea;
