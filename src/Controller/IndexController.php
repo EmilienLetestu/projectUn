@@ -177,7 +177,8 @@ class IndexController extends Controller
              'title'      => $view[4],
              'country'    => $view[5],
              'topic'      => $view[6],
-             'patronage'  => $view[7]
+             'patronage'  => $view[7],
+             'worldArea'  => $view[8]
             ]
         );
     }
@@ -189,10 +190,10 @@ class IndexController extends Controller
     public function search(Request $request)
     {
         $view = $this->get('App\Managers\StoryManager')
-            ->processFilterForm($request,5)
+            ->processFilterForm($request)
         ;
 
-        if($view[0] === 'all' && $view[1] === 'all' && $view[2] === 'all')
+        if($view[0] === 'all' && $view[1] === 'all' && $view[2] === 'all' && $view[3] === 'all')
         {
             return $this->redirect($this->generateUrl('browse',[
                 'pageNumber'=>1
@@ -201,9 +202,10 @@ class IndexController extends Controller
 
         return $this->redirect($this->generateUrl('browse',[
             'pageNumber'=>1,
-            'country'   => $view[0],
-            'topic'     => $view[1],
-            'patronage' => $view[2]
+            'worldArea' => $view[0],
+            'country'   => $view[1],
+            'topic'     => $view[2],
+            'patronage' => $view[3]
         ]));
     }
 }
