@@ -8,10 +8,13 @@
 
 namespace App\Form;
 
+use App\Validators\WordLimit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 
@@ -77,6 +80,22 @@ class RegisterType extends AbstractType
                 ],
                 'label'  => 'Verify password',
                 'mapped' => false
+            ])
+            ->add('profession',TextType::class,[
+                'constraints'=>[new NotBlank(),
+                                new Type('string'),
+                                new Length(['min' => 3,
+                                            'max' => 30
+                                ])
+                ],
+                'label' => 'Your profession'
+            ])
+            ->add('engagement', TextareaType::class,[
+                'constraints' =>[new NotBlank(),
+                                 new WordLimit(['limit'=>300])
+                ],
+                'required'    => false,
+                'label'       => 'Tell us about your engagement'
             ])
             ->add('termsAgreement', CheckboxType::class,[
                 'label' => 'I accept terms and conditions ',
