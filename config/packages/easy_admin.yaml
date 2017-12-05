@@ -37,6 +37,7 @@ easy_admin:
                actions:
                     - { name: edit, icon: pencil, label: 'Edit'}
                     - { name: delete, icon: trash-o, label: 'Delete'}
+                    - { name: updateRole, css_class: 'btn' }
            edit:
                fields:
                    - 'role'
