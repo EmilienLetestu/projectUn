@@ -45,6 +45,7 @@ class RegisterType extends AbstractType
                 ],
                 'label' => 'Name'
             ])
+
             ->add('surname', TextType::class,[
                 'constraints'=>[new NotBlank(),
                                 new Type('string'),
@@ -54,12 +55,14 @@ class RegisterType extends AbstractType
                 ],
                 'label' => 'Surname'
             ])
+
             ->add('email', EmailType::class,[
                 'constraints'=>[new NotBlank(),
                                 new Email()
                 ],
                 'label' => 'E-mail'
             ])
+
             ->add('pswd', PasswordType::class,[
                 'constraints'=>[new NotBlank(),
                                 new PswdFormat(),
@@ -70,6 +73,7 @@ class RegisterType extends AbstractType
                 ],
                 'label' => 'Password'
             ])
+
             ->add('confirmPswd', PasswordType::class,[
                 'constraints'=>[new NotBlank(),
                                 new PswdFormat(),
@@ -81,6 +85,12 @@ class RegisterType extends AbstractType
                 'label'  => 'Verify password',
                 'mapped' => false
             ])
+
+            ->add('claimEdit',CheckboxType::class,[
+                'label' => 'Apply to edit story',
+                'required' => false
+            ])
+
             ->add('profession',TextType::class,[
                 'constraints'=>[new NotBlank(),
                                 new Type('string'),
@@ -90,6 +100,7 @@ class RegisterType extends AbstractType
                 ],
                 'label' => 'Your profession'
             ])
+
             ->add('engagement', TextareaType::class,[
                 'constraints' =>[new NotBlank(),
                                  new WordLimit(['limit'=>300])
@@ -97,6 +108,7 @@ class RegisterType extends AbstractType
                 'required'    => false,
                 'label'       => 'Tell us about your engagement'
             ])
+
             ->add('termsAgreement', CheckboxType::class,[
                 'label' => 'I accept terms and conditions ',
                 'required'  => true,
