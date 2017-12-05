@@ -98,7 +98,7 @@ class StoryType extends AbstractType
             ])
             ->add('country', CountryType::class,[
                 'placeholder' => 'Choose a country',
-                'label'       =>'Is this story related to a specific country',
+                'label'       => 'Is this story related to a specific country',
                 'required'    => false
             ])
             ->add('year', ChoiceType::class,[
