@@ -102,7 +102,7 @@ class Mail
      * @param $role
      * @return \Swift_Message
      */
-    public function UpdatedRoleMail($name, $surname, $email, $sender, $role)
+    public function upDatedRoleMail($name,$surname,$email,$sender,$role)
     {
         $message = (new \Swift_Message('updated privileges'));
         $message
@@ -112,6 +112,43 @@ class Mail
                 'name'    => $name,
                 'surname' => $surname,
                 'role'    => $role,
+            ]),
+                'text/html'
+            )
+        ;
+        return $message;
+    }
+
+    /**
+     * @param $name
+     * @param $surname
+     * @param $email
+     * @param $sender
+     * @param $role
+     * @param $profession
+     * @param $engagement
+     * @return \Swift_Message
+     */
+    public function deniedRoleMail(
+        $name,
+        $surname,
+        $email,
+        $sender,
+        $role,
+        $profession,
+        $engagement
+    )
+    {
+        $message = (new \Swift_Message('denied privileges'));
+        $message
+            ->setFrom($sender)
+            ->setTo($email)
+            ->setBody($this->twig->render('updatedRole.html.twig', [
+                'name'       => $name,
+                'surname'    => $surname,
+                'role'       => $role,
+                'profession' => $profession,
+                'engagement' => $engagement
             ]),
                 'text/html'
             )
