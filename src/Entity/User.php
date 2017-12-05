@@ -84,6 +84,12 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
+     * @ORM\column(type="boolean", options={"default"=true}
+     */
+    private $beenProcessed;
+
+    /**
+     * @var
      * @ORM\column(type="boolean", options={"default"=false})
      */
     private $activated = false;
@@ -220,6 +226,22 @@ class User implements AdvancedUserInterface, \Serializable
     public function getClaimEdit()
     {
         return $this->claimEdit;
+    }
+
+    /**
+     * @param mixed $beenProcessed
+     */
+    public function setBeenProcessed($beenProcessed)
+    {
+        $this->beenProcessed = $beenProcessed;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getBeenProcessed()
+    {
+        return $this->beenProcessed;
     }
 
     /**
