@@ -60,9 +60,21 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
-     *  @ORM\column(type="date")
+     * @ORM\column(type="date")
      */
     private $registeredOn;
+
+    /**
+     * @var
+     * @ORM\column(type="string", length=30)
+     */
+    private $profession;
+
+    /**
+     * @var
+     * @ORM\column(type="text", nullable=true)
+     */
+    private $engagement;
 
     /**
      * @var
@@ -195,6 +207,38 @@ class User implements AdvancedUserInterface, \Serializable
     public function setRegisteredOn($format)
     {
        return $this->registeredOn = new \DateTime(date($format));
+    }
+
+    /**
+     * @param mixed $profession
+     */
+    public function setProfession($profession)
+    {
+        $this->profession = $profession;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getProfession()
+    {
+        return $this->profession;
+    }
+
+    /**
+     * @param mixed $engagement
+     */
+    public function setEngagement($engagement)
+    {
+        $this->engagement = $engagement;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEngagement()
+    {
+        return $this->engagement;
     }
 
     /**
