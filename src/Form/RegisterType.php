@@ -92,18 +92,17 @@ class RegisterType extends AbstractType
             ])
 
             ->add('profession',TextType::class,[
-                'constraints'=>[new NotBlank(),
-                                new Type('string'),
+                'constraints'=>[new Type('string'),
                                 new Length(['min' => 3,
                                             'max' => 30
                                 ])
                 ],
-                'label' => 'Your profession'
+                'label' => 'Your profession',
+                'required' => false
             ])
 
             ->add('engagement', TextareaType::class,[
-                'constraints' =>[new NotBlank(),
-                                 new WordLimit(['limit'=>300])
+                'constraints' =>[new WordLimit(['limit'=>300])
                 ],
                 'required'    => false,
                 'label'       => 'Tell us about your engagement'
