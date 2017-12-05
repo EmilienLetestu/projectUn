@@ -55,9 +55,10 @@ validation:
         token: ([^']{40,})
 
 browse:
-    path: /browse-stories/page/{pageNumber}/{country}/{topic}/{patronage}
+    path: /browse-stories/page/{pageNumber}/{worldArea}/{country}/{topic}/{patronage}
     defaults:
         _controller: App\Controller\IndexController::browse
+        worldArea: null
         country: null
         topic: null
         patronage: null
