@@ -60,22 +60,7 @@ class UserManager
             $user->setRole('EDIT')
         ;
 
-        if ($user->getBeenProcessed() === 0)
-        {
-            $user->setBeenProcessed(1);
-        }
-
         $this->doctrine->flush();
-
-        $mail = $this->mailService->updatedRoleMail(
-                $user->getName(),
-                $user->getSurname(),
-                $user->getEmail(),
-                'admin@climateStories.com',
-                $user->getRole()
-        );
-
-       $this->swift->send($mail);
 
        return $this->session->getFlashBag()
            ->add('succes',
