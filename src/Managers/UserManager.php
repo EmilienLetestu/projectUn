@@ -10,7 +10,6 @@ namespace App\Managers;
 
 
 use App\Entity\User;
-use App\Services\Mail;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 
@@ -18,21 +17,18 @@ class UserManager
 {
     private $doctrine;
     private $session;
-    private $mailService;
-    private $swift;
+    private $notification;
 
     public function __construct(
-        EntityManager $doctrine,
-        Session       $session,
-        Mail          $mailService,
-        \Swift_Mailer $swift
+        EntityManager        $doctrine,
+        Session              $session,
+        NotificationManager  $notification
 
     )
     {
-        $this->doctrine    = $doctrine;
-        $this->session     = $session;
-        $this->mailService = $mailService;
-        $this->swift       = $swift;
+        $this->doctrine     = $doctrine;
+        $this->session      = $session;
+        $this->notification = $notification;
     }
 
 
@@ -42,9 +38,8 @@ class UserManager
      */
     public function updateUserRole($id)
     {
-        $user = $this->doctrine->getRepository(User::class)
-            ->find($id)
-        ;
+        $repository = $this->doctrine->getRepository(User::class);
+        $user= $repository->find($id);
 
         if($user->getRole() === 'ADMIN')
         {
@@ -60,6 +55,8 @@ class UserManager
             $user->setRole('EDIT')
         ;
 
+        $this->notification->chooseNotification($user);
+
         $this->doctrine->flush();
 
        return $this->session->getFlashBag()
@@ -68,6 +65,5 @@ class UserManager
            )
       ;
     }
-
-
 }
+

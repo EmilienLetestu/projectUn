@@ -46,7 +46,7 @@ class Login
 
         return [
             $lastUsername,
-            $error]
-            ;
+            $error
+        ];
     }
 }
