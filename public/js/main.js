@@ -347,4 +347,12 @@ $(document).ready(function () {
         $('.part3').toggle();
     });
 
+    // count word on register form text area
+    $("#register_engagement").keyup(function(){
+
+        var words = $.trim($('#register_engagement').val()).match(/\S+/g);
+        var result = words ? words.length : 0;
+        $('#wordCount').text(result + '/300');
+    });
+
 });
