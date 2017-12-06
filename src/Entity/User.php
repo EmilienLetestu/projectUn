@@ -84,7 +84,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
-     * @ORM\column(type="boolean", options={"default"=true}
+     * @ORM\column(type="boolean", options={"default"=true})
      */
     private $beenProcessed;
 

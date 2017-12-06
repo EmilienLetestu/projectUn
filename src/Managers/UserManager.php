@@ -60,6 +60,11 @@ class UserManager
             $user->setRole('EDIT')
         ;
 
+        if ($user->getBeenProcessed() === 0)
+        {
+            $user->setBeenProcessed(1);
+        }
+
         $this->doctrine->flush();
 
         $mail = $this->mailService->updatedRoleMail(
