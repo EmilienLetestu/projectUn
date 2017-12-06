@@ -86,6 +86,16 @@
                     </div>
                 {% endfor %}
             {% endfor %}
+
+           {% if not app.session.get('checkNotif') and is_granted('ROLE_USER') %}
+                <div class="notification" style="position:fixed;top:30%;z-index: 1">
+                    <i class="fa fa-close pull-right"></i>
+                    {% for key in notification.getNotificationForUser %}
+                        <p> {{ key.type|typeToText }} </p>
+                    {% endfor %}
+                </div>
+           {% endif %}
+
             {% block body %}
 
                 {% endblock %}
