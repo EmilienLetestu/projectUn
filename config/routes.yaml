@@ -71,6 +71,6 @@ search:
         _controller: App\Controller\IndexController::search
 
 admin:
-    resource: "@EasyAdminBundle/Controller/"
+    resource: "../Controller/"
     type: annotation
     prefix: /admin
