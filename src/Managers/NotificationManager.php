@@ -92,4 +92,38 @@ class NotificationManager
 
         $this->doctrine->flush();
     }
+
+    /**
+     * @param User $user
+     */
+    public function chooseNotification(User $user)
+    {
+        return  $user->getBeenProcessed()=== false  ?
+            $this->approvalNotification($user) :
+            $this->upDateNotification($user)
+            ;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function upDateNotification(User $user)
+    {
+        $type = $user->getRole() === 'EDIT' ? 1 : 2;
+        $this->notification->notifyUser($type,$user);
+
+        return $this->doctrine->persist($user);
+    }
+
+    /**
+     * @param User $user
+     */
+    public function approvalNotification(User $user)
+    {
+        $type = $user->getRole() === 'EDIT' ? 4 : 3;
+        $this->notification->notifyUser($type,$user);
+        $user->setBeenProcessed(true);
+
+        return $this->doctrine->persist($user);
+    }
 }
