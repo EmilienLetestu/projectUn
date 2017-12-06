@@ -112,6 +112,12 @@ class User implements AdvancedUserInterface, \Serializable
      */
     private $stories;
 
+    /**
+     * @var
+     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="user")
+     */
+    private $notifications;
+
     /**---------------------- setters & getters ------------------------*/
 
     /**
@@ -353,6 +359,7 @@ class User implements AdvancedUserInterface, \Serializable
     public function __construct()
     {
         $this->stories = new ArrayCollection();
+        $this->notifications = new ArrayCollection();
     }
 
     /**
@@ -378,6 +385,34 @@ class User implements AdvancedUserInterface, \Serializable
     {
        return $this->stories;
     }
+
+    /**
+     * @param Notification $notification
+     * @return $this
+     */
+    public function addNotification(Notification $notification)
+    {
+        $this->notifications[] = $notification;
+
+        return $this;
+    }
+
+    /**
+     * @param Notification $notification
+     */
+    public function removeNotification(Notification $notification)
+    {
+        $this->notifications->removeElement($notification);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNotifications()
+    {
+        return $this->notifications;
+    }
+
 
     /**---------------------- advanceUserInterface methods------------------------*/
 
