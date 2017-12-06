@@ -46,7 +46,7 @@ class UserManager
             ->find($id)
         ;
 
-        if($user->getRole === 'ADMIN')
+        if($user->getRole() === 'ADMIN')
         {
            return $this->session->getFlashBag()
                ->add('denied',
