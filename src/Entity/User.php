@@ -66,7 +66,7 @@ class User implements AdvancedUserInterface, \Serializable
 
     /**
      * @var
-     * @ORM\column(type="string", length=30)
+     * @ORM\column(type="string", length=30, nullable=true)
      */
     private $profession;
 
