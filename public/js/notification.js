@@ -3,10 +3,16 @@
  */
 $(document).ready(function () {
 
-$('#closeNotif').click(function () {
-  $('.notification').remove();
+  var notif = $('.notifText').text();
 
+  notif === '' ?  $('.notification').remove() : null;
+
+
+
+  $('#closeNotif').click(function () {
+     $('.notification').remove();
 })
+
 
 
 });
