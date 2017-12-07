@@ -89,11 +89,11 @@
             {% endfor %}
 
 
-           {% if app.session.get('checkNotif') and is_granted('ROLE_USER') %}
+           {% if not app.session.get('checkNotif') and is_granted('ROLE_USER') %}
                 <div class="notification" style="position:fixed;top:30%;z-index: 1; width: 100%; background: #c9453c ">
                     <i class="fa fa-close pull-right" id="closeNotif"></i>
                     {% for key in notification.getNotificationForUser %}
-                        <p> {{ key.type|typeToText }} </p>
+                        <p class="notifText"> {{ key.type|typeToText }} </p>
                     {% endfor %}
                 </div>
            {% endif %}
