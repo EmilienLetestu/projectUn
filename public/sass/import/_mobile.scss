@@ -52,10 +52,32 @@ mark {
 
 h1{
 	text-align: center;
+	font-family: $primary-typo;
+	font-weight: $font-weight-titles;
+	font-size: $font-size-title;
 }
 
 h2 {
 	text-align: center;
+	font-family: $primary-typo;
+	font-weight: $font-weight-titles;
+	font-size: $font-size-title;
+}
+
+h3,h4,h5{
+	font-family: $primary-typo;
+	font-weight: $font-weight-titles;
+	font-size: $font-size-sub;
+}
+
+p {
+	font-family: $primary-typo;
+	font-weight: $font-weight-p;
+	font-size: $font-size-p;
+}
+
+i.fa{
+	color: $secondary-color-dark;
 }
 
 /* -----BUTTONS-----*/
