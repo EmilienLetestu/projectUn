@@ -60,15 +60,15 @@ class NotificationManager
 
     public function getNotificationForUser()
     {
-        if($this->session->get('checkNotif'))
+        if(!$this->session->get('checkNotif'))
         {
             $repository = $this->doctrine->getRepository(Notification::class);
 
             $user = $this->token->getToken()->getUser();
 
            $notificationList = $repository->findNotificationForUser(
-                7,
-                1
+                $user->getId(),
+                0
            );
 
            $this->session->set('checkNotif',1);
@@ -111,7 +111,7 @@ class NotificationManager
     public function upDateNotification(User $user)
     {
         $type = $user->getRole() === 'EDIT' ? 1 : 2;
-        $this->notification->notifyUser($type,$user);
+        $this->notifyUser($type,$user);
 
         return $this->doctrine->persist($user);
     }
@@ -122,7 +122,7 @@ class NotificationManager
     public function approvalNotification(User $user)
     {
         $type = $user->getRole() === 'EDIT' ? 4 : 3;
-        $this->notification->notifyUser($type,$user);
+        $this->notifyUser($type,$user);
         $user->setBeenProcessed(true);
 
         return $this->doctrine->persist($user);
