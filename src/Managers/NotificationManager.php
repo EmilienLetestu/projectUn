@@ -67,9 +67,10 @@ class NotificationManager
             $user = $this->token->getToken()->getUser();
 
            $notificationList = $repository->findNotificationForUser(
-                $user->getId(),
-                0
+                7,
+                1
            );
+
            $this->session->set('checkNotif',1);
            $this->updateNotificationStatus($notificationList);
 
