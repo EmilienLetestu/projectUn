@@ -58,9 +58,12 @@ class NotificationManager
         $this->doctrine->persist($notification);
     }
 
+    /**
+     * get all notification for a given user just after login
+     */
     public function getNotificationForUser()
     {
-        if(!$this->session->get('checkNotif'))
+        if(!$this->session->get('notifList'))
         {
             $repository = $this->doctrine->getRepository(Notification::class);
 
@@ -70,11 +73,9 @@ class NotificationManager
                 $user->getId(),
                 0
            );
+          $this->session->set('notifList',$notificationList);
 
-           $this->session->set('checkNotif',1);
-           $this->updateNotificationStatus($notificationList);
-
-           return $notificationList;
+          return $this->updateNotificationStatus($notificationList);
         }
     }
 

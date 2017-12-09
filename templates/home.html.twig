@@ -3,6 +3,16 @@
 {% block body %}
     <div id="intro">
         <h1>WELCOME TO THE CLIMATE STORY BANK</h1>
+
+        {% if app.session.get('notifList') and is_granted('ROLE_USER') %}
+            <div class="notification" style="position:fixed;top:30%;z-index: 1; width: 100%; background: #c9453c ">
+                <i class="fa fa-close pull-right" id="closeNotif"></i>
+                {% for key in app.session.get('notifList') if key.seen == 0 %}
+                    <p class="notifText">{{ key.notifiedOn|date("m/d/Y") }} {{ key.type|typeToText }} </p>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <div class="col-sm-12" id="speech">
             <h2 class="col-sm-6">Our mission</h2>
             <p class="col-sm-6">
@@ -64,5 +74,6 @@
 
 {% endblock %}
 {% block javascripts %}
-
+    {{ parent() }}
+    <script src="{{ asset('js/notification.js') }}"></script>
 {% endblock %}

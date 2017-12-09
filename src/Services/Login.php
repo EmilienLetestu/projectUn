@@ -8,9 +8,6 @@
 
 namespace App\Services;
 
-use Doctrine\ORM\EntityManager;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
@@ -22,7 +19,9 @@ class Login
      * Login constructor.
      * @param AuthorizationChecker $authCheck
      */
-    public function  __construct(AuthorizationChecker $authCheck)
+    public function  __construct(
+        AuthorizationChecker $authCheck
+    )
     {
         $this->authCheck  = $authCheck;
     }
