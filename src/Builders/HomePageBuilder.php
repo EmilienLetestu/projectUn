@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Builders;
+use App\Managers\NotificationManager;
 use App\Managers\StoryManager;
 
 /**
@@ -13,14 +14,20 @@ class HomePageBuilder
 {
 
     private $storyManager;
+    private $notificationManager;
 
     /**
      * HomePageBuilder constructor.
      * @param StoryManager $storyManager
+     * @param NotificationManager $notificationManager
      */
-    public function __construct(StoryManager $storyManager)
+    public function __construct(
+        StoryManager        $storyManager,
+        NotificationManager $notificationManager
+    )
     {
-        $this->storyManager  = $storyManager;
+        $this->storyManager        = $storyManager;
+        $this->notificationManager = $notificationManager;
     }
 
     /**
@@ -31,6 +38,7 @@ class HomePageBuilder
         return [
             $this->storyManager->fetchForHome(),
             $this->storyManager->createSearchForm(),
+            $this->notificationManager->getNotificationForUser()
         ];
     }
 
