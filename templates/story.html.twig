@@ -13,7 +13,9 @@
 
         <div id="storyPlot">
             <h3>A Climate Story #{{ story.id }}</h3>
-            <p>{{ story.plot|raw }}</p>
+            <div id="plotText">
+                <p>{{ story.plot|raw }}</p>
+            </div>
         </div>
     </div>
 

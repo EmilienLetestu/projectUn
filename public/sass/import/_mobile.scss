@@ -524,6 +524,7 @@ h1,
 }
 #storyBody{
 	padding: 2%;
+	width: 70%;
 }
 
 #storyAbstract,
@@ -533,13 +534,19 @@ h1,
 }
 
 #storyPlot{
-	columns:3;
-	column-gap: 25px;
 	padding-top: 4%;
 	padding-bottom: 3%;
-	h3{
-		column-span: all;
-		-webkit-column-span: all;
+}
+
+#plotText{
+	-webkit-column-count: 2;
+	-moz-column-count: 2;
+	column-count: 2;
+	column-gap: 50px;
+	padding-top: 4%;
+	padding-bottom: 3%;
+	p{
+		display: inline-block; /*avoid column to break inside element*/
 	}
 }
 
