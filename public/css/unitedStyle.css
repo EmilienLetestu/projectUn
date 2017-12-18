@@ -251,18 +251,6 @@ footer
 
 /*------- story --------*/
 
-#storyTags
-{
-    width: 100%;
-    border-bottom: solid #5fdda1 1px;
-}
-
-#storyTags li:nth-child(2)
-{
-    position: relative;
-    left: 35%;
-}
-
 #storyBody
 {
     padding-left: 2%;

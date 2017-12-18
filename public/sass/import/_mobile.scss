@@ -550,23 +550,21 @@ h1,
 	border-top: 1px solid $secondary-color-dark;
 	padding-bottom: 2%;
 }
-#contact,
-#extResources{
-	width: 45%;
 
-}
 #contact{
+	background-color: $secondary-color;
+	padding: 3%;
 	h3{
 		text-align: center;
 		padding-bottom: 2%;
 	}
 	ul{
 		display: flex;
-		justify-content: space-around;
+		justify-content: space-between;
 		font-size: 1.5rem;
 	}
 	i{
-		color: $secondary-color;
+		color: #FFFFFF;
 	}
 }
 

@@ -1,24 +1,6 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <div id="storyTags">
-        <ul class="list-inline">
-            <li class="list-inline-item pull-left">
-                <i class="fa fa-bookmark-o" aria-hidden="true"></i>
-                {{ story.topic.type }}
-            </li>
-            <li class="list-inline-item">
-                <i class="fa fa-user-o" aria-hidden="true"></i>
-                {{ story.user.name}} {{ story.user.surname}}
-            </li>
-            <li class="list-inline-item pull-right">
-                <i class="fa fa-globe" aria-hidden="true"></i>
-                {{ story.country|country}}
-            </li>
-        </ul>
-    </div>
-
     <div id="storyBody">
         <div>
             <h1>{{ story.title }}</h1>
@@ -33,11 +15,10 @@
             <h3>A Climate Story #{{ story.id }}</h3>
             <p>{{ story.plot|raw }}</p>
         </div>
-
     </div>
-        <div id="moreStory">
-        <div id="contact">
-            <h3>About the author</h3>
+
+    <div id="contact">
+        <h3>About the author</h3>
             <ul class="list-inline">
                 <li class="list-inline-item">
                     <i class="fa fa-user-o" aria-hidden="true"></i>
@@ -56,21 +37,9 @@
                     {{ story.contactPhone | default('------------') }}
                 </li>
             </ul>
-        </div>
+    </div>
 
-        {% if extResources != null %}
-        <div id="extResources">
-            <h3>More about {{ story.title }}</h3>
-            <ul class="list-inline">
-                {% for url in extResources %}
-                    <li class="list-inline-item">
-                        <a href="{{url.href}}" title="{{ url.alt }}">Visit {{ url.alt }}</a>
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-        {% endif %}
-        </div>
+
 
     <div id="moreContainer">
         {% if sameTopic != null %}
