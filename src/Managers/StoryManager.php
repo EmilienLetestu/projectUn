@@ -111,7 +111,7 @@ class StoryManager
             $pageNumber,
             $totalPage = ceil(count($storyList)/$limit),
             $this->createSearchForm(),
-            'We found '.count($storyList),
+            'WE\'VE FOUND '.count($storyList),
             $country,
             $topic,
             $patronage,

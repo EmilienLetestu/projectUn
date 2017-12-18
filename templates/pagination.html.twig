@@ -1,9 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-    <div>
-        <h1 class="storyCount">{{ title }} {{ stories|length > 1 ? 'stories' : 'story'  }}</h1>
+    <div class="container-fluid" id="introBrowse">
+        <div class="col-sm-12 imgText" id="punchLine">
+            <h1 class="storyCount">{{ title }} <b>{{ stories|length > 1 ? 'STORIES' : 'STORY'  }}</b></h1>
+            <h3>And you, what will your story be?</h3>
+            <a class="btn pictLink" href="{{ path('addStory') }}">Add a story</a>
+        </div>
     </div>
 
     <div id="filter">
