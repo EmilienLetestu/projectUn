@@ -14,12 +14,14 @@ use App\Entity\User;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 
 class NotificationManager
 {
     private $doctrine;
     private $session;
     private $token;
+    private $authCheck;
 
     /**
      * NotificationManager constructor.
@@ -30,12 +32,14 @@ class NotificationManager
     public function __construct(
         EntityManager $doctrine,
         Session       $session,
-        TokenStorage  $token
+        TokenStorage  $token,
+        AuthorizationChecker $authCheck
     )
     {
         $this->doctrine = $doctrine;
         $this->session  = $session;
         $this->token    = $token;
+        $this->authCheck = $authCheck;
     }
 
     /**
@@ -63,16 +67,16 @@ class NotificationManager
      */
     public function getNotificationForUser()
     {
-        if(!$this->session->get('notifList'))
+        if(!$this->session->get('notifList') && $this->authCheck->isGranted('ROLE_USER'))
         {
             $repository = $this->doctrine->getRepository(Notification::class);
 
             $user = $this->token->getToken()->getUser();
 
-           $notificationList = $repository->findNotificationForUser(
+            $notificationList = $repository->findNotificationForUser(
                 $user->getId(),
                 0
-           );
+            );
           $this->session->set('notifList',$notificationList);
 
           return $this->updateNotificationStatus($notificationList);
