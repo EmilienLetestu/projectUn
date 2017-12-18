@@ -213,6 +213,7 @@ i.fa{
 	-moz-box-shadow: $shadow !important;
 	box-shadow: $shadow !important;
 	height: 280px;
+	border: solid 1px $secondary-color;
 	ul {
 		display: flex;
 		justify-content: space-evenly;
@@ -239,7 +240,8 @@ i.fa{
 }
 
 .cardHeader {
-	background-color: $primary-color;
+	position: relative;
+	top:-7%;
 }
 
 .cardLink {
