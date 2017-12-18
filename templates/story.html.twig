@@ -1,24 +1,23 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="storyBody">
-        <div>
+    <div id="storyHolder">
+        <div id="storyTitle">
             <h1>{{ story.title }}</h1>
         </div>
-
         <div id="storyAbstract">
-            <h2>The project in a few words</h2>
+            <h2>The project in a <span>few words</span></h2>
             <p>{{ story.abstract|raw }}</p>
         </div>
-
-        <div id="storyPlot">
-            <h3>A Climate Story #{{ story.id }}</h3>
-            <div id="plotText">
-                <p>{{ story.plot|raw }}</p>
+        <div id="storyBody">
+            <div id="storyPlot">
+                <h3>A Climate <span>Story #{{ story.id }}</span></h3>
+                <div id="plotText">
+                    <p>{{ story.plot|raw }}</p>
+                </div>
             </div>
         </div>
     </div>
-
     <div id="contact">
         <h3>About the author</h3>
             <ul class="list-inline">
@@ -76,15 +75,17 @@
         </div>
         {% endif %}
     </div>
+    <div id="prev-next">
         {% if previous != null %}
-             <a class="btn pull-left" href="{{ path('story',{'storyId':previous|join('|')}) }}" id="prevStory">
-                 <i class="fa fa-chevron-left" aria-hidden="true"></i>
-             </a>
+            <a class="btn" href="{{ path('story',{'storyId':previous|join('|')}) }}" id="prevStory">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
         {% endif %}
         {% if next != null %}
-                <a class="btn pull-right" href="{{ path('story',{'storyId':next|join('|')}) }}" id="nextStory">
-                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                </a>
+            <a class="btn" href="{{ path('story',{'storyId':next|join('|')}) }}" id="nextStory">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
         {% endif %}
+    </div>
 {% endblock %}
 

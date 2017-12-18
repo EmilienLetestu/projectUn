@@ -289,7 +289,6 @@ i.fa{
 h1,
 #announcement {
 	text-align: center;
-	text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
 	font-size: 5rem;
 }
 #speech{
@@ -352,8 +351,26 @@ h1,
 #nextStory,
 #prevStory,
 #previousBtn{
+	i{
+		color: #FFFFFF;
+	}
 	border-color: $secondary-color-dark !important;
 	color: $secondary-color-dark !important;
+}
+
+#prev-next{
+	position: fixed;
+	top: 50%;
+}
+
+#nextStory{
+	position: fixed;
+	right: 0;
+}
+
+#prevStory{
+	position: fixed;
+	left: 0;
 }
 
 #nextBtn:hover,
@@ -507,24 +524,38 @@ h1,
 	list-style: none;
 }
 /*------story-------*/
-#storyTags{
-	position: fixed;
-	top:6%;
-	border-bottom: 1px solid $secondary-color;
-	width:100%;
-	font-size: 1.5rem ;
-	background-color: #FFFFFF;
-	i{
-		color: $secondary-color;
-	}
-	ul{
-		display: flex;
-		justify-content: space-between;
-	}
+
+#storyHolder{
+	background-size: inherit;
+	margin-top: 2%;
+	background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../images/storyImg.jpg'),no-repeat,center;
 }
-#storyBody{
-	padding: 2%;
-	width: 70%;
+
+#storyTitle{
+	position: absolute;
+	top:0;
+	left: 65%;
+	right: 0;
+	color: #FFFFFF;
+}
+
+#storyBody {
+	background-color: #FFFFFF;
+	padding: 2% 5%;
+	width: 65%;
+}
+#storyAbstract {
+	h2{
+		text-align: left;
+	}
+	h2 span{
+		color: #FFFFFF;
+		font-family: $primary-typo;
+	}
+	background-color: $secondary-color;
+	padding: 2% 5%;
+	width: 65%;
+
 }
 
 #storyAbstract,
@@ -533,7 +564,10 @@ h1,
 	font-size: 1.8rem;
 }
 
-#storyPlot{
+#storyPlot {
+	h3 span{
+		color: $secondary-color;
+	}
 	padding-top: 4%;
 	padding-bottom: 3%;
 }
