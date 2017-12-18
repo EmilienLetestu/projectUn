@@ -87,7 +87,8 @@ i.fa{
 }
 
 .btn {
-	background: #ffffff;
+	background: $secondary-color;
+	color:#FFFFFF;
 }
 .alert-warning{
 	color: #F54041;
@@ -158,32 +159,34 @@ i.fa{
 #logout,
 #registerLink,
 #signInLink {
-	padding: 10px !important;
-	margin-top: 5px;
+	padding: 5px 50px !important;
+	margin-top: 10px;
 	margin-right: 10px;
 }
 
 #logout,
 #signInLink{
-	color: $secondary-color-light;
-	border: solid 1px $secondary-color-light;
+	color: #FFFFFF;
+	background-color: transparent;
+	border: solid 1px $secondary-color;
 }
 
-#logout:hover,
+#logout:hover{
+	background-color: #FFFFFF;
+}
 #signInLink:hover{
-	color: #FFFFFF;
-	border: solid 1px #FFFFFF;
-	background: $secondary-color-light;
+	color: #FFFFFF !important;
+	background: $secondary-color !important;
 }
 
 #registerLink{
-	color: $primary-color;
+	color: #FFFFFF;
 	border: solid 1px $primary-color;
 }
 
 #registerLink:hover{
 	color: #FFFFFF;
-	border: solid 1px #FFFFFF;
+	border: solid 1px $secondary-color;
 	background: $primary-color;
 }
 
@@ -212,8 +215,9 @@ i.fa{
 	-webkit-box-shadow: $shadow !important;
 	-moz-box-shadow: $shadow !important;
 	box-shadow: $shadow !important;
-	height: 280px;
+	height: 300px;
 	border: solid 1px $secondary-color;
+	border-radius: 5px;
 	ul {
 		display: flex;
 		justify-content: space-evenly;
@@ -241,15 +245,15 @@ i.fa{
 
 .cardHeader {
 	position: relative;
-	top:-7%;
 }
 
 .cardLink {
 	text-align: center;
 	padding-bottom: 5%;
+	padding-top: 5%;
 	a {
 		border-color: $secondary-color-light;
-		color: $secondary-color-dark;
+		color: #FFFFFF;
 	}
 	a:hover{
 		color: #FFFFFF;
@@ -262,8 +266,20 @@ i.fa{
 }
 
 /*------- home ---------*/
+#intro {
+	position: relative;
+	text-align: center;
+	color: white;
+}
+
+#homeImg{
+	filter: brightness(50%);
+}
 
 .storyCount {
+	b {
+	 color: $secondary-color;
+	}
 	text-align: center;
 	margin-bottom: 5%;
 	margin-top: 5%;
@@ -271,8 +287,7 @@ i.fa{
 }
 
 h1,
-#announcement,
-#intro h2{
+#announcement {
 	text-align: center;
 	text-shadow: 4px 4px 2px rgba(150, 150, 150, 1);
 	font-size: 5rem;
@@ -288,11 +303,7 @@ h1,
 	margin-top: 5%;
 }
 
-#homeLinks{
-	border-top: solid 1px $secondary-color-dark;
-	text-align: center;
-	padding-bottom: 2%;
-	padding-top: 2%;
+.homeLinks{
 	.btn{
 		border-color: $secondary-color-dark !important;
 		color: $secondary-color-dark !important;
@@ -302,14 +313,23 @@ h1,
 		color: #FFFFFF !important;
 		background-color: $secondary-color-dark;
 	}
-	h3{
-		margin-bottom: 2%;
-		color: $primary-color;
-		font-weight: 900;
-	}
 }
 
+#filterTitle{
+	text-align: center;
+	margin-top: 5%;
+}
 
+#filterHome{
+	margin-top: 5%;
+	margin-left: 15%;
+	i{
+		color: #FFFFFF;
+	}
+	select{
+		border-radius: 10px;
+	}
+}
 
 /*------- pagination --------*/
 
@@ -386,7 +406,7 @@ h1,
 
 #filterBtn .btn{
 	border-color: $secondary-color-light !important;
-	color: $secondary-color-light !important;
+	color: #FFFFFF !important;
 }
 
 
@@ -408,17 +428,22 @@ h1,
 	background-color: #FFFFFF;
 }
 
-#filter  select:focus {
+#filter  select:focus,
+#filterHome  select:focus{
 		border-color: $secondary-color-light !important;
 	}
-#filter	select:hover {
+#filter	select:hover,
+#filterHome	select:hover{
 		border-color: $secondary-color !important;
 	}
-#filter select{
+#filter select,
+#filterHome select{
 	border-color: $secondary-color-dark;
 	background: transparent;
+	border-radius: 10px;
 }
-#filter select option:checked{
+#filter select option:checked,
+#filterHome select option:checked {
 	color: $secondary-color-dark;
 }
 
