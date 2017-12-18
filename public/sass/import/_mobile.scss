@@ -215,7 +215,7 @@ i.fa{
 	-webkit-box-shadow: $shadow !important;
 	-moz-box-shadow: $shadow !important;
 	box-shadow: $shadow !important;
-	height: 300px;
+	min-height: 300px;
 	border: solid 1px $secondary-color;
 	border-radius: 5px;
 	ul {
@@ -263,6 +263,7 @@ i.fa{
 }
 .cardFooter{
 	border-top: solid 1px $secondary-color;
+	padding-bottom: 2%;
 }
 
 /*------- home ---------*/
