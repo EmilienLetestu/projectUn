@@ -96,6 +96,39 @@ i.fa{
 	border-color: #F54041;
 }
 
+/* ----- submit button color-----*/
+#loginBtn,
+#registerBtn,
+#filterBtn,
+#filterHome,
+#lostPswdBtn{
+	border-color: $secondary-color !important;
+	color: $secondary-color !important;
+	background-color: transparent !important;
+}
+
+#loginBtn:hover,
+#registerBtn:hover,
+#filterBtn:hover,
+#filterHome:hover,
+#lostPswdBtn:hover{
+	border: none !important;
+	color: #FFFFFF !important;
+	background-color: $secondary-color!important;
+}
+
+.lost {
+	border-color: $primary-color !important;
+	color: $primary-color !important;
+	background-color: transparent !important;
+}
+
+.lost:hover{
+	border: none !important;
+	color: #FFFFFF !important;
+	background-color: $secondary-color!important;
+}
+
 
 /* -----LAYOUT-----*/
 
@@ -459,22 +492,16 @@ h1,
 
 #filterBtn .btn,
 #filterHome .btn{
-	border-color: $secondary-color !important;
-	color: $secondary-color !important;
 	position: absolute;
 	left: 25%;
 	right: 25%;
 	margin-top: 3%;
 	min-width: 50%;
 	max-width: 100%;
-	background-color: transparent;
 }
 
 #filterBtn .btn:hover,
 #filterHome .btn:hover{
-	border: none !important;
-	color: #FFFFFF !important;
-	background-color: $secondary-color;
 	i{
 		color: #FFFFFF;
 	}
