@@ -330,35 +330,42 @@ h1,
 
 #filterTitle{
 	text-align: center;
-	margin-top: 5%;
 }
 
 #filterHome{
-	margin-top: 5%;
-	margin-left: 15%;
+	margin-top: 3%;
 	i{
 		color: #FFFFFF;
 	}
 	select{
 		border-radius: 10px;
+		margin-bottom: 20%;
 	}
+
 }
 
 /*------- pagination --------*/
 
 #currentPage {
-	text-decoration: underline $primary-color-dark;
+	background-color: $secondary-color;
+	/*font color define in template via twig */
 }
 
 
-#pageLinks a {
-	color: $secondary-color-dark !important;
+#pageLinks a:not(#currentPage) {
+	color: $primary-color;
+	font-size: 2.5rem;
 }
 
-#pageLinks	a:hover {
- 	color: $primary-color-dark !important;
-	text-decoration: underline $primary-color-dark;
+
+#pageLinks a:hover {
+	text-decoration: underline $secondary-color;
 	zoom: 120%;
+}
+
+#pageLinks a:active{
+	color: #FFFFFF !important;
+	background-color: $secondary-color;
 }
 
 #nextBtn,
@@ -447,48 +454,48 @@ h1,
 
 /*search-filters*/
 #filter{
-	border-bottom: 1px solid $secondary-color-dark;
-	border-top: 1px solid $secondary-color-dark;
 	height:150px;
 }
 
-#filterBtn .btn{
-	border-color: $secondary-color-light !important;
-	color: #FFFFFF !important;
+#filterBtn .btn,
+#filterHome .btn{
+	border-color: $secondary-color !important;
+	color: $secondary-color !important;
+	position: absolute;
+	left: 25%;
+	right: 25%;
+	margin-top: 3%;
+	min-width: 50%;
+	max-width: 100%;
+	background-color: transparent;
 }
 
-
-#filterBtn .btn:hover{
-	border-color: #FFFFFF !important;
+#filterBtn .btn:hover,
+#filterHome .btn:hover{
+	border: none !important;
 	color: #FFFFFF !important;
-	background-color: $secondary-color-light;
-}
-
-#resetBtn .btn{
-	border-color: #FFFFFF !important;
-	color: #FFFFFF !important;
-	background-color: $secondary-color-light;
-}
-
-#resetBtn .btn:hover{
-	border-color: $secondary-color-light !important;
-	color: $secondary-color-light !important;
-	background-color: #FFFFFF;
+	background-color: $secondary-color;
+	i{
+		color: #FFFFFF;
+	}
 }
 
 #filter  select:focus,
 #filterHome  select:focus{
-		border-color: $secondary-color-light !important;
+	border-color: $secondary-color !important;
+	outline-color: transparent;
+	outline-style: none;
 	}
 #filter	select:hover,
 #filterHome	select:hover{
-		border-color: $secondary-color !important;
+	border-color: $secondary-color !important;
 	}
 #filter select,
 #filterHome select{
-	border-color: $secondary-color-dark;
+	border-color: $primary-color;
 	background: transparent;
 	border-radius: 10px;
+	min-width: 300px;
 }
 #filter select option:checked,
 #filterHome select option:checked {
@@ -735,6 +742,38 @@ h1,
 		#logout{
 			margin-left: 2%;
 		}
+
+		/*------------- filter --------*/
+
+		#filterBtn .btn,
+		#filterHome .btn{
+			width: 93%;
+			left: 3%;
+			margin-top: 3%;
+			min-width: 50%;
+			max-width: 100%;
+		}
+
+		#filter{
+			padding-top: 10% !important;
+			padding-left: 0!important;
+			height: 250px;
+			margin-bottom: 15%!important;
+			.form-inline{
+				padding-left: 3%!important;
+			}
+			.form-group{
+				padding-left: 0!important;
+			}
+		}
+
+		#filterHome{
+			padding-left: 0!important;
+			.form-inline{
+				padding-left: 3%!important;
+			}
+		}
+
 		/*------------ home -----------*/
 
 		#intro{
@@ -747,6 +786,9 @@ h1,
 			h2 {
 				font-size: 2.1rem;
 			}
+		}
+		.pictLink{
+			padding: 5px 50px;
 		}
 		/*------- story card --------*/
 		h1{
@@ -788,23 +830,6 @@ h1,
 		}
 		.invalid_sign{
 			left:97%
-		}
-		#filter{
-			padding-top: 10% !important;
-			padding-left: 0!important;
-			height: 250px;
-			.form-inline{
-				width: 95%;
-				padding-left: 5%!important;
-			}
-			.form-group{
-				padding-left: 0!important;
-			}
-		}
-		#resetBtn{
-			position: relative;
-			top: -49px;
-			left: 215px;
 		}
 		.storyCount{
 			margin-top: 15%;
