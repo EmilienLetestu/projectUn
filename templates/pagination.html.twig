@@ -29,12 +29,6 @@
                 search
             </button>
         </div>
-        <div class="form-group" id="resetBtn">
-            <a class="btn" href="{{ path('browse', {'pageNumber':1})}}">
-                <i class="fa fa-repeat " aria-hidden="true"></i>
-                reset
-            </a>
-        </div>
         {{ form_end(filter) }}
     </div>
    {% if stories|length != 0 %}
