@@ -95,6 +95,8 @@ i.fa{
 	background-color: #FFFFFF;
 	border-color: #F54041;
 }
+
+
 /* -----LAYOUT-----*/
 
 @mixin bandeau-resolution {
@@ -406,6 +408,12 @@ h1,
 }
 
 /*--------FORM---------*/
+
+.req{
+	color: $secondary-color;
+	font-size: 1.5rem;
+}
+
 #addForm,
 .connectionForm
 {
@@ -512,10 +520,45 @@ h1,
 	margin-top: 10%;
 	.btn{
 		width: 100%;
-		color: $secondary-color-dark;
+		background-color: transparent;
+		color: $secondary-color;
+		border-color: $secondary-color;
+	}
+	.btn:hover{
+		background-color: $secondary-color;
+		color: #FFFFFF;
+		border: none;
 	}
 }
 
+#story_urls{
+	.btn-danger{
+		background-color: transparent !important;
+	}
+	.btn-danger:hover{
+		 background-color: $secondary-color !important;
+		border: none !important;
+		 i{
+			 color: #FFFFFF;
+		 }
+	 }
+}
+
+#add_url{
+	background-color: transparent;
+	border-color:#5fdda1;
+	i{
+		color: #5fdda1;
+	}
+}
+
+#add_url:hover{
+	background-color: #5fdda1;
+	border: none;
+	i{
+		color: #FFFFFF;
+	}
+}
 
 /*form validation*/
 .invalid{
