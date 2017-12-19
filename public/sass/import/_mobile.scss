@@ -99,8 +99,6 @@ i.fa{
 /* ----- submit button color-----*/
 #loginBtn,
 #registerBtn,
-#filterBtn,
-#filterHome,
 #lostPswdBtn{
 	border-color: $secondary-color !important;
 	color: $secondary-color !important;
@@ -109,8 +107,6 @@ i.fa{
 
 #loginBtn:hover,
 #registerBtn:hover,
-#filterBtn:hover,
-#filterHome:hover,
 #lostPswdBtn:hover{
 	border: none !important;
 	color: #FFFFFF !important;
@@ -498,10 +494,16 @@ h1,
 	margin-top: 3%;
 	min-width: 50%;
 	max-width: 100%;
+	border-color: $secondary-color !important;
+	color: $secondary-color !important;
+	background-color: transparent !important;
 }
 
 #filterBtn .btn:hover,
 #filterHome .btn:hover{
+	border: none !important;
+	color: #FFFFFF !important;
+	background-color: $secondary-color!important;
 	i{
 		color: #FFFFFF;
 	}
