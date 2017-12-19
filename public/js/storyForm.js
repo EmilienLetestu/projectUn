@@ -32,7 +32,6 @@ $(document).ready(function () {
         var splitPlot = plot.text().split(' ');
         var trimPlot  = splitPlot[0].trim();
         var countPlot = parseInt(trimPlot);
-        alert(countPlot);
 
         if(title.val().length < 5 || title.val().length > 100)
         {
