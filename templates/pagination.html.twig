@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div id="filter">
+    <div class="container-fluid" id="filter">
         {{ form_start(filter,{'attr':{'class':'form-inline'},'action': path('search') }) }}
         <div class="form-group ">
             {{ form_widget(filter.topic ,{'attr':{'class':'form-control'}}) }}
@@ -23,7 +23,7 @@
         <div class="form-group">
             {{ form_widget(filter.country ,{'attr':{'class':'form-control'}}) }}
         </div>
-        <div class="form-group" id="filterBtn">
+        <div class="row" id="filterBtn">
             <button class="btn btn-success" type="submit">
                 <i class="fa fa-search " aria-hidden="true"></i>
                 search
@@ -55,7 +55,9 @@
             <ul class="list-inline">
                 {% for i in 1..totalPage %}
                     <li class="list-inline-item" {{ pageNumber == i ? 'id="currentPage"' }}>
-                        <a href="{{ path('browse',{'pageNumber': i,'worldArea': worldArea ,'country': country, 'topic': topic, 'patronage': patronage}) }}">{{ i }}</a>
+                        <a href="{{ path('browse',{'pageNumber': i,'worldArea': worldArea ,'country': country, 'topic': topic, 'patronage': patronage}) }}"
+                           {{ pageNumber == i ? 'style="color:white"' }}>{{ i }}
+                        </a>
                     </li>
                 {% endfor %}
             </ul>

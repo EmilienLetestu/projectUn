@@ -38,7 +38,7 @@
     <h3 id="filterTitle">Looking for a special one</h3>
 
 
-    <div id="filterHome">
+    <div class="container-fluid" id="filterHome">
         {{ form_start(filter,{'attr':{'class':'form-inline'}, 'action': path('search') }) }}
         <div class="form-group ">
             {{ form_widget(filter.topic ,{'attr':{'class':'form-control'}}) }}
@@ -52,7 +52,7 @@
         <div class="form-group">
             {{ form_widget(filter.country ,{'attr':{'class':'form-control'}}) }}
         </div>
-        <div class="form-group" id="filterBtn">
+        <div class="form-group" id="filterHomeBtn">
             <button class="btn btn-success" type="submit">
                 <i class="fa fa-search " aria-hidden="true"></i>
                 search
