@@ -1,8 +1,7 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    <div id="intro">
-        <img id="homeImg" src="{{ asset("images/homeImg.jpg")}}">
+    <div class="container-fluid" id="intro">
         <div class="col-sm-12 imgText" id="speech">
             <h1 class="storyCount">OUR CLIMATE STORIES SAFE <b>{{ total[0]|join('|') }} {{ total[0]|join('|') > 1 ? 'STORIES' : 'STORY' }}</b></h1>
             <h2>Our mission</h2>
