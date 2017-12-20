@@ -52,7 +52,6 @@ class AddStory
     {
         $story = new Story();
 
-
         $form = $this->formFactory->create(StoryType::class, $story);
         $form->handleRequest($request);
 
