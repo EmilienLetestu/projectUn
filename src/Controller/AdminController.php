@@ -24,7 +24,9 @@ class AdminController extends Controller
      */
     public function adminUser()
     {
-        $userList = $this->get('App\Managers\UserManager')->fetchUserForAdmin();
+        $userList = $this->get('App\Managers\UserManager')
+            ->fetchUserForAdmin()
+        ;
 
         return $this->render('admin\adminUser.html.twig',[
             'userList' => $userList
@@ -36,7 +38,9 @@ class AdminController extends Controller
      */
     public function adminStory()
     {
-        $storyList = $this->get('App\Managers\StoryManager')->fetchStoryForAdmin();
+        $storyList = $this->get('App\Managers\StoryManager')
+            ->fetchStoryForAdmin()
+        ;
 
         return $this->render('admin\adminStory.html.twig',[
             'storyList' => $storyList
@@ -48,10 +52,25 @@ class AdminController extends Controller
      */
     public function adminTopic()
     {
-        $topicList = $this->get('App\Managers\TopicManager')->fetchTopicForAdmin();
+        $topicList = $this->get('App\Managers\TopicManager')
+            ->fetchTopicForAdmin();
 
         return $this->render('admin\adminTopic.html.twig',[
             'topicList' => $topicList
+        ]);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function adminPatronage()
+    {
+        $patronageList = $this->get('App\Managers\PatronageManager')
+            ->fetchPatronageForAdmin()
+        ;
+
+        return $this->render('admin\adminPatronage.html.twig',[
+            'patronageList' => $patronageList
         ]);
     }
 
