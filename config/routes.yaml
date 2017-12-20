@@ -80,3 +80,8 @@ adminUser:
     path: /admin/user
     defaults:
         _controller: App\Controller\AdminController::adminUser
+
+adminStory:
+    path: /admin/story
+    defaults:
+        _controller: App\Controller\AdminController::adminStory
