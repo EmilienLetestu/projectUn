@@ -9,7 +9,9 @@
 namespace App\Builders;
 
 
+use App\Managers\PatronageManager;
 use App\Managers\TopicManager;
+use App\Services\AddPatronage;
 use App\Services\AddTopic;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,19 +19,28 @@ class AdminBuilder
 {
     private $addTopic;
     private $topicManager;
+    private $addPatronage;
+    private $patronageManager;
+
 
     /**
      * AdminBuilder constructor.
      * @param AddTopic $addTopic
      * @param TopicManager $topicManager
+     * @param AddPatronage $addPatronage
+     * @param PatronageManager $patronageManager
      */
     public function __construct(
-        AddTopic     $addTopic,
-        TopicManager $topicManager
+        AddTopic         $addTopic,
+        TopicManager     $topicManager,
+        AddPatronage     $addPatronage,
+        PatronageManager $patronageManager
     )
     {
-        $this->addTopic     = $addTopic;
-        $this->topicManager = $topicManager;
+        $this->addTopic         = $addTopic;
+        $this->topicManager     = $topicManager;
+        $this->addPatronage     = $addPatronage;
+        $this->patronageManager = $patronageManager;
     }
 
     /**
@@ -43,4 +54,17 @@ class AdminBuilder
             $this->addTopic->processTopic($request)
         ];
     }
+
+    /**
+     * @param Request $request
+     * @return array
+     */
+    public function buildAdminPatronage(Request $request)
+    {
+        return[
+            $this->patronageManager->fetchPatronageForAdmin(),
+            $this->addPatronage->processPatronage($request)
+        ];
+    }
+
 }
