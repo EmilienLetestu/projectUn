@@ -70,7 +70,6 @@ search:
     defaults:
         _controller: App\Controller\IndexController::search
 
-
 admin:
     path: /admin
     defaults:
