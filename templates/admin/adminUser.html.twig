@@ -21,6 +21,9 @@
                 <th>
                     Activated
                 </th>
+                <th>
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -40,6 +43,11 @@
                     </td>
                     <td>
                         <i class="{{ user.activated|stateIcon }}" aria-hidden="true"></i>
+                    </td>
+                    <td>
+                        <a href="{{ path('adminByUser',{'id': user.id}) }}">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
                     </td>
                 </tr>
                 {% endfor %}
