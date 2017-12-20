@@ -1,0 +1,36 @@
+{% extends "admin/admin.html.twig" %}
+
+{% block body %}
+    <div class="container-fluid adminList">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Patronage
+                </th>
+                <th>
+                    Related Stories
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for patronage in patronageList %}
+                <td>
+                    {{ patronage.id }}
+                </td>
+                <td>
+                    {{ patronage.organization }}
+                </td>
+                <td>
+                    {{ patronage.stories|length }}
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
