@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
@@ -71,6 +72,22 @@ class AdminController extends Controller
 
         return $this->render('admin\adminPatronage.html.twig',[
             'patronageList' => $patronageList
+        ]);
+    }
+
+
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function adminByUser(Request $request)
+    {
+        $user = $this->get('App\Managers\UserManager')
+            ->fetchOneUserForAdmin($request)
+        ;
+
+        return $this->render('admin\adminUserData.html.twig',[
+            'user' => $user
         ]);
     }
 

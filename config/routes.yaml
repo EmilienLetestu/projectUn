@@ -80,6 +80,14 @@ adminUser:
     defaults:
         _controller: App\Controller\AdminController::adminUser
 
+adminByUser:
+    path: /admin/user/{id}
+    defaults:
+        _controller: App\Controller\AdminController::adminByUser
+    requirements:
+        id: \d+
+
+
 adminStory:
     path: /admin/story
     defaults:

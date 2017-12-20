@@ -11,6 +11,7 @@ namespace App\Managers;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class UserManager
@@ -72,7 +73,22 @@ class UserManager
     public function fetchUserForAdmin()
     {
         $repository = $this->doctrine->getRepository(User::class);
+
         return $repository->findAll();
     }
+
+    /**
+     * @param Request $request
+     * @return null|object
+     */
+    public function fetchOneUserForAdmin(Request $request)
+    {
+        $repository = $this->doctrine->getRepository(User::class);
+
+        return $repository->findOneBy([
+            'id' => $request->attributes->get('id')
+        ]);
+    }
+
 }
 
