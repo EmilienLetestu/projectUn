@@ -33,4 +33,18 @@
             </tbody>
         </table>
     </div>
+
+    <div id="patronageForm">
+        {{ form_start(form ,{'attr':{'id':'newPatronageForm'}}) }}
+        <div class="form-group row">
+            {{ form_label(form.organization) }}
+            {{ form_widget(form.organization ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.organization) }}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" id="newPatronageBtn" type="submit">Submit</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
 {% endblock %}

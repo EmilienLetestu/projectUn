@@ -66,5 +66,4 @@ class AdminBuilder
             $this->addPatronage->processPatronage($request)
         ];
     }
-
 }

@@ -34,6 +34,10 @@ class AddTopic
         $this->topicManager = $topicManager;
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\Form\FormView
+     */
     public function processTopic(Request $request)
     {
         $topic = new Topic();

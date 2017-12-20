@@ -27,13 +27,11 @@ class NewTopicType extends AbstractType
                                               'max' => 20
                                   ])
                 ],
-                'label'       => 'Enter topic\'s name'
-            ]);
+                'label'       => 'Enter topic names'
+            ])
+        ;
     }
 
-    /**
-     * @param OptionsResolver $resolver
-     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(['data_class' => 'App\Entity\Topic']);
