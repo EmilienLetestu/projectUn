@@ -65,5 +65,14 @@ class UserManager
            )
       ;
     }
+
+    /**
+     * @return array
+     */
+    public function getAllUser()
+    {
+        $repository = $this->doctrine->getRepository(User::class);
+        return $repository->findAll();
+    }
 }
 
