@@ -1,0 +1,56 @@
+{% extends "admin/admin.html.twig" %}
+
+{% block body %}
+
+    <div class="container-fluid adminList">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Title
+                </th>
+                <th>
+                    <i class="fa fa-globe" aria-hidden="true"></i>
+                </th>
+                <th>
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                </th>
+                <th>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                </th>
+                <th>
+                    Published
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {% for story in storyList %}
+                <td>
+                    {{ story.id }}
+                </td>
+                <td>
+                    {{ story.title }}
+                </td>
+                <td>
+                    {{ story.worldArea|worldArea }}
+                </td>
+                <td>
+                    {{ story.user.fullname }}
+                </td>
+                <td>
+                    {{ story.createdOn|date("m/d/y") }}
+                </td>
+                <td>
+                    <i class="{{ story.validated|stateIcon }}" aria-hidden="true"></i>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}
