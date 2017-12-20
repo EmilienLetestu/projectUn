@@ -1,0 +1,38 @@
+{% extends "admin/admin.html.twig" %}
+
+{% block body %}
+
+    <h1>{{ user.fullname|upper }}</h1>
+
+    <div class="reminder">
+        <ul class="list-inline">
+            <li>
+                <i class="fa fa-calendar" aria-hidden="true"></i>
+                    {{ user.registeredOn|date("m/d/Y") }}
+            </li>
+            <li>
+                 <i class="fa fa-envelope" aria-hidden="true"></i>
+                 {{ user.email }}
+            </li>
+            <li>
+                Activated : <i class="{{ user.activated|stateIcon }}" aria-hidden="true"></i>
+            </li>
+        </ul>
+    </div>
+
+    <ul>
+        <li>
+            Role : {{ user.role }}
+        </li>
+        <li>
+            Profession : {{ user.profession }}
+        </li>
+        <li>
+            Engagement : {{ user.engagement }}
+        </li>
+    </ul>
+
+    <a href="#" class="btn btn-danger">Delete</a>
+    <a href="#" class="btn btn-primary">Promote</a>
+
+{% endblock %}
