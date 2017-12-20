@@ -43,6 +43,18 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function adminTopic()
+    {
+        $topicList = $this->get('App\Managers\TopicManager')->fetchTopicForAdmin();
+
+        return $this->render('admin\adminTopic.html.twig',[
+            'topicList' => $topicList
+        ]);
+    }
+
 
 
     /**public function updateRoleAction()
