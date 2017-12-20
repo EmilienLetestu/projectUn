@@ -85,3 +85,8 @@ adminStory:
     path: /admin/story
     defaults:
         _controller: App\Controller\AdminController::adminStory
+
+adminTopic:
+    path: /admin/topic
+    defaults:
+        _controller: App\Controller\AdminController::adminTopic
