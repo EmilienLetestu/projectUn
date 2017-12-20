@@ -8,11 +8,29 @@
 
 namespace App\Controller;
 
-use EasyCorp\Bundle\EasyAdminBundle\Controller\AdminController as BaseAdminController;
 
-class AdminController extends BaseAdminController
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+
+class AdminController extends Controller
 {
-    public function updateRoleAction()
+
+    public function adminHome()
+    {
+        return $this->render('admin/admin.html.twig');
+    }
+
+    public function adminUser()
+    {
+        $userList = $this->get('App\Managers\UserManager')->getAllUser();
+
+        return $this->render('admin/adminUser.html.twig',[
+            'userList' => $userList
+        ]);
+    }
+
+
+
+    /**public function updateRoleAction()
     {
         $id = $this->request->query->get('id');
 
@@ -25,5 +43,6 @@ class AdminController extends BaseAdminController
             'entity' => $this->request->query->get('entity'),
             'id' => $id
         ]);
-    }
+    }*/
+
 }
