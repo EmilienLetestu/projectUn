@@ -70,7 +70,8 @@ search:
     defaults:
         _controller: App\Controller\IndexController::search
 
+
 admin:
-    resource: "../Controller/"
-    type: annotation
-    prefix: /admin
+    path: /admin
+    defaults:
+        _controller:
