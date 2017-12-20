@@ -99,6 +99,13 @@ adminByStory:
     requirements:
         id: \d+
 
+adminEditStory:
+    path: /admin/story/edit/{id}
+    defaults:
+        _controller: App\Controller\AdminController::adminEditStory
+    requirements:
+        id: \d+
+
 adminTopic:
     path: /admin/topic
     defaults:
