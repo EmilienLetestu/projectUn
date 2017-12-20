@@ -87,11 +87,19 @@ adminByUser:
     requirements:
         id: \d+
 
-
 adminStory:
     path: /admin/story
     defaults:
         _controller: App\Controller\AdminController::adminStory
+
+adminByStory:
+    path: /admin/story/{id}
+    defaults:
+        _controller: App\Controller\AdminController::adminByStory
+    requirements:
+        id: \d+
+
+
 
 adminTopic:
     path: /admin/topic
