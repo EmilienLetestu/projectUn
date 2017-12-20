@@ -33,4 +33,17 @@
             </tbody>
         </table>
     </div>
+
+    <div id="topicForm">
+        {{ form_start(form ,{'attr':{'id':'newTopicForm'}}) }}
+        <div class="form-group row">
+            {{ form_label(form.type) }}
+            {{ form_widget(form.type ,{'attr':{'class':'form-control'}}) }}
+            {{ form_errors(form.type) }}
+        </div>
+        <div class="form-group">
+            <button class="btn btn-success" id="newTopicBtn" type="submit">Submit</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
 {% endblock%}
