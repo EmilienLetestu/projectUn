@@ -91,6 +91,21 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function adminByStory(Request $request)
+    {
+        $story = $this->get('App\Managers\StoryManager')
+            ->fetchOneStoryForAdmin($request)
+        ;
+
+        return $this->render('admin\adminStoryData.html.twig',[
+            'story' => $story
+        ]);
+    }
+
 
 
     /**public function updateRoleAction()

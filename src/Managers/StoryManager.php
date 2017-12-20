@@ -13,6 +13,7 @@ use App\Form\SearchType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StoryManager
@@ -185,7 +186,21 @@ class StoryManager
     public function fetchStoryForAdmin()
     {
         $repository = $this->doctrine->getRepository(Story::class);
+
         return $repository->findAll();
+    }
+
+    /**
+     * @param Request $request
+     * @return null|object
+     */
+    public function fetchOneStoryForAdmin(Request $request)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+
+        return $repository->findOneBy([
+            'id'=>$request->attributes->get('id')
+        ]);
     }
 
 }

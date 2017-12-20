@@ -1,0 +1,79 @@
+{% extends "admin/admin.html.twig" %}
+
+{% block body %}
+
+    <h1>{{ story.title }}</h1>
+
+    <div class="reminder">
+    <ul class="list-inline">
+        <li>
+            <i class="fa fa-globe" aria-hidden="true"></i>
+            {{ story.worldArea|worldArea }}/{{ story.country|country }}
+        </li>
+        <li>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            {{ story.createdOn|date("m/d/Y") }}
+        </li>
+        <li>
+            <i class="fa fa-user" aria-hidden="true"></i>
+            {{ story.user.fullname }}
+        </li>
+        <li>
+            Published : <i class="{{ story.validated|stateIcon }}" aria-hidden="true"></i>
+        </li>
+    </ul>
+    </div>
+
+    <div>
+        <ul class="list-inline">
+            <li>
+                {{ story.topic.type }}
+            </li>
+            <li>
+                {{ story.patronage.organization }}
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h3>Story's abstract</h3>
+        <p>
+            {{ story.abstract|raw}}
+        </p>
+    </div>
+
+    <div>
+        <h3>Story's plot</h3>
+        <p>
+            {{ story.plot|raw }}
+        </p>
+    </div>
+
+    <div>
+        <ul>
+            <li>
+                {{ story.contactEmail }}
+            </li>
+            <li>
+                {{ story.contactPhone }}
+            </li>
+            <li>
+                {{ story.contactPlace }}
+            </li>
+            {% for url in story.urls %}
+                <li>
+                    <a href="{{ url.href }}">
+                        {{ url.alt }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="#" class="btn btn-danger">Delete</a>
+    {% if story.validated == false %}
+        <a href="#" class="btn btn-default">Validate and publish</a>
+    {% endif %}
+    <a href="#" class="btn btn-primary">Edit</a>
+
+{% endblock %}

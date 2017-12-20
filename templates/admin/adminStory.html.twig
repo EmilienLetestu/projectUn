@@ -24,6 +24,9 @@
                 <th>
                     Published
                 </th>
+                <th>
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -46,6 +49,11 @@
                 </td>
                 <td>
                     <i class="{{ story.validated|stateIcon }}" aria-hidden="true"></i>
+                </td>
+                <td>
+                    <a href="{{ path('adminByStory',{'id': story.id}) }}">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>
                 </td>
             </tr>
             {% endfor %}
