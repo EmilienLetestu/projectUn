@@ -74,4 +74,9 @@ search:
 admin:
     path: /admin
     defaults:
-        _controller:
+        _controller: App\Controller\AdminController::adminHome
+
+adminUser:
+    path: /admin/user
+    defaults:
+        _controller: App\Controller\AdminController::adminUser
