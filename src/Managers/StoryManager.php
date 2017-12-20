@@ -8,15 +8,11 @@
 namespace App\Managers;
 
 use App\Entity\Story;
-use App\Entity\Topic;
 use App\Entity\Url;
 use App\Form\SearchType;
-use App\Services\Tools;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class StoryManager
