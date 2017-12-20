@@ -110,6 +110,22 @@ class AdminController extends Controller
         ]);
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function adminEditStory(Request $request)
+    {
+        $builder = $this->get('App\Builders\AdminBuilder')
+            ->buildAdminEditStory($request)
+        ;
+
+        return $this->render('admin\adminEditStory.html.twig',[
+           'story' => $builder[0],
+           'form'  => $builder[1]
+        ]);
+    }
+
 
     /**public function updateRoleAction()
     {
