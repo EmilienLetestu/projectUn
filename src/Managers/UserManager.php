@@ -69,7 +69,7 @@ class UserManager
     /**
      * @return array
      */
-    public function getAllUser()
+    public function fetchUserForAdmin()
     {
         $repository = $this->doctrine->getRepository(User::class);
         return $repository->findAll();

@@ -24,7 +24,7 @@ class AdminController extends Controller
      */
     public function adminUser()
     {
-        $userList = $this->get('App\Managers\UserManager')->getAllUser();
+        $userList = $this->get('App\Managers\UserManager')->fetchUserForAdmin();
 
         return $this->render('admin\adminUser.html.twig',[
             'userList' => $userList
@@ -36,7 +36,7 @@ class AdminController extends Controller
      */
     public function adminStory()
     {
-        $storyList = $this->get('App\Managers\StoryManager')->fetchForAdmin();
+        $storyList = $this->get('App\Managers\StoryManager')->fetchStoryForAdmin();
 
         return $this->render('admin\adminStory.html.twig',[
             'storyList' => $storyList

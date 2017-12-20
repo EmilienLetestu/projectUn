@@ -186,7 +186,7 @@ class StoryManager
     /**
      * @return array
      */
-    public function fetchForAdmin()
+    public function fetchStoryForAdmin()
     {
         $repository = $this->doctrine->getRepository(Story::class);
         return $repository->findAll();
