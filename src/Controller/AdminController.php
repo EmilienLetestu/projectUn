@@ -54,26 +54,28 @@ class AdminController extends Controller
      */
     public function adminTopic(Request $request)
     {
-        $topicBuilder = $this->get('App\Builders\AdminBuilder')
+        $builder = $this->get('App\Builders\AdminBuilder')
             ->buildAdminTopic($request);
 
         return $this->render('admin\adminTopic.html.twig',[
-            'topicList' => $topicBuilder[0],
-            'form'      => $topicBuilder[1]
+            'topicList' => $builder[0],
+            'form'      => $builder[1]
         ]);
     }
 
     /**
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function adminPatronage()
+    public function adminPatronage(Request $request)
     {
-        $patronageList = $this->get('App\Managers\PatronageManager')
-            ->fetchPatronageForAdmin()
+        $builder = $this->get('App\Builders\AdminBuilder')
+            ->buildAdminPatronage($request)
         ;
 
         return $this->render('admin\adminPatronage.html.twig',[
-            'patronageList' => $patronageList
+            'patronageList' => $builder[0],
+            'form'          => $builder[1]
         ]);
     }
 
