@@ -89,3 +89,8 @@ adminTopic:
     path: /admin/topic
     defaults:
         _controller: App\Controller\AdminController::adminTopic
+
+adminPatronage:
+    path: /admin/patronage
+    defaults:
+        _controller: App\Controller\AdminController::adminPatronage
