@@ -183,5 +183,14 @@ class StoryManager
         return  $filter->createView();
     }
 
+    /**
+     * @return array
+     */
+    public function fetchForAdmin()
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+        return $repository->findAll();
+    }
+
 }
 
