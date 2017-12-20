@@ -99,8 +99,6 @@ adminByStory:
     requirements:
         id: \d+
 
-
-
 adminTopic:
     path: /admin/topic
     defaults:

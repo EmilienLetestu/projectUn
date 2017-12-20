@@ -49,15 +49,17 @@ class AdminController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function adminTopic()
+    public function adminTopic(Request $request)
     {
-        $topicList = $this->get('App\Managers\TopicManager')
-            ->fetchTopicForAdmin();
+        $topicBuilder = $this->get('App\Builders\AdminBuilder')
+            ->buildAdminTopic($request);
 
         return $this->render('admin\adminTopic.html.twig',[
-            'topicList' => $topicList
+            'topicList' => $topicBuilder[0],
+            'form'      => $topicBuilder[1]
         ]);
     }
 
@@ -105,7 +107,6 @@ class AdminController extends Controller
             'story' => $story
         ]);
     }
-
 
 
     /**public function updateRoleAction()
