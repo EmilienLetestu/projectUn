@@ -34,4 +34,14 @@ class PatronageManager
 
         return $repository->findAll();
     }
+
+    /**
+     * @param $patronage
+     */
+    public function createPatronage($patronage)
+    {
+        $this->doctrine->getRepository(Patronage::class);
+        $this->doctrine->persist($patronage);
+        $this->doctrine->flush();
+    }
 }
