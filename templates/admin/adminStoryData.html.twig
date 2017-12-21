@@ -1,6 +1,8 @@
-{% extends "admin/admin.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block body %}
+
+    {{ include('admin/adminNav.html.twig') }}
 
     <h1>{{ story.title }}</h1>
 

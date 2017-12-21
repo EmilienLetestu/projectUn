@@ -1,6 +1,9 @@
-{% extends "admin/admin.html.twig" %}
+{% extends "base.html.twig" %}
 
 {% block body %}
+
+    {{ include('admin/adminNav.html.twig') }}
+
     <div class="container-fluid adminList">
         <table class="table">
             <thead>
