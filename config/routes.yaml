@@ -115,3 +115,13 @@ adminPatronage:
     path: /admin/patronage
     defaults:
         _controller: App\Controller\AdminController::adminPatronage
+
+adminActions:
+    path: /admin/{entity}/{id}/{action}
+    defaults:
+        _controller: App\Controller\AdminController::
+    requirements:
+        entity: story||user
+        id: \d+
+        action: delete||upgrade||downgrade||validate
+    
