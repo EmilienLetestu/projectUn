@@ -76,6 +76,6 @@
     {% if story.validated == false %}
         <a href="#" class="btn btn-default">Validate and publish</a>
     {% endif %}
-    <a href="#" class="btn btn-primary">Edit</a>
+    <a href="{{ path('adminEditStory',{'id' : story.id}) }}" class="btn btn-primary">Edit</a>
 
 {% endblock %}
