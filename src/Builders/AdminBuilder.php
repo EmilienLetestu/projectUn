@@ -85,8 +85,8 @@ class AdminBuilder
     public function buildAdminEditStory(Request $request)
     {
         return[
-            $this->storyManager->fetchOneStoryForAdmin($request),
-            $this->editStory->processAndEdit($request)
+            $edit = $this->storyManager->fetchOneStoryForAdmin($request),
+            $this->editStory->processAndEdit($request, $edit)
         ];
     }
 }
