@@ -124,4 +124,3 @@ adminActions:
         entity: story||user
         id: \d+
         action: delete||upgrade||downgrade||validate
-    
