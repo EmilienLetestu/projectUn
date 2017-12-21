@@ -1,0 +1,18 @@
+{% block body %}
+<div id="adminNav">
+    <ul class="list-inline">
+        <li>
+            <a href="{{ path('adminUser') }}">Users</a>
+        </li>
+        <li>
+            <a href="{{ path('adminStory') }}">Stories</a>
+        </li>
+        <li>
+            <a href="{{ path('adminTopic') }}">Topics</a>
+        </li>
+        <li>
+            <a href="{{ path('adminPatronage') }}">Patronages</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}
