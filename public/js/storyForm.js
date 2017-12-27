@@ -12,9 +12,7 @@ $(document).ready(function () {
     //will match phone number patter with or without international prefix
     var phoneRegex = /^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/;
 
-    //story form
-
-
+    //story form pre submit validation
     $('#addStoryBtn').click(function () {
         var validate = true;
         var title    = $('#story_title');
@@ -33,8 +31,7 @@ $(document).ready(function () {
         var trimPlot  = splitPlot[0].trim();
         var countPlot = parseInt(trimPlot);
 
-        if(title.val().length < 5 || title.val().length > 100)
-        {
+        if(title.val().length < 5 || title.val().length > 100) {
 
             title.css('border-color','#F54041');
             $('#invalid_title').show();
@@ -42,116 +39,100 @@ $(document).ready(function () {
             $('#valid_title_icon').hide();
             validate = false;
         }
-        else
-        {
+        else {
             title.css('border-color','#5fdda1');
             $('#invalid_title').hide();
             $('#invalid_title_icon').hide();
             $('#valid_title_icon').show();
         }
-        if(investor.val().length > 0 && investor.val().length < 2 || investor.val().length > 100)
-        {
+        if(investor.val().length > 0 && investor.val().length < 2 || investor.val().length > 100) {
             investor.css('border-color','#F54041');
             $('#invalid_investor').show();
             $('#invalid_investor_icon').show();
             $('#valid_investor_icon').hide();
             validate = false;
         }
-        else if(investor.val().length == 0)
-        {
+        else if(investor.val().length == 0) {
             $('#invalid_investor').hide();
             $('#invalid_investor_icon').hide();
             $('#valid_investor_icon').hide();
         }
-        else
-        {
+        else {
             investor.css('border-color','#5fdda1');
             $('#invalid_investor').hide();
             $('#invalid_investor_icon').hide();
             $('#valid_investor_icon').show();
         }
-        if(!regex.test(email.val()))
-        {
+        if(!regex.test(email.val())) {
             email.css('border-color','#F54041');
             $('#invalid_email').show();
             $('#invalid_email_icon').show();
             $('#valid_email_icon').hide();
             validate = false;
         }
-        else
-        {
+        else {
             email.css('border-color','#5fdda1');
             $('#invalid_email').hide();
             $('#invalid_email_icon').hide();
             $('#valid_email_icon').show();
         }
-        if(place.val().length > 0 && place.val().length < 2 || place.val().length > 100)
-        {
+        if(place.val().length > 0 && place.val().length < 2 || place.val().length > 100) {
             place.css('border-color','#F54041');
             $('#invalid_place').show();
             $('#invalid_place_icon').show();
             $('#valid_place_icon').hide();
             validate = false;
         }
-        else if(place.val().length == 0)
-        {
+        else if(place.val().length == 0) {
             $('#invalid_place').hide();
             $('#invalid_place_icon').hide();
             $('#valid_place_icon').hide();
         }
-        else
-        {
+        else {
             place.css('border-color','#5fdda1');
             $('#invalid_place').hide();
             $('#invalid_place_icon').hide();
             $('#valid_place_icon').show();
         }
-        if(phone.val().length !==0 && !phoneRegex.test(phone.val()))
-        {
+        if(phone.val().length !==0 && !phoneRegex.test(phone.val())) {
             phone.css('border-color','#F54041');
             $('#invalid_phone').show();
             $('#invalid_phone_icon').show();
             $('#valid_phone_icon').hide();
             validate = false;
         }
-        else if(phone.val().length == 0)
-        {
+        else if(phone.val().length == 0) {
             $('#invalid_phone').hide();
             $('#invalid_phone_icon').hide();
             $('#valid_phone_icon').hide();
         }
-        else
-        {
+        else {
             phone.css('border-color','#5fdda1');
             $('#invalid_phone').hide();
             $('#invalid_phone_icon').hide();
             $('#valid_phone_icon').show();
         }
-        if(countAbstract == 0 ||countAbstract > 70)
-        {
+        if(countAbstract == 0 ||countAbstract > 70) {
             $('#abstract').find('.mce-tinymce').css('border-color','#F54041');
             $('#invalid_abstract').show();
             $('#invalid_abstract_icon').show();
             $('#valid_abstract_icon').hide();
             validate = false;
         }
-        else
-        {
+        else {
             $('#abstract').find('.mce-tinymce').css('border-color','#5fdda1');
             $('#invalid_abstract').hide();
             $('#invalid_abstract_icon').hide();
             $('#valid_abstract_icon').show();
         }
-        if(countPlot == 0 || countPlot > 200)
-        {
+        if(countPlot == 0 || countPlot > 200) {
             $('#plot').find('.mce-tinymce').css('border-color','#F54041');
             $('#invalid_plot').show();
             $('#invalid_plot_icon').show();
             $('#valid_plot_icon').hide();
             validate = false;
         }
-        else
-        {
+        else {
             $('#plot').find('.mce-tinymce').css('border-color','#5fdda1');
             $('#invalid_plot').hide();
             $('#invalid_plot_icon').hide();
