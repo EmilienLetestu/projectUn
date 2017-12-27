@@ -226,5 +226,60 @@ class StoryManager
         ]);
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
+    public function fetchStoryByUser($id)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+
+        return $repository->findBy(['user' => $id]);
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function fetchStoryByWorldArea($id)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+
+        return $repository->findBy(['worldArea' => $id]);
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function fetchStoryByCountry($id)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+
+        return $repository->findBy(['country' => $id]);
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function fetchStoryByPatronage($id)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+
+        return $repository->findBy(['patronage' => $id]);
+    }
+
+    /**
+     * @param $id
+     * @return array
+     */
+    public function fetchStoryByTopic($id)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+
+        return $repository->findBy(['topic' => $id]);
+    }
+
 }
 
