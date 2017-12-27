@@ -29,7 +29,10 @@
                     {{ patronage.organization }}
                 </td>
                 <td>
-                    {{ patronage.stories|length }}
+                    <a href="{{ path('adminStory',{'filter' : 'patronage', 'filterId' : patronage.id}) }}"
+                       title="Display all {{ patronage.organization }} stories">
+                        {{ patronage.stories|length }}
+                    </a>
                 </td>
             </tr>
             {% endfor %}

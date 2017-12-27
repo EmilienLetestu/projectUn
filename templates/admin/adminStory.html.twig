@@ -41,10 +41,16 @@
                     {{ story.title }}
                 </td>
                 <td>
-                    {{ story.worldArea|worldArea }}
+                    <a href="{{ path('adminStory',{'filter' : 'worldArea', 'filterId' : story.worldArea}) }}"
+                       title="Display all stories sets in {{ story.worldArea|worldArea }}">
+                        {{ story.worldArea|worldArea }}
+                    </a>
                 </td>
                 <td>
-                    {{ story.user.fullname }}
+                    <a href="{{ path('adminStory',{'filter' : 'user' ,'filterId' : story.user.id}) }}"
+                       title="Display all stories written by {{ story.user.fullname }}">
+                        {{ story.user.fullname }}
+                    </a>
                 </td>
                 <td>
                     {{ story.createdOn|date("m/d/y") }}

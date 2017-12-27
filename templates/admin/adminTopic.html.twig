@@ -29,7 +29,10 @@
                     {{ topic.type }}
                 </td>
                 <td>
-                    {{ topic.stories|length }}
+                    <a href="{{ path('adminStory',{'filter' : 'topic', 'filterId' : topic.id}) }}"
+                       title="Display all {{ topic.type }} stories">
+                        {{ topic.stories|length }}
+                    </a>
                 </td>
             </tr>
             {% endfor %}
