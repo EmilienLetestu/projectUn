@@ -32,39 +32,53 @@ class UserManager
         $this->notification = $notification;
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
+    public function upgradeUser($id)
+    {
+        $repository = $this->doctrine->getRepository(User::class);
+        $user = $repository->find($id);
+
+        $user->setRole('EDIT');
+        $this->doctrine->persist($user);
+        $this->notification->chooseNotification($user);
+        $this->doctrine->flush();
+
+        return $user->getFullname().'User has been granted editor privileges';
+    }
 
     /**
      * @param $id
-     * @return mixed
+     * @return string
      */
-    public function updateUserRole($id)
+    public function downgradeUser($id)
     {
         $repository = $this->doctrine->getRepository(User::class);
-        $user= $repository->find($id);
+        $user = $repository->find($id);
 
-        if($user->getRole() === 'ADMIN')
-        {
-           return $this->session->getFlashBag()
-               ->add('denied',
-                   'you can\'t update administrator privileges'
-               )
-           ;
-        }
-
-        $user->getRole() === 'EDIT' ?
-            $user->setRole('USER') :
-            $user->setRole('EDIT')
-        ;
-
+        $user->setRole('USER');
+        $this->doctrine->persist($user);
         $this->notification->chooseNotification($user);
-
         $this->doctrine->flush();
 
-       return $this->session->getFlashBag()
-           ->add('succes',
-            $user->getFullname().'User has been granted '.$user->getRole().' privileges'
-           )
-      ;
+        return $user->getFullname().'User has been granted user privileges';
+    }
+
+    /**
+     * @param $id
+     * @return string
+     */
+    public function deleteUser($id)
+    {
+        $repository = $this->doctrine->getRepository(User::class);
+        $user = $repository->find($id);
+
+        $this->doctrine->remove($user);
+        $this->doctrine->flush();
+
+        return 'User account has been deleted';
     }
 
     /**
