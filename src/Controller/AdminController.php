@@ -51,7 +51,8 @@ class AdminController extends Controller
         ;
 
         return $this->render('admin\adminStory.html.twig',[
-            'storyList' => $storyList
+            'storyList' => $storyList[0],
+            'title'     => $storyList[1]
         ]);
     }
 

@@ -10,7 +10,7 @@
     <ul class="list-inline">
         <li>
             <i class="fa fa-globe" aria-hidden="true"></i>
-            {{ story.worldArea|worldArea }}/{{ story.country|country }}
+            {{ story.worldArea|worldArea }}{{ story.country != null ? ' / '~story.country|country : null }}
         </li>
         <li>
             <i class="fa fa-calendar" aria-hidden="true"></i>
