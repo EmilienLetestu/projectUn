@@ -126,20 +126,29 @@ class AdminController extends Controller
         ]);
     }
 
-
-    /**public function updateRoleAction()
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function adminEntityManagement(Request $request)
     {
-        $id = $this->request->query->get('id');
+        $entity = $request->attributes->get('entity');
+        $id     = $request->attributes->get('id');
+        $action = $request->attributes->get('action');
 
-        $this->get('App\Managers\UserManager')
-            ->updateUserRole($id)
+        $method = $action.ucfirst($entity);
+
+        $entity === 'story' ?
+            $process = $this->get('App\Managers\StoryManager')
+                ->$method($id)
+            :
+            $process = $this->get('App\Managers\UserManager')
+                ->$method($id)
         ;
 
-        return $this->redirectToRoute('admin',[
-            'action' => 'show',
-            'entity' => $this->request->query->get('entity'),
-            'id' => $id
-        ]);
-    }*/
+        $this->get('session')->getFlashBag()->add('success',$process);
+
+        return $this->redirectToRoute('admin'.ucfirst($entity));
+    }
 
 }
