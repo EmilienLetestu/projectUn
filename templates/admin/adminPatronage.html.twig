@@ -29,10 +29,15 @@
                     {{ patronage.organization }}
                 </td>
                 <td>
+                    {% if patronage.stories|length > 0 %}
                     <a href="{{ path('adminStory',{'filter' : 'patronage', 'filterId' : patronage.id}) }}"
                        title="Display all {{ patronage.organization }} stories">
                         {{ patronage.stories|length }}
                     </a>
+                    {% endif %}
+                    {% if patronage.stories|length == 0 %}
+                        0
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}

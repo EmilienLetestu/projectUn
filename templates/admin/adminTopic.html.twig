@@ -29,10 +29,15 @@
                     {{ topic.type }}
                 </td>
                 <td>
+                    {% if topic.stories|length > 0 %}
                     <a href="{{ path('adminStory',{'filter' : 'topic', 'filterId' : topic.id}) }}"
                        title="Display all {{ topic.type }} stories">
                         {{ topic.stories|length }}
                     </a>
+                    {% endif %}
+                    {% if topic.stories|length == 0 %}
+                        0
+                    {% endif %}
                 </td>
             </tr>
             {% endfor %}
