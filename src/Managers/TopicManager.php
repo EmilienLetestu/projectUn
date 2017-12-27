@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Emilien
- * Date: 20/12/2017
- * Time: 11:27
+ * Date: 27/12/2017
+ * Time: 15:02
  */
 
 namespace App\Managers;
@@ -11,11 +11,9 @@ namespace App\Managers;
 
 use App\Entity\Topic;
 use Doctrine\ORM\EntityManager;
-
 class TopicManager
 {
     private $doctrine;
-
     /**
      * topicManager constructor.
      * @param EntityManager $doctrine
@@ -24,26 +22,21 @@ class TopicManager
     {
         $this->doctrine = $doctrine;
     }
-
     /**
      * @return array
      */
     public function fetchTopicForAdmin()
     {
         $repository = $this->doctrine->getRepository(Topic::class);
-
         return $repository->findAll();
     }
-
     /**
      * @param $topic
      */
     public function createTopic($topic)
     {
-      $this->doctrine->getRepository(Topic::class);
-      $this->doctrine->persist($topic);
-      $this->doctrine->flush();
+        $this->doctrine->getRepository(Topic::class);
+        $this->doctrine->persist($topic);
+        $this->doctrine->flush();
     }
-
-
 }
