@@ -37,6 +37,29 @@ class StoryManager
 
     }
 
+    public function validateStory($id)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+        $story = $repository->find($id);
+
+        $story->setValidated(true);
+        $this->doctrine->persist($story);
+        $this->doctrine->flush();
+
+        return 'Story has been validated and published';
+    }
+
+    public function deleteStory($id)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+        $story = $repository->find($id);
+
+        $this->doctrine->remove($story);
+        $this->doctrine->flush();
+
+        return 'Story has been deleted';
+    }
+
     /**
      * @return array
      */
