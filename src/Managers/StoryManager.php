@@ -210,7 +210,10 @@ class StoryManager
     {
         $repository = $this->doctrine->getRepository(Story::class);
 
-        return $repository->findAll();
+        return [
+            $repository->findAll(),
+            'STORIES'
+        ];
     }
 
     /**
@@ -234,7 +237,10 @@ class StoryManager
     {
         $repository = $this->doctrine->getRepository(Story::class);
 
-        return $repository->findBy(['user' => $id]);
+        return [
+            $story = $repository->findBy(['user' => $id]),
+            $story[0]->getUser()->getFullname().' STORIES'
+        ];
     }
 
     /**
@@ -245,7 +251,19 @@ class StoryManager
     {
         $repository = $this->doctrine->getRepository(Story::class);
 
-        return $repository->findBy(['worldArea' => $id]);
+        $worldArea = [
+            '1' =>  'Africa',
+            '2' =>  'Asia',
+            '3' =>  'Europe',
+            '4' =>  'North America',
+            '5' =>  'South America',
+            '6' =>  'Oceania'
+        ];
+
+        return [
+            $story = $repository->findBy(['worldArea' => $id]),
+           'STORIES SETS IN '.$worldArea[$story[0]->getWorldArea()]
+        ];
     }
 
     /**
@@ -256,7 +274,10 @@ class StoryManager
     {
         $repository = $this->doctrine->getRepository(Story::class);
 
-        return $repository->findBy(['country' => $id]);
+        return [
+            $story = $repository->findBy(['country' => $id]),
+            $story[0]->getCountry().' STORIES'
+        ];
     }
 
     /**
@@ -267,7 +288,10 @@ class StoryManager
     {
         $repository = $this->doctrine->getRepository(Story::class);
 
-        return $repository->findBy(['patronage' => $id]);
+        return [
+            $story = $repository->findBy(['patronage' => $id]),
+            $story[0]->getPatronage()->getOrganizzation().' STORIES'
+        ];
     }
 
     /**
@@ -278,7 +302,10 @@ class StoryManager
     {
         $repository = $this->doctrine->getRepository(Story::class);
 
-        return $repository->findBy(['topic' => $id]);
+        return [
+            $story = $repository->findBy(['topic' => $id]),
+            $story[0]->getTopic()->getType().' STORIES'
+        ];
     }
 
 }
