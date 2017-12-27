@@ -72,7 +72,9 @@
         </ul>
     </div>
 
-    <a href="#" class="btn btn-danger">Delete</a>
+    <a href="{{ path('adminActions',{'entity' : 'story' , 'id' : story.id , 'action' : 'delete'}) }}"
+       class="btn btn-danger">Delete
+    </a>
     {% if story.validated == false %}
         <a href="{{ path('adminActions',{'entity' : 'story' , 'id' : story.id , 'action' : 'validate'}) }}"
            class="btn btn-default">Validate and publish
