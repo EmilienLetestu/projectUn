@@ -287,7 +287,7 @@ class StoryManager
     public function fetchStoryByPatronage($id)
     {
         $repository = $this->doctrine->getRepository(Story::class);
-
+        
         return [
             $story = $repository->findBy(['patronage' => $id]),
             $story[0]->getPatronage()->getOrganizzation().' STORIES'
