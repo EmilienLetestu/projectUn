@@ -119,7 +119,7 @@ adminPatronage:
 adminActions:
     path: /admin/{entity}/{id}/{action}
     defaults:
-        _controller: App\Controller\AdminController::
+        _controller: App\Controller\AdminController::adminEntityManagement
     requirements:
         entity: story||user
         id: \d+
