@@ -270,6 +270,7 @@ i.fa-check{
 	}
 	i {
 		color: $secondary-color;
+		font-size: 1.6em;
 	}
 	h3 {
 		text-align: center;
@@ -441,9 +442,16 @@ h1,
 }
 
 .pictLink{
-	padding: 5px 170px;
 	font-size: 2rem;
 	margin-top: 3%;
+	width: 260px;
+	height: 60px;
+	text-align: center;
+	padding-top: 1%;
+}
+
+#punchLine .pictLink{
+	padding-top: 2%;
 }
 .pictLink:hover{
 	background-color: transparent;
@@ -563,10 +571,12 @@ h1,
 .part4{
 	margin-top: 10%;
 	.btn{
-		width: 100%;
+		width: 260px;
+		height: 60px;
 		background-color: transparent;
 		color: $secondary-color;
 		border-color: $secondary-color;
+		margin-left: 30%;
 	}
 	.btn:hover{
 		background-color: $secondary-color;
@@ -716,6 +726,7 @@ h1,
 	}
 	i{
 		color: #FFFFFF;
+		font-size: 1.6em;
 	}
 }
 
