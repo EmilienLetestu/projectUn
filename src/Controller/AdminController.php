@@ -35,12 +35,19 @@ class AdminController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function adminStory()
+    public function adminStory(Request $request)
     {
-        $storyList = $this->get('App\Managers\StoryManager')
-            ->fetchStoryForAdmin()
+        $filter   = $request->attributes->get('filter');
+        $method = 'fetchStoryBy'.ucfirst($filter);
+
+        $filter !== null ?
+            $storyList = $this->get('App\Managers\StoryManager')
+                ->$method($request->attributes->get('filterId')) :
+            $storyList = $this->get('App\Managers\StoryManager')
+                ->fetchStoryForAdmin()
         ;
 
         return $this->render('admin\adminStory.html.twig',[
@@ -133,17 +140,16 @@ class AdminController extends Controller
     public function adminEntityManagement(Request $request)
     {
         $entity = $request->attributes->get('entity');
-        $id     = $request->attributes->get('id');
         $action = $request->attributes->get('action');
 
         $method = $action.ucfirst($entity);
 
         $entity === 'story' ?
             $process = $this->get('App\Managers\StoryManager')
-                ->$method($id)
+                ->$method($request->attributes->get('id'))
             :
             $process = $this->get('App\Managers\UserManager')
-                ->$method($id)
+                ->$method($request->attributes->get('id'))
         ;
 
         $this->get('session')->getFlashBag()->add('success',$process);
