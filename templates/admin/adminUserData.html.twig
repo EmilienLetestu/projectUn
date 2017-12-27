@@ -37,7 +37,15 @@
         </li>
     </ul>
 
-    <a href="#" class="btn btn-danger">Delete</a>
-    <a href="#" class="btn btn-primary">Promote</a>
+    {% if user.role != 'ADMIN' %}
+    <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
+       class="btn btn-danger">Delete
+    </a>
+
+    {% set action = user.role == 'USER' ? 'upgrade' : 'downgrade' %}
+    <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : action }) }}" class="btn btn-primary">
+        {{ action|capitalize }}
+    </a>
+    {% endif %}
 
 {% endblock %}
