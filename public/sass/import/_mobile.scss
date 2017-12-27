@@ -569,15 +569,14 @@ h1,
 	}
 }
 .part4{
-	margin-top: 10%;
-	.btn{
-		width: 260px;
-		height: 60px;
-		background-color: transparent;
-		color: $secondary-color;
-		border-color: $secondary-color;
-		margin-left: 30%;
-	}
+		 margin-top: 10%;
+		 .btn{
+			 width: 260px;
+			 height: 60px;
+			 background-color: transparent;
+			 color: $secondary-color;
+			 border-color: $secondary-color;
+		 }
 	.btn:hover{
 		background-color: $secondary-color;
 		color: #FFFFFF;
