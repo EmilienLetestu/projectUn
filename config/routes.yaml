@@ -80,6 +80,7 @@ adminUser:
     defaults:
         _controller: App\Controller\AdminController::adminUser
 
+
 adminByUser:
     path: /admin/user/{id}
     defaults:
@@ -87,13 +88,19 @@ adminByUser:
     requirements:
         id: \d+
 
+
 adminStory:
-    path: /admin/story
+    path: /admin/story/{filter}/{filterId}
     defaults:
         _controller: App\Controller\AdminController::adminStory
+        filter: null
+        filterId: null
+    requirements:
+        filter: user||worldArea||country||topic||patronage
+        filterId: \d+
 
 adminByStory:
-    path: /admin/story/{id}
+    path: /admin/story-informations/{id}
     defaults:
         _controller: App\Controller\AdminController::adminByStory
     requirements:
