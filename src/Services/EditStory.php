@@ -13,7 +13,6 @@ use App\Entity\Story;
 use App\Form\EditStoryType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class EditStory
@@ -40,7 +39,7 @@ class EditStory
         $this->session      = $session;
     }
 
-    public function processAndEdit(Request $request, $storyToEdit)
+    public function processAndEdit($request, $storyToEdit)
     {
         $story = new Story();
 

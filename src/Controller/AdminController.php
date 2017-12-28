@@ -122,12 +122,11 @@ class AdminController extends Controller
      */
     public function adminByStory(Request $request)
     {
-        $story = $this->get('App\Managers\StoryManager')
-            ->fetchOneStoryForAdmin($request)
-        ;
-
         return $this->render('admin\adminStoryData.html.twig',[
-            'story' => $story
+            'story' => $this->get('App\Managers\StoryManager')
+                ->fetchOneStoryForAdmin(
+                    $request->attributes->get('id')
+                )
         ]);
     }
 
@@ -137,13 +136,17 @@ class AdminController extends Controller
      */
     public function adminEditStory(Request $request)
     {
-        $builder = $this->get('App\Builders\AdminBuilder')
-            ->buildAdminEditStory($request)
+        $story = $this->get('App\Managers\StoryManager')
+            ->fetchOneStoryForAdmin($request->attributes->get('id'))
+        ;
+
+        $form = $this->get('App\Services\EditStory')
+            ->processAndEdit($request, $story)
         ;
 
         return $this->render('admin\adminEditStory.html.twig',[
-           'story' => $builder[0],
-           'form'  => $builder[1]
+           'story' => $story,
+           'form'  => $form
         ]);
     }
 

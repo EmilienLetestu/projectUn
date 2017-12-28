@@ -217,16 +217,14 @@ class StoryManager
     }
 
     /**
-     * @param Request $request
+     * @param $id
      * @return null|object
      */
-    public function fetchOneStoryForAdmin(Request $request)
+    public function fetchOneStoryForAdmin($id)
     {
         $repository = $this->doctrine->getRepository(Story::class);
 
-        return $repository->findOneBy([
-            'id'=>$request->attributes->get('id')
-        ]);
+        return $repository->findOneBy(['id' => $id]);
     }
 
     /**
