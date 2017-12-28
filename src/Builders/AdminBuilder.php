@@ -54,29 +54,6 @@ class AdminBuilder
         $this->storyManager     = $storyManager;
     }
 
-    /**
-     * @param Request $request
-     * @return array
-     */
-    public function buildAdminTopic(Request $request)
-    {
-        return[
-            $this->topicManager->fetchTopicForAdmin(),
-            $this->addTopic->processTopic($request)
-        ];
-    }
-
-    /**
-     * @param Request $request
-     * @return array
-     */
-    public function buildAdminPatronage(Request $request)
-    {
-        return[
-            $this->patronageManager->fetchPatronageForAdmin(),
-            $this->addPatronage->processPatronage($request)
-        ];
-    }
 
     /**
      * @param Request $request
