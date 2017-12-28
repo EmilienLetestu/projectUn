@@ -34,7 +34,7 @@ $(document).ready(function() {
     }
 
     function addDeleteLink($prototype) {
-        var $deleteLink = $('<a href="#" class="btn btn-danger"><i class="fa fa-minus" aria-hidden="true"></i></a>');
+        var $deleteLink = $('<a href="#" class="btn btn-danger removeUrl"><i class="fa fa-minus" aria-hidden="true"></i></a>');
         $prototype.append($deleteLink);
         $deleteLink.click(function(e) {
             $prototype.remove();

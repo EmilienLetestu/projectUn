@@ -5,25 +5,25 @@
         <div class="connectionTitle">
            <h1>PLEASE SIGN IN</h1>
         </div>
-        <div class="connectionForm">
+        <div class="container-fluid connectionForm">
         {% if error %}
             <div class="alert alert-warning">{{ error.message }}</div>
         {% endif %}
             <form action="{{ path('login_check') }}" method="post">
-                <div class="form-group row">
+                <div class="form-group row col-md-12">
                     <label for="username">Email</label>
                     <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"/>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row col-md-12">
                     <label for="password">Password</label>
                     <input class="form-control" type="password" id="password" name="_password"/>
                     <span id="invalid_pswd" style="display: none">Pasword doesn't match prerequisite pattern</span>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row col-md-12">
                     <input type="checkbox" id="remember_me" name="_remember_me" checked />
                     <label for="remember_me">Remember Me</label>
                 </div>
-                <div class="form-group row">
+                <div class="form-group row col-md-12" id="registerOptions">
                     <button class="btn btn-success" id="loginBtn" type="submit">Submit</button>
                     <a class="btn btn-default lost" href="{{ path('lostPassword') }}">Lost Password</a>
                 </div>
@@ -35,9 +35,9 @@
         <div class="connectionTitle">
             <h1>REGISTER</h1>
         </div>
-        <div class="connectionForm">
+        <div class="container-fluid connectionForm">
             {{ form_start(form ,{'attr':{'id':'registerForm'}}) }}
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.name) }}
@@ -49,7 +49,7 @@
                 </span>
                 <span class="invalid" id="invalid_name" style="display: none">Between 3 up to 30 letters</span>
             </div>
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_label(form.surname) }}
                 {{ form_widget(form.surname ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.surname,{'attr':{'class':'invalid'}}) }}
@@ -61,23 +61,23 @@
                 </span>
                 <span class="invalid" id="invalid_surname" style="display: none">Between 3 up to 30 letters</span>
             </div>
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_widget(form.claimEdit) }}
                 {{ form_label(form.claimEdit) }}
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_label(form.profession) }}
                 {{ form_widget(form.profession ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.profession,{'attr':{'class':'invalid'}}) }}
             </div>
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_label(form.engagement) }}
                 {{ form_widget(form.engagement ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.engagement,{'attr':{'class':'invalid'}}) }}
                 <span id="wordCount"> 0/300 </span>
             </div>
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.email,{'attr':{'class':'invalid'}}) }}
@@ -89,7 +89,7 @@
                 </span>
                 <span class="invalid" id="invalid_email" style="display: none">Enter a valid email</span>
             </div>
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_label(form.pswd) }}
                 {{ form_widget(form.pswd,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.pswd, {'attr':{'class':'invalid'}}) }}
@@ -101,7 +101,7 @@
                 </span>
                 <span class="invalid" id="invalid_pswd" style="display: none">Between 6 up to 30 letters</span>
             </div>
-            <div class="form-group row" id="confirm" style="display: none">
+            <div class="form-group row col-md-12" id="confirm" style="display: none">
                 {{ form_label(form.confirmPswd) }}
                 {{ form_widget(form.confirmPswd ,{'attr':{'class':'form-control'}})}}
                 {{ form_errors(form.confirmPswd,{'attr':{'class':'invalid'}}) }}
@@ -113,12 +113,12 @@
                 </span>
                 <span class="invalid" id="invalid_confirm" style="display: none">Passwords don't match</span>
             </div>
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_label(form.termsAgreement) }}
                 {{ form_widget(form.termsAgreement)}}
                 {{ form_errors(form.termsAgreement)}}
             </div>
-            <div class="form-group row">
+            <div class="form-group row col-md-12 centerSubmit">
                 <button class="btn btn-success" id="registerBtn" type="submit">Submit</button>
             </div>
             {{ form_end(form) }}
@@ -126,13 +126,13 @@
      {% endif %}
 
       {% if app.request.attributes.get('_route') == 'lostPassword' %}
-        <div class="connectionForm">
+        <div class="container-fluid connectionForm">
             <div class="connectionTitle">
                 <h1>LOST PASSWORD</h1>
                 <p>Fill the form below thus we will send you an email to reset your password </p>
             </div>
             {{ form_start(form, {'attr':{'id':'askNewForm'}}) }}
-            <div class="form-group row">
+            <div class="form-group row col-md-12">
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.email ,{'attr':{'class':'invalid'}}) }}
@@ -144,7 +144,7 @@
                 </span>
                 <span class="invalid" id="invalid_email" style="display: none">Enter a valid email</span>
             </div>
-            <div class="form-group row">
+            <div class="form-group row col-md-12 centerSubmit">
                 <button class="btn btn-success" id="lostPswdBtn" type="submit">Submit</button>
             </div>
             {{ form_end(form) }}
@@ -178,7 +178,7 @@
                 </span>
                 <span class="invalid" id="invalid_confirm" style="display: none">Passwords don't match</span>
             </div>
-            <div class="form-group">
+            <div class="form-group row col-md-12 centerSubmit">
                 <button class="btn btn-success" id="newPswdBtn" type="submit">Submit</button>
             </div>
             {{ form_end(form) }}

@@ -5,30 +5,30 @@
     <div class="pageHeader">
         <h1>Add Your Story</h1>
     </div>
-    <div class="well">
+    <div class="well container-fluid addStory">
         {{ form_start(form ,{'attr':{'id':'addForm'}}) }}
-        <div id="storyPart1">
+        <div id="storyPart1 row col-md-12">
             <p id="showPart1"> <i class="fa fa-caret-down" aria-hidden="true"></i> Story topic and patronage</p>
-                <div class="form-group row part1" style="display: block">
+                <div class="form-group row col-md-12 part1" style="display: block">
                     {{ form_label(form.topic) }}<span class="req">*</span>
                     {{ form_widget(form.topic ,{'attr':{'class':'form-control'}}) }}
                     <span class="invalidBack">{{ form_errors(form.topic) }}</span>
                 </div>
-                <div class="form-group row part1" style="display: block">
+                <div class="form-group row col-md-12 part1" style="display: block">
                     {{ form_label(form.worldArea) }}<span class="req">*</span>
                     {{ form_widget(form.worldArea ,{'attr':{'class':'form-control'}}) }}
                 </div>
-                <div class="form-group row part1" style="display: block">
+                <div class="form-group row col-md-12 part1" style="display: block">
                     {{ form_label(form.country) }}
                     {{ form_widget(form.country ,{'attr':{'class':'form-control'}}) }}
                     <span class="invalidBack">{{ form_errors(form.country) }}</span>
                 </div>
-                <div class="form-group row part1" style="display: block">
+                <div class="form-group row col-md-12 part1" style="display: block">
                     {{ form_label(form.patronage) }}<span class="req">*</span>
                     {{ form_widget(form.patronage,{'attr':{'class':'form-control'}}) }}
                     <span class="invalidBack">{{ form_errors(form.patronage) }}</span>
                 </div>
-                <div class="form-group row part1" style="display: block">
+                <div class="form-group row col-md-12 part1" style="display: block">
                     {{ form_label(form.investor) }}
                     {{ form_widget(form.investor,{'attr':{'class':'form-control'}}) }}
                     <span class="invalidBack">{{ form_errors(form.investor) }}</span>
@@ -40,15 +40,15 @@
                     </span>
                     <span class="invalid" id="invalid_investor" style="display: none">Between 2 up to 100 characters</span>
                 </div>
-                <div class="form-group row  part1" style="display: block">
+                <div class="form-group row col-md-12 part1" style="display: block">
                     {{ form_label(form.year) }}<span class="req">*</span>
                     {{ form_widget(form.year ,{'attr':{'class':'form-control'}}) }}
                 <span class="invalidBack">{{ form_errors(form.year) }}</span>
             </div>
         </div>
-        <div id="storyPart2">
-            <span id="showPart2"> <i class="fa fa-caret-down" aria-hidden="true"></i> Story's abstract and narrative</span>
-                <div class="form-group row part2" style="display: none">
+        <div id="storyPart2 row col-md-12">
+            <p id="showPart2"><i class="fa fa-caret-down" aria-hidden="true"></i> Story's abstract and narrative</p>
+                <div class="form-group row col-md-12 part2" style="display: none">
                     {{ form_label(form.title) }}<span class="req">*</span>
                     {{ form_widget(form.title ,{'attr':{'class':'form-control'}}) }}
                     <span class="invalidBack">{{ form_errors(form.title) }}</span>
@@ -60,7 +60,7 @@
                     </span>
                     <span class="invalid" id="invalid_title" style="display: none">Between 5 up to 100 characters</span>
                 </div>
-                <div class="form-group row part2" id="abstract" style="display: none">
+                <div class="form-group row col-md-12 part2" id="abstract" style="display: none">
                     {{ form_label(form.abstract) }}<span class="req">*</span>
                     {{ form_widget(form.abstract ,{'attr':{'class':'form-control tinyMce'}}) }}
                     <span class="invalidBack">{{ form_errors(form.abstract) }}</span>
@@ -72,7 +72,7 @@
                     </span>
                     <span class="invalid" id="invalid_abstract" style="display: none">70 words maximum</span>
                 </div>
-                <div class="form-group row part2" id="plot" style="display: none">
+                <div class="form-group row col-md-12 part2" id="plot" style="display: none">
                     {{ form_label(form.plot) }}<span class="req">*</span>
                     {{ form_widget(form.plot ,{'attr':{'class':'form-control tinyMce'}}) }}
                     <span class="invalidBack">{{ form_errors(form.plot) }}</span>
@@ -85,9 +85,10 @@
                     <span class="invalid" id="invalid_plot" style="display: none">200 words maximum</span>
                 </div>
         </div>
-        <div id="storyPart3">
-            <span id="showPart3"> <i class="fa fa-caret-down" aria-hidden="true"></i> Story's intel</span>
-            <div class="form-group row part3" style="display: none">
+        <div id="storyPart3 row col-md-12">
+
+            <p id="showPart3"> <i class="fa fa-caret-down" aria-hidden="true"></i> Story's intel</p>
+            <div class="form-group row col-md-12 part3" style="display: none">
                 {{ form_label(form.contactEmail) }}<span class="req">*</span>
                 {{ form_widget(form.contactEmail ,{'attr':{'class':'form-control'}}) }}
                 <span class="invalidBack">{{ form_errors(form.contactEmail) }}</span>
@@ -99,7 +100,7 @@
                 </span>
                 <span class="invalid" id="invalid_email" style="display: none">Enter a valid email</span>
             </div>
-            <div class="form-group row part3" style="display: none">
+            <div class="form-group row col-md-12 part3" style="display: none">
                 {{ form_label(form.contactPlace) }}
                 {{ form_widget(form.contactPlace ,{'attr':{'class':'form-control'}}) }}
                 <span class="invalidBack">{{ form_errors(form.contactPlace) }}</span>
@@ -111,7 +112,7 @@
                 </span>
                 <span class="invalid" id="invalid_place" style="display: none">Between 3 up to 100 characters</span>
             </div>
-            <div class="form-group row  part3" style="display: none">
+            <div class="form-group row col-md-12 part3" style="display: none">
                 {{ form_label(form.contactPhone) }}
                 {{ form_widget(form.contactPhone ,{'attr':{'class':'form-control'}}) }}
                 <span class="invalidBack">{{ form_errors(form.contactPhone) }}</span>
@@ -123,7 +124,7 @@
                 </span>
                 <span class="invalid" id="invalid_phone" style="display: none">Please enter a valid phone number, you can enter phone number with or without international prefix</span>
             </div>
-            <div class="form-group row  part3" style="display: none">
+            <div class="form-group row col-md-11 part3 urls"  style="display: none">
                 {{ form_row(form.urls) }}
                 <a href="#" id="add_url" class="btn btn-default"><i class="fa fa-plus" aria-hidden="true"></i>
                 </a>

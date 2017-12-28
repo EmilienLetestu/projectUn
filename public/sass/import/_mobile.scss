@@ -105,12 +105,19 @@ i.fa-check{
 }
 
 /* ----- submit button color-----*/
+
+.centerSubmit{
+	text-align: center;
+}
+
 #loginBtn,
 #registerBtn,
 #lostPswdBtn{
 	border-color: $secondary-color !important;
 	color: $secondary-color !important;
 	background-color: transparent !important;
+	width: 260px;
+	height: 60px;
 }
 
 #loginBtn:hover,
@@ -125,6 +132,12 @@ i.fa-check{
 	border-color: $primary-color !important;
 	color: $primary-color !important;
 	background-color: transparent !important;
+	width: 260px;
+	height: 60px;
+	line-height: 60px;
+	padding: 0 !important;
+	position: absolute;
+	right: 0;
 }
 
 .lost:hover{
@@ -470,11 +483,21 @@ h1,
 	font-size: 1.5rem;
 }
 
-#addForm,
+.connectionForm{
+	padding-right: 0 !important;
+	.form-group{
+		padding-right: 0 !important;
+	}
+	.row{
+		margin-left: 0!important;
+	}
+}
+
+.addStory,
 .connectionForm
 {
-	width:50%;
-	margin-left: 25%;
+	max-width:50%;
+	min-width: 100%;
 	margin-bottom: 10%;
 	input:focus{
 		border-color: $secondary-color !important;
@@ -596,6 +619,9 @@ h1,
 #story_urls{
 	.btn-danger{
 		background-color: transparent !important;
+		position: relative;
+		top: -34px;
+		left: 100%;
 	}
 	.btn-danger:hover{
 		 background-color: $secondary-color !important;
@@ -958,10 +984,23 @@ h1,
 			font-size: 1.2rem;
 		}
         /*------form--------*/
-		#addForm,
 		.connectionForm {
-			width:90%;
-			margin: 5%;
+			padding-left: 0!important;
+			.form-control{
+				width:90%;
+			}
+		}
+
+		.lost{
+			position: relative;
+			top: 10px;
+		}
+
+		#registerOptions{
+			text-align: center;
+			padding-right: 15px!important;
+			margin-left: -15px !important;
+
 		}
 
 		/*--add story----*/
@@ -976,6 +1015,9 @@ h1,
 		}
 		.storyCount{
 			margin-top: 15%;
+		}
+		.urls{
+			width: 90%;
 		}
 	}
 
