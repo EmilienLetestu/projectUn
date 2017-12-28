@@ -25,12 +25,9 @@ class AdminController extends Controller
      */
     public function adminUser()
     {
-        $userList = $this->get('App\Managers\UserManager')
-            ->fetchUserForAdmin()
-        ;
-
         return $this->render('admin\adminUser.html.twig',[
-            'userList' => $userList
+            'userList' => $this->get('App\Managers\UserManager')
+                ->fetchUserForAdmin()
         ]);
     }
 
@@ -111,12 +108,11 @@ class AdminController extends Controller
      */
     public function adminByUser(Request $request)
     {
-        $user = $this->get('App\Managers\UserManager')
-            ->fetchOneUserForAdmin($request)
-        ;
-
         return $this->render('admin\adminUserData.html.twig',[
-            'user' => $user
+            'user' => $this->get('App\Managers\UserManager')
+                ->fetchOneUserForAdmin(
+                    $request->attributes->get('id')
+                )
         ]);
     }
 
