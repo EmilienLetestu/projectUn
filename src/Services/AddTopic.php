@@ -11,34 +11,38 @@ namespace App\Services;
 
 use App\Entity\Topic;
 use App\Form\NewTopicType;
-use App\Managers\TopicManager;
+use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class AddTopic
 {
     private $formFactory;
-    private $topicManager;
+    private $doctrine;
+    private $session;
 
     /**
      * AddTopic constructor.
      * @param FormFactory $formFactory
-     * @param TopicManager $topicManager
+     * @param EntityManager $doctrine
+     * @param Session $session
      */
     public function __construct(
-        FormFactory $formFactory,
-        TopicManager $topicManager
+        FormFactory   $formFactory,
+        EntityManager $doctrine,
+        Session       $session
     )
     {
         $this->formFactory  = $formFactory;
-        $this->topicManager = $topicManager;
+        $this->doctrine     = $doctrine;
+        $this->session      = $session;
     }
 
     /**
-     * @param Request $request
+     * @param $request
      * @return \Symfony\Component\Form\FormView
      */
-    public function processTopic(Request $request)
+    public function processTopic($request)
     {
         $topic = new Topic();
         $form = $this->formFactory->create(NewTopicType::class, $topic);
@@ -46,7 +50,11 @@ class AddTopic
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $this->topicManager->createTopic($form);
+            $this->doctrine->persist($topic);
+            $this->doctrine->flush();
+
+            $this->session->set('added',1);
+
             return $form->createView();
         }
 

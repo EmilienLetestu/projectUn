@@ -30,13 +30,4 @@ class TopicManager
         $repository = $this->doctrine->getRepository(Topic::class);
         return $repository->findAll();
     }
-    /**
-     * @param $topic
-     */
-    public function createTopic($topic)
-    {
-        $this->doctrine->getRepository(Topic::class);
-        $this->doctrine->persist($topic);
-        $this->doctrine->flush();
-    }
 }

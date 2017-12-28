@@ -62,12 +62,21 @@ class AdminController extends Controller
      */
     public function adminTopic(Request $request)
     {
-        $builder = $this->get('App\Builders\AdminBuilder')
-            ->buildAdminTopic($request);
+        $list = $this->get('App\Managers\TopicManager')
+            ->fetchTopicForAdmin();
+
+        $form = $this->get('App\Services\AddTopic')
+            ->processTopic($request);
+
+        if($this->get('session')->get('added'))
+        {
+            $this->get('session')->remove('added');
+            return $this->redirectToRoute('adminTopic');
+        }
 
         return $this->render('admin\adminTopic.html.twig',[
-            'topicList' => $builder[0],
-            'form'      => $builder[1]
+            'topicList' => $list,
+            'form'      => $form
         ]);
     }
 
@@ -77,13 +86,21 @@ class AdminController extends Controller
      */
     public function adminPatronage(Request $request)
     {
-        $builder = $this->get('App\Builders\AdminBuilder')
-            ->buildAdminPatronage($request)
-        ;
+        $list = $this->get('App\Managers\PatronageManager')
+            ->fetchPatronageForAdmin();
+
+        $form = $this->get('App\Services\AddPatronage')
+            ->processPatronage($request);
+
+        if($this->get('session')->get('added')) {
+
+            $this->get('session')->remove('added');
+            return $this->redirectToRoute('adminPatronage');
+        }
 
         return $this->render('admin\adminPatronage.html.twig',[
-            'patronageList' => $builder[0],
-            'form'          => $builder[1]
+            'patronageList' => $list,
+            'form'          => $form
         ]);
     }
 
