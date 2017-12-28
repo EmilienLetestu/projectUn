@@ -171,7 +171,6 @@ i.fa-check{
 	box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 }
 
-.navbar-brand,
 .nav-link {
 	color: #FFFFFF;
 }
@@ -375,7 +374,7 @@ h1,
 #filterHome{
 	margin-top: 3%;
 	i{
-		color: #FFFFFF;
+		color: $secondary-color;
 	}
 	select{
 		border-radius: 10px;
@@ -391,6 +390,9 @@ h1,
 	/*font color define in template via twig */
 }
 
+#pageLinks{
+	margin-top: 5%;
+}
 
 #pageLinks a:not(#currentPage) {
 	color: $primary-color;
@@ -501,20 +503,25 @@ h1,
 
 /*search-filters*/
 #filter{
-	height:150px;
+	height:250px;
+}
+
+#filterHome,
+#filterBtn{
+	text-align: center;
+}
+
+#filterBtn .btn{
+	margin-top: 4%;
 }
 
 #filterBtn .btn,
 #filterHome .btn{
-	position: absolute;
-	left: 25%;
-	right: 25%;
-	margin-top: 3%;
-	min-width: 50%;
-	max-width: 100%;
 	border-color: $secondary-color !important;
 	color: $secondary-color !important;
 	background-color: transparent !important;
+	width: 260px;
+	height: 60px;
 }
 
 #filterBtn .btn:hover,
