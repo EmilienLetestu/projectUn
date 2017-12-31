@@ -1,0 +1,79 @@
+App\Entity\Story:
+    type: entity
+    table: onu_story
+    repositoryClass: App\Repository\StoryRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 100
+            nullable: false
+        abstract:
+            type: text
+            nullable: false
+        plot:
+            type: text
+            nullable: false
+        contactEmail:
+            type: string
+            length: 100
+            nullable: false
+        contactPlace:
+            type: string
+            length: 100
+            nullable: true
+        contactPhone:
+            type: string
+            length: 20
+            nullable: true
+        cratedOn:
+            type: date
+            nullable: false
+        country:
+            type: string
+            length: 5
+            nullable: true
+        worldArea:
+            type: integer
+            nullable: false
+        year:
+            type: string
+            length: 4
+            nullable: true
+        investor:
+            type: string
+            length: 100
+            nullable: true
+        validated:
+            type: boolean
+            options:
+                default: false
+    oneToMany:
+        urls:
+            targetEntity: App\Entity\Url
+            mappedBy: story
+            cascade: ['persist', 'remove']
+    manyToOne:
+        user:
+            targetEntity: App\Entity\User
+            inversedBy: stories
+            joinColumn:
+                name: user_id
+                referencedColumnName: id
+        topic:
+            targetEntity: App\Entity\Topic
+            inversedBy: stories
+            joinColumn:
+                name: topic_id
+                referencedColunmName: id
+        patronage:
+            targetEntity: App\Entity\Patronage
+            inversedBy: strories
+            joinColumn:
+                name: patronage_id
+                referencedColumnName: id
+
