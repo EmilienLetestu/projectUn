@@ -13,35 +13,26 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Class Url
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="url")
  */
 class Url
 {
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Story", inversedBy="urls")
-     * @ORM\JoinColumn(name="story_id", referencedColumnName="id",nullable=true)
      */
     private $story = null;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=200,nullable=true)
      */
     private $href = null;
 
     /**
      * @var null
-     * @ORM\Column(type="string", length=100,nullable=true)
      */
     private $alt = null;
 

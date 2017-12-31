@@ -15,117 +15,92 @@ use Symfony\Component\Intl\Intl;
 /**
  * Class Story
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="story")
- * @ORM\Entity(repositoryClass="App\Repository\StoryRepository")
  */
 class Story implements \Serializable
 {
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Topic", inversedBy="stories")
-     * @ORM\JoinColumn(name="topic_id", referencedColumnName="id")
      */
     private $topic;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\Patronage", inversedBy="stories")
-     * @ORM\JoinColumn(name="patronage_id", referencedColumnName="id")
      */
     private $patronage;
 
     /**
      * @var
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="stories")
-     * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      */
     private $user;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=100)
      */
     private $title;
 
     /**
      * @var
-     * @ORM\Column(type="text")
      */
     private $abstract;
 
     /**
      * @var
-     * @ORM\Column(type="text")
      */
     private $plot;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=100)
      */
     private $contactEmail;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $contactPlace = null;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $contactPhone = null;
 
     /**
      * @var
-     * @ORM\Column(type="date")
      */
     private $createdOn;
 
     /**
      * @var
-     * @ORM\Column(type="text", length=5, nullable=true)
      */
     private $country = null;
 
     /**
-     * @ORM\Column(type="integer")
      * @var
      */
     private $worldArea;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=4, nullable=true)
      */
     private $year = null;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=100, nullable=true)
      */
     private $investor = null;
 
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Url", mappedBy="story", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $urls;
 
     /**
      * @var
-     * @ORM\Column(type="boolean", options={"default"=false})
      */
     private $validated = false;
 

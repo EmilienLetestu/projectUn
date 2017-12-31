@@ -15,30 +15,23 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Class Patronage
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="patronage")
  */
 class Patronage implements \Serializable
 {
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
 
     /**
      * @var
-     * @ORM\Column(type="string", length=30)
      */
     private $organization;
 
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="patronage", cascade={"persist", "remove"})
      */
     private $stories;
 

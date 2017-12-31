@@ -15,106 +15,87 @@ use Symfony\Component\Security\Core\User\AdvancedUserInterface;
 /**
  * Class User
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="user")
  */
 class User implements AdvancedUserInterface, \Serializable
 {
 
     /**
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @var
      */
     private $id;
 
     /**
      * @var
-     * @ORM\column(type="string", length =30)
      */
     private $name;
 
     /**
      * @var
-     * @ORM\column(type="string", length =30)
      */
     private $surname;
 
     /**
      * @var
-     * @ORM\column(type="string", length=100)
      */
     private $email;
 
     /**
      * @var
-     * @ORM\column(type="string")
      */
     private $pswd;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=15)
      */
     private $role;
 
     /**
      * @var
-     * @ORM\column(type="date")
      */
     private $registeredOn;
 
     /**
      * @var
-     * @ORM\column(type="string", length=30, nullable=true)
      */
     private $profession;
 
     /**
      * @var
-     * @ORM\column(type="text", nullable=true)
      */
     private $engagement;
 
     /**
      * @var
-     * @ORM\column(type="boolean", options={"default"=false})
      */
     private $claimEdit;
 
     /**
      * @var
-     * @ORM\column(type="boolean", options={"default"=true})
      */
     private $beenProcessed;
 
     /**
      * @var
-     * @ORM\column(type="boolean", options={"default"=false})
      */
     private $activated = false;
 
     /**
      * @var bool
-     * @ORM\column(type="boolean", options={"default"=false})
      */
     private $deactivated =false;
 
     /**
      * @var
-     * @ORM\column(type="string", length=40)
      */
     private $confirmationToken;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="user", cascade={"persist", "remove"})
      */
     private $stories;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Notification", mappedBy="user")
      */
     private $notifications;
 

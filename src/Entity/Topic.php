@@ -14,28 +14,21 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Class Topic
  * @package App\Entity
- * @ORM\Entity
- * @ORM\Table(name="topic")
  */
 class Topic implements \Serializable
 {
     /**
      * @var
-     * @ORM\Column(type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
 
     /**
      * @var
-     * @ORM\Column(type="string", length=20)
      */
     private $type;
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="App\Entity\Story", mappedBy="topic", cascade={"persist", "remove"})
      */
     private $stories;
 
