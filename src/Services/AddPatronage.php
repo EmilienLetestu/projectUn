@@ -60,5 +60,4 @@ class AddPatronage
 
         return $form->createView();
     }
-
 }
