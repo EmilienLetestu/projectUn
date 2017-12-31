@@ -1,0 +1,72 @@
+App\Entity\User:
+    type: entity
+    table: onu_user
+    repositoryClass: App\Repository\UserRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 30
+            nullable: false
+        surname:
+            type: string
+            length: 30
+            nullable: false
+        email:
+            type: string
+            length: 100
+            nullable: false
+        pswd:
+            type: string
+            nullable: false
+        role:
+            type: string
+            length: 15
+            nullable: false
+        registeredOn:
+            type: date
+            nullable: false
+        profession:
+            type: string
+            length: 30
+            nullable: true
+        engagement:
+            type: text
+            nullable: true
+        claimEdit:
+            type: boolean
+            options:
+                default: false
+        beenPrcessed:
+            type: boolean
+            options:
+                default: true
+        activated:
+            type: boolean
+            options:
+                 default: false
+        deactivated:
+            type: boolean
+            options:
+                 default: false
+        confirmationToken:
+            type: string
+            length: 40
+            nullable: false
+            unique: true
+    oneToMany:
+        stories:
+            targetEntity: App\Entity\Story
+            mappedBy: user
+            cascade: ['persist', 'remove']
+        notifications:
+            targetEntity: App\Entity\Notification
+            mappedBy: user
+            cascade: ['persist', 'remove']      
+
+
+
