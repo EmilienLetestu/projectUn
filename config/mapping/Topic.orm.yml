@@ -1,0 +1,18 @@
+App\Entity\Topic:
+    type: entity
+    table: onu_topic
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        type: string
+        length: 20
+        nullable: false
+        unique: false
+    oneToMany:
+        stories:
+            targetEntity: App\Entity\Story
+            mappedBy: topic
+            cascade: ['persist']
