@@ -1,0 +1,26 @@
+App\Entity\Url:
+    type: entity
+    table: onu_url
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        href:
+            type: string
+            length: 200
+            nullable: true
+            unique: false
+        alt:
+            type: string
+            length: 100
+            nullable: true
+            unique: false
+    manyToOne:
+        story:
+            targetEntity: App\Entity\Story
+            inversedBy: urls
+            joinColumn:
+                name: story_id
+                referencedColumnName: id
