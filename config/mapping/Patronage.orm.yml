@@ -1,0 +1,21 @@
+App\Entity\Patronage:
+    type: entity
+    table: onu_patronage
+    repositoryClass: App\Repository\PatronageRepository
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        organization:
+            type: string
+            length: 30
+            nullable: false
+            unique: false
+    oneToMany:
+        stories:
+            targetEntity: App\Entity\Story
+            mappedBy: patronage
+            cascade: ['persist', 'remove']
+                
