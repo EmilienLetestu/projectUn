@@ -1,4 +1,4 @@
-App\Entity\Notitfication:
+App\Entity\Notification:
     type: entity
     table: onu_notification
     repositoryClass: App\Repository\NotificationRepository

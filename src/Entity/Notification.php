@@ -12,7 +12,6 @@ Use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Notification
- * @package App\Entity
  */
 class Notification
 {

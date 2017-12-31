@@ -40,7 +40,7 @@ App\Entity\User:
             type: boolean
             options:
                 default: false
-        beenPrcessed:
+        beenProcessed:
             type: boolean
             options:
                 default: true
