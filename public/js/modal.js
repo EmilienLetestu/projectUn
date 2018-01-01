@@ -9,4 +9,12 @@ $(document).ready(function () {
         $('.modalForm').hide();
         $('.modalOverlay').hide();
     });
+
+    $('.update').click(function (){
+        alert($(this).attr("value"));
+        var id = $(this).attr("value");
+
+        $('#topicForm input[type=hidden]').val(id);
+    })
+
 });

@@ -19,6 +19,9 @@
                 <th>
                    Related Stories
                 </th>
+                <th>
+                    <i class="fa fa-pencil"></i>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -41,6 +44,11 @@
                         0
                     {% endif %}
                 </td>
+                <th class="trigger">
+                    <button class="btn btn-default update" value="{{ topic.id }}" title="modify topic">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </th>
             </tr>
             {% endfor %}
             </tbody>
@@ -59,12 +67,14 @@
             {{ form_widget(form.type ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.type) }}
         </div>
+        {{ form_widget(form.topicId ,{'attr':{'class':'form-control'}}) }}
         <div class="form-group row">
             <button class="btn btn-success" id="newTopicBtn" type="submit">Submit</button>
         </div>
         {{ form_end(form) }}
     </div>
     <div class="modalOverlay" style="display: none"></div>
+
 {% endblock%}
 
 {% block javascripts %}

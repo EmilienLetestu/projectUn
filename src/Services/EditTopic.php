@@ -11,11 +11,12 @@ namespace App\Services;
 
 use App\Entity\Topic;
 use App\Form\NewTopicType;
+use App\Form\UpdateTopicType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-class AddTopic
+class EditTopic
 {
     private $formFactory;
     private $doctrine;
@@ -50,6 +51,13 @@ class AddTopic
 
         if($form->isSubmitted() && $form->isValid())
         {
+            if($form->get('topicId')->getData() !== null)
+            {
+                $repository = $this->doctrine->getRepository(Topic::class);
+                $topic = $repository->find($form->get('topicId')->getData());
+                $topic->setType($form->get('type')->getData());
+            }
+
             $this->doctrine->persist($topic);
             $this->doctrine->flush();
 
@@ -60,5 +68,6 @@ class AddTopic
 
         return $form->createView();
     }
+
 }
 

@@ -62,8 +62,9 @@ class AdminController extends Controller
         $list = $this->get('App\Managers\TopicManager')
             ->fetchTopicForAdmin();
 
-        $form = $this->get('App\Services\AddTopic')
+        $form = $this->get('App\Services\EditTopic')
             ->processTopic($request);
+
 
         if($this->get('session')->get('added'))
         {
