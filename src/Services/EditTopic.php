@@ -62,8 +62,6 @@ class EditTopic
             $this->doctrine->flush();
 
             $this->session->set('added',1);
-
-            return $form->createView();
         }
 
         return $form->createView();
