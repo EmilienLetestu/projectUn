@@ -1,6 +1,6 @@
 App\Entity\Topic:
     type: entity
-    table: onu_topic
+    table: topic
     id:
         id:
             type: integer

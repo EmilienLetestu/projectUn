@@ -1,6 +1,6 @@
 App\Entity\Url:
     type: entity
-    table: onu_url
+    table: url
     id:
         id:
             type: integer

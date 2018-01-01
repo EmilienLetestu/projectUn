@@ -1,6 +1,6 @@
 App\Entity\Patronage:
     type: entity
-    table: onu_patronage
+    table: patronage
     id:
         id:
             type: integer

@@ -1,6 +1,6 @@
 App\Entity\User:
     type: entity
-    table: onu_user
+    table: user
     id:
         id:
             type: integer

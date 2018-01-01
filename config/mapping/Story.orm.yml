@@ -1,6 +1,6 @@
 App\Entity\Story:
     type: entity
-    table: onu_story
+    table: story
     repositoryClass: App\Repository\StoryRepository
     id:
         id:
