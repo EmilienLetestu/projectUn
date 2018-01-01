@@ -15,6 +15,11 @@ $(document).ready(function () {
         var id = $(this).attr("value");
 
         $('#topicForm input[type=hidden]').val(id);
-    })
+    });
+
+    if($('.help-block').length){
+        $('.modalForm').show();
+        $('.modalOverlay').show();
+    }
 
 });
