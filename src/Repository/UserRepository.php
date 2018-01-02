@@ -34,7 +34,7 @@ class UserRepository extends EntityRepository
     {
         $date = date('Y-m-d', strtotime($targetedDate));
         $queryBuilder
-            ->andWhere('u.createdOn <= :date')
+            ->andWhere('u.registeredOn <= :date')
             ->setParameter('date', new \DateTime($date))
         ;
     }
@@ -48,14 +48,14 @@ class UserRepository extends EntityRepository
     }
 
     /**
-     * @param $nMonthAgo
+     * @param $nDaysAgo
      * @return array
      */
-    public function findDeletableAccount($nMonthAgo)
+    public function findDeletableAccount($nDaysAgo)
     {
         $queryBuilder = $this->createQueryBuilder('u');
         $this->whereActivated($queryBuilder, false);
-        $this->whereCreatedOn($queryBuilder,$nMonthAgo);
+        $this->whereCreatedOn($queryBuilder,$nDaysAgo);
 
         return $queryBuilder
             ->getQuery()
@@ -63,6 +63,24 @@ class UserRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @return array
+     */
+    public function countAllUnactivated()
+    {
+        $queryBuilder = $this->createQueryBuilder('u');
+        $this->whereActivated($queryBuilder, false);
+
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+        ;
+    }
+
+    /**
+     * @param $role
+     * @return array
+     */
     public function countAll($role)
     {
         $queryBuilder = $this->createQueryBuilder('u');
