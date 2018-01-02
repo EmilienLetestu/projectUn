@@ -75,6 +75,12 @@ admin:
     defaults:
         _controller: App\Controller\AdminController::adminHome
 
+adminDeleteUnactivated:
+    path: /admin/delete-unactivated-account
+    defaults:
+        _controller: App\Controller\AdminController::adminDeleteUnactivated
+
+
 adminUser:
     path: /admin/user
     defaults:
