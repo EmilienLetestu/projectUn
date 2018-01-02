@@ -11,7 +11,6 @@ namespace App\Services;
 
 use App\Entity\Patronage;
 use App\Form\EditPatronageType;
-use App\Form\NewPatronageType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Session\Session;

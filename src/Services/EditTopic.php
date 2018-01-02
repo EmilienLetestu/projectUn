@@ -11,8 +11,6 @@ namespace App\Services;
 
 use App\Entity\Topic;
 use App\Form\EditTopicType;
-use App\Form\NewTopicType;
-use App\Form\UpdateTopicType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\HttpFoundation\Session\Session;
