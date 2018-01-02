@@ -42,7 +42,7 @@
                         {{ user.email }}
                     </td>
                     <td>
-                        {{ user.registeredOn|date("m/d/Y") }}
+                        {{ user.registeredOn|date("d/m/Y") }}
                     </td>
                     <td>
                         <i class="{{ user.activated|stateIcon }}" aria-hidden="true"></i>
