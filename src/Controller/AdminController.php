@@ -17,7 +17,29 @@ class AdminController extends Controller
 
     public function adminHome()
     {
-        return $this->render('admin\admin.html.twig');
+        $stats = $this->get('App\Services\AdminStatistics')
+            ->adminHomeStats()
+        ;
+
+        return $this->render('admin\admin.html.twig',[
+            'roleEdit'       => $stats[0],
+            'roleUser'       => $stats[1],
+            'unactivated'    => $stats[2],
+            'totalStory'     => $stats[3],
+            'totalValidated' => $stats[4]
+        ]);
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function adminDeleteUnactivated()
+    {
+        $this->get('App\Managers\UserManager')
+            ->deleteAllUnactivatedAccount(' - 60 day')
+        ;
+
+        return $this->redirectToRoute('admin');
     }
 
     /**
