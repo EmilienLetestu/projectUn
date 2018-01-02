@@ -104,5 +104,32 @@ class UserManager
         ]);
     }
 
+    /**
+     * @param $nDaysAgo
+     * @return mixed
+     */
+    public function deleteAllUnactivatedAccount($nDaysAgo)
+    {
+        $repository = $this->doctrine->getRepository(User::class);
+        $userList = $repository->findDeletableAccount($nDaysAgo);
+
+        if(!$userList)
+        {
+            return $this->session->getFlashBag()
+                ->add('error','No account to delete')
+            ;
+        }
+
+        foreach ($userList as $user )
+        {
+            $this->doctrine->remove($user);
+        }
+
+        $this->doctrine->flush();
+
+        return $this->session->getFlashBag()
+            ->add('success','Successfully delete '. count($userList) .' unactivated account')
+        ;
+    }
 }
 
