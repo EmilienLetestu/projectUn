@@ -51,7 +51,10 @@ class StoryRepository extends EntityRepository
             ->andWhere('s.validated = 1')
             ->setParameter('country',$country);
 
-        return $queryBuilder->getQuery()->getResult();
+        return $queryBuilder
+                ->getQuery()
+                ->getResult()
+        ;
     }
 
     /**
@@ -70,7 +73,10 @@ class StoryRepository extends EntityRepository
             ->andWhere('s.validated = 1')
             ->setParameter('year',$year);
 
-        return $queryBuilder->getQuery()->getResult();
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
 
     }
 
@@ -89,7 +95,11 @@ class StoryRepository extends EntityRepository
             ->andWhere('s.validated = 1')
             ->andWhere('s.patronage = :id')
             ->SetParameter('id',$patronageId);
-        return $queryBuilder->getQuery()->getResult();
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     /**
@@ -106,7 +116,11 @@ class StoryRepository extends EntityRepository
             ->orderBy("s.{$sort}","{$order}")
             ->setMaxResults($limit)
         ;
-        return $queryBuilder->getQuery()->getResult();
+
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+        ;
     }
 
     /**
@@ -181,9 +195,12 @@ class StoryRepository extends EntityRepository
         $queryBuilder = $this->createQueryBuilder('s');
         $queryBuilder
             ->select('count(s.id)')
-            ->Where('s.validated = 1')
+            ->Where('s.validated = true')
         ;
-        return $queryBuilder->getQuery()->getScalarResult();
+        return $queryBuilder
+            ->getQuery()
+            ->getScalarResult()
+        ;
     }
 
 
@@ -201,7 +218,10 @@ class StoryRepository extends EntityRepository
             ->setMaxResults(1)
             ->setParameter('id',$id)
         ;
-        return $queryBuilder->getQuery()->getOneOrNullResult();
+        return $queryBuilder
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
 
     /**
@@ -219,6 +239,9 @@ class StoryRepository extends EntityRepository
             ->orderBy('s.id','DESC')
             ->setParameter('id',$id)
         ;
-        return $queryBuilder->getQuery()->getOneOrNullResult();
+        return $queryBuilder
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
 }
