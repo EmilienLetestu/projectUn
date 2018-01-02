@@ -9,7 +9,7 @@
 namespace App\Repository;
 
 
-use Doctrine\DBAL\Query\QueryBuilder;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\EntityRepository;
 
 class UserRepository extends EntityRepository
