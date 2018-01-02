@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 use App\Entity\Patronage;
+use App\Form\EditPatronageType;
 use App\Form\NewPatronageType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactory;
@@ -45,7 +46,7 @@ class EditPatronage
     public function processPatronage($request)
     {
         $patronage = new Patronage();
-        $form = $this->formFactory->create(NewPatronageType::class, $patronage);
+        $form = $this->formFactory->create(EditPatronageType::class, $patronage);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())

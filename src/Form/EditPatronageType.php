@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 
-class NewPatronageType extends AbstractType
+class EditPatronageType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

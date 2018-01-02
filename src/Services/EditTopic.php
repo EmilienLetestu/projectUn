@@ -10,6 +10,7 @@ namespace App\Services;
 
 
 use App\Entity\Topic;
+use App\Form\EditTopicType;
 use App\Form\NewTopicType;
 use App\Form\UpdateTopicType;
 use Doctrine\ORM\EntityManager;
@@ -46,7 +47,7 @@ class EditTopic
     public function processTopic($request)
     {
         $topic = new Topic();
-        $form = $this->formFactory->create(NewTopicType::class, $topic);
+        $form = $this->formFactory->create(EditTopicType::class, $topic);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
