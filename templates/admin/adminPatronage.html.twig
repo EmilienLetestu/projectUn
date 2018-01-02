@@ -19,6 +19,9 @@
                 <th>
                     Related Stories
                 </th>
+                <th>
+                    <i class="fa fa-pencil"></i>
+                </th>
             </tr>
             </thead>
             <tbody>
@@ -27,7 +30,7 @@
                 <td>
                     {{ patronage.id }}
                 </td>
-                <td>
+                <td id="{{ 'entityType'~patronage.id }}">
                     {{ patronage.organization }}
                 </td>
                 <td>
@@ -41,6 +44,11 @@
                         0
                     {% endif %}
                 </td>
+                <th class="trigger">
+                    <button class="btn btn-default update" value="{{ patronage.id }}" title="modify patronage">
+                        <i class="fa fa-pencil"></i>
+                    </button>
+                </th>
             </tr>
             {% endfor %}
             </tbody>
@@ -59,6 +67,7 @@
             {{ form_widget(form.organization ,{'attr':{'class':'form-control'}}) }}
             {{ form_errors(form.organization) }}
         </div>
+        {{ form_widget(form.patronageId ,{'attr':{'class':'form-control'}}) }}
         <div class="form-group row">
             <button class="btn btn-success" id="newPatronageBtn" type="submit">Submit</button>
         </div>
