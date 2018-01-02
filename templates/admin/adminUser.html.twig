@@ -6,6 +6,14 @@
     <h1>USERS</h1>
 
     <div class="container-fluid adminList">
+
+        <div class="filterList">
+            <input type="checkbox" id="activatedAccount" name="activated" value="unactivated">
+            <label for="activatedAccount">Activated accounts</label>
+            <input type="checkbox" id="unactivatedAccount" name="activated" value="activated">
+            <label for="unactivatedAccount">Unactivated accounts</label>
+        </div>
+
         <table class="table">
             <thead>
             <tr>
@@ -30,8 +38,8 @@
             </tr>
             </thead>
             <tbody>
-                <tr>
-                {% for user in userList %}
+            {% for user in userList %}
+                <tr class="{{ user.activated == 1 ? 'activated' : 'unactivated' }}">
                     <td>
                         {{ user.id }}
                     </td>
@@ -58,4 +66,9 @@
         </table>
     </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/filterList.js') }}"></script>
 {% endblock %}

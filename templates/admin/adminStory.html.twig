@@ -7,6 +7,12 @@
     <h1>{{ title|upper }}</h1>
 
     <div class="container-fluid adminList">
+        <div class="filterList">
+            <input type="checkbox" id="publishedStories" name="published" value="unpublished">
+            <label for="publishedStories">Published stories</label>
+            <input type="checkbox" id="unpublishedStories" name="unpublished" value="published">
+            <label for="unpublishedStories">Unpublished stories</label>
+        </div>
         <table class="table">
             <thead>
             <tr>
@@ -34,8 +40,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                {% for story in storyList %}
+            {% for story in storyList %}
+            <tr class="{{ story.validated == 1 ? 'published' : 'unpublished' }}">
                 <td>
                     {{ story.id }}
                 </td>
@@ -71,4 +77,8 @@
         </table>
     </div>
 
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/filterList.js') }}"></script>
 {% endblock %}
