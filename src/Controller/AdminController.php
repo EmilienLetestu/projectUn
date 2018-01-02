@@ -87,7 +87,7 @@ class AdminController extends Controller
         $list = $this->get('App\Managers\PatronageManager')
             ->fetchPatronageForAdmin();
 
-        $form = $this->get('App\Services\AddPatronage')
+        $form = $this->get('App\Services\EditPatronage')
             ->processPatronage($request);
 
         if($this->get('session')->get('added')) {
