@@ -6,4 +6,35 @@
 
     <h1> CLIMATE STORIES BANK ADMINISTRATION AREA </h1>
 
+    <div class="container-fluid">
+        <ul>
+            <li>
+                Number of registered users : {{ roleEdit + roleUser }}
+            </li>
+            <li>
+                Users with access to the edition tools : {{ roleEdit }}
+            </li>
+            <li>
+                Number of unactivated account : {{ unactivated }}
+            </li>
+            <li>
+                Total of stories : {{ totalStory }}
+            </li>
+            <li>
+                Validated and published stories : {{ totalValidated[0]|join('|') }}
+            </li>
+            <li>
+                Unvalidated stories : {{ totalStory - totalValidated[0]|join('|') }}
+            </li>
+            <li>
+               Average publication per user : {{ totalValidated[0]|join('|')/roleEdit }}
+            </li>
+        </ul>
+
+        <a href="{{ path('adminDeleteUnactivated') }}" class="btn btn-warning" onclick="return confirm('Delete all accounts waiting for activation since at least 60 days ?')">
+            Delete all unactivated accounts
+        </a>
+
+    </div>
+
 {% endblock %}
