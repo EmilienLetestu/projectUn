@@ -122,7 +122,7 @@ adminEditStory:
 adminTopic:
     path: /admin/topic
     defaults:
-        _controller: App\Controller\AdminController::adminTopic
+        _controller: App\Action\AdminTopicAction
 
 adminPatronage:
     path: /admin/patronage
