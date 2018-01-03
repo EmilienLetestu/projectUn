@@ -45,9 +45,6 @@ final class AdminTopicAction
            return new RedirectResponse('/admin/topic');
        }
 
-       return $responder(
-           $repository->findAll(),
-           $form
-       );
+       return $responder($repository->findAll(),$form);
     }
 }
