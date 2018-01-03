@@ -90,7 +90,7 @@ adminUser:
 adminByUser:
     path: /admin/user/{id}
     defaults:
-        _controller: App\Controller\AdminController::adminByUser
+        _controller: App\Action\AdminByUserAction
     requirements:
         id: \d+
 
