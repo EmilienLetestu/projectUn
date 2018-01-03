@@ -108,7 +108,7 @@ adminStory:
 adminByStory:
     path: /admin/story-informations/{id}
     defaults:
-        _controller: App\Controller\AdminController::adminByStory
+        _controller: App\Action\AdminByStoryAction
     requirements:
         id: \d+
 
