@@ -28,15 +28,15 @@ final class AdminEditStoryResponder
 
     /**
      * @param $story
-     * @param FormView $formView
+     * @param FormView $form
      * @return Response
      */
-    public function __invoke($story, FormView $formView)
+    public function __invoke($story, FormView $form)
     {
        return new Response(
            $this->twig->render(['admin\adminEditStory.html.twig',
                'story' => $story,
-               'form'  => $formView
+               'form'  => $form
            ])
        );
     }
