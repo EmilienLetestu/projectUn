@@ -80,18 +80,6 @@ class UserManager
         return 'User account has been deleted';
     }
 
-    /**
-     * @param $id
-     * @return null|object
-     */
-    public function fetchOneUserForAdmin($id)
-    {
-        $repository = $this->doctrine->getRepository(User::class);
-
-        return $repository->findOneBy([
-            'id' => $id
-        ]);
-    }
 
     /**
      * @param $nDaysAgo
