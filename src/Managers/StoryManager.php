@@ -60,19 +60,6 @@ class StoryManager
         return 'Story has been deleted';
     }
 
-    /**
-     * @return array
-     */
-    public function fetchForHome()
-    {
-        $repository = $this->doctrine->getRepository(Story::class);
-        $repository-> countStories();
-
-        return [
-            $repository ->findLastPublished('DESC','createdOn',6),
-            $repository-> countStories()
-        ];
-    }
 
     /**
      * @param Request $request
@@ -293,13 +280,6 @@ class StoryManager
             $story = $repository->findBy(['topic' => $id]),
             $story[0]->getTopic()->getType().' STORIES'
         ];
-    }
-
-    public function fetchOneStoryForAdmin($id)
-    {
-        $repository = $this->doctrine->getRepository(Story::class);
-
-        return $repository->findOneBy(['id'=>$id]);
     }
 
 }

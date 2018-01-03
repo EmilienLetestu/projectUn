@@ -18,18 +18,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class IndexController extends Controller
 {
-    public function home()
-    {
-        $view = $this->get('App\Builders\HomePageBuilder')->buildHome();
-
-        return $this->render('home.html.twig',[
-            'stories'=>$view[0][0],
-            'total'  =>$view[0][1],
-            'filter'  =>$view[1]
-            ]
-        );
-    }
-
     /**
      * @param Request $request
      * @param AuthenticationUtils $authUtils
