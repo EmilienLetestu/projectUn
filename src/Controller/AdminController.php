@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AdminController extends Controller
 {
-    
+
     /**
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
@@ -25,17 +25,6 @@ class AdminController extends Controller
         ;
 
         return $this->redirectToRoute('admin');
-    }
-
-    /**
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function adminUser()
-    {
-        return $this->render('admin\adminUser.html.twig',[
-            'userList' => $this->get('App\Managers\UserManager')
-                ->fetchUserForAdmin()
-        ]);
     }
 
     /**
