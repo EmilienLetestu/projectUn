@@ -44,6 +44,12 @@ services:
         resource: '../src/Builders'
         public: true
 
+    App\Action\:
+        resource: '../src/Action'
+        tags:
+            - 'controller.service_arguments'
+
+
    # App\EventListener\:
    #     resource: '../src/EventListener'
    #     tags:
