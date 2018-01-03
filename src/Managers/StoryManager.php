@@ -277,7 +277,7 @@ class StoryManager
 
         return [
             $story = $repository->findBy(['patronage' => $id]),
-            $story[0]->getPatronage()->getOrganizzation().' STORIES'
+            $story[0]->getPatronage()->getOrganization().' STORIES'
         ];
     }
 
