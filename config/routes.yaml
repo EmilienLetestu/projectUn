@@ -84,7 +84,7 @@ adminDeleteUnactivated:
 adminUser:
     path: /admin/user
     defaults:
-        _controller: App\Controller\AdminController::adminUser
+        _controller: App\Action\AdminUserAction
 
 
 adminByUser:
