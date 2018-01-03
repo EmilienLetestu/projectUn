@@ -78,7 +78,7 @@ admin:
 adminDeleteUnactivated:
     path: /admin/delete-unactivated-account
     defaults:
-        _controller: App\Controller\AdminController::adminDeleteUnactivated
+        _controller: App\Action\AdminDeleteUnactivatedAction
 
 
 adminUser:
@@ -115,7 +115,7 @@ adminByStory:
 adminEditStory:
     path: /admin/story/edit/{id}
     defaults:
-        _controller: App\Controller\AdminController::adminEditStory
+        _controller: App\Action\AdminEditStoryAction
     requirements:
         id: \d+
 
