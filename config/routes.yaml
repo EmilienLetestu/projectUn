@@ -98,7 +98,7 @@ adminByUser:
 adminStory:
     path: /admin/story/{filter}/{filterId}
     defaults:
-        _controller: App\Controller\AdminController::adminStory
+        _controller: App\Action\AdminStoryAction
         filter: null
         filterId: null
     requirements:
