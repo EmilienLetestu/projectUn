@@ -103,20 +103,6 @@ class AdminController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function adminByStory(Request $request)
-    {
-        return $this->render('admin\adminStoryData.html.twig',[
-            'story' => $this->get('App\Managers\StoryManager')
-                ->fetchOneStoryForAdmin(
-                    $request->attributes->get('id')
-                )
-        ]);
-    }
-
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
     public function adminEditStory(Request $request)
     {
         $story = $this->get('App\Managers\StoryManager')
