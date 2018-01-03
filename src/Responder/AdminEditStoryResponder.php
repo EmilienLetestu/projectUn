@@ -34,7 +34,7 @@ final class AdminEditStoryResponder
     public function __invoke($story, FormView $form)
     {
        return new Response(
-           $this->twig->render(['admin\adminEditStory.html.twig',
+           $this->twig->render('admin\adminEditStory.html.twig',[
                'story' => $story,
                'form'  => $form
            ])
