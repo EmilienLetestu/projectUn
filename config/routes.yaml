@@ -73,7 +73,7 @@ search:
 admin:
     path: /admin
     defaults:
-        _controller: App\Controller\AdminController::adminHome
+        _controller: App\Action\AdminHomeAction
 
 adminDeleteUnactivated:
     path: /admin/delete-unactivated-account
