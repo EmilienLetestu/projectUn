@@ -12,33 +12,33 @@ namespace App\Action;
 use App\Entity\Story;
 use App\Form\EditStoryType;
 use App\Responder\AdminEditStoryResponder;
-use App\Services\EditStory;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 final class AdminEditStoryAction
 {
     private $doctrine;
-    private $editStory;
     private $formFactory;
+    private $session;
 
     /**
      * AdminEditStoryAction constructor.
      * @param EntityManager $doctrine
-     * @param EditStory $editStory
      * @param FormFactoryInterface $formFactory
+     * @param Session $session
      */
     public function __construct(
         EntityManager        $doctrine,
-        EditStory            $editStory,
-        FormFactoryInterface $formFactory
+        FormFactoryInterface $formFactory,
+        Session              $session
     )
     {
-        $this->doctrine             = $doctrine;
-        $this->editStory            = $editStory;
-        $this->formFactory          = $formFactory;
+        $this->doctrine     = $doctrine;
+        $this->formFactory  = $formFactory;
+        $this->session      = $session;
     }
 
     /**
@@ -72,6 +72,10 @@ final class AdminEditStoryAction
 
             $this->doctrine->flush();
 
+            $this->session
+                 ->getFlashBag()
+                 ->add('success','Story has been updated')
+            ;
             return new RedirectResponse('/admin/story');
         }
 
