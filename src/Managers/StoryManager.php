@@ -295,5 +295,12 @@ class StoryManager
         ];
     }
 
+    public function fetchOneStoryForAdmin($id)
+    {
+        $repository = $this->doctrine->getRepository(Story::class);
+
+        return $repository->findOneBy(['id'=>$id]);
+    }
+
 }
 
