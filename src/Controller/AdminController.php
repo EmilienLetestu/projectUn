@@ -16,20 +16,6 @@ class AdminController extends Controller
 {
 
     /**
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
-     */
-    public function adminDeleteUnactivated()
-    {
-        $this->get('App\Managers\UserManager')
-            ->deleteAllUnactivatedAccount(' - 60 day')
-        ;
-
-        return $this->redirectToRoute('admin');
-    }
-
-
-
-    /**
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
