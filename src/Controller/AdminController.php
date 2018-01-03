@@ -27,27 +27,7 @@ class AdminController extends Controller
         return $this->redirectToRoute('admin');
     }
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function adminStory(Request $request)
-    {
-        $filter   = $request->attributes->get('filter');
-        $method = 'fetchStoryBy'.ucfirst($filter);
 
-        $filter !== null ?
-            $storyList = $this->get('App\Managers\StoryManager')
-                ->$method($request->attributes->get('filterId')) :
-            $storyList = $this->get('App\Managers\StoryManager')
-                ->fetchStoryForAdmin()
-        ;
-
-        return $this->render('admin\adminStory.html.twig',[
-            'storyList' => $storyList[0],
-            'title'     => $storyList[1]
-        ]);
-    }
 
     /**
      * @param Request $request
