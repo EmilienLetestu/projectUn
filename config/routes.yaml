@@ -127,7 +127,7 @@ adminTopic:
 adminPatronage:
     path: /admin/patronage
     defaults:
-        _controller: App\Controller\AdminController::adminPatronage
+        _controller: App\Action\AdminPatronageAction
 
 adminActions:
     path: /admin/{entity}/{id}/{action}
