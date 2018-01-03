@@ -72,7 +72,7 @@ final class AdminEditStoryAction
 
             $this->doctrine->flush();
 
-            return new RedirectResponse('adminStory');
+            return new RedirectResponse('/admin/story');
         }
 
         return $responder($story, $form->createView());
