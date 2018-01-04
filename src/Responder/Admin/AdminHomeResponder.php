@@ -9,6 +9,7 @@
 
 namespace App\Responder\Admin;
 
+use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
@@ -34,9 +35,10 @@ final class AdminHomeResponder
      * @param $unactivated
      * @param $totalStory
      * @param $totalValidated
+     * @param FormView $form
      * @return Response
      */
-    public function __invoke($roleEdit,$roleUser,$unactivated,$totalStory,$totalValidated)
+    public function __invoke($roleEdit,$roleUser,$unactivated,$totalStory,$totalValidated,FormView $form)
     {
         return new Response(
             $this->twig->render('admin\admin.html.twig',[
@@ -44,7 +46,8 @@ final class AdminHomeResponder
                 'roleUser'       => $roleUser,
                 'unactivated'    => $unactivated,
                 'totalStory'     => $totalStory,
-                'totalValidated' => $totalValidated
+                'totalValidated' => $totalValidated,
+                'form'           => $form
             ])
         );
     }
