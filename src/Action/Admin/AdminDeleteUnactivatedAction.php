@@ -6,11 +6,11 @@
  * Time: 14:20
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 
 use App\Managers\UserManager;
-use App\Responder\AdminDeleteUnactivatedResponder;
+use App\Responder\Admin\AdminDeleteUnactivatedResponder;
 
 final class AdminDeleteUnactivatedAction
 {

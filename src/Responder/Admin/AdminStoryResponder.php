@@ -6,7 +6,7 @@
  * Time: 11:41
  */
 
-namespace App\Responder;
+namespace App\Responder\Admin;
 
 
 use Symfony\Component\HttpFoundation\Response;

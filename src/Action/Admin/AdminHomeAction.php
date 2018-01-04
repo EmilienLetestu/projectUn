@@ -7,11 +7,11 @@
  * Time: 09:28
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 use App\Entity\Story;
 use App\Entity\User;
-use App\Responder\AdminHomeResponder;
+use App\Responder\Admin\AdminHomeResponder;
 use Doctrine\ORM\EntityManager;
 
 final class AdminHomeAction

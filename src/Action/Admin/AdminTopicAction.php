@@ -6,11 +6,11 @@
  * Time: 16:06
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 
 use App\Entity\Topic;
-use App\Responder\AdminTopicResponder;
+use App\Responder\Admin\AdminTopicResponder;
 use App\Services\EditTopic;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\RedirectResponse;

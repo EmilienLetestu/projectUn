@@ -6,7 +6,7 @@
  * Time: 14:26
  */
 
-namespace App\Responder;
+namespace App\Responder\Admin;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 

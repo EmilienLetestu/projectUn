@@ -3,18 +3,17 @@
  * Created by PhpStorm.
  * User: Emilien
  * Date: 03/01/2018
- * Time: 10:36
+ * Time: 10:13
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 
 use App\Entity\User;
-use App\Responder\AdminByUserResponder;
+use App\Responder\Admin\AdminUserResponder;
 use Doctrine\ORM\EntityManager;
-use Symfony\Component\HttpFoundation\Request;
 
-final class AdminByUserAction
+final class AdminUserAction
 {
     /**
      * @var EntityManager
@@ -22,7 +21,7 @@ final class AdminByUserAction
     private $doctrine;
 
     /**
-     * AdminByUserAction constructor.
+     * AdminUserAction constructor.
      * @param EntityManager $doctrine
      */
     public function __construct(EntityManager $doctrine)
@@ -30,14 +29,14 @@ final class AdminByUserAction
         $this->doctrine = $doctrine;
     }
 
-
-    public function __invoke(Request $request,AdminByUserResponder $responder)
+    /**
+     * @param AdminUserResponder $responder
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function __invoke(AdminUserResponder $responder)
     {
         $repository = $this->doctrine->getRepository(User::class);
 
-        return $responder($repository->findOneBy([
-            'id' => $request->attributes->get('id')
-        ]));
+        return $responder($repository->findAll());
     }
-
 }

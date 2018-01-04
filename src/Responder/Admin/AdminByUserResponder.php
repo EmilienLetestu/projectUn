@@ -3,16 +3,16 @@
  * Created by PhpStorm.
  * User: Emilien
  * Date: 03/01/2018
- * Time: 11:06
+ * Time: 10:44
  */
 
-namespace App\Responder;
+namespace App\Responder\Admin;
 
 
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-final class AdminByStoryResponder
+final class AdminByUserResponder
 {
     /**
      * @var Environment
@@ -20,7 +20,7 @@ final class AdminByStoryResponder
     private $twig;
 
     /**
-     * AdminByStoryResponder constructor.
+     * AdminByUserResponder constructor.
      * @param Environment $twig
      */
     public function __construct(Environment $twig)
@@ -29,17 +29,15 @@ final class AdminByStoryResponder
     }
 
     /**
-     * @param $story
+     * @param $user
      * @return Response
      */
-    public function __invoke($story)
+    public function __invoke($user)
     {
-       return new Response(
-           $this->twig->render('admin\adminStoryData.html.twig',[
-           'story' => $story
-           ])
-       );
+        return new Response(
+            $this->twig->render('admin\adminUserData.html.twig',[
+                'user' => $user
+            ])
+        );
     }
-
-
 }

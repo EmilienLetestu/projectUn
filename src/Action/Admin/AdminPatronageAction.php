@@ -6,11 +6,11 @@
  * Time: 16:58
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 
 use App\Entity\Patronage;
-use App\Responder\AdminPatronageResponder;
+use App\Responder\Admin\AdminPatronageResponder;
 use App\Services\EditPatronage;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\RedirectResponse;

@@ -6,10 +6,10 @@
  * Time: 10:24
  */
 
-namespace App\Action;
+namespace App\Action\Security;
 
 
-use App\Responder\LoginResponder;
+use App\Responder\Security\LoginResponder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
@@ -41,8 +41,8 @@ final class LoginAction
         }
 
         return $responder(
-            $authUtils->getLastAuthenticationError(),
-            $authUtils->getLastUsername()
+            $authUtils->getLastUsername(),
+            $authUtils->getLastAuthenticationError()
         );
     }
 }

@@ -6,7 +6,7 @@
  * Time: 10:25
  */
 
-namespace App\Responder;
+namespace App\Responder\Security;
 
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;

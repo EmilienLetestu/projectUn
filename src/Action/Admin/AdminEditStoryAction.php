@@ -6,12 +6,12 @@
  * Time: 12:38
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 
 use App\Entity\Story;
 use App\Form\EditStoryType;
-use App\Responder\AdminEditStoryResponder;
+use App\Responder\Admin\AdminEditStoryResponder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;

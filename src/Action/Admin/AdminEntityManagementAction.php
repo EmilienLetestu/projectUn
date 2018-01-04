@@ -6,12 +6,12 @@
  * Time: 15:28
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 
 use App\Managers\StoryManager;
 use App\Managers\UserManager;
-use App\Responder\AdminEntityManagementResponder;
+use App\Responder\Admin\AdminEntityManagementResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 

@@ -6,11 +6,11 @@
  * Time: 11:05
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 
 use App\Entity\Story;
-use App\Responder\AdminByStoryResponder;
+use App\Responder\Admin\AdminByStoryResponder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 

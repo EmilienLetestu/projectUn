@@ -6,7 +6,7 @@
  * Time: 09:42
  */
 
-namespace App\Responder;
+namespace App\Responder\Security;
 
 
 use Symfony\Component\Form\FormView;

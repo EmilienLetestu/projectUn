@@ -6,11 +6,11 @@
  * Time: 11:41
  */
 
-namespace App\Action;
+namespace App\Action\Admin;
 
 
 use App\Managers\StoryManager;
-use App\Responder\AdminStoryResponder;
+use App\Responder\Admin\AdminStoryResponder;
 use Symfony\Component\HttpFoundation\Request;
 
 final class AdminStoryAction

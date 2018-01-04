@@ -6,12 +6,12 @@
  * Time: 09:42
  */
 
-namespace App\Action;
+namespace App\Action\Security;
 
 
 use App\Entity\User;
 use App\Form\RegisterType;
-use App\Responder\RegisterResponder;
+use App\Responder\Security\RegisterResponder;
 use App\Services\Mail;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;

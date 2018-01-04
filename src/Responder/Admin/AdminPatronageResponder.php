@@ -3,24 +3,21 @@
  * Created by PhpStorm.
  * User: Emilien
  * Date: 03/01/2018
- * Time: 10:44
+ * Time: 16:59
  */
 
-namespace App\Responder;
+namespace App\Responder\Admin;
 
 
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-final class AdminByUserResponder
+final class AdminPatronageResponder
 {
-    /**
-     * @var Environment
-     */
     private $twig;
 
     /**
-     * AdminByUserResponder constructor.
+     * AdminPatronageResponder constructor.
      * @param Environment $twig
      */
     public function __construct(Environment $twig)
@@ -29,14 +26,16 @@ final class AdminByUserResponder
     }
 
     /**
-     * @param $user
+     * @param $list
+     * @param $form
      * @return Response
      */
-    public function __invoke($user)
+    public function __invoke($list, $form)
     {
         return new Response(
-            $this->twig->render('admin\adminUserData.html.twig',[
-                'user' => $user
+            $this->twig->render('admin\adminPatronage.html.twig',[
+                'patronageList' => $list,
+                'form'          => $form
             ])
         );
     }

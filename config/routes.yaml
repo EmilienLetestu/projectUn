@@ -18,12 +18,12 @@ addStory:
 register:
     path: /register
     defaults:
-        _controller: App\Action\RegisterAction
+        _controller: App\Action\Security\RegisterAction
 
 login:
     path: /login
     defaults:
-        _controller: App\Action\LoginAction
+        _controller: App\Action\Security\LoginAction
 
 login_check:
     path: /login_check
@@ -73,24 +73,24 @@ search:
 admin:
     path: /admin
     defaults:
-        _controller: App\Action\AdminHomeAction
+        _controller: App\Action\Admin\AdminHomeAction
 
 adminDeleteUnactivated:
     path: /admin/delete-unactivated-account
     defaults:
-        _controller: App\Action\AdminDeleteUnactivatedAction
+        _controller: App\Action\Admin\AdminDeleteUnactivatedAction
 
 
 adminUser:
     path: /admin/user
     defaults:
-        _controller: App\Action\AdminUserAction
+        _controller: App\Action\Admin\AdminUserAction
 
 
 adminByUser:
     path: /admin/user/{id}
     defaults:
-        _controller: App\Action\AdminByUserAction
+        _controller: App\Action\Admin\AdminByUserAction
     requirements:
         id: \d+
 
@@ -98,7 +98,7 @@ adminByUser:
 adminStory:
     path: /admin/story/{filter}/{filterId}
     defaults:
-        _controller: App\Action\AdminStoryAction
+        _controller: App\Action\Admin\AdminStoryAction
         filter: null
         filterId: null
     requirements:
@@ -108,31 +108,31 @@ adminStory:
 adminByStory:
     path: /admin/story-informations/{id}
     defaults:
-        _controller: App\Action\AdminByStoryAction
+        _controller: App\Action\Admin\AdminByStoryAction
     requirements:
         id: \d+
 
 adminEditStory:
     path: /admin/story/edit/{id}
     defaults:
-        _controller: App\Action\AdminEditStoryAction
+        _controller: App\Action\Admin\AdminEditStoryAction
     requirements:
         id: \d+
 
 adminTopic:
     path: /admin/topic
     defaults:
-        _controller: App\Action\AdminTopicAction
+        _controller: App\Action\Admin\AdminTopicAction
 
 adminPatronage:
     path: /admin/patronage
     defaults:
-        _controller: App\Action\AdminPatronageAction
+        _controller: App\Action\Admin\AdminPatronageAction
 
 adminActions:
     path: /admin/{entity}/{id}/{action}
     defaults:
-        _controller: App\Action\AdminEntityManagementAction
+        _controller: App\Action\Admin\AdminEntityManagementAction
     requirements:
         entity: story||user
         id: \d+
