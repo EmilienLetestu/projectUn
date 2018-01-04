@@ -68,7 +68,7 @@ browse:
 search:
     path: /search
     defaults:
-        _controller: App\Controller\IndexController::search
+        _controller: App\Action\SearchAction
 
 admin:
     path: /admin
