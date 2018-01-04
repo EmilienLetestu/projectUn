@@ -12,8 +12,6 @@ use App\Entity\User;
 use App\Form\AskNewPswdType;
 use App\Responder\LostPasswordResponder;
 use App\Services\Mail;
-use App\Services\Tools;
-use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -23,34 +21,26 @@ use Symfony\Component\HttpFoundation\Session\Session;
 final class LostPasswordAction
 {
     private $formFactory;
-    private $doctrine;
     private $mailService;
-    private $tools;
     private $swift;
     private $session;
 
     /**
      * LostPasswordAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param EntityManager $doctrine
      * @param Mail $mailService
-     * @param Tools $tools
      * @param \Swift_Mailer $swift
      * @param Session $session
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
-        EntityManager $doctrine,
-        Mail          $mailService,
-        Tools         $tools,
-        \Swift_Mailer $swift,
-        Session       $session
+        Mail                   $mailService,
+        \Swift_Mailer          $swift,
+        Session                $session
     )
     {
         $this->formFactory  = $formFactory;
-        $this->doctrine     = $doctrine;
         $this->mailService  = $mailService;
-        $this->tools        = $tools;
         $this->swift        = $swift;
         $this->session      = $session;
     }
