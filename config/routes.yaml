@@ -34,7 +34,7 @@ logout:
 lostPassword:
     path: /lost-password
     defaults:
-            _controller: App\Controller\IndexController::newPswdMail
+            _controller: App\Action\LostPasswordAction
 
 resetPswd:
     path: /lost-password/{expireOn}/{email}/{token}
