@@ -19,22 +19,15 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class StoryManager
 {
     private $doctrine;
-    private $formFactory;
+
 
     /**
      * StoryManager constructor.
      * @param EntityManager $doctrine
-     * @param FormFactory $formFactory
      */
-    public function __construct(
-        EntityManager $doctrine,
-        FormFactory   $formFactory
-
-    )
+    public function __construct(EntityManager $doctrine)
     {
         $this->doctrine    = $doctrine;
-        $this->formFactory = $formFactory;
-
     }
 
     public function validateStory($id)
@@ -49,6 +42,10 @@ class StoryManager
         return 'Story has been validated and published';
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function deleteStory($id)
     {
         $repository = $this->doctrine->getRepository(Story::class);
@@ -62,111 +59,11 @@ class StoryManager
 
 
     /**
-     * @param Request $request
-     * @param $limit
-     * @return mixed
-     */
-    public function fetchForBrowser(Request $request,$limit)
-    {
-        //get current page number from url param
-        $pageNumber = $request->attributes->get('pageNumber');
-
-        //find where to start
-        $firstR = ($pageNumber-1)*$limit;
-        //fetch stories to display
-        $storyList = $this->doctrine->getRepository(Story::class)
-            ->findAllForBrowser($firstR,$limit);
-
-        //calculate the total number of pages
-        $totalPage = ceil(count($storyList)/$limit);
-        if($pageNumber > $totalPage)
-        {
-            throw new NotFoundHttpException('This page doesn\'t exist yet');
-        }
-        return [
-            $storyList,
-            $pageNumber,
-            $totalPage,
-            $this->createSearchForm(),
-            'Our climate stories safe  holds '.count($storyList),
-            null,
-            null,
-            null,
-            null
-        ];
-    }
-
-    public function fetchWithFilter(Request $request, $limit)
-    {
-
-        //get current page number from url param
-        $pageNumber = $request->attributes->get('pageNumber');
-        $worldArea  = $request->attributes->get('worldArea');
-        $country    = $request->attributes->get('country');
-        $topic      = $request->attributes->get('topic');
-        $patronage  = $request->attributes->get('patronage');
-
-        //find where to start
-        $firstR = ($pageNumber-1)*$limit;
-
-        //fetch filtered story
-        $storyList = $this->doctrine->getRepository(Story::class)
-            ->findAllForBrowser($firstR,$limit,$worldArea,$country,$topic,$patronage);
-
-        return [
-            $storyList,
-            $pageNumber,
-            $totalPage = ceil(count($storyList)/$limit),
-            $this->createSearchForm(),
-            'WE\'VE FOUND '.count($storyList),
-            $country,
-            $topic,
-            $patronage,
-            $worldArea
-        ];
-    }
-
-    public function processFilterForm(Request $request)
-    {
-        $filter = $this->formFactory->create(SearchType::class);
-        $filter->handleRequest($request);
-
-        if($filter->isSubmitted() && $filter->isValid())
-        {
-            $country   = $filter->get('country')->getData();
-            $topic     = $filter->get('topic')->getData();
-            $patronage = $filter->get('patronage')->getData();
-            $worldArea = $filter->get('worldArea')->getData();
-
-
-
-            return [
-                $worldArea === null ? 'all' : $worldArea,
-                $country   === null ? 'all' : $country,
-                $topic     === null ? 'all' : $topic->getId(),
-                $patronage === null ? 'all' : $patronage->getId()
-            ];
-
-        }
-    }
-
-
-    /**
-     * @return \Symfony\Component\Form\FormView
-     */
-    public function createSearchForm()
-    {
-        $filter = $this->formFactory->create(SearchType::class);
-        return  $filter->createView();
-    }
-
-    /**
      * @return array
      */
     public function fetchStoryForAdmin()
     {
         $repository = $this->doctrine->getRepository(Story::class);
-
         return [
             $repository->findAll(),
             'STORIES'
