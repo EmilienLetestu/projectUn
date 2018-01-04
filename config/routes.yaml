@@ -57,7 +57,7 @@ validation:
 browse:
     path: /browse-stories/page/{pageNumber}/{worldArea}/{country}/{topic}/{patronage}
     defaults:
-        _controller: App\Controller\IndexController::browse
+        _controller: App\Action\BrowseAction
         worldArea: null
         country: null
         topic: null
