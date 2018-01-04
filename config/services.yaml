@@ -24,10 +24,6 @@ services:
 
     # controllers are imported separately to make sure they
     # have the tag that allows actions to type-hint services
-    App\Controller\:
-        resource: '../src/Controller'
-        tags: ['controller.service_arguments']
-
     App\Services\:
         resource: '../src/Services'
         public: true
@@ -39,10 +35,6 @@ services:
     App\Twig\:
         resource: '../src/Twig'
         tags: ['twig.extension']
-
-    App\Builders\:
-        resource: '../src/Builders'
-        public: true
 
     App\Action\:
         resource: '../src/Action'
