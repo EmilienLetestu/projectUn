@@ -43,8 +43,6 @@ App\Entity\User:
                 default: false
         beenProcessed:
             type: boolean
-            options:
-                default: true
         activated:
             type: boolean
             options:

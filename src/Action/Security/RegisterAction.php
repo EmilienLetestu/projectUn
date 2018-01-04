@@ -78,7 +78,7 @@ final class RegisterAction
             $user->setRegisteredOn('Y-m-d');
             $user->setRole('user');
             $user->setConfirmationToken(40);
-            $form->get('claimEdit')->getData() === 1 ?
+            $form->get('claimEdit')->getData() == true ?
                 $user->setBeenProcessed(false) :
                 $user->setBeenProcessed(true)
             ;
