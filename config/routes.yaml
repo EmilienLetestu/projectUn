@@ -18,7 +18,7 @@ addStory:
 register:
     path: /register
     defaults:
-        _controller: App\Controller\IndexController::register
+        _controller: App\Action\RegisterAction
 
 login:
     path: /login
