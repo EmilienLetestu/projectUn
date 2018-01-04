@@ -42,27 +42,6 @@ class IndexController extends Controller
 
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    public function register(Request $request)
-    {
-        $view = $this->get('App\Services\Register')
-            ->registerUser($request)
-        ;
-
-        if($view === 'home')
-        {
-            return $this->redirectToRoute($view);
-        }
-
-        return $this->render('connectionForms.html.twig',[
-            'form' => $view
-            ]
-        );
-    }
-
-    /**
-     * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
     public function activation(Request $request)
