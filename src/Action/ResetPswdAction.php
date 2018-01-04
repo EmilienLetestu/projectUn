@@ -8,7 +8,6 @@
 
 namespace App\Action;
 
-
 use App\Entity\User;
 use App\Form\NewPswdType;
 use App\Responder\ResetPswdResponder;
@@ -124,3 +123,4 @@ final class ResetPswdAction
         return $responder($form->createView());
     }
 }
+
