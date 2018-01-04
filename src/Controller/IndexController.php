@@ -33,42 +33,6 @@ class IndexController extends Controller
         return $this->redirectToRoute('home');
     }
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function newPswdMail(Request $request)
-    {
-        $view = $this->get('App\Services\RenewPswd')
-            ->askNew($request)
-        ;
-
-        return $this->render('connectionForms.html.twig',[
-            'form'=>$view
-            ]
-        );
-    }
-
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    public function newPswdProcess(Request $request)
-    {
-        $view = $this->get('App\Services\RenewPswd')
-            ->newPswd($request)
-        ;
-
-        if($view === 'home')
-        {
-            return $this->redirectToRoute($view);
-        }
-
-        return $this->render('connectionForms.html.twig',[
-            'form'=> $view
-            ]
-        );
-    }
 
     /**
      * @param Request $request
