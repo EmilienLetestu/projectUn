@@ -38,23 +38,7 @@ class IndexController extends Controller
             ]
         );
     }
-    
 
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function addStory(Request $request)
-    {
-        $view = $this->get('App\Services\AddStory')
-            ->processAndAdd($request)
-        ;
-
-        return $this->render('addStory.html.twig',[
-            'form'=>$view
-            ]
-        );
-    }
 
     /**
      * @param Request $request
