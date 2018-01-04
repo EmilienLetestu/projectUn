@@ -18,26 +18,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class IndexController extends Controller
 {
-    /**
-     * @param Request $request
-     * @param AuthenticationUtils $authUtils
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
-     */
-    public function login(Request $request, AuthenticationUtils $authUtils)
-    {
-        $view = $this->get('App\Services\Login')->processLogin($authUtils);
-
-        if($view === 'home')
-        {
-            return $this->redirectToRoute($view);
-        }
-
-        return $this->render('connectionForms.html.twig',[
-                'last_username' =>$view[0],
-                'error' => $view[1]
-            ]
-        );
-    }
 
 
     /**
