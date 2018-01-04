@@ -38,27 +38,7 @@ class IndexController extends Controller
             ]
         );
     }
-
-    /**
-     * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
-     */
-    public function story(Request $request)
-    {
-        $view = $this->get('App\Managers\StoryManager')->fetchForReading($request);
-
-        return $this->render('story.html.twig',[
-            'story'         => $view[0],
-            'sameTopic'     => $view[1],
-            'sameCountry'   => $view[2],
-            'sameYear'      => $view[3],
-            'samePatronage' => $view[4],
-            'extResources'  => $view[5],
-            'next'          => $view[6],
-            'previous'      => $view[7]
-            ]
-        );
-    }
+    
 
     /**
      * @param Request $request
