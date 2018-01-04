@@ -37,15 +37,28 @@
         </li>
     </ul>
 
-    {% if user.role != 'ADMIN' %}
+    {% if user.role != 'ADMIN' and user.beenProcessed == 1 %}
     <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
        class="btn btn-danger">Delete
     </a>
-
     {% set action = user.role == 'USER' ? 'upgrade' : 'downgrade' %}
     <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : action }) }}" class="btn btn-primary">
         {{ action|capitalize }}
     </a>
+    {% endif %}
+
+    {% if user.role == 'USER' and user.beenProcessed == 0 %}
+        <p>{{ user.fullname }} has requested access to stories edition, accept this request :</p>
+
+        <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'upgrade' }) }}" class="btn btn-default">
+            <i class="fa fa-check"></i>
+        </a>
+        <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'reject' }) }}" class="btn btn-default">
+            <i class="fa fa-times"></i>
+        </a>
+        <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
+           class="btn btn-danger">Delete
+        </a>
     {% endif %}
 
 {% endblock %}

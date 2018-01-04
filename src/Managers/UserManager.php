@@ -45,7 +45,7 @@ class UserManager
         $this->notification->chooseNotification($user);
         $this->doctrine->flush();
 
-        return $user->getFullname().'User has been granted editor privileges';
+        return $user->getFullname().' has been granted editor privileges';
     }
 
     /**
@@ -62,8 +62,23 @@ class UserManager
         $this->notification->chooseNotification($user);
         $this->doctrine->flush();
 
-        return $user->getFullname().'User has been granted user privileges';
+        return $user->getFullname().' has been granted user privileges';
     }
+
+    /**
+     * @param $id
+     * @return string
+     */
+    public function rejectUser($id)
+    {
+        $repository = $this->doctrine->getRepository(User::class);
+        $user = $repository->find($id);
+        $this->notification->chooseNotification($user);
+        $this->doctrine->flush();
+
+        return $user->getFullname().' stories edition tools access has been rejected';
+    }
+
 
     /**
      * @param $id

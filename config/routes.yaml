@@ -136,4 +136,4 @@ adminActions:
     requirements:
         entity: story||user
         id: \d+
-        action: delete||upgrade||downgrade||validate
+        action: delete||upgrade||downgrade||validate||reject
