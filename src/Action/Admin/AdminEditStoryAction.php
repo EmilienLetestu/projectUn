@@ -12,33 +12,38 @@ namespace App\Action\Admin;
 use App\Entity\Story;
 use App\Form\EditStoryType;
 use App\Responder\Admin\AdminEditStoryResponder;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AdminEditStoryAction
 {
     private $doctrine;
     private $formFactory;
     private $session;
+    private $urlGenerator;
 
     /**
      * AdminEditStoryAction constructor.
-     * @param EntityManager $doctrine
+     * @param EntityManagerInterface $doctrine
      * @param FormFactoryInterface $formFactory
-     * @param Session $session
+     * @param SessionInterface $session
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
-        EntityManager        $doctrine,
-        FormFactoryInterface $formFactory,
-        Session              $session
+        EntityManagerInterface $doctrine,
+        FormFactoryInterface   $formFactory,
+        SessionInterface       $session,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
         $this->doctrine     = $doctrine;
         $this->formFactory  = $formFactory;
         $this->session      = $session;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -48,9 +53,10 @@ class AdminEditStoryAction
      */
     public function __invoke(Request $request, AdminEditStoryResponder $responder)
     {
+        $id = $request->attributes->get('id');
         $repository = $this->doctrine->getRepository(Story::class);
         $story = $repository->findOneBy([
-            'id' => $request->attributes->get('id')
+            'id' => $id
         ]);
 
         $form = $this->formFactory
@@ -76,7 +82,10 @@ class AdminEditStoryAction
                  ->getFlashBag()
                  ->add('success','Story has been updated')
             ;
-            return new RedirectResponse('/admin/story');
+            return new RedirectResponse(
+                $this->urlGenerator
+                      ->generate('adminByStory',['id'=>$id])
+            );
         }
 
         return $responder($story, $form->createView());

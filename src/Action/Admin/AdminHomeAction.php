@@ -13,11 +13,11 @@ use App\Entity\Story;
 use App\Entity\User;
 use App\Form\AdministratorCredentialType;
 use App\Responder\Admin\AdminHomeResponder;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class AdminHomeAction
 {
@@ -28,13 +28,14 @@ class AdminHomeAction
 
     /**
      * AdminHomeAction constructor.
-     * @param EntityManager $doctrine
+     * @param EntityManagerInterface $doctrine
      * @param FormFactoryInterface $formFactory
+     * @param TokenStorageInterface $token
      */
     public function __construct(
-        EntityManager        $doctrine,
-        FormFactoryInterface $formFactory,
-        TokenStorage         $token
+        EntityManagerInterface   $doctrine,
+        FormFactoryInterface     $formFactory,
+        TokenStorageInterface    $token
     )
     {
         $this->doctrine    = $doctrine;

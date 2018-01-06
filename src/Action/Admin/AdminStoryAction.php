@@ -26,7 +26,7 @@ class AdminStoryAction
      */
     public function __construct(StoryManager $storyManager)
     {
-        $this->storyManager =$storyManager;
+        $this->storyManager = $storyManager;
     }
 
     /**

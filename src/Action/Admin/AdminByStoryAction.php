@@ -12,6 +12,7 @@ namespace App\Action\Admin;
 use App\Entity\Story;
 use App\Responder\Admin\AdminByStoryResponder;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class AdminByStoryAction
@@ -22,10 +23,10 @@ class AdminByStoryAction
     private $doctrine;
 
     /**
-     * AdminByStory constructor.
-     * @param EntityManager $doctrine
+     * AdminByStoryAction constructor.
+     * @param EntityManagerInterface $doctrine
      */
-    public function __construct(EntityManager $doctrine)
+    public function __construct(EntityManagerInterface $doctrine)
     {
         $this->doctrine = $doctrine;
     }

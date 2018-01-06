@@ -12,32 +12,37 @@ namespace App\Action\Admin;
 use App\Entity\Patronage;
 use App\Responder\Admin\AdminPatronageResponder;
 use App\Services\EditPatronage;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AdminPatronageAction
 {
     private $doctrine;
     private $editPatronage;
     private $session;
+    private $urlGenerator;
 
     /**
      * AdminPatronageAction constructor.
-     * @param EntityManager $doctrine
+     * @param EntityManagerInterface $doctrine
      * @param EditPatronage $editPatronage
-     * @param Session $session
+     * @param SessionInterface $session
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
-        EntityManager $doctrine,
-        EditPatronage $editPatronage,
-        Session       $session
+        EntityManagerInterface $doctrine,
+        EditPatronage          $editPatronage,
+        SessionInterface       $session,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
       $this->doctrine      = $doctrine;
       $this->editPatronage = $editPatronage;
       $this->session       = $session;
+      $this->urlGenerator  = $urlGenerator;
     }
 
     /**
@@ -53,7 +58,10 @@ class AdminPatronageAction
 
         if($this->session->get('added')){
             $this->session->remove('added');
-            return new RedirectResponse('/admin/patronage');
+            return new RedirectResponse(
+                $this->urlGenerator
+                     ->generate('adminPatronage')
+            );
         }
 
        return $responder($repository->findAll(),$form);

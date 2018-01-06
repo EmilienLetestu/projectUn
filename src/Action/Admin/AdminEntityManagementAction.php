@@ -13,7 +13,7 @@ use App\Managers\StoryManager;
 use App\Managers\UserManager;
 use App\Responder\Admin\AdminEntityManagementResponder;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class AdminEntityManagementAction
 {
@@ -22,16 +22,16 @@ class AdminEntityManagementAction
    private $storyManager;
    private $session;
 
-   /**
-    * AdminEntityManagementAction constructor.
-    * @param UserManager $userManager
-    * @param StoryManager $storyManager
-    * @param Session $session
-    */
+    /**
+     * AdminEntityManagementAction constructor.
+     * @param UserManager $userManager
+     * @param StoryManager $storyManager
+     * @param SessionInterface $session
+     */
    public function __construct(
-       UserManager  $userManager,
-       StoryManager $storyManager,
-       Session      $session
+       UserManager      $userManager,
+       StoryManager     $storyManager,
+       SessionInterface $session
    )
    {
        $this->userManager  = $userManager;
@@ -48,15 +48,16 @@ class AdminEntityManagementAction
    {
        $entity = $request->attributes->get('entity');
        $action = $request->attributes->get('action');
+       $id     = $request->attributes->get('id');
 
        $method = $action.ucfirst($entity);
 
        $entity === 'story' ?
            $process = $this->storyManager
-               ->$method($request->attributes->get('id'))
+               ->$method($id)
            :
            $process = $this->userManager
-               ->$method($request->attributes->get('id'))
+               ->$method($id)
        ;
 
        $this->session->getFlashBag()->add('success',$process);

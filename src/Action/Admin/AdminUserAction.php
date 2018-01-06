@@ -11,20 +11,17 @@ namespace App\Action\Admin;
 
 use App\Entity\User;
 use App\Responder\Admin\AdminUserResponder;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 
 class AdminUserAction
 {
-    /**
-     * @var EntityManager
-     */
     private $doctrine;
 
     /**
      * AdminUserAction constructor.
-     * @param EntityManager $doctrine
+     * @param EntityManagerInterface $doctrine
      */
-    public function __construct(EntityManager $doctrine)
+    public function __construct(EntityManagerInterface $doctrine)
     {
         $this->doctrine = $doctrine;
     }
