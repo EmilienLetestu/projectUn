@@ -11,7 +11,7 @@ namespace App\Action\Security;
 
 use App\Responder\Security\LoginResponder;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginAction
@@ -20,10 +20,10 @@ class LoginAction
 
     /**
      * LoginAction constructor.
-     * @param AuthorizationChecker $authCheck
+     * @param AuthorizationCheckerInterface $authCheck
      */
     public function  __construct(
-        AuthorizationChecker $authCheck
+        AuthorizationCheckerInterface $authCheck
     )
     {
         $this->authCheck  = $authCheck;

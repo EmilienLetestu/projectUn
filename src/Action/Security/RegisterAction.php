@@ -13,11 +13,11 @@ use App\Entity\User;
 use App\Form\RegisterType;
 use App\Responder\Security\RegisterResponder;
 use App\Services\Mail;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class RegisterAction
 {
@@ -30,17 +30,17 @@ class RegisterAction
     /**
      * RegisterAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param EntityManager $doctrine
+     * @param EntityManagerInterface $doctrine
      * @param \Swift_Mailer $swift
-     * @param Session $session
+     * @param SessionInterface $session
      * @param Mail $mailService
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
-        EntityManager $doctrine,
-        \Swift_Mailer $swift,
-        Session       $session,
-        Mail          $mailService
+        EntityManagerInterface $doctrine,
+        \Swift_Mailer          $swift,
+        SessionInterface       $session,
+        Mail                   $mailService
     )
     {
         $this->formFactory  = $formFactory;
