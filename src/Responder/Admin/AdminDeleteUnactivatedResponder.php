@@ -10,7 +10,7 @@ namespace App\Responder\Admin;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-final class AdminDeleteUnactivatedResponder
+class AdminDeleteUnactivatedResponder
 {
     /**
      * @return RedirectResponse

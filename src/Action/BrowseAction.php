@@ -17,7 +17,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-final class BrowseAction
+class BrowseAction
 {
    private $formFactory;
    private $doctrine;
@@ -41,7 +41,7 @@ final class BrowseAction
        $limit = 6;
        $filter = $this->formFactory->create(SearchType::class);
 
-       //get current page number from url param
+       //get current page number from url param => todo param session
        $pageNumber = $request->attributes->get('pageNumber');
        $worldArea  = $request->attributes->get('worldArea');
        $country    = $request->attributes->get('country');
@@ -89,3 +89,4 @@ final class BrowseAction
        );
    }
 }
+

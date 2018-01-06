@@ -11,7 +11,7 @@ namespace App\Responder;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-final class ActivateResponder
+class ActivateResponder
 {
     /**
      * @return RedirectResponse

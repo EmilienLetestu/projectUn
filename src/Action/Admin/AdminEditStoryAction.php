@@ -18,7 +18,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-final class AdminEditStoryAction
+class AdminEditStoryAction
 {
     private $doctrine;
     private $formFactory;

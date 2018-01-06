@@ -12,7 +12,7 @@ namespace App\Action\Admin;
 use App\Managers\UserManager;
 use App\Responder\Admin\AdminDeleteUnactivatedResponder;
 
-final class AdminDeleteUnactivatedAction
+class AdminDeleteUnactivatedAction
 {
     /**
      * @var UserManager

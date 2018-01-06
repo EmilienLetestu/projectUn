@@ -9,7 +9,7 @@
 namespace App\Responder;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
-final class SearchResponder
+class SearchResponder
 {
     /**
      * @return RedirectResponse

@@ -15,7 +15,7 @@ use App\Responder\Admin\AdminEntityManagementResponder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-final class AdminEntityManagementAction
+class AdminEntityManagementAction
 {
 
    private $userManager;

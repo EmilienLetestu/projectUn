@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-final class AdminPatronageAction
+class AdminPatronageAction
 {
     private $doctrine;
     private $editPatronage;

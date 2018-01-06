@@ -11,7 +11,7 @@ namespace App\Responder\Admin;
 
 use Symfony\Component\HttpFoundation\RedirectResponse;
 
-final class AdminEntityManagementResponder
+class AdminEntityManagementResponder
 {
     /**
      * @param $entity

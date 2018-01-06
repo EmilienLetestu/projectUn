@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\Security\Core\Authorization\AuthorizationChecker;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-final class LoginAction
+class LoginAction
 {
     private $authCheck;
 

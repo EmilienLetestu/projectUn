@@ -11,7 +11,7 @@ namespace App\Responder\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-final class LoginResponder
+class LoginResponder
 {
     private $twig;
 

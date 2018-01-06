@@ -15,7 +15,7 @@ use App\Responder\StoryResponder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
-final class StoryAction
+class StoryAction
 {
     private $doctrine;
 

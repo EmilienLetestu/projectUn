@@ -12,7 +12,7 @@ namespace App\Responder\Admin;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-final class AdminByUserResponder
+class AdminByUserResponder
 {
     /**
      * @var Environment

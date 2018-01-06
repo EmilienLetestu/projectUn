@@ -14,7 +14,7 @@ use App\Responder\Admin\AdminByUserResponder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 
-final class AdminByUserAction
+class AdminByUserAction
 {
     /**
      * @var EntityManager

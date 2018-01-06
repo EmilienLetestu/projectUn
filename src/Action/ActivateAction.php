@@ -17,7 +17,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
 
-final class ActivateAction
+class ActivateAction
 {
     private $doctrine;
     private $session;

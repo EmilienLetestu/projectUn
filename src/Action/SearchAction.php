@@ -15,7 +15,7 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-final class SearchAction
+class SearchAction
 {
     private $formFactory;
 

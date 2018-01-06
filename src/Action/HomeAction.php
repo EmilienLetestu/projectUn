@@ -16,7 +16,7 @@ use App\Responder\HomeResponder;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Form\FormFactoryInterface;
 
-final class HomeAction
+class HomeAction
 {
     private $doctrine;
     private $formFactory;

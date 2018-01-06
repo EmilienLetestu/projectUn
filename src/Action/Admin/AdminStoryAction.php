@@ -13,7 +13,7 @@ use App\Managers\StoryManager;
 use App\Responder\Admin\AdminStoryResponder;
 use Symfony\Component\HttpFoundation\Request;
 
-final class AdminStoryAction
+class AdminStoryAction
 {
     /**
      * @var StoryManager

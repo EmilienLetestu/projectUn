@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
-final class AdminHomeAction
+class AdminHomeAction
 {
 
     private $doctrine;
@@ -67,7 +67,6 @@ final class AdminHomeAction
             ;
             $user->setPswd($form->get('pswd')->getData());
 
-            $this->doctrine->persist($user);
             $this->doctrine->flush();
 
             return new RedirectResponse('/admin');

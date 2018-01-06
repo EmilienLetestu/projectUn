@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-final class HomeResponder
+class HomeResponder
 {
     /**
      * @var Environment
@@ -35,7 +35,7 @@ final class HomeResponder
      * @param $form
      * @return Response
      */
-    public function __invoke($storyList,$total,FormView $form)
+    public function __invoke($storyList, $total, FormView $form)
     {
         return new Response(
             $this->twig->render('home.html.twig',[

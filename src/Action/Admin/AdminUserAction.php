@@ -13,7 +13,7 @@ use App\Entity\User;
 use App\Responder\Admin\AdminUserResponder;
 use Doctrine\ORM\EntityManager;
 
-final class AdminUserAction
+class AdminUserAction
 {
     /**
      * @var EntityManager

@@ -13,7 +13,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-final class ResetPswdResponder
+class ResetPswdResponder
 {
     private $twig;
 
