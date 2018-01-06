@@ -14,11 +14,14 @@ use App\Entity\Url;
 use App\Form\StoryType;
 use App\Responder\AddStoryResponder;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\Session;
-use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class AddStoryAction
 {
@@ -26,25 +29,29 @@ class AddStoryAction
     private $doctrine;
     private $session;
     private $token;
+    private $urlGenerator;
 
     /**
      * AddStoryAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param EntityManager $doctrine
-     * @param Session $session
-     * @param TokenStorage $token
+     * @param EntityManagerInterface $doctrine
+     * @param SessionInterface $session
+     * @param TokenStorageInterface $token
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
-        FormFactoryInterface $formFactory,
-        EntityManager        $doctrine,
-        Session              $session,
-        TokenStorage         $token
+        FormFactoryInterface   $formFactory,
+        EntityManagerInterface $doctrine,
+        SessionInterface       $session,
+        TokenStorageInterface  $token,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
         $this->formFactory  = $formFactory;
         $this->doctrine     = $doctrine;
         $this->session      = $session;
         $this->token        = $token;
+        $this->urlGenerator = $urlGenerator;
     }
 
     public function __invoke(Request $request, AddStoryResponder $responder)
@@ -96,7 +103,7 @@ class AddStoryAction
                 'success',
                 'Your story was successfully added to our database')
             ;
-            return new RedirectResponse('/add-story');
+            return new RedirectResponse($this->urlGenerator->generate('addStory'));
         }
 
         return $responder($form->createView());
