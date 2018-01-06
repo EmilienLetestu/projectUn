@@ -12,7 +12,7 @@ namespace App\Action;
 use App\Entity\Story;
 use App\Entity\Url;
 use App\Responder\StoryResponder;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 class StoryAction
@@ -21,9 +21,9 @@ class StoryAction
 
     /**
      * StoryAction constructor.
-     * @param EntityManager $doctrine
+     * @param EntityManagerInterface $doctrine
      */
-    public function __construct(EntityManager $doctrine)
+    public function __construct(EntityManagerInterface $doctrine)
     {
        $this->doctrine = $doctrine;
     }

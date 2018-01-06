@@ -13,11 +13,12 @@ use App\Form\NewPswdType;
 use App\Responder\ResetPswdResponder;
 use App\Services\Mail;
 use App\Services\Tools;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ResetPswdAction
 {
@@ -27,23 +28,26 @@ class ResetPswdAction
     private $tools;
     private $swift;
     private $session;
+    private $urlGenerator;
 
     /**
      * ResetPswdAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param EntityManager $doctrine
+     * @param EntityManagerInterface $doctrine
      * @param Mail $mailService
      * @param Tools $tools
      * @param \Swift_Mailer $swift
-     * @param Session $session
+     * @param SessionInterface $session
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
-        FormFactoryInterface   $formFactory,
-        EntityManager          $doctrine,
-        Mail                   $mailService,
-        Tools                  $tools,
-        \Swift_Mailer          $swift,
-        Session                $session
+        FormFactoryInterface    $formFactory,
+        EntityManagerInterface  $doctrine,
+        Mail                    $mailService,
+        Tools                   $tools,
+        \Swift_Mailer           $swift,
+        SessionInterface        $session,
+        UrlGeneratorInterface   $urlGenerator
     )
     {
         $this->formFactory  = $formFactory;
@@ -52,6 +56,7 @@ class ResetPswdAction
         $this->tools        = $tools;
         $this->swift        = $swift;
         $this->session      = $session;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -78,7 +83,10 @@ class ResetPswdAction
                 ->getFlashBag()
                 ->add('denied', 'Unknown email address')
             ;
-            return new RedirectResponse('/');
+            return new RedirectResponse(
+                $this->urlGenerator
+                     ->generate('home')
+            );
         }
 
         //check if mail still valid
@@ -97,8 +105,12 @@ class ResetPswdAction
                 $user->getEmail(),
                 "lost_password@climateStories.com"
             );
+
             $this->swift->send($message);
-            return new RedirectResponse('/');
+            return new RedirectResponse(
+                $this->urlGenerator
+                     ->generate('home')
+            );
         }
 
         //generate form
@@ -117,7 +129,10 @@ class ResetPswdAction
                 ->add('success', 'Password changed')
             ;
 
-            return new RedirectResponse('/');
+            return new RedirectResponse(
+                $this->urlGenerator
+                     ->generate('home')
+            );
         }
 
         return $responder($form->createView());

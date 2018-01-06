@@ -13,9 +13,10 @@ use App\Entity\User;
 use App\Responder\ActivateResponder;
 use App\Services\Mail;
 use App\Services\Tools;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class ActivateAction
 {
@@ -24,28 +25,32 @@ class ActivateAction
     private $mailService;
     private $tools;
     private $swift;
+    private $urlGenerator;
 
     /**
      * ActivateAction constructor.
-     * @param EntityManager $doctrine
-     * @param Session $session
+     * @param EntityManagerInterface $doctrine
+     * @param SessionInterface $session
      * @param Mail $mailService
      * @param Tools $tools
      * @param \Swift_Mailer $swift
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public  function __construct(
-        EntityManager $doctrine,
-        Session       $session,
-        Mail          $mailService,
-        Tools         $tools,
-        \Swift_Mailer $swift
+        EntityManagerInterface $doctrine,
+        SessionInterface       $session,
+        Mail                   $mailService,
+        Tools                  $tools,
+        \Swift_Mailer          $swift,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
-        $this->doctrine    = $doctrine;
-        $this->session     = $session;
-        $this->mailService = $mailService;
-        $this->tools       = $tools;
-        $this->swift       = $swift;
+        $this->doctrine     = $doctrine;
+        $this->session      = $session;
+        $this->mailService  = $mailService;
+        $this->tools        = $tools;
+        $this->swift        = $swift;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**

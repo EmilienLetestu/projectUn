@@ -12,7 +12,7 @@ namespace App\Action;
 use App\Entity\Story;
 use App\Form\SearchType;
 use App\Responder\BrowseResponder;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -22,9 +22,14 @@ class BrowseAction
    private $formFactory;
    private $doctrine;
 
+  /**
+   * BrowseAction constructor.
+   * @param FormFactoryInterface $formFactory
+   * @param EntityManagerInterface $doctrine
+   */
    public function __construct(
-       FormFactoryInterface $formFactory,
-       EntityManager        $doctrine
+       FormFactoryInterface    $formFactory,
+       EntityManagerInterface  $doctrine
    )
    {
        $this->formFactory = $formFactory;

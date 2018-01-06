@@ -13,7 +13,7 @@ use App\Entity\Story;
 use App\Form\SearchType;
 use App\Managers\NotificationManager;
 use App\Responder\HomeResponder;
-use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 
 class HomeAction
@@ -22,10 +22,16 @@ class HomeAction
     private $formFactory;
     private $notificationManager;
 
+    /**
+     * HomeAction constructor.
+     * @param EntityManagerInterface $doctrine
+     * @param FormFactoryInterface $formFactory
+     * @param NotificationManager $notificationManager
+     */
     public function __construct(
-        EntityManager        $doctrine,
-        FormFactoryInterface $formFactory,
-        NotificationManager  $notificationManager
+        EntityManagerInterface $doctrine,
+        FormFactoryInterface   $formFactory,
+        NotificationManager    $notificationManager
     )
     {
         $this->doctrine            = $doctrine;

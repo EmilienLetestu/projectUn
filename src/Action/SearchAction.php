@@ -14,18 +14,25 @@ use App\Responder\SearchResponder;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class SearchAction
 {
     private $formFactory;
+    private $urlGenerator;
 
     /**
      * SearchAction constructor.
      * @param FormFactoryInterface $formFactory
+     * @param UrlGeneratorInterface $urlGenerator
      */
-    public function __construct(FormFactoryInterface $formFactory)
+    public function __construct(
+        FormFactoryInterface  $formFactory,
+        UrlGeneratorInterface $urlGenerator
+    )
     {
         $this->formFactory = $formFactory;
+        $this->urlGenerator = $urlGenerator;
     }
 
     /**
@@ -58,7 +65,17 @@ class SearchAction
                 return $responder();
             }
 
-            return new RedirectResponse("/browse-stories/page/1/$worldFilter/$countryFilter/$topicFilter/$patronageFilter");
+            return new RedirectResponse(
+                $this->urlGenerator
+                     ->generate('browse',[
+                         'pageNumber' => 1,
+                         'worldArea'  => $worldFilter,
+                         'country'    => $countryFilter,
+                         'topic'      => $topicFilter,
+                         'patronage'  => $patronageFilter
+
+                     ])
+            );
         }
 
         return $responder();

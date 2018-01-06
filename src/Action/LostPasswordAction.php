@@ -16,7 +16,8 @@ use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class LostPasswordAction
 {
@@ -24,25 +25,30 @@ class LostPasswordAction
     private $mailService;
     private $swift;
     private $session;
+    private $urlGenerator;
 
     /**
      * LostPasswordAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param Mail $mailService
      * @param \Swift_Mailer $swift
-     * @param Session $session
+     * @param SessionInterface $session
+     * @param UrlGeneratorInterface $urlGenerator
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
         Mail                   $mailService,
         \Swift_Mailer          $swift,
-        Session                $session
+        SessionInterface       $session,
+        UrlGeneratorInterface  $urlGenerator
     )
     {
         $this->formFactory  = $formFactory;
         $this->mailService  = $mailService;
         $this->swift        = $swift;
         $this->session      = $session;
+        $this->urlGenerator = $urlGenerator;
+
     }
 
     /**
@@ -86,7 +92,10 @@ class LostPasswordAction
                 ->add('success','A reset e-mail was sent to you, check your mailbox !')
             ;
 
-            return new RedirectResponse('/');
+            return new RedirectResponse(
+                $this->urlGenerator
+                     ->generate('home')
+            );
         }
 
         return $responder($form->createView());
