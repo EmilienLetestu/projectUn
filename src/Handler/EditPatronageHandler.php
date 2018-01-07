@@ -36,6 +36,7 @@ class EditPatronageHandler implements EditPatronageHandlerInterface
             {
                 $repository = $this->doctrine->getRepository(Patronage::class);
                 $patronage = $repository->find($form->get('patronageId')->getData());
+                $patronage->setOrganization($form->get('organization')->getData());
             }
 
             $patronage->setOrganization($form->get('organization')->getData());
@@ -44,6 +45,7 @@ class EditPatronageHandler implements EditPatronageHandlerInterface
 
             return true;
         }
+
         return false;
     }
 }
