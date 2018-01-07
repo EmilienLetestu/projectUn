@@ -11,6 +11,7 @@ namespace App\Action\Admin;
 
 use App\Entity\Story;
 use App\Form\EditStoryType;
+use App\Handler\Inter\EditStoryHandlerInterface;
 use App\Responder\Admin\AdminEditStoryResponder;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
@@ -25,6 +26,7 @@ class AdminEditStoryAction
     private $formFactory;
     private $session;
     private $urlGenerator;
+    private $editStoryHandler;
 
     /**
      * AdminEditStoryAction constructor.
@@ -32,18 +34,21 @@ class AdminEditStoryAction
      * @param FormFactoryInterface $formFactory
      * @param SessionInterface $session
      * @param UrlGeneratorInterface $urlGenerator
+     * @param EditStoryHandlerInterface $editStoryHandler
      */
     public function __construct(
         EntityManagerInterface $doctrine,
         FormFactoryInterface   $formFactory,
         SessionInterface       $session,
-        UrlGeneratorInterface  $urlGenerator
+        UrlGeneratorInterface  $urlGenerator,
+        EditStoryHandlerInterface $editStoryHandler
     )
     {
         $this->doctrine     = $doctrine;
         $this->formFactory  = $formFactory;
         $this->session      = $session;
         $this->urlGenerator = $urlGenerator;
+        $this->editStoryHandler = $editStoryHandler;
     }
 
     /**
@@ -54,37 +59,27 @@ class AdminEditStoryAction
     public function __invoke(Request $request, AdminEditStoryResponder $responder)
     {
         $id = $request->attributes->get('id');
-        $repository = $this->doctrine->getRepository(Story::class);
-        $story = $repository->findOneBy([
-            'id' => $id
-        ]);
+        $story = $this->doctrine
+                      ->getRepository(Story::class)
+                      ->findOneBy(['id' => $id])
+        ;
 
         $form = $this->formFactory
                      ->create(EditStoryType::class, $story)
                      ->handleRequest($request)
         ;
 
-        if($form->isSubmitted() && $form->isValid()) {
-
-            $story->setTitle(
-                $form->get('title')->getData()
-            );
-            $story->setAbstract(
-                $form->get('abstract')->getData()
-            );
-            $story->setPlot(
-                $form->get('plot')->getData()
-            );
+        if($this->editStoryHandler->handle($form, $story)) {
 
             $this->doctrine->flush();
-
             $this->session
-                 ->getFlashBag()
-                 ->add('success','Story has been updated')
+                ->getFlashBag()
+                ->add('success','Story has been updated')
             ;
+
             return new RedirectResponse(
                 $this->urlGenerator
-                      ->generate('adminByStory',['id'=>$id])
+                     ->generate('adminByStory',['id'=>$id])
             );
         }
 
