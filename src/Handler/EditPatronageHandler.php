@@ -28,6 +28,11 @@ class EditPatronageHandler implements EditPatronageHandlerInterface
         $this->doctrine    = $doctrine;
     }
 
+    /**
+     * @param FormInterface $form
+     * @param Patronage $patronage
+     * @return bool
+     */
     public function handle(FormInterface $form, Patronage $patronage): bool
     {
         if($form->isSubmitted() && $form->isValid())
