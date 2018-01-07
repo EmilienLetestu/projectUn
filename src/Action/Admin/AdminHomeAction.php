@@ -12,11 +12,13 @@ namespace App\Action\Admin;
 use App\Entity\Story;
 use App\Entity\User;
 use App\Form\AdministratorCredentialType;
+use App\Handler\Inter\AdministratorCredentialHandlerInterface;
 use App\Responder\Admin\AdminHomeResponder;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 class AdminHomeAction
@@ -25,22 +27,30 @@ class AdminHomeAction
     private $doctrine;
     private $formFactory;
     private $token;
+    private $credentialHandler;
+    private $session;
 
     /**
      * AdminHomeAction constructor.
      * @param EntityManagerInterface $doctrine
      * @param FormFactoryInterface $formFactory
      * @param TokenStorageInterface $token
+     * @param AdministratorCredentialHandlerInterface $credentialHandler
+     * @param SessionInterface $session
      */
     public function __construct(
-        EntityManagerInterface   $doctrine,
-        FormFactoryInterface     $formFactory,
-        TokenStorageInterface    $token
+        EntityManagerInterface                  $doctrine,
+        FormFactoryInterface                    $formFactory,
+        TokenStorageInterface                   $token,
+        AdministratorCredentialHandlerInterface $credentialHandler,
+        SessionInterface                        $session
     )
     {
-        $this->doctrine    = $doctrine;
-        $this->formFactory = $formFactory;
-        $this->token       = $token;
+        $this->doctrine          = $doctrine;
+        $this->formFactory       = $formFactory;
+        $this->token             = $token;
+        $this->credentialHandler = $credentialHandler;
+        $this->session           = $session;
     }
 
     /**
@@ -57,16 +67,10 @@ class AdminHomeAction
                      ->handleRequest($request)
         ;
 
-        if($form->isSubmitted() && $form->isValid())
-        {
-            $id = $this->token->getToken()->getUser()->getId();
-            $user = $repoUser->findOneBy(['id'=>$id]);
+        $id = $this->token->getToken()->getUser()->getId();
+        $user = $repoUser->findOneBy(['id'=>$id]);
 
-            $form->get('email')->getData() !== null ?
-                $user->setEmail($form->get('email')->getData()) :
-                null
-            ;
-            $user->setPswd($form->get('pswd')->getData());
+        if($this->credentialHandler->handle($form,$user)) {
 
             $this->doctrine->flush();
 
