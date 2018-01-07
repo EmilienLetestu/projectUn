@@ -10,39 +10,40 @@ namespace App\Action\Admin;
 
 
 use App\Entity\Patronage;
+use App\Form\EditPatronageType;
+use App\Handler\Inter\EditPatronageHandlerInterface;
 use App\Responder\Admin\AdminPatronageResponder;
-use App\Services\EditPatronage;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class AdminPatronageAction
 {
     private $doctrine;
-    private $editPatronage;
-    private $session;
     private $urlGenerator;
+    private $editPatronageHandler;
+    private $formFactory;
 
     /**
      * AdminPatronageAction constructor.
      * @param EntityManagerInterface $doctrine
-     * @param EditPatronage $editPatronage
-     * @param SessionInterface $session
      * @param UrlGeneratorInterface $urlGenerator
+     * @param EditPatronageHandlerInterface $editPatronageHandler
+     * @param FormFactoryInterface $formFactory
      */
     public function __construct(
-        EntityManagerInterface $doctrine,
-        EditPatronage          $editPatronage,
-        SessionInterface       $session,
-        UrlGeneratorInterface  $urlGenerator
+        EntityManagerInterface        $doctrine,
+        UrlGeneratorInterface         $urlGenerator,
+        EditPatronageHandlerInterface $editPatronageHandler,
+        FormFactoryInterface          $formFactory
     )
     {
-      $this->doctrine      = $doctrine;
-      $this->editPatronage = $editPatronage;
-      $this->session       = $session;
-      $this->urlGenerator  = $urlGenerator;
+      $this->doctrine             = $doctrine;
+      $this->urlGenerator         = $urlGenerator;
+      $this->editPatronageHandler = $editPatronageHandler;
+      $this->formFactory          = $formFactory;
     }
 
     /**
@@ -54,16 +55,22 @@ class AdminPatronageAction
     {
         $repository = $this->doctrine->getRepository(Patronage::class);
 
-        $form = $this->editPatronage->processPatronage($request);
+        $form = $this->formFactory
+                     ->create(EditPatronageType::class)
+                     ->handleRequest($request)
+        ;
+        $patronage = new Patronage();
 
-        if($this->session->get('added')){
-            $this->session->remove('added');
+        if($this->editPatronageHandler->handle($form,$patronage)){
             return new RedirectResponse(
                 $this->urlGenerator
                      ->generate('adminPatronage')
             );
         }
 
-       return $responder($repository->findAll(),$form);
+       return $responder(
+           $repository->findAll(),
+           $form->createView()
+       );
     }
 }
