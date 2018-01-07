@@ -10,9 +10,12 @@ namespace App\Action\Admin;
 
 
 use App\Entity\Topic;
+use App\Form\EditTopicType;
+use App\Handler\Inter\EditTopicHandlerInterface;
 use App\Responder\Admin\AdminTopicResponder;
 use App\Services\EditTopic;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -21,28 +24,28 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class AdminTopicAction
 {
     private $doctrine;
-    private $editTopic;
-    private $session;
     private $urlGenerator;
+    private $editTopicHandler;
+    private $formFactory;
 
     /**
      * AdminTopicAction constructor.
      * @param EntityManagerInterface $doctrine
-     * @param EditTopic $editTopic
-     * @param SessionInterface $session
      * @param UrlGeneratorInterface $urlGenerator
+     * @param EditTopicHandlerInterface $editTopicHandler
+     * @param FormFactoryInterface $formFactory
      */
     public function __construct(
-        EntityManagerInterface $doctrine,
-        EditTopic              $editTopic,
-        SessionInterface       $session,
-        UrlGeneratorInterface  $urlGenerator
+        EntityManagerInterface    $doctrine,
+        UrlGeneratorInterface     $urlGenerator,
+        EditTopicHandlerInterface $editTopicHandler,
+        FormFactoryInterface      $formFactory
     )
     {
-        $this->doctrine    = $doctrine;
-        $this->editTopic   = $editTopic;
-        $this->session     = $session;
-        $this->urlGenerator = $urlGenerator;
+        $this->doctrine         = $doctrine;
+        $this->urlGenerator     = $urlGenerator;
+        $this->editTopicHandler = $editTopicHandler;
+        $this->formFactory      = $formFactory;
     }
 
     /**
@@ -54,16 +57,22 @@ class AdminTopicAction
     {
        $repository = $this->doctrine->getRepository(Topic::class);
 
-       $form = $this->editTopic->processTopic($request);
+       $form = $this->formFactory
+                    ->create(EditTopicType::class)
+                    ->handleRequest($request)
+       ;
+       $topic = new Topic();
 
-       if($this->session->get('added')) {
-           $this->session->remove('added');
+       if($this->editTopicHandler->handle($form, $topic)){
            return new RedirectResponse(
                $this->urlGenerator
-                    ->generate('adminTopic')
+                   ->generate('adminTopic')
            );
        }
 
-       return $responder($repository->findAll(),$form);
+       return $responder(
+           $repository->findAll(),
+           $form->createView()
+       );
     }
 }
