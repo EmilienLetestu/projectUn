@@ -11,6 +11,7 @@ namespace App\Action\Security;
 
 use App\Entity\User;
 use App\Form\RegisterType;
+use App\Handler\Inter\RegisterHandlerInterface;
 use App\Responder\Security\RegisterResponder;
 use App\Services\Mail;
 use Doctrine\ORM\EntityManagerInterface;
@@ -24,30 +25,26 @@ class RegisterAction
     private $formFactory;
     private $doctrine;
     private $swift;
-    private $mailService;
-    private $session;
+    private $registerHandler;
 
     /**
      * RegisterAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $doctrine
      * @param \Swift_Mailer $swift
-     * @param SessionInterface $session
-     * @param Mail $mailService
+     * @param RegisterHandlerInterface $registerHandler
      */
     public function __construct(
-        FormFactoryInterface   $formFactory,
-        EntityManagerInterface $doctrine,
-        \Swift_Mailer          $swift,
-        SessionInterface       $session,
-        Mail                   $mailService
+        FormFactoryInterface     $formFactory,
+        EntityManagerInterface   $doctrine,
+        \Swift_Mailer            $swift,
+        RegisterHandlerInterface $registerHandler
     )
     {
-        $this->formFactory  = $formFactory;
-        $this->doctrine     = $doctrine;
-        $this->swift        = $swift;
-        $this->session      = $session;
-        $this->mailService  = $mailService;
+        $this->formFactory     = $formFactory;
+        $this->doctrine        = $doctrine;
+        $this->swift           = $swift;
+        $this->registerHandler = $registerHandler;
     }
 
     public function __invoke(Request $request, RegisterResponder $responder)
@@ -59,50 +56,16 @@ class RegisterAction
                      ->handleRequest($request)
         ;
 
-        if($form->isSubmitted() && $form->isValid())
+        $handler = $this->registerHandler->handle($form, $user);
+
+        if($handler)
         {
-            $emailInDb = $this->mailService
-                ->checkMailAvailability($user->getEmail())
-            ;
-
-            if ($emailInDb !== null)
-            {
-                $this->session
-                     ->getFlashBag()
-                     ->add('denied', 'This email is already used')
-                ;
-                return $responder($form->createView());
-            }
-
-            //hydrate with submitted data
-            $user->setRegisteredOn('Y-m-d');
-            $user->setRole('user');
-            $user->setConfirmationToken(40);
-            $form->get('claimEdit')->getData() == true ?
-                $user->setBeenProcessed(false) :
-                $user->setBeenProcessed(true)
-            ;
-
-            //prepare email
-            $message = $this->mailService->validationMail(
-                $user->getName(),
-                $user->getSurname(),
-                $user->getConfirmationToken(),
-                $user->getEmail(),
-                "activation@climateStories.com"
-            );
-
             //save
             $this->doctrine->persist($user);
             $this->doctrine->flush();
 
             //send validation email
-            $this->swift->send($message);
-
-            $this->session
-                 ->getFlashBag()
-                 ->add('success', 'Account created ! An activation email has been sent to you ')
-            ;
+            $this->swift->send($handler);
 
             return new RedirectResponse('/');
         }
