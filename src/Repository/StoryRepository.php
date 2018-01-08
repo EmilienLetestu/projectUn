@@ -16,6 +16,34 @@ class StoryRepository extends EntityRepository
 {
 
     /**
+     * @param $topicId
+     * @param $country
+     * @param $year
+     * @param $patronageId
+     * @param $id
+     * @return mixed
+     */
+    public function findAllRelated($topicId,$country,$year,$patronageId,$id)
+    {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder
+            ->where($queryBuilder->expr()->notIn('s.id',$id))
+            ->andWhere('s.validated = 1')
+            ->orHaving('s.topic = :topicId')
+            ->orHaving('s.country = :country')
+            ->orHaving('s.year = :year')
+            ->orHaving('s.patronage = :patronageId')
+            ->setParameter('topicId', $topicId)
+            ->setParameter('country', $country)
+            ->setParameter('year', $year)
+            ->setParameter('patronageId', $patronageId);
+
+        return $queryBuilder
+               ->getQuery()
+               ->getResult()
+        ;
+    }
+    /**
      * fetch all stories sharing one given topic but ignore one with specific id
      * will be used to create links
      * @param $topicId
