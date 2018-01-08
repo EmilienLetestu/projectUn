@@ -21,7 +21,6 @@ class AddStoryHandler implements AddStoryHandlerInterface
     private $doctrine;
     private $token;
 
-
     /**
      * AddStoryHandler constructor.
      * @param EntityManagerInterface $doctrine
