@@ -8,7 +8,6 @@ $(document).ready(function () {
 
     //check form value before submit
     // register form
-
     $('#register_pswd').blur(function () {
 
         if($('#register_pswd').val().length >= 6)

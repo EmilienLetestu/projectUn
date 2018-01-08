@@ -483,8 +483,10 @@ h1,
 	margin-top: 3%;
 	width: 260px;
 	height: 60px;
+	line-height: 60px;
 	text-align: center;
-	padding-top: 1%;
+	padding: 0 !important;
+
 }
 
 #punchLine .pictLink{
@@ -502,6 +504,13 @@ h1,
 	color: $secondary-color;
 	font-size: 1.5rem;
 }
+
+#terms{
+	position: absolute;
+	top: 20px;
+	left: 218px;
+}
+
 
 .connectionForm{
 	padding-right: 0 !important;
@@ -971,6 +980,9 @@ h1,
 
 		#intro{
 			margin-top: -10%;
+			.storyCount{
+				margin-top: 0;
+			}
 		}
 		#speech {
 			p{
@@ -983,12 +995,36 @@ h1,
 		.pictLink{
 			padding: 5px 50px;
 		}
+		/*-------   browse   --------*/
+
+		#introBrowse{
+			margin-top: -12%;
+			min-height: 480px;
+		}
+
+		#punchLine{
+			width: 100%;
+			margin-top: 30%;
+			margin-left: 0;
+			padding: 0;
+			h1{
+				font-size: 3rem;
+			}
+			h3{
+				font-size: 1.5rem;
+			}
+		}
+
+		.pictLink{
+			margin-top: 10%;
+		}
+
 		/*------- story card --------*/
-		h1{
+		#storyCard h1{
 			font-size: 2rem;
 		}
-		h2,
-		.h2-like{
+		#storyCard h2,
+		#storyCard .h2-like{
 			font-size: 1.8rem;
 		}
 		.storyCard
@@ -1039,6 +1075,10 @@ h1,
 		}
 
 		/*--add story----*/
+		.addStory{
+			max-width: 90%;
+		}
+
 		.well{
 			padding: 0!important;
 		}

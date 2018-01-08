@@ -109,7 +109,7 @@ class RegisterType extends AbstractType
             ])
 
             ->add('termsAgreement', CheckboxType::class,[
-                'label' => 'I accept terms and conditions ',
+                'label' => 'I accept terms and conditions',
                 'required'  => true,
                 'mapped'    => false
             ])

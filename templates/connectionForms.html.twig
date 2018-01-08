@@ -39,7 +39,7 @@
         <div class="container-fluid connectionForm">
             {{ form_start(form ,{'attr':{'id':'registerForm'}}) }}
             <div class="form-group row col-md-12">
-                {{ form_label(form.name) }}
+                {{ form_label(form.name) }}<span class="req">*</span>
                 {{ form_widget(form.name ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.name) }}
                 <span class="invalid_sign" id="invalid_name_icon" style="display: none">
@@ -51,7 +51,7 @@
                 <span class="invalid" id="invalid_name" style="display: none">Between 3 up to 30 letters</span>
             </div>
             <div class="form-group row col-md-12">
-                {{ form_label(form.surname) }}
+                {{ form_label(form.surname) }}<span class="req">*</span>
                 {{ form_widget(form.surname ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.surname,{'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_surname_icon" style="display: none">
@@ -79,7 +79,7 @@
                 <span id="wordCount"> 0/300 </span>
             </div>
             <div class="form-group row col-md-12">
-                {{ form_label(form.email) }}
+                {{ form_label(form.email) }}<span class="req">*</span>
                 {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.email,{'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_email_icon" style="display: none">
@@ -91,7 +91,7 @@
                 <span class="invalid" id="invalid_email" style="display: none">Enter a valid email</span>
             </div>
             <div class="form-group row col-md-12">
-                {{ form_label(form.pswd) }}
+                {{ form_label(form.pswd) }}<span class="req">*</span>
                 {{ form_widget(form.pswd,{'attr':{'class':'form-control'}}) }}
                 {{ form_errors(form.pswd, {'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_pswd_icon" style="display: none">
@@ -115,7 +115,7 @@
                 <span class="invalid" id="invalid_confirm" style="display: none">Passwords don't match</span>
             </div>
             <div class="form-group row col-md-12">
-                {{ form_label(form.termsAgreement) }}
+                {{ form_label(form.termsAgreement) }}<span class="req" id="terms">*</span>
                 {{ form_widget(form.termsAgreement)}}
                 {{ form_errors(form.termsAgreement)}}
             </div>
