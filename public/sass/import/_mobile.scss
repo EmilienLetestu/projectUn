@@ -162,22 +162,9 @@ textarea:focus{
 	background-color: $secondary-color!important;
 }
 
-.lost {
-	border-color: $primary-color !important;
-	color: $primary-color !important;
-	background-color: transparent !important;
-	width: 260px;
-	height: 60px;
-	line-height: 60px;
-	padding: 0 !important;
-	position: absolute;
-	right: 0;
-}
-
-.lost:hover{
-	border: none !important;
-	color: #FFFFFF !important;
-	background-color: $secondary-color!important;
+#lost:hover{
+	color: $secondary-color !important;
+	text-decoration: none;
 }
 
 
