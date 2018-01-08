@@ -24,7 +24,7 @@
                     <input type="checkbox" id="remember_me" name="_remember_me" checked />
                     <label for="remember_me">Remember Me</label>
                 </div>
-                <div class="form-group row col-md-12" id="registerOptions">
+                <div class="form-group row col-md-12 text-center" id="registerOptions">
                     <button class="btn btn-success" id="loginBtn" type="submit">Submit</button>
 
                 </div>
@@ -119,7 +119,7 @@
                 {{ form_widget(form.termsAgreement)}}
                 {{ form_errors(form.termsAgreement)}}
             </div>
-            <div class="form-group row col-md-12 centerSubmit">
+            <div class="form-group row col-md-12 text-center">
                 <button class="btn btn-success" id="registerBtn" type="submit">Submit</button>
             </div>
             {{ form_end(form) }}
@@ -145,7 +145,7 @@
                 </span>
                 <span class="invalid" id="invalid_email" style="display: none">Enter a valid email</span>
             </div>
-            <div class="form-group row col-md-12 centerSubmit">
+            <div class="form-group row col-md-12 text-center">
                 <button class="btn btn-success" id="lostPswdBtn" type="submit">Submit</button>
             </div>
             {{ form_end(form) }}

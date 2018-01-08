@@ -121,7 +121,6 @@ textarea:focus{
 	border-bottom: 2px solid $secondary-color !important;
 }
 
-
 /* -----BUTTONS-----*/
 
 .btn {
@@ -139,11 +138,6 @@ textarea:focus{
 }
 
 /* ----- submit button color-----*/
-
-.centerSubmit{
-	text-align: center;
-}
-
 #loginBtn,
 #registerBtn,
 #lostPswdBtn{
@@ -152,6 +146,7 @@ textarea:focus{
 	background-color: transparent !important;
 	width: 260px;
 	height: 60px;
+	margin-top: 5%;
 }
 
 #loginBtn:hover,
@@ -506,6 +501,7 @@ h1,
 
 .connectionForm{
 	padding-right: 0 !important;
+	margin-top: 5%;
 	.form-group{
 		padding-right: 0 !important;
 	}
@@ -926,6 +922,9 @@ h1,
 
 	@media (max-width: 640px) {
 
+		.page-wrap{
+			margin-top: 25%;
+		}
 		/*------------ nav -------------*/
 		#signInLink,
 		#registerLink,
@@ -1006,22 +1005,33 @@ h1,
 		}
         /*------form--------*/
 		.connectionForm {
+			max-width: 90%;
+			margin-top: 15%;
 			padding-left: 0!important;
 			.form-control{
 				width:90%;
 			}
+			.text-center{
+				padding: 0 !important;
+				margin: 0 !important;
+			}
+			button{
+				margin-top: 15% !important;
+			}
 		}
 
-		.lost{
-			position: relative;
-			top: 10px;
+		#lost.pull-right{
+			position: relative !important;
+			right: 25px;
+
 		}
 
 		#registerOptions{
 			text-align: center;
-			padding-right: 15px!important;
-			margin-left: -15px !important;
+		}
 
+		 #registerBtn{
+			margin: 0 !important;
 		}
 
 		/*--add story----*/
