@@ -1035,6 +1035,15 @@ h1,
 		.storyCard li {
 			font-size: 0.7em;
 		}
+		.homeStories{
+			padding: 0;
+		}
+		.homeStories .cardHolder{
+			flex-flow: nowrap;
+			overflow: scroll;
+			justify-content: flex-start;
+		}
+
 		/*------story-------*/
 		#storyTags{
 			font-size: 1rem ;
