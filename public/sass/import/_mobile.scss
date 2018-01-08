@@ -865,17 +865,16 @@ h1,
 	}
 }
 
-.modalForm{
+.modalForm,
+.modalUrl{
 	width: 50%;
-	position: absolute;
-	top: 200px;
+	position: fixed;
+	top: 30%;
 	min-width: 30%;
 	opacity: 1;
 	left: 25%;
 	right: 25%;
 	background-color: #FFFFFF;
-	height:300px;
-	border-radius:10px;
 	border: 1px solid rgba(49, 51, 54, 0.3);
 	-webkit-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
 	-moz-box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
@@ -884,6 +883,42 @@ h1,
 	-moz-background-clip: padding-box;
 	background-clip: padding-box;
 	z-index: 2000;
+}
+
+.modalUrl{
+	min-height: 300px;
+	padding-left: 2%;
+	padding-right: 2%;
+	p{
+		font-size: 2rem !important;
+	}
+	p span{
+		color: $secondary-color;
+	}
+    i{
+		color: $primary-color !important;
+	}
+	i:hover{
+		color: $secondary-color !important;
+	}
+	li{
+		margin: 0 0 5px 0;
+	}
+	li a{
+		font-size: 1.8rem;
+	}
+	li a:hover{
+		color: $secondary-color !important;
+	}
+	li i{
+		font-size: 1.5rem;
+		padding-left: 1%;
+	}
+}
+
+.modalForm{
+	height:300px;
+	border-radius:10px;
 }
 
 #newTopicForm,
@@ -1084,6 +1119,9 @@ h1,
 		}
 
 		/*--add story----*/
+		.storyCard p{
+			min-height: 150px;
+		}
 		.addStory{
 			max-width: 90%;
 		}
@@ -1103,6 +1141,16 @@ h1,
 		.urls{
 			width: 90%;
 		}
+		/*---modal----*/
+
+		.modalUrl,
+		.modalForm{
+			width: 96%;
+			top: 25%;
+			left: 2%;
+			right: 2%;
+		}
+
 	}
 
 
