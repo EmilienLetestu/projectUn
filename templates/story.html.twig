@@ -13,14 +13,30 @@
             <div id="storyPlot">
                 <h3>A Climate <span>Story #{{ story.id }}</span></h3>
                 <div id="plotText">
-                    <p>{{ story.plot|raw }}</p>
+                    {{ story.plot|raw }}
                 </div>
+                {% if story.urls|length >= 1 %}
                 <div class="trigger">
                     <i class="fa fa-link pull-right" aria-hidden="true"> External links</i>
                 </div>
+                {% endif %}
             </div>
         </div>
     </div>
+        {% if previous != null %}
+        <span id="prevStory">
+            <a class="btn" href="{{ path('story',{'storyId':previous|join('|')}) }}">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </a>
+        </span>
+        {% endif %}
+        {% if next != null %}
+        <span id="nextStory">
+            <a class="btn" href="{{ path('story',{'storyId':next|join('|')}) }}" >
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </a>
+        </span>
+        {% endif %}
     <div id="contact">
         <h3>About the author</h3>
             <ul class="list-inline">
@@ -56,54 +72,24 @@
     </div>
     <div class="modalOverlay" style="display: none"></div>
 
-    <div id="moreContainer">
-        {% if sameTopic != null %}
-        <div class="more" id="moreTopic">
-            <h3>Stories about {{ story.topic.type }}</h3>
-            {% set stories = sameTopic|shuffle|slice(0,3) %}
+    <div class="container-fluid" id="moreContainer">
+        <h3>Related stories</h3>
+        <div class="more">
+            {% set stories = related|shuffle|slice(0,10) %}
                 {{ include('storyCard.html.twig') }}
         </div>
-        {% endif %}
-
-        {% if sameCountry != null %}
-        <div class="more" id="moreCountry">
-            <h3>Stories set in {{ story.country|country}}</h3>
-            {% set stories = sameCountry|shuffle|slice(0,3) %}
-                {{ include('storyCard.html.twig') }}
-        </div>
-        {% endif %}
-
-        {% if sameYear != null %}
-        <div class="more" id="moreYear">
-            <h3>Stories started in {{ story.year}}</h3>
-            {% set stories = sameYear|shuffle|slice(0,3) %}
-                {{ include('storyCard.html.twig') }}
-        </div>
-        {% endif %}
-
-        {% if samePatronage != null %}
-        <div class="more" id="morePatronage">
-            <h3>Stories supported by {{ story.patronage.organization }}</h3>
-            {% set stories = samePatronage|shuffle|slice(0,3) %}
-                {{ include('storyCard.html.twig') }}
-        </div>
-        {% endif %}
+        <span id="panLeft" class="panner pull-left" data-scroll-modifier='-1'>
+            <i class="fa fa-chevron-circle-left fa-lg" aria-hidden="true"></i>
+        </span>
+        <span id="panRight" class="panner pull-right" data-scroll-modifier='1'>
+            <i class="fa fa-chevron-circle-right fa-lg" aria-hidden="true"></i>
+        </span>
     </div>
-    <div id="prev-next">
-        {% if previous != null %}
-            <a class="btn" href="{{ path('story',{'storyId':previous|join('|')}) }}" id="prevStory">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </a>
-        {% endif %}
-        {% if next != null %}
-            <a class="btn" href="{{ path('story',{'storyId':next|join('|')}) }}" id="nextStory">
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </a>
-        {% endif %}
-    </div>
+
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{ asset('js/modal.js') }}"></script>
+    <script src="{{ asset('js/scroll.js') }}"></script>
 {% endblock %}
 

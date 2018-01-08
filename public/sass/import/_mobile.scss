@@ -454,24 +454,32 @@ h1,
 	color: $secondary-color-dark !important;
 }
 
-#prev-next{
-	position: fixed;
-	top: 50%;
-}
 
-#nextStory{
-	position: fixed;
-	right: 0;
+#nextStory,
+#prevStory{
+	position: absolute;
+	top:20%;
 }
 
 #prevStory{
-	position: fixed;
 	left: 0;
 }
 
+#nextStory{
+	right: 0;
+}
+
+#prevStory a:hover,
+#nextStory a:hover
+{
+	background-color: transparent !important;
+	border-color: $secondary-color;
+	i{
+		color: $secondary-color;
+	}
+}
+
 #nextBtn:hover,
-#nextStory:hover,
-#prevStory:hover,
 #previousBtn:hover{
 	border-color: transparent !important;
 	color: #FFFFFF !important;
@@ -763,8 +771,8 @@ h1,
 	column-gap: 50px;
 	padding-top: 4%;
 	padding-bottom: 3%;
-	p{
-		display: inline-block; /*avoid column to break inside element*/
+	p:first-of-type{
+		margin-top: 0 !important;
 	}
 }
 
@@ -807,16 +815,26 @@ h1,
 }
 
 #moreContainer{
-	display: flex;
+	margin-top: 2%;
+	.more{
+		overflow-x: hidden;
+	}
+
 	.storyCard{
-		width: 90%;
+		min-width: 450px;
 	}
 	.cardHolder{
-		display: block;
+		flex-flow: nowrap;
+		justify-content: flex-start;
 	}
 	h3{
 		text-align: center;
 	}
+}
+
+.panner{
+	position: relative;
+	top: -200px;
 
 }
 /*------browse-------*/
