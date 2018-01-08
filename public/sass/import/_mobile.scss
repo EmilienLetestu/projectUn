@@ -88,6 +88,40 @@ i.fa-check{
 	color: #5fdda1;
 }
 
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=text]:focus,
+input[type=password]:focus,
+input[type=email]:focus{
+	background: transparent;
+	border: none;
+	border-bottom: 2px solid;
+	border-radius: 0;
+	outline-color: transparent;
+	outline-style: none;
+	box-shadow: none;
+}
+
+textarea:focus
+,textarea{
+	border-style: none !important;
+	overflow: auto !important;
+	outline-color: transparent !important;
+	outline-style: none !important;
+	box-shadow: none !important;
+	border-radius: 0 !important;
+}
+
+textarea{
+	border-bottom: 2px solid $primary-color !important;
+}
+
+textarea:focus{
+	border-bottom: 2px solid $secondary-color !important;
+}
+
+
 /* -----BUTTONS-----*/
 
 .btn {
