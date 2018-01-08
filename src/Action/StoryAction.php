@@ -32,18 +32,19 @@ class StoryAction
     public function __invoke(Request $request, StoryResponder $responder)
     {
         $repoStory = $this->doctrine->getRepository(Story::class);
-        $repoUrl   = $this->doctrine->getRepository(Url::class); //todo => try to access it through story
         $id        = $request->attributes->get('storyId');
 
         $story = $repoStory->findOneBy(['id'=>$id]);
 
         return $responder(
             $story,
-            $repoStory->findAllWithSameTopic($story->getTopic()->getId(), $id),
-            $repoStory->findAllWithSameCountry($story->getCountry(), $id),
-            $repoStory->findAllWithSameYear($story->getYear(), $id),
-            $repoStory->findAllWithSamePatronage($story->getPatronage()->getId(),$id),
-            $repoUrl->findBy(['story'=>$id]),
+            $repoStory->findAllRelated(
+                $story->getTopic()->getId(),
+                $story->getCountry(),
+                $story->getYear(),
+                $story->getPatronage()->getId(),
+                $id
+            ),
             $repoStory->findNext($id),
             $repoStory->findPrevious($id)
         );

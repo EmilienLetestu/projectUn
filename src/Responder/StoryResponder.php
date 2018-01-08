@@ -30,22 +30,14 @@ class StoryResponder
 
     /**
      * @param $story
-     * @param array $topic
-     * @param array $country
-     * @param array $year
-     * @param array $patronage
-     * @param $resource
+     * @param array $related
      * @param $next
      * @param $previous
      * @return Response
      */
     public function __invoke(
         $story,
-        array $topic,
-        array $country,
-        array $year,
-        array $patronage,
-        $resource,
+        array $related,
         $next,
         $previous
     )
@@ -53,11 +45,7 @@ class StoryResponder
         return new Response(
             $this->twig->render('story.html.twig',[
                 'story'         => $story,
-                'sameTopic'     => $topic,
-                'sameCountry'   => $country,
-                'sameYear'      => $year,
-                'samePatronage' => $patronage,
-                'extResources'  => $resource,
+                'related'       => $related,
                 'next'          => $next,
                 'previous'      => $previous
             ])
