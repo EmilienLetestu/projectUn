@@ -103,6 +103,10 @@ input[type=email]:focus{
 	box-shadow: none;
 }
 
+.form-control{
+	padding: 0;
+}
+
 textarea:focus
 ,textarea{
 	border-style: none !important;
@@ -141,9 +145,9 @@ textarea:focus{
 #loginBtn,
 #registerBtn,
 #lostPswdBtn{
-	border-color: $secondary-color !important;
-	color: $secondary-color !important;
-	background-color: transparent !important;
+	border: none !important;
+	color: #FFFFFF !important;
+	background-color: $secondary-color !important;
 	width: 260px;
 	height: 60px;
 	margin-top: 5%;
@@ -152,9 +156,9 @@ textarea:focus{
 #loginBtn:hover,
 #registerBtn:hover,
 #lostPswdBtn:hover{
-	border: none !important;
-	color: #FFFFFF !important;
-	background-color: $secondary-color!important;
+	border: solid 1px $secondary-color !important;
+	color: $secondary-color !important;
+	background-color: transparent !important;
 }
 
 #lost:hover{
@@ -966,7 +970,7 @@ h1,
 		/*------------ home -----------*/
 
 		#intro{
-			margin-top: 15%;
+			margin-top: -10%;
 		}
 		#speech {
 			p{
