@@ -3,7 +3,7 @@
 {% block body %}
     <div class="container-fluid" id="intro">
         <div class="col-md-12 imgText" id="speech">
-            <h1 class="storyCount">OUR CLIMATE STORIES SAFE <b>{{ total[0]|join('|') }} {{ total[0]|join('|') > 1 ? 'STORIES' : 'STORY' }}</b></h1>
+            <h1 class="storyCount">OUR CLIMATE STORIES SAFE HOLDS <b><span class="count">{{ total[0]|join('|') }}</span> {{ total[0]|join('|') > 1 ? 'STORIES' : 'STORY' }}</b></h1>
             <h2>Our mission</h2>
             <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec facilisis dictum sapien sed commodo.
@@ -65,4 +65,5 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/notification.js') }}"></script>
+    <script src="{{ asset('js/animatedCounter.js') }}"></script>
 {% endblock %}

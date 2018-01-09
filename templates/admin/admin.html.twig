@@ -9,25 +9,25 @@
     <div class="container-fluid">
         <ul>
             <li>
-                Number of registered users : {{ roleEdit + roleUser }}
+                Number of registered users : <span class="count"> {{ roleEdit + roleUser }}</span>
             </li>
             <li>
-                Users with access to the edition tools : {{ roleEdit }}
+                Users with access to the edition tools : <span class="count"> {{ roleEdit }} </span>
             </li>
             <li>
-                Number of unactivated account : {{ unactivated }}
+                Number of unactivated account : <span class="count"> {{ unactivated }} </span>
             </li>
             <li>
-                Total of stories : {{ totalStory }}
+                Total of stories : <span class="count"> {{ totalStory }} </span>
             </li>
             <li>
-                Validated and published stories : {{ totalValidated[0]|join('|') }}
+                Validated and published stories : <span class="count"> {{ totalValidated[0]|join('|') }} </span>
             </li>
             <li>
-                Unvalidated stories : {{ totalStory - totalValidated[0]|join('|') }}
+                Unvalidated stories : <span class="count"> {{ totalStory - totalValidated[0]|join('|') }} </span>
             </li>
             <li>
-               Average publication per user : {{ totalValidated[0]|join('|')/roleEdit }}
+                Average publication per user : <span class="count"> {{ totalValidated[0]|join('|')/roleEdit }} </span>
             </li>
         </ul>
 
@@ -69,4 +69,5 @@
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/modalForm.js') }}"></script>
+    <script src="{{ asset('js/animatedCounter.js') }}"></script>
 {% endblock %}
