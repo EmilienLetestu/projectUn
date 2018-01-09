@@ -44,19 +44,19 @@
                         0
                     {% endif %}
                 </td>
-                <th class="trigger">
+                <td class="trigger">
                     <button class="btn btn-default update" value="{{ patronage.id }}" title="modify patronage">
                         <i class="fa fa-pencil"></i>
                     </button>
-                </th>
+                </td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
 
-    <div class="trigger">
-        <button class="btn btn-primary">Add a patronage</button>
+    <div class="trigger" id="addPatronage">
+        <button class="btn btn-primary add">Add a patronage</button>
     </div>
 
     <div class="modalForm" id="patronageForm" style="display: none">

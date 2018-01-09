@@ -28,7 +28,7 @@
             <tr>
                 {% for topic in topicList %}
                 <td>
-                    {{ topic.id }}
+                    <span class="mobileUx">Id #</span>{{ topic.id }}
                 </td>
                 <td id={{ 'entityType'~topic.id }}>
                     {{ topic.type }}
@@ -44,19 +44,19 @@
                         0
                     {% endif %}
                 </td>
-                <th class="trigger">
+                <td class="trigger">
                     <button class="btn btn-default update" value="{{ topic.id }}" title="modify topic">
                         <i class="fa fa-pencil"></i>
                     </button>
-                </th>
+                </td>
             </tr>
             {% endfor %}
             </tbody>
         </table>
     </div>
 
-    <div class="trigger">
-        <button class="btn btn-primary">Add a topic</button>
+    <div class="trigger" id="addTopic">
+        <button class="btn btn-primary add">Add a topic</button>
     </div>
 
     <div class="modalForm" id="topicForm" style="display: none">
