@@ -41,7 +41,7 @@
             {% for user in userList %}
                 <tr class="{{ user.activated == 1 ? 'activated' : 'unactivated' }}">
                     <td>
-                        {{ user.id }}
+                        <span class="mobileUx">Id #</span>{{ user.id }}
                     </td>
                     <td>
                         {{ user.fullname }}

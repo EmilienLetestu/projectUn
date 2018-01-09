@@ -103,6 +103,10 @@ input[type=email]:focus{
 	box-shadow: none;
 }
 
+.mobileUx{
+	display: none;
+}
+
 .form-control{
 	padding: 0;
 }
@@ -164,6 +168,20 @@ textarea:focus{
 #lost:hover{
 	color: $secondary-color !important;
 	text-decoration: none;
+}
+
+.update{
+	border: solid 1px $secondary-color !important;
+	color: $secondary-color !important;
+	background-color: transparent !important;
+}
+
+.update:hover{
+	border: none !important;
+	background-color: $secondary-color !important;
+	i{
+		color: #FFFFFF !important;
+	}
 }
 
 
@@ -1273,6 +1291,52 @@ h1,
 			right: 2%;
 		}
 
+        /*---admin----*/
+		table
+		{
+			width: 100%;
+		}
+
+		thead
+		{
+			display: none;
+		}
+
+		tr:nth-of-type(2n)
+		{
+			background-color: inherit;
+		}
+
+		tr td:first-child
+		{
+			color: $secondary-color;
+			font-weight: bold;
+			font-size: 17px;
+		}
+
+		tbody td
+		{
+			display: block;
+			text-align: center;
+		}
+
+		.mobileUx{
+			display: inline-block;
+		}
+
+		.update{
+			width: 100%;
+		}
+
+		.add{
+			width: 89%;
+		}
+
+		#addPatronage,
+		#addTopic{
+			display: flex;
+			justify-content: center;
+		}
 	}
 
 

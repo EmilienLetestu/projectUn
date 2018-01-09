@@ -43,7 +43,7 @@
             {% for story in storyList %}
             <tr class="{{ story.validated == 1 ? 'published' : 'unpublished' }}">
                 <td>
-                    {{ story.id }}
+                    <span class="mobileUx">Id #</span>{{ story.id }}
                 </td>
                 <td>
                     {{ story.title }}
