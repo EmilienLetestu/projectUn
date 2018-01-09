@@ -906,6 +906,7 @@ h1,
 		background-color: transparent;
 		color: $secondary-color;
 		border-color: $secondary-color;
+		width: 220px;
 	}
 	.btn:hover{
 		background-color: $secondary-color;
@@ -1369,7 +1370,8 @@ h1,
 			width: 200px;
 		}
 		#open{
-			top:0;
+			position: relative;
+			top: -20px;
 		}
 
 		#adminNav a {
@@ -1424,7 +1426,6 @@ h1,
 			align-items: center;
 			justify-content: center;
 			.btn{
-				width: 220px;
 				margin-top: 20px;
 			}
 		}
