@@ -8,8 +8,7 @@ $(document).ready(function () {
     var leftPull = '-250px';
 
     if ($(window).width() < 640) {
-         marginPush = '100px';
-         leftPull = '-100px'
+         marginPush = '0';
     }
 
     $("#open").click(function () {
