@@ -35,10 +35,11 @@ class AdminHomeResponder
      * @param $unactivated
      * @param $totalStory
      * @param $totalValidated
+     * @param $editRequest
      * @param FormView $form
      * @return Response
      */
-    public function __invoke($roleEdit,$roleUser,$unactivated,$totalStory,$totalValidated,FormView $form)
+    public function __invoke($roleEdit, $roleUser, $unactivated, $totalStory, $totalValidated, $editRequest, FormView $form)
     {
         return new Response(
             $this->twig->render('admin\admin.html.twig',[
@@ -47,6 +48,7 @@ class AdminHomeResponder
                 'unactivated'    => $unactivated,
                 'totalStory'     => $totalStory,
                 'totalValidated' => $totalValidated,
+                'editRequest'    => $editRequest,
                 'form'           => $form
             ])
         );

@@ -83,6 +83,7 @@ class AdminHomeAction
             count($repoUser->countAllUnactivated()),
             count($repoStory->findAll()),
             $repoStory->countStories(),
+            count($repoUser->findAllEditRequest()),
             $form->createView()
         );
     }
