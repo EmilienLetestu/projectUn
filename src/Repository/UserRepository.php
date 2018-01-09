@@ -39,12 +39,35 @@ class UserRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @param QueryBuilder $queryBuilder
+     * @param $role
+     */
     public function whereRole(QueryBuilder $queryBuilder, $role)
     {
         $queryBuilder
             ->andWhere('u.role = :role')
             ->setParameter('role', $role)
         ;
+    }
+
+
+    /**
+     * get all editor role request on hold
+     * @return mixed
+     */
+    public function findAllEditRequest()
+    {
+        $queryBuilder = $this->createQueryBuilder('u');
+        $queryBuilder
+            ->andWhere('u.claimEdit = 1')
+            ->andWhere('u.beenProcessed = 0')
+        ;
+        return $queryBuilder
+            ->getQuery()
+            ->getResult()
+       ;
+
     }
 
     /**
