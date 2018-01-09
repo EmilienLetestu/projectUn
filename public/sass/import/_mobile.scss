@@ -896,21 +896,52 @@ h1,
 }
 
 #adminNav{
-	margin-top: 1.5%;
-	min-width: 100%;
-	border-bottom: solid 1px $secondary-color;
-	padding: 1%;
-	ul{
-		display: flex;
-		justify-content: space-between;
-	}
-	li a{
-		color: $secondary-color !important;
-	}
-	li a:hover{
-		text-decoration: none;
+	height: 100%;
+	position: fixed;
+	z-index: 10000;
+	top: 40px;
+	left: - 250px;
+	background-color: $primary-color;
+	overflow-x: hidden;
+	padding-top: 60px;
+	transition: 0.5s;
+	width: 250px;
+}
+
+#adminNav a {
+	padding: 8px 8px 8px 32px;
+	text-decoration: none;
+	font-size: 25px;
+	color: #FFFFFF;
+	display: block;
+	transition: 0.3s;
+}
+
+#adminNav a:hover{
+	color: $secondary-color;
+}
+
+
+#closeNav{
+	position: absolute;
+	top: 20px;
+	margin-left: 5px;
+}
+
+#closeNav i:hover{
+	color: #FFFFFF;
+}
+
+#open{
+	position: absolute;
+	top:10px;
+	i:hover{
+		color: $primary-color;
 	}
 }
+
+
+
 
 .modalForm,
 .modalUrl{
@@ -1227,6 +1258,7 @@ h1,
 		.withSpace{
 			margin-top: 10%;
 		}
+
         /*------form--------*/
 		.connectionForm {
 			max-width: 90%;
@@ -1292,6 +1324,19 @@ h1,
 		}
 
         /*---admin----*/
+		#adminNav{
+			width: 100px;
+		}
+
+		#adminNav a {
+			padding: 8px 8px 8px 10px;
+			text-decoration: none;
+			font-size: 15px;
+			color: #FFFFFF;
+			display: block;
+			transition: 0.3s;
+		}
+
 		table
 		{
 			width: 100%;
