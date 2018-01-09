@@ -4,42 +4,59 @@
 
     {{ include('admin/adminNav.html.twig') }}
 
-    <h1> CLIMATE STORIES BANK ADMINISTRATION AREA </h1>
+    <h1> ADMINISTRATION DASHBOARD </h1>
 
-    <div class="container-fluid">
-        <ul>
+    <div class="iconBlock">
+        <i class="fa fa-dashboard fa-5x" aria-hidden="true"></i>
+    </div>
+
+    <div class="container-fluid" id="dashboard">
+        <ul class="list-unstyled col-lg-6 col-sm-12" id="userStat">
             <li>
-                Number of registered users : <span class="count"> {{ roleEdit + roleUser }}</span>
+                Number of registered users  <span class="count pull-right"> {{ roleEdit + roleUser }}</span>
             </li>
             <li>
-                Users with access to the edition tools : <span class="count"> {{ roleEdit }} </span>
+                Users with access to the edition tools  <span class="count pull-right"> {{ roleEdit }} </span>
             </li>
             <li>
-                Number of unactivated account : <span class="count"> {{ unactivated }} </span>
+                Number of unactivated account  <span class="count pull-right"> {{ unactivated }} </span>
             </li>
             <li>
-                Total of stories : <span class="count"> {{ totalStory }} </span>
-            </li>
-            <li>
-                Validated and published stories : <span class="count"> {{ totalValidated[0]|join('|') }} </span>
-            </li>
-            <li>
-                Unvalidated stories : <span class="count"> {{ totalStory - totalValidated[0]|join('|') }} </span>
-            </li>
-            <li>
-                Average publication per user : <span class="count"> {{ totalValidated[0]|join('|')/roleEdit }} </span>
+                Edition tools request on hold  <span class="count pull-right"> {{ editRequest }} </span>
             </li>
         </ul>
 
+        <ul class="list-unstyled col-lg-6 col-sm-12" id="storyStat">
+            <li>
+                Total of stories  <span class="count pull-right"> {{ totalStory }} </span>
+            </li>
+            <li>
+                Validated and published stories  <span class="count pull-right"> {{ totalValidated[0]|join('|') }} </span>
+            </li>
+            <li>
+                Unvalidated stories  <span class="count pull-right"> {{ totalStory - totalValidated[0]|join('|') }} </span>
+            </li>
+            <li>
+                Average publication per user  <span class="count pull-right"> {{ totalValidated[0]|join('|')/roleEdit }} </span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="iconBlock">
+        <i class="fa fa-cog fa-5x" aria-hidden="true"></i>
+    </div>
+
+    <div class="container-fluid" id="dashboardAction">
+        <div class="col-sm-6">
         <a href="{{ path('adminDeleteUnactivated') }}" class="btn btn-warning" onclick="return confirm('Delete all accounts waiting for activation since at least 60 days ?')">
             Delete all unactivated accounts
         </a>
-
-        <div class="trigger">
-            <button class="btn btn-primary">Modify administrator login information</button>
         </div>
-
+        <div class="trigger col-sm-6">
+            <button class="btn btn-primary pull-right">Modify administrator login information</button>
+        </div>
     </div>
+
     <div class="modalForm"  style="display: none">
         <i class="fa fa-times closeModal"></i>
         {{ form_start(form ,{'attr':{'id':'updateAdministrator'}}) }}

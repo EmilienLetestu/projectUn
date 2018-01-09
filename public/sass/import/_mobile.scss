@@ -891,6 +891,32 @@ h1,
 
 /*-----admin------*/
 
+#dashboard{
+	li{
+		font-size: 3rem;
+	}
+	li span{
+		color: $secondary-color;
+		font-weight: 600;
+	}
+}
+
+#storyStat{
+	display: grid;
+	justify-content: stretch;
+	width: 40%;
+	margin-left: 10%;
+}
+
+#userStat{
+	padding-right: 10%;
+}
+
+.iconBlock{
+	text-align: center;
+	margin-bottom: 3%;
+}
+
 .adminList{
 	margin-top: 3%;
 }

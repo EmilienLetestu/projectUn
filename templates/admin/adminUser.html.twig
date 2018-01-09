@@ -53,9 +53,10 @@
                         {{ user.registeredOn|date("d/m/Y") }}
                     </td>
                     <td>
-                        <i class="{{ user.activated|stateIcon }}" aria-hidden="true"></i>
+                        <span class="mobileUx">Activated&ensp;</span><i class="{{ user.activated|stateIcon }}" aria-hidden="true"></i>
                     </td>
                     <td>
+                        <span class="mobileUx">Info&ensp;</span>
                         <a href="{{ path('adminByUser',{'id': user.id}) }}">
                             <i class="fa fa-plus" aria-hidden="true"></i>
                         </a>
