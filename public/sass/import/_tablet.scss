@@ -9,10 +9,8 @@
 
 @media (min-width: 40.063em) {
 
-    body:before {
-    @include bandeau-resolution;
-    content: "Version tablette";   
-    }
+
+
        
 }
 /* Fin de @media (min-width: 40.063em)/* = min-width 641px */

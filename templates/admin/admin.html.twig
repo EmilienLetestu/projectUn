@@ -4,14 +4,14 @@
 
     {{ include('admin/adminNav.html.twig') }}
 
-    <h1> ADMINISTRATION DASHBOARD </h1>
+    <h1 class="smallTitle"> DASHBOARD </h1>
 
     <div class="iconBlock">
         <i class="fa fa-dashboard fa-5x" aria-hidden="true"></i>
     </div>
 
     <div class="container-fluid" id="dashboard">
-        <ul class="list-unstyled col-lg-6 col-sm-12" id="userStat">
+        <ul class="list-unstyled col-lg-5 col-sm-12" id="userStat">
             <li>
                 Number of registered users  <span class="count pull-right"> {{ roleEdit + roleUser }}</span>
             </li>
@@ -26,7 +26,7 @@
             </li>
         </ul>
 
-        <ul class="list-unstyled col-lg-6 col-sm-12" id="storyStat">
+        <ul class="list-unstyled col-lg-offset-2 col-lg-5 col-sm-12" id="storyStat">
             <li>
                 Total of stories  <span class="count pull-right"> {{ totalStory }} </span>
             </li>
@@ -42,7 +42,7 @@
         </ul>
     </div>
 
-    <div class="iconBlock">
+    <div class="iconBlock" id="actionIcon">
         <i class="fa fa-cog fa-5x" aria-hidden="true"></i>
     </div>
 
@@ -53,11 +53,11 @@
         </a>
         </div>
         <div class="trigger col-sm-6">
-            <button class="btn btn-primary pull-right">Modify administrator login information</button>
+            <button class="btn btn-primary pull-right">Modify administrator login</button>
         </div>
     </div>
 
-    <div class="modalForm"  style="display: none">
+    <div class="modalForm" id="modalAdmin"  style="display: none">
         <i class="fa fa-times closeModal"></i>
         {{ form_start(form ,{'attr':{'id':'updateAdministrator'}}) }}
         <div class="form-group row">

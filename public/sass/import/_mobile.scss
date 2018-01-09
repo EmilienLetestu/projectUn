@@ -901,20 +901,26 @@ h1,
 	}
 }
 
-#storyStat{
-	display: grid;
-	justify-content: stretch;
-	width: 40%;
-	margin-left: 10%;
-}
-
-#userStat{
-	padding-right: 10%;
+#dashboardAction{
+	.btn{
+		background-color: transparent;
+		color: $secondary-color;
+		border-color: $secondary-color;
+	}
+	.btn:hover{
+		background-color: $secondary-color;
+		color: #FFFFFF;
+		border: none;
+	}
 }
 
 .iconBlock{
 	text-align: center;
 	margin-bottom: 3%;
+}
+
+#actionIcon{
+	margin-top: 5%;
 }
 
 .adminList{
@@ -960,14 +966,11 @@ h1,
 
 #open{
 	position: absolute;
-	top:10px;
+	top:25px;
 	i:hover{
 		color: $primary-color;
 	}
 }
-
-
-
 
 .modalForm,
 .modalUrl{
@@ -1025,12 +1028,16 @@ h1,
 	border-radius:10px;
 }
 
+#modalAdmin{
+	height: 350px;
+}
+
 #newTopicForm,
-#newPatronageForm{
+#newPatronageForm,
+#updateAdministrator{
 	width: 80%;
 	margin-left: 10%;
 	margin-right: 10%;
-	padding: 10%;
 	label{
 		color: $secondary-color;
 	}
@@ -1044,6 +1051,14 @@ h1,
 		background-color: $secondary-color !important;
 		color: #FFFFFF;
 	}
+}
+#newTopicForm,
+#newPatronageForm{
+	padding: 10%;
+}
+
+#updateAdministrator{
+	padding: 5%;
 }
 
 .modalOverlay{
@@ -1351,7 +1366,10 @@ h1,
 
         /*---admin----*/
 		#adminNav{
-			width: 100px;
+			width: 200px;
+		}
+		#open{
+			top:0;
 		}
 
 		#adminNav a {
@@ -1389,6 +1407,26 @@ h1,
 		{
 			display: block;
 			text-align: center;
+		}
+
+		.smallTitle{
+			font-size: 3rem;
+		}
+
+		#dashboard li {
+			font-size: 1.5rem;
+		}
+
+		#dashboardAction {
+			width: 280px;
+			display: flex;
+			flex-flow: column;
+			align-items: center;
+			justify-content: center;
+			.btn{
+				width: 220px;
+				margin-top: 20px;
+			}
 		}
 
 		.mobileUx{
