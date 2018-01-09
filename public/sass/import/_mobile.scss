@@ -718,9 +718,16 @@ h1,
 /*------story-------*/
 
 #storyHolder{
-	background-size: inherit;
+	position: absolute;
+	right: 0;
+	top:0;
+	width: 100%;
+	min-height: 960px;
+	z-index: -1;
 	margin-top: 2%;
-	background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../images/storyImg.jpg'),no-repeat,center;
+	background-position: left bottom;
+	background-image:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),url('../../images/storyImg.jpg');
+
 }
 
 #storyTitle{
@@ -1101,9 +1108,102 @@ h1,
 		#storyTags{
 			font-size: 1rem ;
 		}
+
 		#abstract,
 		#plot{
 			font-size: 1.2rem;
+		}
+
+		#storyPlot{
+			padding: 0;
+		}
+		#storyHolder{
+			min-height: 250px;
+			background-position: center center;
+			background-size: cover;
+			background-repeat: no-repeat;
+			position: relative;
+			top:-50px;
+		}
+
+		#storyTitle{
+			position: relative;
+			left: 0;
+			top: 10px;
+			height: 200px;
+			display: flex;
+			align-items: center;
+			width: 90%;
+			h1{
+				font-size: 3.8rem;
+				width: 100%;
+				margin-left: 10%;
+			}
+		}
+
+		#storyAbstract{
+			width: 100%;
+			background-color: #FFFFFF;
+			h2 span{
+				color: $secondary-color;
+			}
+		}
+
+		#storyBody{
+			width: 100%;
+
+			p{
+				padding-bottom: 5%;
+			}
+		}
+
+		#plotText{
+			column-count: 1;
+		}
+
+		#prevStory,
+		#nextStory{
+			top: 2%;
+		}
+
+		#contact{
+			padding-top: 0;
+			background-color: #FFFFFF;
+			margin-top: -3%;
+			ul{
+				display: grid;
+				padding: 0 5%;
+				width: 100%;
+			}
+			i{
+				color: $secondary-color;
+			}
+			i.fa.fa-user-o{
+				padding-right: 20px;
+			}
+			i.fa.fa-envelope-o{
+				padding-right: 17px;
+			}
+			i.fa.fa-map-marker{
+				padding-right: 27px;
+			}
+			i.fa.fa-phone{
+				padding-right: 22px;
+			}
+		}
+		#moreContainer{
+			.storyCard{
+				min-width: 290px;
+			}
+		}
+
+		.separator{
+			border-top: 1px solid $secondary-color;
+			width: 50%;
+		}
+
+		.withSpace{
+			margin-top: 10%;
 		}
         /*------form--------*/
 		.connectionForm {
