@@ -5,10 +5,14 @@
         <div id="storyTitle">
             <h1>{{ story.title }}</h1>
         </div>
+    </div>
         <div id="storyAbstract">
             <h2>The project in a <span>few words</span></h2>
             <p>{{ story.abstract|raw }}</p>
         </div>
+
+        <hr class="separator">
+
         <div id="storyBody">
             <div id="storyPlot">
                 <h3>A Climate <span>Story #{{ story.id }}</span></h3>
@@ -22,7 +26,6 @@
                 {% endif %}
             </div>
         </div>
-    </div>
         {% if previous != null %}
         <span id="prevStory">
             <a class="btn" href="{{ path('story',{'storyId':previous|join('|')}) }}">
@@ -58,6 +61,8 @@
                 </li>
             </ul>
     </div>
+
+    <hr class="separator withSpace">
 
     <div class="modalUrl" style="display: none">
         <i class="fa fa-times fa-lg closeModal"></i>
