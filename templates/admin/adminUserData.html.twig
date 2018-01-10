@@ -6,59 +6,63 @@
 
     <h1>{{ user.fullname|upper }}</h1>
 
-    <div class="reminder">
-        <ul class="list-inline">
-            <li>
-                <i class="fa fa-calendar" aria-hidden="true"></i>
+    <div class="container-fluid entityData">
+        <div class="reminder">
+            <ul class="list-inline">
+                <li>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
                     {{ user.registeredOn|date("d/m/Y") }}
+                </li>
+                <li>
+                    <i class="fa fa-envelope" aria-hidden="true"></i>
+                    {{ user.email }}
+                </li>
+                <li>
+                    Activated : <i class="{{ user.activated|stateIcon }}" aria-hidden="true"></i>
+                </li>
+            </ul>
+        </div>
+
+        <ul>
+            <li>
+                Role : {{ user.role }}
             </li>
             <li>
-                 <i class="fa fa-envelope" aria-hidden="true"></i>
-                 {{ user.email }}
+                Profession : {{ user.profession }}
             </li>
             <li>
-                Activated : <i class="{{ user.activated|stateIcon }}" aria-hidden="true"></i>
+                Engagement : {{ user.engagement }}
+            </li>
+            <li>
+                Stories : {{ user.stories|length }}
             </li>
         </ul>
+
+        {% if user.role != 'ADMIN' and user.beenProcessed == 1 %}
+            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
+               class="btn btn-danger">Delete
+            </a>
+            {% set action = user.role == 'USER' ? 'upgrade' : 'downgrade' %}
+            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : action }) }}" class="btn btn-primary">
+                {{ action|capitalize }}
+            </a>
+        {% endif %}
+
+        {% if user.role == 'USER' and user.beenProcessed == 0 %}
+            <p>{{ user.fullname }} has requested access to stories edition, accept this request :</p>
+
+            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'upgrade' }) }}" class="btn btn-default">
+                <i class="fa fa-check"></i>
+            </a>
+            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'reject' }) }}" class="btn btn-default">
+                <i class="fa fa-times"></i>
+            </a>
+            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
+               class="btn btn-danger">Delete
+            </a>
+        {% endif %}
+
     </div>
 
-    <ul>
-        <li>
-            Role : {{ user.role }}
-        </li>
-        <li>
-            Profession : {{ user.profession }}
-        </li>
-        <li>
-            Engagement : {{ user.engagement }}
-        </li>
-        <li>
-            Stories : {{ user.stories|length }}
-        </li>
-    </ul>
-
-    {% if user.role != 'ADMIN' and user.beenProcessed == 1 %}
-    <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
-       class="btn btn-danger">Delete
-    </a>
-    {% set action = user.role == 'USER' ? 'upgrade' : 'downgrade' %}
-    <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : action }) }}" class="btn btn-primary">
-        {{ action|capitalize }}
-    </a>
-    {% endif %}
-
-    {% if user.role == 'USER' and user.beenProcessed == 0 %}
-        <p>{{ user.fullname }} has requested access to stories edition, accept this request :</p>
-
-        <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'upgrade' }) }}" class="btn btn-default">
-            <i class="fa fa-check"></i>
-        </a>
-        <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'reject' }) }}" class="btn btn-default">
-            <i class="fa fa-times"></i>
-        </a>
-        <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
-           class="btn btn-danger">Delete
-        </a>
-    {% endif %}
 
 {% endblock %}
