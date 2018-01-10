@@ -11,6 +11,10 @@ $(document).ready(function () {
          marginPush = '0';
     }
 
+    if($(window).width() > 640) {
+        $("br").remove();
+    }
+
     $("#open").click(function () {
         $("#adminNav").css('left','0');
         $(".page-wrap").css('margin-left',marginPush);
