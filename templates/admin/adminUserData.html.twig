@@ -4,7 +4,7 @@
 
     {{ include('admin/adminNav.html.twig') }}
 
-    <h1>{{ user.fullname|upper }}</h1>
+    <h1 class="smallTitle">{{ user.fullname|upper }}</h1>
 
     <div class="container-fluid entityData">
         <div class="reminder">
@@ -23,44 +23,66 @@
             </ul>
         </div>
 
-        <ul>
-            <li>
-                Role : {{ user.role }}
-            </li>
-            <li>
-                Profession : {{ user.profession }}
-            </li>
-            <li>
-                Engagement : {{ user.engagement }}
-            </li>
-            <li>
-                Stories : {{ user.stories|length }}
-            </li>
-        </ul>
+        <table class="table table-bordered entityTable">
+            <thead>
+                <tr>
+                    <th class="centerText">
+                        Role
+                    </th>
+                    <th class="centerText">
+                        Profession
+                    </th>
+                    <th class="centerText">
+                        Engagement
+                    </th>
+                    <th class="centerText">
+                        Stories
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                 <tr>
+                     <td class="centerText">
+                         <span class="mobileUx">Role&ensp;</span>{{ user.role }}
+                     </td>
+                     <td class="centerText">
+                         <span class="mobileUx">Profession&ensp;</span>{{ user.profession }}
+                     </td>
+                     <td class="longText">
+                         <span class="centerText hint">Engagement</span><br>{{ user.engagement }}
+                     </td>
+                     <td class="centerText">
+                         <span class="hint">Stories&ensp;</span>{{ user.stories|length }}
+                     </td>
+                 </tr>
+            </tbody>
+        </table>
+        <div class="entityManagement">
+            {% if user.role != 'ADMIN' and user.beenProcessed == 1 %}
+                <p>{{ user.fullname }} climate stories bank account management</p>
+                <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}" class="btn btn-default delete">
+                    <i class="fa fa-trash"></i>
+                </a>
+                {% set action = user.role == 'USER' ? 'upgrade' : 'downgrade' %}
+                <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : action }) }}" class="btn btn-default {{ action }}">
+                    <i class="{{ action == 'upgrade' ? 'fa fa-angle-double-up' : 'fa fa-angle-double-down' }}"></i>
+                </a>
+            {% endif %}
 
-        {% if user.role != 'ADMIN' and user.beenProcessed == 1 %}
-            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
-               class="btn btn-danger">Delete
-            </a>
-            {% set action = user.role == 'USER' ? 'upgrade' : 'downgrade' %}
-            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : action }) }}" class="btn btn-primary">
-                {{ action|capitalize }}
-            </a>
-        {% endif %}
+            {% if user.role == 'USER' and user.beenProcessed == 0 %}
+                <p>{{ user.fullname }} has requested access to stories edition, accept this request :</p>
 
-        {% if user.role == 'USER' and user.beenProcessed == 0 %}
-            <p>{{ user.fullname }} has requested access to stories edition, accept this request :</p>
-
-            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'upgrade' }) }}" class="btn btn-default">
-                <i class="fa fa-check"></i>
-            </a>
-            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'reject' }) }}" class="btn btn-default">
-                <i class="fa fa-times"></i>
-            </a>
-            <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}"
-               class="btn btn-danger">Delete
-            </a>
-        {% endif %}
+                <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'upgrade' }) }}" class="btn btn-default validate">
+                    <i class="fa fa-check"></i>
+                </a>
+                <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'reject' }) }}" class="btn btn-default reject">
+                    <i class="fa fa-times"></i>
+                </a>
+                <a href="{{ path('adminActions',{'entity' : 'user', 'id' : user.id, 'action' : 'delete'}) }}" class="btn btn-default delete">
+                    <i class="fa fa-trash"></i>
+                </a>
+            {% endif %}
+        </div>
 
     </div>
 

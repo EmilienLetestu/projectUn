@@ -135,6 +135,67 @@ textarea:focus{
 	@include button-general;
 }
 
+a.btn.btn-default.validate,
+a.btn.btn-default.upgrade,
+a.btn.btn-default.reject,
+a.btn.btn-default.downgrade,
+a.btn.btn-default.delete{
+	width: 150px;
+}
+
+a.btn.btn-default.validate,
+a.btn.btn-default.upgrade{
+	background-color: #5fdda1;
+	border-color: transparent;
+	i{
+		color: #FFFFFF;
+	}
+}
+
+a.btn.btn-default.validate:hover,
+a.btn.btn-default.upgrade:hover{
+	background-color: #FFFFFF;
+	border-color: #5fdda1;
+	i{
+		color: #5fdda1;
+	}
+}
+
+a.btn.btn-default.reject,
+a.btn.btn-default.downgrade{
+	background-color: #dbb027;
+	border-color: transparent;
+	i{
+		color: #FFFFFF;
+	}
+}
+
+a.btn.btn-default.reject:hover,
+a.btn.btn-default.downgrade:hover{
+	background-color: #FFFFFF;
+	border-color: #dbb027;
+	i{
+		color: #dbb027;
+	}
+}
+
+a.btn.btn-default.delete{
+	background-color: #F54041;
+	border-color: transparent;
+	i{
+		color: #FFFFFF;
+	}
+}
+
+a.btn.btn-default.delete:hover{
+	background-color: #FFFFFF;
+	border-color: #F54041;
+	i{
+		color: #F54041;
+	}
+}
+
+
 .btn {
 	background: $secondary-color;
 	color:#FFFFFF;
@@ -903,10 +964,44 @@ h1,
 	}
 }
 
-.reminder ul{
-	display: flex;
-	justify-content: space-between;
-	font-size: 2.5rem;
+.reminder {
+	padding-bottom: 3%;
+	ul{
+		display: flex;
+		justify-content: space-between;
+		font-size: 2.5rem;
+	}
+}
+
+.entityManagement{
+	text-align: center;
+	p{
+		margin-bottom: 2%;
+	}
+	a{
+		margin: 1%;
+	}
+}
+
+.entityTable td,
+.entityTable th,
+.entityTable{
+	border: solid 1px $secondary-color !important;
+}
+
+.entityTable{
+	margin-bottom: 3%;
+}
+
+#hint{
+	display: none;
+}
+table .longText{
+	text-align: justify;
+}
+
+table .centerText{
+	text-align: center;
 }
 
 #dashboardAction{
@@ -1094,8 +1189,15 @@ h1,
 
 	@media (max-width: 640px) {
 
+		h1{
+			font-size: 2.5rem;
+		}
 		.page-wrap{
 			margin-top: 25%;
+		}
+
+		.push{
+			height: 0;
 		}
 		/*------------ nav -------------*/
 		#signInLink,
@@ -1427,6 +1529,19 @@ h1,
 			text-align: center;
 		}
 
+		.hint{
+			display: block;
+		}
+
+		.entityTable td,
+		.entityTable th{
+			border: none !important;
+		}
+
+		.entityManagement tr{
+			border: $secondary-color !important;
+		}
+
 		.smallTitle{
 			font-size: 3rem;
 		}
@@ -1462,6 +1577,13 @@ h1,
 		#addTopic{
 			display: flex;
 			justify-content: center;
+		}
+		.reminder{
+			ul{
+				flex-flow: column;
+				align-items: center;
+				font-size: 1.5rem;
+			}
 		}
 	}
 
