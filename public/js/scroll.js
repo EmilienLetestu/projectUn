@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     var scrollHandle = 0,
         scrollStep = 5,
-        parent = $(".more");
+        parent = $(".slider");
 
     //Start the scrolling process
     $(".panner").on("mouseenter", function () {
