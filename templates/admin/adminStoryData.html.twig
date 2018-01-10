@@ -34,50 +34,61 @@
             </ul>
         </div>
 
-        <div>
+        <div class="adminAbstract">
             <h3>Story's abstract</h3>
             <p>
                 {{ story.abstract|raw}}
             </p>
         </div>
 
-        <div>
+        <div class="adminPlot">
             <h3>Story's plot</h3>
             <p>
                 {{ story.plot|raw }}
             </p>
         </div>
 
-        <div>
-            <ul>
+        <div class="adminContact">
+            <h3>Contact and  links</h3>
+            <ul class="list-unstyled">
                 <li>
+                    <i class="fa fa-envelope-o">&nbsp;</i>
                     {{ story.contactEmail }}
                 </li>
+                {% if story.contactphone %}
                 <li>
+                    <i class="fa fa-phone">&nbsp;</i>
                     {{ story.contactPhone }}
                 </li>
+                {% endif %}
+                {% if story.contactPlace %}
                 <li>
+                    <i class="fa fa-map-marker">&nbsp;</i>
                     {{ story.contactPlace }}
                 </li>
+                {% endif %}
                 {% for url in story.urls %}
                     <li>
-                        <a href="{{ url.href }}">
-                            {{ url.alt }}
-                        </a>
+                        <i class="fa fa-external-link">&nbsp;</i><a href="{{ url.href }}">{{ url.alt }}</a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
 
-        <a href="{{ path('adminActions',{'entity' : 'story' , 'id' : story.id , 'action' : 'delete'}) }}"
-           class="btn btn-danger">Delete
-        </a>
-        {% if story.validated == false %}
-            <a href="{{ path('adminActions',{'entity' : 'story' , 'id' : story.id , 'action' : 'validate'}) }}"
-               class="btn btn-default">Validate and publish
+        <div class="entityManagement">
+            <p>{{ story.title }} management options</p>
+            <a href="{{ path('adminActions',{'entity' : 'story' , 'id' : story.id , 'action' : 'delete'}) }}" class="btn btn-default delete">
+                <i class="fa fa-trash"></i>
             </a>
-        {% endif %}
-        <a href="{{ path('adminEditStory',{'id' : story.id}) }}" class="btn btn-primary">Edit</a>
+            {% if story.validated == false %}
+             <a href="{{ path('adminActions',{'entity' : 'story' , 'id' : story.id , 'action' : 'validate'}) }}" class="btn btn-default validate">
+                 <i class="fa fa-check"></i>
+             </a>
+            {% endif %}
+            <a href="{{ path('adminEditStory',{'id' : story.id}) }}" class="btn btn-default edit">
+                <i class="fa fa-pencil"></i>
+            </a>
+        </div>
 
     </div>
 

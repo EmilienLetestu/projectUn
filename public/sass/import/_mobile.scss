@@ -139,7 +139,8 @@ a.btn.btn-default.validate,
 a.btn.btn-default.upgrade,
 a.btn.btn-default.reject,
 a.btn.btn-default.downgrade,
-a.btn.btn-default.delete{
+a.btn.btn-default.delete,
+a.btn.btn-default.edit{
 	width: 150px;
 }
 
@@ -162,7 +163,8 @@ a.btn.btn-default.upgrade:hover{
 }
 
 a.btn.btn-default.reject,
-a.btn.btn-default.downgrade{
+a.btn.btn-default.downgrade,
+a.btn.btn-default.edit{
 	background-color: #dbb027;
 	border-color: transparent;
 	i{
@@ -171,7 +173,8 @@ a.btn.btn-default.downgrade{
 }
 
 a.btn.btn-default.reject:hover,
-a.btn.btn-default.downgrade:hover{
+a.btn.btn-default.downgrade:hover,
+a.btn.btn-default.edit:hover{
 	background-color: #FFFFFF;
 	border-color: #dbb027;
 	i{
@@ -969,7 +972,7 @@ h1,
 	ul{
 		display: flex;
 		justify-content: space-between;
-		font-size: 2.5rem;
+		font-size: 2rem;
 	}
 }
 
@@ -993,7 +996,7 @@ h1,
 	margin-bottom: 3%;
 }
 
-#hint{
+.hint{
 	display: none;
 }
 table .longText{
@@ -1125,6 +1128,24 @@ table .centerText{
 		font-size: 1.5rem;
 		padding-left: 1%;
 	}
+}
+
+.adminPlot h3,
+.adminAbstract h3,
+.adminContact h3{
+	color: $secondary-color;
+}
+
+.adminContact ul{
+	font-size: 1.8rem;
+	display: flex;
+	justify-content: space-between;
+	margin-bottom: 2%;
+}
+
+.adminPlot p,
+.adminAbstract p{
+	text-align: justify;
 }
 
 .modalForm{
@@ -1578,12 +1599,17 @@ table .centerText{
 			display: flex;
 			justify-content: center;
 		}
-		.reminder{
+		.reminder,
+		.adminContact{
+			text-align: center;
 			ul{
-				flex-flow: column;
-				align-items: center;
+				display: list-item;
 				font-size: 1.5rem;
 			}
+		}
+
+		.adminContact{
+			margin-bottom: 10%;
 		}
 	}
 
