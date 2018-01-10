@@ -300,15 +300,14 @@ textarea:focus{
 }
 
 .storyCard {
-	width: 30%;
 	margin: 1.5%;
 	margin-block-end: 30px;
 	-webkit-box-shadow: $shadow !important;
 	-moz-box-shadow: $shadow !important;
 	box-shadow: $shadow !important;
 	min-height: 300px;
+	max-width: 400px;
 	min-width: 290px;
-	max-width: 33.33%;
 	border: solid 1px $secondary-color;
 	border-radius: 5px;
 	ul {
@@ -1125,10 +1124,14 @@ h1,
 		}
 
 		#filterHome{
-			padding-left: 0!important;
+			padding: 0!important;
 			.form-inline{
-				padding-left: 3%!important;
+				padding-left: 0!important;
 			}
+			.btn{
+				width: 260px;
+			}
+
 		}
 
 		/*------------ home -----------*/
