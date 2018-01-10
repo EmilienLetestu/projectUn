@@ -145,7 +145,11 @@ a.btn.btn-default.reject,
 a.btn.btn-default.downgrade,
 a.btn.btn-default.delete,
 a.btn.btn-default.edit{
-	width: 150px;
+	width: 150px!important;
+}
+
+button.btn.btn-primary.add{
+	width: 98%;
 }
 
 a.btn.btn-default.validate,
@@ -244,7 +248,16 @@ a.btn.btn-default.delete:hover{
 	background-color: transparent !important;
 }
 
-.update:hover{
+.add:hover{
+	border: solid 1px $secondary-color !important;
+	background-color: transparent !important;
+	i{
+		color: $secondary-color !important;
+	}
+}
+
+.update:hover,
+.add{
 	border: none !important;
 	background-color: $secondary-color !important;
 	i{
@@ -1003,12 +1016,24 @@ h1,
 .hint{
 	display: none;
 }
+
+.adminList table a{
+	text-decoration: underline $secondary-color;
+}
+
+.adminList table a:hover{
+	color: $secondary-color !important;
+}
 table .longText{
 	text-align: justify;
 }
 
 table .centerText{
 	text-align: center;
+}
+
+table .rightText{
+	text-align: right;
 }
 
 #dashboardAction{
@@ -1184,6 +1209,11 @@ table .centerText{
 #newTopicForm,
 #newPatronageForm{
 	padding: 10%;
+}
+
+#addPatronage,
+#addTopic{
+	text-align: center;
 }
 
 #updateAdministrator{
@@ -1540,26 +1570,31 @@ table .centerText{
 			transition: 0.3s;
 		}
 
-		table
-		{
+		.adminList{
+			padding: 0!important;
+		}
+
+		table {
 			width: 100%;
 		}
 
-		thead
-		{
+		thead {
 			display: none;
 		}
 
-		tr:nth-of-type(2n)
-		{
+		tr:nth-of-type(2n) {
 			background-color: inherit;
 		}
 
-		tr td:first-child
-		{
+		tr td:first-child {
 			color: $secondary-color;
 			font-weight: bold;
 			font-size: 17px;
+			background-color: #c3c3c3;
+		}
+
+		tr td{
+			border: none!important;
 		}
 
 		tbody td

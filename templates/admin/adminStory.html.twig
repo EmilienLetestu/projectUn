@@ -64,10 +64,10 @@
                     {{ story.createdOn|date("d/m/y") }}
                 </td>
                 <td>
-                    <span class="mobileUx">Published&ensp;</span><i class="{{ story.validated|stateIcon }}" aria-hidden="true"></i>
+                    <span class="hint">Published&ensp;?</span><br><i class="{{ story.validated|stateIcon }}" aria-hidden="true"></i>
                 </td>
                 <td>
-                    <span class="mobileUx">Info&ensp;</span>
+                    <span class="hint">More info&ensp;</span><br>
                     <a href="{{ path('adminByStory',{'id': story.id}) }}">
                         <i class="fa fa-plus" aria-hidden="true"></i>
                     </a>

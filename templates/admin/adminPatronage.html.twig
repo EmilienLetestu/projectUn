@@ -16,10 +16,10 @@
                 <th>
                     Patronage
                 </th>
-                <th>
+                <th class="centerText">
                     Related Stories
                 </th>
-                <th>
+                <th class="rightText">
                     <i class="fa fa-pencil"></i>
                 </th>
             </tr>
@@ -33,7 +33,7 @@
                 <td id="{{ 'entityType'~patronage.id }}">
                     {{ patronage.organization }}
                 </td>
-                <td>
+                <td class="centerText">
                     {% if patronage.stories|length > 0 %}
                     <a href="{{ path('adminStory',{'filter' : 'patronage', 'filterId' : patronage.id}) }}"
                        title="Display all {{ patronage.organization }} stories">
@@ -44,7 +44,7 @@
                         0
                     {% endif %}
                 </td>
-                <td class="trigger">
+                <td class="trigger rightText">
                     <button class="btn btn-default update" value="{{ patronage.id }}" title="modify patronage">
                         <i class="fa fa-pencil"></i>
                     </button>
@@ -55,8 +55,8 @@
         </table>
     </div>
 
-    <div class="trigger" id="addPatronage">
-        <button class="btn btn-primary add">Add a patronage</button>
+    <div class="trigger entityManagement" id="addPatronage">
+        <button class="btn btn-primary add"><i class="fa fa-plus"></i></button>
     </div>
 
     <div class="modalForm" id="patronageForm" style="display: none">

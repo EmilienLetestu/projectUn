@@ -16,10 +16,10 @@
                 <th>
                     Topic
                 </th>
-                <th>
+                <th class="centerText">
                    Related Stories
                 </th>
-                <th>
+                <th class="rightText">
                     <i class="fa fa-pencil"></i>
                 </th>
             </tr>
@@ -33,7 +33,7 @@
                 <td id={{ 'entityType'~topic.id }}>
                     {{ topic.type }}
                 </td>
-                <td>
+                <td class="centerText">
                     {% if topic.stories|length > 0 %}
                     <a href="{{ path('adminStory',{'filter' : 'topic', 'filterId' : topic.id}) }}"
                        title="Display all {{ topic.type }} stories">
@@ -44,7 +44,7 @@
                         0
                     {% endif %}
                 </td>
-                <td class="trigger">
+                <td class="trigger rightText">
                     <button class="btn btn-default update" value="{{ topic.id }}" title="modify topic">
                         <i class="fa fa-pencil"></i>
                     </button>
@@ -56,7 +56,7 @@
     </div>
 
     <div class="trigger" id="addTopic">
-        <button class="btn btn-primary add">Add a topic</button>
+        <button class="btn btn-primary add"><i class="fa fa-plus"></i></button>
     </div>
 
     <div class="modalForm" id="topicForm" style="display: none">
