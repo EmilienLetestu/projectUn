@@ -81,7 +81,8 @@ class StoryType extends AbstractType
                 'constraints'  =>[new NotBlank()
                 ],
                 'class'        => 'App:Topic',
-                'choice_label' => 'type'
+                'choice_label' => 'type',
+                'placeholder' => 'Choose a topic',
             ])
             ->add('worldArea', ChoiceType::class,[
                 'constraints' =>[new NotBlank()
@@ -111,7 +112,8 @@ class StoryType extends AbstractType
                 'constraints'  =>[new NotBlank()
                 ],
                 'class'        => 'App:Patronage',
-                'choice_label' => 'organization'
+                'choice_label' => 'organization',
+                'placeholder'  => 'Choose a patronage'
             ])
             ->add('investor', TextType::class,[
                 'constraints' =>[new Length(['min' => 2,
