@@ -581,7 +581,10 @@ h1,
 
 /*search-filters*/
 #filter{
-	height:250px;
+	text-align: center;
+	.form-group{
+		padding: 2%;
+	}
 }
 
 #filterHome,
@@ -1111,10 +1114,10 @@ h1,
 		}
 
 		#filter{
+			height: 250px;
 			padding-top: 10% !important;
 			padding-left: 0!important;
-			height: 250px;
-			margin-bottom: 15%!important;
+			margin-bottom: 40%!important;
 			.form-inline{
 				padding-left: 3%!important;
 			}

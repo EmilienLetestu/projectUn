@@ -11,16 +11,16 @@
 
     <div class="container-fluid" id="filter">
         {{ form_start(filter,{'attr':{'class':'form-inline'},'action': path('search') }) }}
-        <div class="form-group col-md-3">
+        <div class="form-group col-lg-3">
             {{ form_widget(filter.topic ,{'attr':{'class':'form-control'}}) }}
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-lg-3">
             {{ form_widget(filter.patronage,{'attr':{'class':'form-control'}}) }}
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-lg-3">
             {{ form_widget(filter.worldArea,{'attr':{'class':'form-control'}}) }}
         </div>
-        <div class="form-group col-md-3">
+        <div class="form-group col-lg-3">
             {{ form_widget(filter.country ,{'attr':{'class':'form-control'}}) }}
         </div>
         <div class="row" id="filterBtn">
