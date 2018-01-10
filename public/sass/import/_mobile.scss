@@ -103,6 +103,10 @@ input[type=email]:focus{
 	box-shadow: none;
 }
 
+input[type=text]:focus{
+	border-bottom: 2px solid $secondary-color;
+}
+
 .mobileUx{
 	display: none;
 }
@@ -1202,6 +1206,20 @@ table .centerText{
 	top: 10px;
 	color: #999;
 	line-height: 10px;
+}
+
+.part4{
+	text-align: center;
+	button{
+		border: solid 1px transparent !important;
+		background-color: $secondary-color!important;
+		color: #FFFFFF !important;
+	}
+	button:hover{
+		background-color: #FFFFFF!important;
+		color: $secondary-color !important;
+		border-color: $secondary-color !important;
+	}
 }
 
 	/* -----MOBILE-----*/

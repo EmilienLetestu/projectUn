@@ -1,7 +1,11 @@
 {% extends "base.html.twig" %}
 {% block body %}
 
-    {{ include('admin/adminNav.html.twig') }}
+{{ include('admin/adminNav.html.twig') }}
+
+<h1>EDIT "{{ story.title|upper }}"</h1>
+
+<div class="container-fluid entityData">
 
     <div class="well">
     {{ form_start(form ,{'attr':{'id':'addForm'}}) }}
@@ -46,10 +50,10 @@
             <input type="hidden" id="originalTitle" value="{{ story.title }}">
             <input type="hidden" id="originalPlot" value="{{ story.plot }}">
             <input type="hidden" id="originalAbstract" value="{{ story.abstract }}">
-
         </div>
         {{ form_end(form) }}
     </div>
+</div>
 {% endblock %}
 
 {% block javascripts %}
