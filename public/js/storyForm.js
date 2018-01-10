@@ -12,6 +12,25 @@ $(document).ready(function () {
     //will match phone number patter with or without international prefix
     var phoneRegex = /^((\+\d{1,3}(-| )?\(?\d\)?(-| )?\d{1,5})|(\(?\d{2,6}\)?))(-| )?(\d{3,4})(-| )?(\d{4})(( x| ext)\d{1,5}){0,1}$/;
 
+
+    $(".notBlank").change(function () {
+        disable();
+    });
+
+    function disable(){
+        var validate = true;
+        $(".notBlank").each(function () {
+            var input = $(this);
+            if($(this).val() !== '' && $(this).val() !== 'Choose a patronage' && $(this).val() !== 'Choose a topic' && $(this).val() !== 'Choose a year' && $(this).val() !== 'Choose a world area') {
+                $(':input[type="submit"]').prop('disabled', false);
+            } else {
+                $(':input[type="submit"]').prop('disabled', true);
+                validate = false;
+            }
+            return validate;
+        });
+    }
+
     //story form pre submit validation
     $('#addStoryBtn').click(function () {
         var validate = true;

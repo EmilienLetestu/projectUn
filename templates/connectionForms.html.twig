@@ -12,11 +12,11 @@
             <form action="{{ path('login_check') }}" method="post">
                 <div class="form-group row col-md-12">
                     <label for="username">Email</label>
-                    <input class="form-control" type="text" id="username" name="_username" value="{{ last_username }}"/>
+                    <input class="form-control notBlank" type="text" id="username" name="_username" value="{{ last_username }}"/>
                 </div>
                 <div class="form-group row col-md-12">
                     <label for="password">Password</label>
-                    <input class="form-control" type="password" id="password" name="_password"/>
+                    <input class="form-control notBlank" type="password" id="password" name="_password"/>
                     <span id="invalid_pswd" style="display: none">Pasword doesn't match prerequisite pattern</span>
                     <a id="lost" href="{{ path('lostPassword') }}" class="pull-right">Forgotten password ?</a>
                 </div>
@@ -25,7 +25,7 @@
                     <label for="remember_me">Remember Me</label>
                 </div>
                 <div class="form-group row col-md-12 text-center" id="registerOptions">
-                    <button class="btn btn-success" id="loginBtn" type="submit">Submit</button>
+                    <button class="btn btn-success" id="loginBtn" type="submit" disabled>Submit</button>
 
                 </div>
             </form>
@@ -40,7 +40,7 @@
             {{ form_start(form ,{'attr':{'id':'registerForm'}}) }}
             <div class="form-group row col-md-12">
                 {{ form_label(form.name) }}<span class="req">*</span>
-                {{ form_widget(form.name ,{'attr':{'class':'form-control'}}) }}
+                {{ form_widget(form.name ,{'attr':{'class':'notBlank'}}) }}
                 {{ form_errors(form.name) }}
                 <span class="invalid_sign" id="invalid_name_icon" style="display: none">
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -52,7 +52,7 @@
             </div>
             <div class="form-group row col-md-12">
                 {{ form_label(form.surname) }}<span class="req">*</span>
-                {{ form_widget(form.surname ,{'attr':{'class':'form-control'}}) }}
+                {{ form_widget(form.surname ,{'attr':{'class':'notBlank'}}) }}
                 {{ form_errors(form.surname,{'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_surname_icon" style="display: none">
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -80,7 +80,7 @@
             </div>
             <div class="form-group row col-md-12">
                 {{ form_label(form.email) }}<span class="req">*</span>
-                {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
+                {{ form_widget(form.email ,{'attr':{'class':'notBlank'}}) }}
                 {{ form_errors(form.email,{'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_email_icon" style="display: none">
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -92,7 +92,7 @@
             </div>
             <div class="form-group row col-md-12">
                 {{ form_label(form.pswd) }}<span class="req">*</span>
-                {{ form_widget(form.pswd,{'attr':{'class':'form-control'}}) }}
+                {{ form_widget(form.pswd,{'attr':{'class':'notBlank'}}) }}
                 {{ form_errors(form.pswd, {'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_pswd_icon" style="display: none">
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -104,7 +104,7 @@
             </div>
             <div class="form-group row col-md-12" id="confirm" style="display: none">
                 {{ form_label(form.confirmPswd) }}
-                {{ form_widget(form.confirmPswd ,{'attr':{'class':'form-control'}})}}
+                {{ form_widget(form.confirmPswd ,{'attr':{'class':'notBlank'}})}}
                 {{ form_errors(form.confirmPswd,{'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_confirm_icon" style="display: none">
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -120,7 +120,7 @@
                 {{ form_errors(form.termsAgreement)}}
             </div>
             <div class="form-group row col-md-12 text-center">
-                <button class="btn btn-success" id="registerBtn" type="submit">Submit</button>
+                <button class="btn btn-success" id="registerBtn" type="submit" disabled>Submit</button>
             </div>
             {{ form_end(form) }}
         </div>
@@ -135,7 +135,7 @@
             {{ form_start(form, {'attr':{'id':'askNewForm'}}) }}
             <div class="form-group row col-md-12">
                 {{ form_label(form.email) }}
-                {{ form_widget(form.email ,{'attr':{'class':'form-control'}}) }}
+                {{ form_widget(form.email ,{'attr':{'class':''}}) }}
                 {{ form_errors(form.email ,{'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_email_icon" style="display: none">
                     <i class="fa fa-times" aria-hidden="true"></i>
@@ -146,7 +146,7 @@
                 <span class="invalid" id="invalid_email" style="display: none">Enter a valid email</span>
             </div>
             <div class="form-group row col-md-12 text-center">
-                <button class="btn btn-success" id="lostPswdBtn" type="submit">Submit</button>
+                <button class="btn btn-success" id="lostPswdBtn" type="submit" disabled>Submit</button>
             </div>
             {{ form_end(form) }}
         </div>
@@ -180,7 +180,7 @@
                 <span class="invalid" id="invalid_confirm" style="display: none">Passwords don't match</span>
             </div>
             <div class="form-group row col-md-12 centerSubmit">
-                <button class="btn btn-success" id="newPswdBtn" type="submit">Submit</button>
+                <button class="btn btn-success" id="newPswdBtn" type="submit" disabled>Submit</button>
             </div>
             {{ form_end(form) }}
         </div>
