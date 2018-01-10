@@ -79,7 +79,7 @@
 
     <div class="container-fluid" id="moreContainer">
         <h3>Related stories</h3>
-        <div class="more">
+        <div class="more slider">
             {% set stories = related|shuffle|slice(0,10) %}
                 {{ include('storyCard.html.twig') }}
         </div>

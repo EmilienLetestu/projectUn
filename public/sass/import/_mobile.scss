@@ -1082,10 +1082,6 @@ h1,
 	line-height: 10px;
 }
 
-
-
-
-
 	/* -----MOBILE-----*/
 
 	/* @media query optionnelle (max-width: 640px)*/
@@ -1180,6 +1176,14 @@ h1,
 			margin-top: 10%;
 		}
 
+		#browseStories{
+			overflow: hidden;
+			.cardHolder{
+				flex-flow: nowrap;
+				justify-content: flex-start;
+			}
+		}
+
 		/*------- story card --------*/
 		#storyCard h1{
 			font-size: 2rem;
@@ -1190,7 +1194,8 @@ h1,
 		}
 		.storyCard
 		{
-			width: 100%;
+			min-width: 290px;
+			max-width: 400px;
 		}
 
 		.storyCard li {

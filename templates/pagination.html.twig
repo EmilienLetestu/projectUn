@@ -31,24 +31,31 @@
         </div>
         {{ form_end(filter) }}
     </div>
-   {% if stories|length != 0 %}
-
-        {{ include('storyCard.html.twig') }}
+    {% if stories|length != 0 %}
+        <div class="slider" id="browseStories">
+            {{ include('storyCard.html.twig') }}
+        </div>
+        <span class="panner pull-left mobileUx" data-scroll-modifier='-1'>
+            <i class="fa fa-chevron-circle-left fa-lg" aria-hidden="true"></i>
+        </span>
+        <span class="panner pull-right mobileUx" data-scroll-modifier='1'>
+            <i class="fa fa-chevron-circle-right fa-lg" aria-hidden="true"></i>
+        </span>
 
         {% if pageNumber > 1 %}
-        <div id="previous">
-            <a class="pull-left btn" href="{{ path('browse',{'pageNumber': pageNumber - 1,'worldArea': worldArea ,'country': country, 'topic': topic, 'patronage': patronage}) }}" id="previousBtn">
-                <i class="fa fa-chevron-left" aria-hidden="true"></i>
-            </a>
-        </div>
+            <div id="previous">
+                <a class="pull-left btn" href="{{ path('browse',{'pageNumber': pageNumber - 1,'worldArea': worldArea ,'country': country, 'topic': topic, 'patronage': patronage}) }}" id="previousBtn">
+                    <i class="fa fa-chevron-left" aria-hidden="true"></i>
+                </a>
+            </div>
         {% endif %}
 
         {% if totalPage > 1 and pageNumber < totalPage %}
-        <div id="nextPrevious">
-            <a class="pull-right btn" href="{{ path('browse',{'pageNumber': pageNumber + 1,'worldArea': worldArea ,'country': country, 'topic': topic, 'patronage': patronage}) }}" id ="nextBtn">
-                <i class="fa fa-chevron-right" aria-hidden="true"></i>
-            </a>
-        </div>
+            <div id="nextPrevious">
+                <a class="pull-right btn" href="{{ path('browse',{'pageNumber': pageNumber + 1,'worldArea': worldArea ,'country': country, 'topic': topic, 'patronage': patronage}) }}" id ="nextBtn">
+                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                </a>
+            </div>
         {% endif %}
 
         <div id="pageLinks" class="text-center">
@@ -56,18 +63,19 @@
                 {% for i in 1..totalPage %}
                     <li class="list-inline-item" {{ pageNumber == i ? 'id="currentPage"' }}>
                         <a href="{{ path('browse',{'pageNumber': i,'worldArea': worldArea ,'country': country, 'topic': topic, 'patronage': patronage}) }}"
-                           {{ pageNumber == i ? 'style="color:white"' }}>{{ i }}
+                                {{ pageNumber == i ? 'style="color:white"' }}>{{ i }}
                         </a>
                     </li>
                 {% endfor %}
             </ul>
         </div>
-   {% endif %}
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
     <script src="{{ asset('js/search.js') }}"></script>
+    <script src="{{ asset('js/scroll.js') }}"></script>
 {% endblock %}
 
 
