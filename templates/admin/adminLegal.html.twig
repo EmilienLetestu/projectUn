@@ -1,0 +1,22 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {{ include('admin/adminNav.html.twig') }}
+
+    <div class="well" style="margin-top: 150px">
+        {{ form_start(form ,{'attr':{'id':'addLegal'}}) }}
+        <div class="form-group row">
+            {{ form_label(form.title) }}
+            {{ form_widget(form.title) }}
+        </div>
+        <div class="form-group row">
+            {{ form_label(form.article) }}
+            {{ form_widget(form.article ,{'attr':{'class':'form-control tinyMce'}}) }}
+        </div>
+        <div class="form-group row ">
+            <button class="btn btn-success" type="submit">Submit</button>
+        </div>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

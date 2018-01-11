@@ -8,12 +8,11 @@
 
 namespace App\Responder\Admin;
 
-
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class AdminCreateTermResponder
+class AdminLegalResponder
 {
     private $twig;
 
@@ -32,10 +31,10 @@ class AdminCreateTermResponder
      */
     public function __invoke(FormView $form)
     {
-       return new Response(
-           $this->twig->render('admin\adminCreateTerm.html.twig',[
-               'form' => $form
-           ])
-       );
+        return new Response(
+            $this->twig->render('admin\adminLegal.html.twig',[
+                'form' => $form
+            ])
+        );
     }
 }

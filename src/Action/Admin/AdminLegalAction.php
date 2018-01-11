@@ -10,21 +10,23 @@ namespace App\Action\Admin;
 
 
 use App\Entity\Term;
-use App\Form\TermType;
-use App\Responder\Admin\AdminCreateTermResponder;
+use App\Form\AddLegalType;
+use App\Handler\Inter\AddTermHandlerInterFace;
+use App\Responder\Admin\AdminLegalResponder;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
-class AdminCreateTermAction
+class AdminLegalAction
 {
     private $formFactory;
-    private $doctrine;
     private $urlGenerator;
     private $session;
+    private $termHandler;
 
     /**
      * AdminCreateTermAction constructor.
@@ -35,41 +37,43 @@ class AdminCreateTermAction
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
-        EntityManagerInterface $doctrine,
         UrlGeneratorInterface  $urlGenerator,
-        SessionInterface       $session
+        SessionInterface       $session,
+        AddTermHandlerInterFace $termHandler
     )
     {
         $this->formFactory  = $formFactory;
-        $this->doctrine     = $doctrine;
         $this->urlGenerator = $urlGenerator;
         $this->session      = $session;
+        $this->termHandler  = $termHandler;
     }
 
 
     /**
      * @param Request $request
-     * @param AdminCreateTermResponder $responder
-     * @return string|\Symfony\Component\HttpFoundation\Response
+     * @param AdminLegalResponder $responder
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function __invoke(Request $request, AdminCreateTermResponder $responder)
+    public function __invoke(Request $request, AdminLegalResponder $responder)
     {
+
         $term = new Term();
+
         $form = $this->formFactory
-                     ->create(TermType::class, $term)
+                     ->create(AddLegalType::class)
                      ->handleRequest($request)
         ;
 
-        if($form->isSubmitted() && $form->isValid()){
-            $this->doctrine->getRepository(Term::class);
-            $this->doctrine->persist($term);
-            $this->doctrine->flush();
+        $handler =$this->termHandler->handle($form, $term);
 
-            return $this->urlGenerator
-                         ->generate('adminCreateTerm')
-            ;
+        if($handler)
+        {
+            $this->session->getFlashBag()->add('success','Legal notice saved');
+            return new RedirectResponse(
+                $this->urlGenerator
+                     ->generate('adminLegal')
+            );
         }
-
         return $responder($form->createView());
     }
 }
