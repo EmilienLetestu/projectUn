@@ -3,7 +3,7 @@
 {% block body %}
     <div id="storyHolder">
         <div id="storyTitle">
-            <h1>{{ story.title }}</h1>
+            <h1>{{ story.title|upper }}</h1>
         </div>
     </div>
         <div id="storyAbstract">
@@ -53,11 +53,11 @@
                 </li>
                 <li class="list-inline-item">
                     <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {{ story.contactPLace | default('------------') }}
+                    {{ story.contactPLace | default('----------------------') }}
                 </li>
                 <li class="list-inline-item">
-                    <i class="fa fa-phone" aria-hidden="true"></i>
-                    {{ story.contactPhone | default('------------') }}
+                    <i class="fa fa-mobile" aria-hidden="true"></i>
+                    {{ story.contactPhone | default('----------------------') }}
                 </li>
             </ul>
     </div>
