@@ -10,13 +10,13 @@ $(document).ready(function () {
 
     $(':input[type="submit"]').prop('disabled', true);
 
-    $("input.notBlank").keyup(function () {
+    $(".notBlank").keyup(function () {
        disable()
     });
 
     function disable(){
         var validate = true;
-        $("input.notBlank").each(function () {
+        $(".notBlank").each(function () {
             var input = $(this);
             if($(this).val() !== '') {
                 $(':input[type="submit"]').prop('disabled', false);
