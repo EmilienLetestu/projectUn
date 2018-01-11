@@ -23,15 +23,11 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type = "button" class = "navbar-toggle" data-toggle = "collapse" data-target = ".responsive_nav"><i class="fa fa-bars"></i></button>
-                    <a class="navbar-brand" href="{{ path('home') }}">
-                        <i class="fa fa-home" aria-hidden="true">
-                            Climate Stories Bank
-                        </i>
-                    </a>
+                    <i class="fa fa-home" aria-hidden="true"></i>
+                    <a class="navbar-brand" href="{{ path('home') }}">Climate Stories Bank</a>
                 </div>
                 <div class = "collapse navbar-collapse responsive_nav">
-                {% if is_granted('ROLE_USER') %}
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" id="navLink">
                     <li class="nav-item">
                         <a href="{{ path('addStory')}}" class="nav-link"
                             {% if app.request.attributes.get('_route') == 'addStory' %}
@@ -45,16 +41,17 @@
                             {% if app.request.attributes.get('_route') == 'browse' %}
                                 id="active"
                             {% endif %}>
-                            Browse
+                            Browse stories
                         </a>
                     </li>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <li class="nav-item">
                         <a href="{{ path('admin') }}" class="nav-link">
                             Administration
                         </a>
                     </li>
+                    {% endif %}
                 </ul>
-                {% endif %}
                 {% if  not is_granted('ROLE_USER') %}
                 <ul class="nav navbar-nav navbar-right" id="connection">
                     <li>
@@ -68,10 +65,7 @@
                 {% if is_granted('ROLE_USER') %}
                 <ul class="nav navbar-nav navbar-right" id="connection">
                     <li>
-                        <a class="btn" id="logout" href="{{ path('logout') }}">
-                            <i class="fa fa-sign-out" aria-hidden="true">
-                                Logout
-                            </i>
+                        <a class="btn" id="logout" href="{{ path('logout') }}">Sign out</i>
                         </a>
                     </li>
                 </ul>
