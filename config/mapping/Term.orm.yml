@@ -1,0 +1,17 @@
+App\Entity\Term:
+    type: entity
+    table: term
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 30
+            nullable: false
+            unique: true
+        article:
+            type: text
+            nullable: false
