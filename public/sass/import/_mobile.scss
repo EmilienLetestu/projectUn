@@ -133,6 +133,19 @@ textarea:focus{
 	border-bottom: 2px solid $secondary-color !important;
 }
 
+.alert{
+	position: fixed;
+	width: 100%;
+	text-align: center;
+	top: 50px;
+	border-radius: inherit;
+}
+
+.alert-denied{
+	color: #dbb027;
+	background-color: rgba(219,176,19,0.2);
+	margin-bottom: 10px;
+}
 /* -----BUTTONS-----*/
 
 .btn {
@@ -446,6 +459,7 @@ a.btn.btn-default.delete:hover{
 	background-position: center;
 	background-size: cover;
 	min-height: 960px;
+	margin-top: -20px;
 }
 
 
@@ -1267,6 +1281,10 @@ table .rightText{
 
 		.push{
 			height: 0;
+		}
+
+		.alert p{
+			font-size: 1.2rem;
 		}
 		/*------------ nav -------------*/
 		#signInLink,
