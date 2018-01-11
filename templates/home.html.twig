@@ -18,11 +18,11 @@
         </div>
     </div>
 
-        {% if app.session.get('notifList') and is_granted('ROLE_USER') %}
-            <div class="notification" style="position:fixed;top:30%;z-index: 1; width: 100%; background: #c9453c ">
+        {% if app.session.get('notifList') == 1 and is_granted('ROLE_USER') %}
+            <div class="notification">
                 <i class="fa fa-close pull-right" id="closeNotif"></i>
-                {% for key in app.session.get('notifList') if key.seen == 0 %}
-                    <p class="notifText">{{ key.notifiedOn|date("m/d/Y") }} {{ key.type|typeToText }} </p>
+                {% for notification in notif %}
+                    <p class="notifText"><span>{{ notification.notifiedOn|date("m/d/Y") }}</span> {{ notification.type|typeToText }}</p>
                 {% endfor %}
             </div>
         {% endif %}

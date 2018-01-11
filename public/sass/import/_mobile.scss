@@ -146,6 +146,23 @@ textarea:focus{
 	background-color: rgba(219,176,19,0.2);
 	margin-bottom: 10px;
 }
+
+.notification{
+	position: fixed;
+	top: 50px;
+	z-index: 1;
+	width: 100%;
+	background: #c9453c;
+	padding: 15px;
+	i,
+	span{
+		color: #FFFFFF;
+	}
+	span{
+		padding-right: 5px;
+	}
+
+}
 /* -----BUTTONS-----*/
 
 .btn {
@@ -1035,6 +1052,10 @@ h1,
 	text-decoration: underline $secondary-color;
 }
 
+thead{
+	color: $secondary-color;
+}
+
 .adminList table a:hover{
 	color: $secondary-color !important;
 }
@@ -1115,8 +1136,8 @@ table .rightText{
 }
 
 #open{
-	position: absolute;
-	top:25px;
+	position: fixed;
+	top:60px;
 	i:hover{
 		color: $primary-color;
 	}
@@ -1574,9 +1595,6 @@ table .rightText{
         /*---admin----*/
 		#adminNav{
 			width: 200px;
-		}
-		#open{
-			top: -20px;
 		}
 
 		#adminNav a {

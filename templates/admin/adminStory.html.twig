@@ -6,13 +6,14 @@
 
     <h1>{{ title|upper }}</h1>
 
+    <div class="filterList">
+        <input type="checkbox" id="publishedStories" name="published" value="unpublished">
+        <label for="publishedStories">Published stories</label>
+        <input type="checkbox" id="unpublishedStories" name="unpublished" value="published">
+        <label for="unpublishedStories">Unpublished stories</label>
+    </div>
+
     <div class="container-fluid adminList">
-        <div class="filterList">
-            <input type="checkbox" id="publishedStories" name="published" value="unpublished">
-            <label for="publishedStories">Published stories</label>
-            <input type="checkbox" id="unpublishedStories" name="unpublished" value="published">
-            <label for="unpublishedStories">Unpublished stories</label>
-        </div>
         <table class="table">
             <thead>
             <tr>
