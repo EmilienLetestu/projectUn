@@ -49,12 +49,14 @@ class HomeAction
         $form = $this->formFactory->create(SearchType::class);
 
         //handle notification
-        $this->notificationManager->getNotificationForUser();
+        $notification = $this->notificationManager->getNotificationForUser();
 
-        return $responder(
+        return
+            $responder(
             $repository->findLastPublished('DESC','createdOn',6),
             $repository-> countStories(),
-            $form->createView()
+            $form->createView(),
+            $notification
         );
     }
 }

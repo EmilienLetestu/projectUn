@@ -32,16 +32,18 @@ class HomeResponder
     /**
      * @param $storyList
      * @param $total
-     * @param $form
+     * @param FormView $form
+     * @param array $notif
      * @return Response
      */
-    public function __invoke($storyList, $total, FormView $form)
+    public function __invoke($storyList, $total, FormView $form, $notif)
     {
         return new Response(
             $this->twig->render('home.html.twig',[
                 'stories' => $storyList,
                 'total'   => $total,
-                'filter'  => $form
+                'filter'  => $form,
+                'notif'   => $notif
             ])
         );
     }
