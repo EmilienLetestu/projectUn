@@ -1324,6 +1324,19 @@ table .rightText{
 
 	@media (max-width: 640px) {
 
+		#connection{
+			display: flex;
+			justify-content: space-between;
+		}
+		#registerLink,
+		#signInLink {
+			padding: 5px 40px !important;
+		}
+
+		#registerLink{
+			margin-left: 15px !important;
+		}
+
 		.adminTitle{
 			padding-top: inherit;
 		}
