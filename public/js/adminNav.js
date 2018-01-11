@@ -7,6 +7,8 @@ $(document).ready(function () {
     var marginPush = '250px';
     var leftPull = '-250px';
 
+
+
     if ($(window).width() < 640) {
          marginPush = '0';
     }
@@ -14,6 +16,12 @@ $(document).ready(function () {
     if($(window).width() > 640) {
         $("br").remove();
     }
+
+    $(window).scroll(function() {
+
+        $("#open").stop().hide().fadeIn();
+    });
+
 
     $("#open").click(function () {
         $("#adminNav").css('left','0');
