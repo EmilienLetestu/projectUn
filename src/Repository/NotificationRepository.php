@@ -58,13 +58,9 @@ class NotificationRepository extends EntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('n');
         $queryBuilder
-            ->innerJoin('n.user','u')
-            ->addSelect('u')
-
-        ;
-
-        $queryBuilder->where($queryBuilder->expr()->in('u.id',$id))
+            ->where('n.user = :id')
             ->andWhere('n.seen = :seen')
+            ->setParameter('id', $id)
             ->setParameter('seen',$seen);
 
         return $queryBuilder
