@@ -135,7 +135,7 @@
             {{ form_start(form, {'attr':{'id':'askNewForm'}}) }}
             <div class="form-group row col-md-12">
                 {{ form_label(form.email) }}
-                {{ form_widget(form.email ,{'attr':{'class':''}}) }}
+                {{ form_widget(form.email ,{'attr':{'class':'notBlank'}}) }}
                 {{ form_errors(form.email ,{'attr':{'class':'invalid'}}) }}
                 <span class="invalid_sign" id="invalid_email_icon" style="display: none">
                     <i class="fa fa-times" aria-hidden="true"></i>
