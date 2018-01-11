@@ -371,9 +371,12 @@ a.btn.btn-default.delete:hover{
 #registerLink,
 #signInLink {
 	padding: 5px 50px !important;
-	margin-top: 10px;
 	margin-right: 10px;
+
+	height: 45px !important;
+	line-height: 35px;
 }
+
 
 #logout,
 #signInLink{
@@ -491,7 +494,7 @@ a.btn.btn-default.delete:hover{
 	background-position: center;
 	background-size: cover;
 	min-height: 960px;
-	margin-top: -20px;
+	margin-top: 80px;
 }
 
 
@@ -899,6 +902,7 @@ h1,
 	width: 65%;
 }
 #storyAbstract {
+	margin-top: 55px;
 	h2{
 		text-align: left;
 		margin-top: 50px;
@@ -1003,6 +1007,7 @@ h1,
 }
 /*------browse-------*/
 #introBrowse {
+	margin-top: 100px;
 	h1 b{
 		color: $secondary-color;
 	}
@@ -1024,8 +1029,13 @@ h1,
 	text-align: center;
 }
 
+.pageHeader{
+	margin-top: 100px;
+}
 /*-----admin------*/
-
+.adminTitle{
+	padding-top: 10%;
+}
 #dashboard{
 	li{
 		font-size: 3rem;
@@ -1097,7 +1107,7 @@ table .rightText{
 		background-color: transparent;
 		color: $secondary-color;
 		border-color: $secondary-color;
-		width: 220px;
+		width: 240px;
 	}
 	.btn:hover{
 		background-color: $secondary-color;
@@ -1123,7 +1133,7 @@ table .rightText{
 	height: 100%;
 	position: fixed;
 	z-index: 10000;
-	top: 40px;
+	top: 100px;
 	left: - 250px;
 	background-color: $primary-color;
 	overflow-x: hidden;
@@ -1158,7 +1168,7 @@ table .rightText{
 
 #open{
 	position: fixed;
-	top:60px;
+	top:105px;
 	i:hover{
 		color: $primary-color;
 	}
@@ -1313,6 +1323,18 @@ table .rightText{
 	/* @media query optionnelle (max-width: 640px)*/
 
 	@media (max-width: 640px) {
+
+		.adminTitle{
+			padding-top: inherit;
+		}
+
+		#adminNav{
+			top:40px;
+		}
+
+		#open{
+			top:60px;
+		}
 
 		h1{
 			font-size: 2.5rem;
@@ -1481,9 +1503,13 @@ table .rightText{
 			font-size: 1.2rem;
 		}
 
-		#storyAbstract h2{
-			margin-top: inherit;
+		#storyAbstract{
+			margin-top: initial;
+			h2{
+				margin-top: inherit;
+			}
 		}
+
 
 		#storyPlot{
 			padding: 0;

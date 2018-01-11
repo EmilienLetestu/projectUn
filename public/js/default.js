@@ -4,7 +4,6 @@
 $(document).ready(function () {
 
     if($(".alert").length){
-        alert('sdfsd');
         $(window).scroll(function () {
             $(".alert").remove();
         })
