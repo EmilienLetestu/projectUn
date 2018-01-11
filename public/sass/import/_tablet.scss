@@ -9,6 +9,46 @@
 
 @media (min-width: 40.063em) {
 
+  .navbar .navbar-header,
+  .navbar-brand{
+    float: none !important;
+  }
+  .navbar-header{
+    position: inherit;
+    a{
+      font-size: 25px;
+      position: absolute;
+      z-index: 1;
+      color: #FFFFFF;
+    }
+    i{
+      font-size: 50px;
+      position: relative;
+      top:30px;
+      padding-right: 40px;
+    }
+  }
+
+  #navLink{
+    position: relative;
+    left: 73px;
+    top: -10px;
+  }
+
+  #connection{
+    left: 78%;
+  }
+
+  #disconnect{
+    left: 88%;
+  }
+
+  #disconnect,
+  #connection{
+    position: fixed;
+    top: 25px;
+  }
+
 }
 
 /* Fin de @media (min-width: 40.063em)/* = min-width 641px */

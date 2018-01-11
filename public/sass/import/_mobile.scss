@@ -50,6 +50,10 @@ mark {
 	background: #ff0;
 }
 
+body{
+	font-family: $primary-typo;
+}
+
 h1{
 	text-align: center;
 	font-family: $primary-typo;
@@ -70,7 +74,7 @@ h3,h4,h5{
 	font-size: $font-size-sub;
 }
 
-p {
+p,a {
 	font-family: $primary-typo;
 	font-weight: $font-weight-p;
 	font-size: $font-size-p;
@@ -324,13 +328,20 @@ a.btn.btn-default.delete:hover{
 	height: 100px;
 }
 
-
 /*--- navbar ----*/
+
+
+
+
 .navbar {
 	background: $primary-color;
 	-webkit-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
+	color: #FFFFFF;
+	i{
+		color: #FFFFFF;
+	}
 }
 
 .nav-link {
@@ -372,8 +383,10 @@ a.btn.btn-default.delete:hover{
 }
 
 #logout:hover{
-	background-color: #FFFFFF;
-	border: none;
+	background-color: $secondary-color;
+	a{
+		color: #FFFFFF;
+	}
 }
 
 #signInLink:hover{
@@ -455,16 +468,18 @@ a.btn.btn-default.delete:hover{
 	text-align: center;
 	padding-bottom: 5%;
 	padding-top: 5%;
-	a {
+	a .btn {
 		border-color: $secondary-color-light;
 		color: #FFFFFF;
 	}
-	a:hover{
-		color: #FFFFFF;
-		background-color: $secondary-color ;
-		border-bottom-color: transparent;
-	}
 }
+
+.cardLink a.btn:hover{
+	color: $secondary-color;
+	background-color: #FFFFFF !important;
+	border-color: $secondary-color;
+}
+
 .cardFooter{
 	border-top: solid 1px $secondary-color;
 	padding-bottom: 2%;
@@ -677,6 +692,7 @@ h1,
 
 .connectionTitle{
 	text-align: center;
+	margin-top: 100px;
 }
 
 
@@ -710,20 +726,23 @@ h1,
 
 #filterBtn .btn,
 #filterHome .btn{
-	border-color: $secondary-color !important;
-	color: $secondary-color !important;
-	background-color: transparent !important;
+	border: none !important;
+	color: #FFFFFF !important;
+	background-color: $secondary-color !important;
 	width: 260px;
 	height: 60px;
+	i{
+		color: #FFFFFF;
+	}
 }
 
 #filterBtn .btn:hover,
 #filterHome .btn:hover{
-	border: none !important;
-	color: #FFFFFF !important;
-	background-color: $secondary-color!important;
+	border: solid 1px $secondary-color !important;
+	color: $secondary-color !important;
+	background-color: transparent !important;
 	i{
-		color: #FFFFFF;
+		color: $secondary-color;
 	}
 }
 
@@ -882,6 +901,7 @@ h1,
 #storyAbstract {
 	h2{
 		text-align: left;
+		margin-top: 50px;
 	}
 	h2 span{
 		color: #FFFFFF;
@@ -936,12 +956,13 @@ h1,
 	}
 	ul{
 		display: flex;
-		justify-content: space-between;
+		justify-content: space-evenly;
 		font-size: 1.5rem;
 	}
 	i{
 		color: #FFFFFF;
 		font-size: 1.6em;
+		padding-right: 5px;
 	}
 }
 
@@ -1307,6 +1328,30 @@ table .rightText{
 		.alert p{
 			font-size: 1.2rem;
 		}
+
+		.navbar i{
+			font-size: 30px;
+		}
+
+		.navbar-header{
+			i{
+				position: absolute;
+				left: 5px;
+				font-size: 30px;
+				top: 10px;
+			}
+			i.fa.fa-bars{
+				top:3px;
+			}
+			a{
+				padding-left: 50px;
+				color: #FFFFFF;
+			}
+		}
+
+		.navbar-collapse{
+			text-align: center;
+		}
 		/*------------ nav -------------*/
 		#signInLink,
 		#registerLink,
@@ -1436,6 +1481,10 @@ table .rightText{
 			font-size: 1.2rem;
 		}
 
+		#storyAbstract h2{
+			margin-top: inherit;
+		}
+
 		#storyPlot{
 			padding: 0;
 		}
@@ -1504,13 +1553,16 @@ table .rightText{
 				padding-right: 20px;
 			}
 			i.fa.fa-envelope-o{
-				padding-right: 17px;
+				padding-right: 18px;
+				margin-left: -1px;
 			}
 			i.fa.fa-map-marker{
 				padding-right: 27px;
+				margin-left: 4px;
 			}
-			i.fa.fa-phone{
-				padding-right: 22px;
+			i.fa.fa-mobile{
+				padding-right: 28px;
+				margin-left: 6px;
 			}
 		}
 		#moreContainer{
