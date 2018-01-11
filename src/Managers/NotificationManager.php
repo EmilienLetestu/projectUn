@@ -77,9 +77,12 @@ class NotificationManager
                 $user->getId(),
                 0
             );
-          $this->session->set('notifList',$notificationList);
 
-          return $this->updateNotificationStatus($notificationList);
+          $this->session->set('notifList',1);
+
+          $this->updateNotificationStatus($notificationList);
+
+          return $notificationList;
         }
     }
 
@@ -94,6 +97,7 @@ class NotificationManager
             $notification->setSeen(1);
 
             $this->doctrine->persist($notification);
+
         }
 
         $this->doctrine->flush();
