@@ -8,7 +8,7 @@ $(document).ready(function () {
         parent = $(".slider");
 
     //Start the scrolling process
-    $(".panner").on("mouseenter", function () {
+    $(".panner").on("mouseenter touchstart", function () {
         var data = $(this).data('scrollModifier'),
             direction = parseInt(data, 10);
 
@@ -18,7 +18,7 @@ $(document).ready(function () {
     });
 
     //stop scrolling
-    $(".panner").on("mouseleave", function () {
+    $(".panner").on("mouseleave touchend", function () {
         stopScrolling();
         $(this).removeClass('active');
     });
