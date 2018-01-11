@@ -59,7 +59,6 @@ class AdminCreateTermAction
                      ->create(TermType::class, $term)
                      ->handleRequest($request)
         ;
-        dump($form);
 
         if($form->isSubmitted() && $form->isValid()){
             $this->doctrine->getRepository(Term::class);

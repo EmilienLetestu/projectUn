@@ -33,7 +33,7 @@ class AdminCreateTermResponder
     public function __invoke(FormView $form)
     {
        return new Response(
-           $this->twig->render(['admin\adminCreateTerm.html.twig',
+           $this->twig->render('admin\adminCreateTerm.html.twig',[
                'form' => $form
            ])
        );
