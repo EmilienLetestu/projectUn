@@ -137,3 +137,8 @@ adminActions:
         entity: story||user
         id: \d+
         action: delete||upgrade||downgrade||validate||reject
+
+adminCreateTerm:
+    path: /admin/create-term
+    defaults:
+        _controller: App\Action\Admin\AdminCreateTermAction
