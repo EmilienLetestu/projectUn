@@ -64,6 +64,6 @@ class Term
      */
     public function getArticle()
     {
-        return $this->getArticle();
+        return $this->article;
     }
 }
