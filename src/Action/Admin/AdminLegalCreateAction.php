@@ -12,8 +12,7 @@ namespace App\Action\Admin;
 use App\Entity\Term;
 use App\Form\AddLegalType;
 use App\Handler\Inter\AddTermHandlerInterFace;
-use App\Responder\Admin\AdminLegalResponder;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Responder\Admin\AdminLegalCreateResponder;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,18 +20,20 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 
-class AdminLegalAction
+class AdminLegalCreateAction
 {
     private $formFactory;
     private $urlGenerator;
     private $session;
     private $termHandler;
 
+
     /**
-     * AdminCreateTermAction constructor.
+     * AdminLegalCreateAction constructor.
      * @param FormFactoryInterface $formFactory
      * @param UrlGeneratorInterface $urlGenerator
      * @param SessionInterface $session
+     * @param AddTermHandlerInterFace $termHandler
      */
     public function __construct(
         FormFactoryInterface   $formFactory,
@@ -51,10 +52,10 @@ class AdminLegalAction
 
     /**
      * @param Request $request
-     * @param AdminLegalResponder $responder
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @param AdminLegalCreateResponder $responder
+     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
      */
-    public function __invoke(Request $request, AdminLegalResponder $responder)
+    public function __invoke(Request $request, AdminLegalCreateResponder $responder)
     {
         $term = new Term();
 

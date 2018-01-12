@@ -12,7 +12,7 @@ use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Response;
 use Twig\Environment;
 
-class AdminLegalResponder
+class AdminLegalCreateResponder
 {
     private $twig;
 
@@ -32,7 +32,7 @@ class AdminLegalResponder
     public function __invoke(FormView $form)
     {
         return new Response(
-            $this->twig->render('admin\adminLegal.html.twig',[
+            $this->twig->render('admin\adminLegalCreate.html.twig',[
                 'form' => $form
             ])
         );

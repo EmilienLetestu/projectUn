@@ -141,4 +141,4 @@ adminActions:
 adminLegalCreate:
     path: /admin/legal/create-legal
     defaults:
-        _controller: App\Action\Admin\AdminLegalAction
+        _controller: App\Action\Admin\AdminLegalCreateAction
