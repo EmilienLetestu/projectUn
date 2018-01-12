@@ -134,7 +134,7 @@ adminActions:
     defaults:
         _controller: App\Action\Admin\AdminEntityManagementAction
     requirements:
-        entity: story||user
+        entity: story||user||term
         id: \d+
         action: delete||upgrade||downgrade||validate||reject
 
@@ -147,3 +147,12 @@ adminLegalCreate:
     path: /admin/legal/create-legal
     defaults:
         _controller: App\Action\Admin\AdminLegalCreateAction
+
+adminByLegal:
+    path: /admin/legal/{id}
+    defaults:
+        _controller: App\Action\Admin\AdminByLegalAction
+    requirements:
+        id: \d+
+
+
