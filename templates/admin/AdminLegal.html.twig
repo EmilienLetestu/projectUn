@@ -1,0 +1,54 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    {{ include('admin/adminNav.html.twig') }}
+    <h1 class="adminTitle">LEGAL ACTION</h1>
+
+    <div class="container-fluid adminList">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    TITLE
+                </th>
+                <th>
+                    ARTICLE
+                </th>
+                <th class="centerText">
+                    <i class="fa fa-info" aria-hidden="true"></i>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for term in legalList %}
+                <tr>
+                    <td>
+                        <span class="mobileUx">Id #</span>{{ term.id }}
+                    </td>
+                    <td>
+                        {{ term.title }}
+                    </td>
+                    <td>
+                        {{ term.article|slice(0,50)|raw }}
+                    </td>
+                    <td class="centerText">
+                        <span class="hint">More info</span><br>
+                        <a href="#">
+                            <i class="fa fa-plus" aria-hidden="true"></i>
+                        </a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="createLegal">
+        <a href="{{ path('adminLegalCreate') }}" class="btn btn-primary add" style="width:100%;"><i class="fa fa-plus"></i></a>
+    </div>
+
+{% endblock %}
