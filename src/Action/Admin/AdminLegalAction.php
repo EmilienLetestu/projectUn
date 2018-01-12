@@ -31,7 +31,6 @@ class AdminLegalAction
     /**
      * AdminCreateTermAction constructor.
      * @param FormFactoryInterface $formFactory
-     * @param EntityManagerInterface $doctrine
      * @param UrlGeneratorInterface $urlGenerator
      * @param SessionInterface $session
      */
@@ -40,6 +39,7 @@ class AdminLegalAction
         UrlGeneratorInterface  $urlGenerator,
         SessionInterface       $session,
         AddTermHandlerInterFace $termHandler
+
     )
     {
         $this->formFactory  = $formFactory;
@@ -56,7 +56,6 @@ class AdminLegalAction
      */
     public function __invoke(Request $request, AdminLegalResponder $responder)
     {
-
         $term = new Term();
 
         $form = $this->formFactory

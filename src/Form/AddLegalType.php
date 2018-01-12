@@ -23,13 +23,13 @@ class AddLegalType extends AbstractType
         $builder
             ->add('title',TextType::class,[
                 'constraints' => [new NotBlank(),
-                    new Length(['min' => 3,
-                        'max' => 20
+                                  new Length(['min' => 3,
+                                              'max' => 30
                     ])
                 ],
             ])
             ->add('article',TextareaType::class,[
-                'constraints' => [new NotBlank()],
+                  'constraints' => [new NotBlank()],
         ]);
     }
 }

@@ -138,7 +138,7 @@ adminActions:
         id: \d+
         action: delete||upgrade||downgrade||validate||reject
 
-adminLegal:
-    path: /admin/legal
+adminLegalCreate:
+    path: /admin/legal/create-legal
     defaults:
         _controller: App\Action\Admin\AdminLegalAction

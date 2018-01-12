@@ -4,7 +4,9 @@
 
     {{ include('admin/adminNav.html.twig') }}
 
-    <div class="well" style="margin-top: 150px">
+    <h1 class="adminTitle">CREATE LEGAL NOTICE ARTICLE</h1>
+
+    <div class="well">
         {{ form_start(form ,{'attr':{'id':'addLegal'}}) }}
         <div class="form-group row">
             {{ form_label(form.title) }}
