@@ -18,18 +18,27 @@ class AddTermHandler implements AddTermHandlerInterFace
 {
     private $doctrine;
 
+    /**
+     * AddTermHandler constructor.
+     * @param EntityManagerInterface $doctrine
+     */
     public function __construct(EntityManagerInterface $doctrine)
     {
         $this->doctrine = $doctrine;
     }
 
+    /**
+     * @param FormInterface $form
+     * @param Term $term
+     * @return bool
+     */
     public function handle(FormInterface $form, Term $term): bool
     {
         if($form->isSubmitted() && $form->isValid()){
 
-
             $term->setArticle($form->get('article')->getData());
             $term->setTitle($form->get('title')->getData());
+
 
             $this->doctrine->persist($term);
             $this->doctrine->flush();
