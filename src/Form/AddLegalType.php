@@ -29,7 +29,10 @@ class AddLegalType extends AbstractType
                 ],
             ])
             ->add('article',TextareaType::class,[
-                  'constraints' => [new NotBlank()],
+                  'constraints' => [new NotBlank()
+                  ],
+                  'required'    => false,
+                  'label'       => 'Abstract'
         ]);
     }
 }
