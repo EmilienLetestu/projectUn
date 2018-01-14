@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block body %}
+
+    {{ include('admin/adminNav.html.twig') }}
+
+    <h1 class="adminTitle">EDIT "{{ term.title|upper }}"</h1>
+
+    <div class="container-fluid entityData">
+
+        <div class="well">
+            {{ form_start(form ,{'attr':{'id':'editTermForm'}}) }}
+            <div class="form-group row" id="editTermTitle">
+                {{ form_label(form.title) }}<span class="req">*</span>
+                {{ form_widget(form.title) }}
+                <span class="invalidBack">{{ form_errors(form.title) }}</span>
+            </div>
+            <div class="form-group row" id="editTermArticle">
+                {{ form_label(form.article) }}<span class="req">*</span>
+                {{ form_widget(form.article ,{'attr':{'class':'tinyMce'}}) }}
+                <span class="invalidBack">{{ form_errors(form.article) }}</span>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="addStoryBtn" type="submit">Submit</button>
+                <input type="hidden" id="originalTermTitle" value="{{ term.title }}">
+                <input type="hidden" id="originalTermArticle" value="{{ term.article }}">
+            </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/editTerm.js') }}"></script>
+{% endblock %}
