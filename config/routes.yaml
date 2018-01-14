@@ -155,4 +155,12 @@ adminByLegal:
     requirements:
         id: \d+
 
+adminEditLegal:
+  path: /admin/legal/edit/{id}
+  defaults:
+      _controller: App\Action\Admin\AdminEditLegalAction
+  requirements:
+      id: \d+
+
+
 
