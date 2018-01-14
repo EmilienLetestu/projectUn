@@ -10,6 +10,7 @@ namespace App\Action\Admin;
 
 
 use App\Managers\StoryManager;
+use App\Managers\TermManager;
 use App\Managers\UserManager;
 use App\Responder\Admin\AdminEntityManagementResponder;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,22 +21,26 @@ class AdminEntityManagementAction
 
    private $userManager;
    private $storyManager;
+   private $termManager;
    private $session;
 
     /**
      * AdminEntityManagementAction constructor.
      * @param UserManager $userManager
      * @param StoryManager $storyManager
+     * @param TermManager $termManager
      * @param SessionInterface $session
      */
    public function __construct(
        UserManager      $userManager,
        StoryManager     $storyManager,
+       TermManager      $termManager,
        SessionInterface $session
    )
    {
        $this->userManager  = $userManager;
        $this->storyManager = $storyManager;
+       $this->termManager  = $termManager;
        $this->session      = $session;
    }
 
@@ -51,17 +56,12 @@ class AdminEntityManagementAction
        $id     = $request->attributes->get('id');
 
        $method = $action.ucfirst($entity);
+       $manager = $entity.'Manager';
 
-       $entity === 'story' ?
-           $process = $this->storyManager
-               ->$method($id)
-           :
-           $process = $this->userManager
-               ->$method($id)
-       ;
+       $process = $this->$manager->$method($id);
 
        $this->session->getFlashBag()->add('success',$process);
 
-       return $responder($entity);
+       return $responder($entity === 'term' ? 'legal' : $entity);
    }
 }
