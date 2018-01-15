@@ -6,7 +6,18 @@
 
     <h1 class="adminTitle">{{ term.title|upper }}</h1>
     <div class="container-fluid entityData">
-
+    <div class="container-fluid entityData">
+        <div class="reminder">
+            <ul class="list-inline">
+                <li>
+                    Published : <i class="{{ term.status|stateIcon }}" aria-hidden="true"></i>
+                </li>
+                <li>
+                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                    {{ term.status == 'published' ? term.publishedOn|date("d/m/Y") : term.createdOn|date("d/m/Y") }}
+                </li>
+            </ul>
+        </div>
         <div class="adminAbstract">
             <h3>Legal notice article</h3>
             <p>
@@ -19,6 +30,11 @@
             <a href="{{ path('adminActions',{'entity' : 'term' , 'id' : term.id , 'action' : 'delete'}) }}" class="btn btn-default delete">
                 <i class="fa fa-trash"></i>
             </a>
+            {% if term.status != 'published' %}
+                <a href="{{ path('adminActions',{'entity' : 'term' , 'id' : term.id , 'action' : 'validate'}) }}" class="btn btn-default validate">
+                    <i class="fa fa-check"></i>
+                </a>
+            {% endif %}
             <a href="{{path('adminEditLegal',{'id' :  term.id}) }}" class="btn btn-default edit">
                 <i class="fa fa-pencil"></i>
             </a>

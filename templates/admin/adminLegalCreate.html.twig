@@ -14,7 +14,11 @@
         </div>
         <div class="form-group row">
             {{ form_label(form.article) }}
-            {{ form_widget(form.article ,{'attr':{'class':'form-control tinyMce'}}) }}
+            {{ form_widget(form.article ,{'attr':{'class':'tinyMce'}}) }}
+        </div>
+        <div class="form-group row">
+            {{ form_label(form.status) }}
+            {{ form_widget(form.status) }}
         </div>
         <div class="form-group row ">
             <button class="btn btn-success" type="submit">Submit</button>

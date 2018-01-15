@@ -19,6 +19,9 @@
                     ARTICLE
                 </th>
                 <th class="centerText">
+                    Published
+                </th>
+                <th class="centerText">
                     <i class="fa fa-info" aria-hidden="true"></i>
                 </th>
             </tr>
@@ -34,6 +37,10 @@
                     </td>
                     <td>
                         {{ term.article|slice(0,50)|raw }}
+                    </td>
+                    <td class="centerText">
+                        <span class="hint">Activated&ensp;?</span><br>
+                        <i class="{{ term.status|stateIcon }}" aria-hidden="true"></i>
                     </td>
                     <td class="centerText">
                         <span class="hint">More info</span><br>
