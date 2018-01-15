@@ -70,6 +70,11 @@ search:
     defaults:
         _controller: App\Action\SearchAction
 
+legalNotice:
+    path: /legal-notice
+    defaults:
+        _controller: App\Action\LegalNoticeAction
+
 admin:
     path: /admin
     defaults:
@@ -79,7 +84,6 @@ adminDeleteUnactivated:
     path: /admin/delete-unactivated-account
     defaults:
         _controller: App\Action\Admin\AdminDeleteUnactivatedAction
-
 
 adminUser:
     path: /admin/user
@@ -93,7 +97,6 @@ adminByUser:
         _controller: App\Action\Admin\AdminByUserAction
     requirements:
         id: \d+
-
 
 adminStory:
     path: /admin/story/{filter}/{filterId}
