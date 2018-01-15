@@ -15,3 +15,13 @@ App\Entity\Term:
         article:
             type: text
             nullable: false
+        status:
+            type: string
+            length: 30
+            nullable: false
+        createdOn:
+            type: date
+            nullable: false
+        publishedOn:
+            type: date
+            nullable: true

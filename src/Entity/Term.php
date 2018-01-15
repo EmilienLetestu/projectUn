@@ -28,6 +28,21 @@ class Term
     private $article;
 
     /**
+     * @var
+     */
+    private $status;
+
+    /**
+     * @var
+     */
+    private $createdOn;
+
+    /**
+     * @var
+     */
+    private $publishedOn = null;
+
+    /**
      * @return mixed
      */
     public function getId()
@@ -66,4 +81,56 @@ class Term
     {
         return $this->article;
     }
+
+    /**
+     * @param $status
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param $format
+     * @return \DateTime
+     */
+    public function setCreatedOn($format)
+    {
+        return $this->createdOn = new \DateTime(date($format));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedOn()
+    {
+        return $this->createdOn;
+    }
+
+    /**
+     * @param $format
+     * @return \DateTime
+     */
+    public function setPublishedOn($format)
+    {
+        return $this->publishedOn = new \DateTime(date($format));
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPublishedOn()
+    {
+        return $this->publishedOn;
+    }
+
+
 }
