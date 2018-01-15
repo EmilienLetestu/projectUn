@@ -5,4 +5,21 @@
         <h1>LEGAL NOTICE</h1>
     </div>
 
+    <div class="container-fluid">
+        {% for term in termList %}
+            <h3>{{ term.title }}
+                <i class="fa fa-caret-right toggleIcon" aria-hidden="true" id="toggle-{{ term.id }}"></i>
+            </h3>
+            <div class="termBody" id="term-{{ term.id }}" style="display: none">
+                 <div class="termArticle">
+                     {{ term.article|raw }}
+                 </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/legalNotice.js') }}"></script>
 {% endblock %}
