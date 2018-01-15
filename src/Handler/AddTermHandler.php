@@ -38,7 +38,17 @@ class AddTermHandler implements AddTermHandlerInterFace
 
             $term->setArticle($form->get('article')->getData());
             $term->setTitle($form->get('title')->getData());
+            $term->setStatus($form->get('status')->getData());
 
+            !$term->getCreatedOn() ?
+                $term->setCreatedOn('Y-m-d') :
+                $term->getCreatedOn()
+            ;
+
+            $term->getStatus() === 'published' ?
+                $term->setPublishedOn('Y-m-d') :
+                null
+            ;
 
             $this->doctrine->persist($term);
             $this->doctrine->flush();
