@@ -245,6 +245,12 @@ a.btn.btn-default.delete:hover{
 	background: $secondary-color;
 	color:#FFFFFF;
 }
+
+.btn:focus{
+	background: #FFFFFF;
+	color:$secondary-color;
+	border-color: $secondary-color;
+}
 .alert-warning{
 	color: #F54041;
 	background-color: #FFFFFF;
@@ -264,14 +270,18 @@ a.btn.btn-default.delete:hover{
 }
 
 #loginBtn:hover,
+#loginBtn:focus,
 #registerBtn:hover,
-#lostPswdBtn:hover{
+#registerBtn:focus,
+#lostPswdBtn:hover,
+#lostPswdBtn:focus{
 	border: solid 1px $secondary-color !important;
 	color: $secondary-color !important;
 	background-color: transparent !important;
 }
 
-#lost:hover{
+#lost:hover,
+#lostPswdBtn:focus{
 	color: $secondary-color !important;
 	text-decoration: none;
 }
@@ -282,7 +292,8 @@ a.btn.btn-default.delete:hover{
 	background-color: transparent !important;
 }
 
-.add:hover{
+.add:hover,
+.add:focus{
 	border: solid 1px $secondary-color !important;
 	background-color: transparent !important;
 	i{
@@ -291,6 +302,7 @@ a.btn.btn-default.delete:hover{
 }
 
 .update:hover,
+.update:focus,
 .add{
 	border: none !important;
 	background-color: $secondary-color !important;
@@ -313,7 +325,6 @@ a.btn.btn-default.delete:hover{
 	box-sizing: border-box;
 	min-height: 100%;
 	height: auto !important;
-	height: 100%;
 	padding: 0 0 100px;
 	position: relative;
 	margin: 0 auto -100px;
@@ -329,9 +340,6 @@ a.btn.btn-default.delete:hover{
 }
 
 /*--- navbar ----*/
-
-
-
 
 .navbar {
 	background: $primary-color;
@@ -386,14 +394,16 @@ a.btn.btn-default.delete:hover{
 	border: solid 1px $secondary-color;
 }
 
-#logout:hover{
+#logout:hover,
+#logout:focus{
 	background-color: $secondary-color;
 	a{
 		color: #FFFFFF;
 	}
 }
 
-#signInLink:hover{
+#signInLink:hover,
+#signInLink:focus{
 	color: #FFFFFF !important;
 	background: $secondary-color !important;
 }
@@ -403,7 +413,8 @@ a.btn.btn-default.delete:hover{
 	border: solid 1px $primary-color;
 }
 
-#registerLink:hover{
+#registerLink:hover,
+#registerLink:focus{
 	color: #FFFFFF;
 	border: solid 1px $secondary-color;
 	background: $primary-color;
@@ -419,7 +430,8 @@ a.btn.btn-default.delete:hover{
 	a{
 		color: #FFFFFF;
 	}
-	a:hover{
+	a:hover,
+	a:focus{
 		color: $secondary-color;
 		text-decoration: none;
 	}
@@ -485,7 +497,8 @@ a.btn.btn-default.delete:hover{
 	}
 }
 
-.cardLink a.btn:hover{
+.cardLink a.btn:hover,
+.cardLink a.btn:focus{
 	color: $secondary-color;
 	background-color: #FFFFFF !important;
 	border-color: $secondary-color;
@@ -541,18 +554,6 @@ h1,
 #homeStories{
 	border-top: solid 1px $secondary-color-dark;
 	margin-top: 5%;
-}
-
-.homeLinks{
-	.btn{
-		border-color: $secondary-color-dark !important;
-		color: $secondary-color-dark !important;
-	}
-	.btn:hover{
-		border-color: transparent !important;
-		color: #FFFFFF !important;
-		background-color: $secondary-color-dark;
-	}
 }
 
 #filterTitle{
@@ -625,8 +626,9 @@ h1,
 }
 
 #prevStory a:hover,
-#nextStory a:hover
-{
+#prevStory a:focus,
+#nextStory a:hover,
+#nextStory a:focus {
 	background-color: transparent !important;
 	border-color: $secondary-color;
 	i{
@@ -635,7 +637,9 @@ h1,
 }
 
 #nextBtn:hover,
-#previousBtn:hover{
+#nextBtn:focus,
+#previousBtn:hover,
+#previousBtn:focus{
 	border-color: transparent !important;
 	color: #FFFFFF !important;
 	background-color: $secondary-color-dark;
@@ -655,7 +659,8 @@ h1,
 #punchLine .pictLink{
 	padding-top: 2%;
 }
-.pictLink:hover{
+.pictLink:hover,
+.pictLink:focus{
 	background-color: transparent;
 	color: $secondary-color;
 	border-color: $secondary-color;
@@ -689,7 +694,6 @@ h1,
 .addStory,
 .connectionForm
 {
-	max-width:50%;
 	min-width: 280px;
 	margin-bottom: 10%;
 	input:focus{
@@ -701,11 +705,18 @@ h1,
 		 }
 }
 
+.connectionForm{
+	max-width:50%;
+}
+
+.addStory{
+	max-width:80%;
+}
+
 .connectionTitle{
 	text-align: center;
 	margin-top: 100px;
 }
-
 
 
 /*lost password*/
@@ -748,7 +759,9 @@ h1,
 }
 
 #filterBtn .btn:hover,
-#filterHome .btn:hover{
+#filterBtn .btn:focus,
+#filterHome .btn:hover,
+#filterHome .btn:focus{
 	border: solid 1px $secondary-color !important;
 	color: $secondary-color !important;
 	background-color: transparent !important;
@@ -784,22 +797,31 @@ h1,
 	margin-right: 0!important;
 	margin-left: 0!important;
 }
+#addForm .form-group:not('.urls'){
+	padding-bottom: 40px;
+}
+
+#addForm label{
+	margin-bottom: 10px;
+}
+
 #storyPart1,
 #storyPart2,
 #storyPart3{
 	border-bottom: solid 1px $secondary-color;
-	margin-top: 2%;
-	padding-bottom: 2%;
-
-}
-#showPart1,
-#showPart2,
-#showPart3{
 	i{
 		color: $secondary-color;
 
 	}
 }
+
+#showPart1,
+#showPart2,
+#showPart3{
+	margin-bottom: 25px;
+	padding-top: 10px;
+}
+
 .part4{
 		 margin-top: 10%;
 		 .btn{
@@ -1205,7 +1227,7 @@ table .rightText{
 #open{
 	position: fixed;
 	background-color: $secondary-color;
-	padding: 9.5px !important;
+	padding: 9.38px !important;
 	left:0;
 	i{
 		color: #FFFFFF;
@@ -1425,11 +1447,16 @@ table .rightText{
 			a{
 				padding-left: 50px;
 				color: #FFFFFF;
+				position: fixed;
+				left: -15px;
+				right: 15px;
+				text-align: center;
 			}
 		}
 
 		.navbar-collapse{
 			text-align: center;
+			background-color: $primary-color;
 		}
 		/*------------ nav -------------*/
 		#signInLink,
@@ -1467,8 +1494,12 @@ table .rightText{
 			.form-inline{
 				padding-left: 0!important;
 			}
+			select{
+				margin-bottom: 5%;
+			}
 			.btn{
 				width: 260px;
+				margin-bottom: 5%;
 			}
 
 		}
@@ -1476,7 +1507,8 @@ table .rightText{
 		/*------------ home -----------*/
 
 		#intro{
-			margin-top: -10%;
+			margin-top: -13%;
+			min-height: 750px;
 			.storyCount{
 				margin-top: 0;
 			}
@@ -1487,6 +1519,12 @@ table .rightText{
 			}
 			h2 {
 				font-size: 2.1rem;
+			}
+		}
+
+		#announcement{
+			.h2-like{
+				font-size: 2.5rem;
 			}
 		}
 		.pictLink{
