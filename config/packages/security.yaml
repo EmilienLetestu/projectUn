@@ -31,6 +31,7 @@ security:
 
     access_control:
         - { path: ^/story, roles: ROLE_USER }
+        - { path: ^/browse-stories, roles: ROLE_USER }
         - { path: ^/add-story, roles: ROLE_EDIT }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
