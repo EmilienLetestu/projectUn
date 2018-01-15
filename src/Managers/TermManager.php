@@ -40,6 +40,10 @@ class TermManager
         return 'Legal notice article has been deleted';
     }
 
+    /**
+     * @param $id
+     * @return string
+     */
     public function validateTerm($id)
     {
         $repository = $this->doctrine->getRepository(Term::class);

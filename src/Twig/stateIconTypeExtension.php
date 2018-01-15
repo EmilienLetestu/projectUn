@@ -11,6 +11,9 @@ namespace App\Twig;
 
 class stateIconTypeExtension extends \Twig_Extension
 {
+    /**
+     * @return array
+     */
     public function getFilters()
     {
         return[
@@ -18,9 +21,13 @@ class stateIconTypeExtension extends \Twig_Extension
         ];
     }
 
+    /**
+     * @param $state
+     * @return string
+     */
     public function stateIconFilter($state)
     {
-        return $state == 1 ?
+        return $state == 1 || $state === 'published' ?
             'fa fa-check' : 'fa fa-times'
         ;
     }
