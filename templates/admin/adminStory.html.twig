@@ -4,9 +4,10 @@
 
     {{ include('admin/adminNav.html.twig') }}
 
-    <h1 class="adminTitle">{{ title|upper }}</h1>
+    <h1 class="titleNoPadding">{{ title|upper }}</h1>
 
     <div class="filterList">
+        <h3>Filters</h3>
         <input type="checkbox" id="publishedStories" name="published" value="unpublished">
         <label for="publishedStories">Published stories</label>
         <input type="checkbox" id="unpublishedStories" name="unpublished" value="published">

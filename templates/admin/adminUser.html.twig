@@ -3,11 +3,12 @@
 
     {{ include('admin/adminNav.html.twig') }}
 
-    <h1 class="adminTitle">USERS</h1>
+    <h1 class="titleNoPadding">USERS</h1>
 
     <div class="container-fluid adminList">
 
         <div class="filterList">
+            <h3>Filters</h3>
             <input type="checkbox" id="activatedAccount" name="activated" value="unactivated">
             <label for="activatedAccount">Activated accounts</label>
             <input type="checkbox" id="unactivatedAccount" name="activated" value="activated">
