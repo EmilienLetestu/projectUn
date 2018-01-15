@@ -39,4 +39,17 @@ class TermManager
 
         return 'Legal notice article has been deleted';
     }
+
+    public function validateTerm($id)
+    {
+        $repository = $this->doctrine->getRepository(Term::class);
+        $term = $repository->find($id);
+
+        $term->setStatus('published');
+        $term->setPublishedOn('Y-m-d');
+
+        $this->doctrine->flush();
+
+        return 'Legal notice article published';
+    }
 }
