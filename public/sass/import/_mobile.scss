@@ -1767,14 +1767,25 @@ table .rightText{
 		}
 
 		tr td:first-child {
-			color: $secondary-color;
+			color: #FFFFFF;
 			font-weight: bold;
 			font-size: 17px;
-			background-color: #c3c3c3;
+			background-color: $secondary-color;
 		}
+		
 
 		tr td{
 			border: none!important;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			.update{
+				width: 50%;
+			}
+		}
+
+		table .rightText{
+				text-align: center!important;
 		}
 
 		tbody td
