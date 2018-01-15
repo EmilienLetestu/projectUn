@@ -11,8 +11,7 @@ $(document).ready(function () {
         var toToggle = "#term-" + id[1];
         if($(this).hasClass("fa-caret-right")){
            $(this).addClass("fa-caret-down").removeClass("fa-caret-right");
-        }
-        else{
+        } else {
             $(this).addClass("fa-caret-right").removeClass("fa-caret-down");
         }
         $("i", this).toggleClass("fa fa-caret-right fa fa-caret-down");

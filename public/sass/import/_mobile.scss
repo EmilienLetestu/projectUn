@@ -1135,15 +1135,25 @@ table .rightText{
 	z-index: 10000;
 	top: 100px;
 	left: - 250px;
-	background-color: $primary-color;
+	background-color: $secondary-color;
 	overflow-x: hidden;
-	padding-top: 60px;
 	transition: 0.5s;
 	width: 250px;
+	i{
+		color: #FFFFFF;
+		padding-right: 20px;
+		padding-left: 15px;
+	}
+	h3{
+		text-align: center;
+		background-color: #951F20;
+		color: #FFFFFF;
+		margin: 0 !important;
+	}
 }
 
 #adminNav a {
-	padding: 8px 8px 8px 32px;
+	padding: 8px 8px 8px 0;
 	text-decoration: none;
 	font-size: 25px;
 	color: #FFFFFF;
@@ -1152,7 +1162,7 @@ table .rightText{
 }
 
 #adminNav a:hover{
-	color: $secondary-color;
+	color: $primary-color;
 }
 
 
@@ -1168,7 +1178,14 @@ table .rightText{
 
 #open{
 	position: fixed;
-	top:105px;
+	background-color: $secondary-color;
+	padding: 9.5px !important;
+	left:0;
+	i{
+		color: #FFFFFF;
+		padding-left: 1px!important;
+		padding-right: 1px !important;
+	}
 	i:hover{
 		color: $primary-color;
 	}
@@ -1342,11 +1359,11 @@ table .rightText{
 		}
 
 		#adminNav{
-			top:40px;
+			top:50px;
 		}
 
 		#open{
-			top:60px;
+			top:50px;
 		}
 
 		h1{
