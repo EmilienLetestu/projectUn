@@ -7,5 +7,13 @@ $(document).ready(function () {
         $(window).scroll(function () {
             $(".alert").remove();
         })
-    };
+    }
+
+
+    if($("#adminPath a").length){
+        var path = window.location.pathname.split('/');
+
+        path[1] === 'admin' ? $("#adminPath a").attr('id','active') : null;
+    }
+
 });

@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <li class="nav-item">
+                    <li class="nav-item" id="adminPath">
                         <a href="{{ path('admin') }}" class="nav-link">
                             Administration
                         </a>
