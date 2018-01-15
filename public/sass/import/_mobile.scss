@@ -141,7 +141,7 @@ textarea:focus{
 	position: fixed;
 	width: 100%;
 	text-align: center;
-	top: 50px;
+	top: 90px;
 	border-radius: inherit;
 }
 
@@ -339,6 +339,7 @@ a.btn.btn-default.delete:hover{
 	-moz-box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 	box-shadow: 0px 5px 8px 0px rgba(0,0,0,0.75);
 	color: #FFFFFF;
+	max-height: 90px;
 	i{
 		color: #FFFFFF;
 	}
@@ -415,6 +416,13 @@ a.btn.btn-default.delete:hover{
 	display: flex;
 	justify-content: space-between;
 	padding-top: 2%;
+	a{
+		color: #FFFFFF;
+	}
+	a:hover{
+		color: $secondary-color;
+		text-decoration: none;
+	}
 }
 
 /*------- card ---------*/
@@ -1133,7 +1141,7 @@ table .rightText{
 	height: 100%;
 	position: fixed;
 	z-index: 10000;
-	top: 100px;
+	top: 90px;
 	left: - 250px;
 	background-color: $secondary-color;
 	overflow-x: hidden;
@@ -1387,6 +1395,7 @@ table .rightText{
 
 		.alert p{
 			font-size: 1.2rem;
+			top: 50px;
 		}
 
 		.navbar i{
