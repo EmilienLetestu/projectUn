@@ -46,7 +46,7 @@ $(document).ready(function () {
             $(this).addClass("fa-arrow-right").removeClass("fa-arrow-left");
             $(this).css({'left':'0','transition':'0.5s'});
             $("#adminNav").css('left',leftPull);
-            $(".page-wrap").css('margin-left','0');
+            $(".page-wrap").css({'margin-left':'0','transition':'0.5s' });
         }
     });
 });

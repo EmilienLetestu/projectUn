@@ -1146,7 +1146,6 @@ table .rightText{
 #adminNav{
 	height: 100%;
 	position: fixed;
-	z-index: 10000;
 	top: 90px;
 	left: - 250px;
 	background-color: $secondary-color;
@@ -1772,7 +1771,7 @@ table .rightText{
 			font-size: 17px;
 			background-color: $secondary-color;
 		}
-		
+
 
 		tr td{
 			border: none!important;
