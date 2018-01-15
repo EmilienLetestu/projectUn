@@ -9,12 +9,34 @@
 namespace App\Action;
 
 
+use App\Entity\Term;
 use App\Responder\LegalNoticeResponder;
+use Doctrine\ORM\EntityManagerInterface;
 
 class LegalNoticeAction
 {
+    private $doctrine;
+
+    /**
+     * LegalNoticeAction constructor.
+     * @param EntityManagerInterface $doctrine
+     */
+    public function __construct(EntityManagerInterface $doctrine)
+    {
+        $this->doctrine = $doctrine;
+    }
+
+    /**
+     * @param LegalNoticeResponder $responder
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function __invoke(LegalNoticeResponder $responder)
     {
-        return($responder());
+
+        return($responder(
+            $this->doctrine
+                 ->getRepository(Term::class)
+                 ->findBy(['status'=>'published'])
+        ));
     }
 }

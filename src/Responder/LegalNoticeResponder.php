@@ -25,10 +25,18 @@ class LegalNoticeResponder
         $this->twig = $twig;
     }
 
-    public function __invoke()
+    /**
+     * @param array $termList
+     * @return Response
+     */
+    public function __invoke(array $termList)
     {
        return(
-           new Response($this->twig->render('legalNotice.html.twig'))
+           new Response(
+               $this->twig->render('legalNotice.html.twig',[
+                   'termList' => $termList
+               ])
+           )
        );
     }
 }
