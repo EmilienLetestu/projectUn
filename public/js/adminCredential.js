@@ -12,31 +12,31 @@ $(document).ready(function () {
         if(pswd.val().length < 6)
         {
             pswd.css('border-color','#F54041');
-            $('#invalid_pswd').show();
-            $('#invalid_pswd_icon').show();
-            $('#valid_pswd_icon').hide();
+            $('#invalid_term_pswd').show();
+            $('#invalid_term_pswd_icon').show();
+            $('#valid_term_pswd_icon').hide();
             validate = false;
         }
         else
         {
             pswd.css('border-color','#5fdda1');
-            $('#invalid_pswd').hide();
-            $('#invalid_pswd_icon').hide();
-            $('#valid_pswd_icon').show();
+            $('#invalid_term_pswd').hide();
+            $('#invalid_term_pswd_icon').hide();
+            $('#valid_term_pswd_icon').show();
         }
         if(confirm.val() !== pswd.val())
         {
             confirm.css('border-color','#F54041');
-            $('#invalid_confirm').show();
-            $('#invalid_confirm_icon').show();
-            $('#valid_confirm_icon').hide();
+            $('#invalid_term_confirm').show();
+            $('#invalid_term_confirm_icon').show();
+            $('#valid_term_confirm_icon').hide();
             validate = false;
         }
         else if(pswd.val() == "")
         {
-            $('#invalid_confirm').hide();
-            $('#invalid_confirm_icon').hide();
-            $('#valid_confirm_icon').hide();
+            $('#invalid_term_confirm').hide();
+            $('#invalid_term_confirm_icon').hide();
+            $('#valid_term_confirm_icon').hide();
             validate = false;
         }
         return validate;
