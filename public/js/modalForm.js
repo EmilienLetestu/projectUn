@@ -19,6 +19,11 @@ $(document).ready(function () {
             $('.modalForm input[type=text]').val(' ');
             $('.modalForm label').text('Enter ' + entity[2] + ' name');
         }
+
+        //if validation message in pop up => hide them
+        $('.valid_sign').hide();
+        $('.invalid_sign').hide();
+        $('.invalid').hide();
     });
 
     $('.update').click(function (){
