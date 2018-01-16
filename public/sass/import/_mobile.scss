@@ -1379,6 +1379,36 @@ table .rightText{
 	line-height: 10px;
 }
 
+#createLegal {
+	text-align: center;
+	 a.btn.btn-primary.add {
+		width: 98% !important;
+	}
+}
+
+#addLegal,
+#editTermForm{
+	.row:last-of-type{
+		text-align: center;
+		margin-top: 5%;
+	}
+	.btn{
+		width: 260px;
+		height: 60px;
+	}
+	.form-group {
+		margin-left: 0;
+		margin-right: 0;
+		margin-bottom: 30px;
+	}
+}
+
+
+
+#legalArticle{
+	padding-bottom: 2%;
+}
+
 .part4{
 	text-align: center;
 	button{

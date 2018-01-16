@@ -24,8 +24,8 @@
                 {{ form_widget(form.status) }}
                 <span class="invalidBack">{{ form_errors(form.article) }}</span>
             </div>
-            <div class="form-group">
-                <button class="btn btn-success" id="addStoryBtn" type="submit">Submit</button>
+            <div class="form-group row">
+                <button class="btn" id="addStoryBtn" type="submit">Submit</button>
                 <input type="hidden" id="originalTermTitle" value="{{ term.title }}">
                 <input type="hidden" id="originalTermArticle" value="{{ term.article }}">
                 <input type="hidden" id="originalTermStatus" value="{{ term.status }}">

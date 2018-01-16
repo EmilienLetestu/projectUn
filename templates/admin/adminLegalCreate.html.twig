@@ -6,23 +6,26 @@
 
     <h1 class="adminTitle">CREATE LEGAL NOTICE ARTICLE</h1>
 
-    <div class="well">
-        {{ form_start(form ,{'attr':{'id':'addLegal'}}) }}
-        <div class="form-group row">
-            {{ form_label(form.title) }}
-            {{ form_widget(form.title) }}
+    <div class="container-fluid entityData">
+        <div class="well">
+            {{ form_start(form ,{'attr':{'id':'addLegal'}}) }}
+            <div class="form-group row">
+                {{ form_label(form.title) }}
+                {{ form_widget(form.title) }}
+            </div>
+            <div class="form-group row">
+                {{ form_label(form.article) }}
+                {{ form_widget(form.article ,{'attr':{'class':'tinyMce'}}) }}
+            </div>
+            <div class="form-group row">
+                {{ form_label(form.status) }}
+                {{ form_widget(form.status) }}
+            </div>
+            <div class="form-group row ">
+                <button class="btn" type="submit">Submit</button>
+            </div>
+            {{ form_end(form) }}
         </div>
-        <div class="form-group row">
-            {{ form_label(form.article) }}
-            {{ form_widget(form.article ,{'attr':{'class':'tinyMce'}}) }}
-        </div>
-        <div class="form-group row">
-            {{ form_label(form.status) }}
-            {{ form_widget(form.status) }}
-        </div>
-        <div class="form-group row ">
-            <button class="btn btn-success" type="submit">Submit</button>
-        </div>
-        {{ form_end(form) }}
     </div>
+
 {% endblock %}
