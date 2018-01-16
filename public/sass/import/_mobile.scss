@@ -918,6 +918,7 @@ h1,
 	display: none;
 }
 
+
 #storyTitle{
 	position: absolute;
 	top:0;
@@ -1403,8 +1404,6 @@ table .rightText{
 	}
 }
 
-
-
 #legalArticle{
 	padding-bottom: 2%;
 }
@@ -1422,6 +1421,25 @@ table .rightText{
 		border-color: $secondary-color !important;
 	}
 }
+
+/*-------- legal notice -------*/
+
+.termBreak:not(:last-of-type){
+	border: solid 1px $secondary-color;
+	width: 30%;
+	margin-bottom: 50px;
+	margin-top: 80px;
+}
+
+#noticeTitle{
+	margin-top: 10%;
+}
+
+.articleTitle{
+	color: $secondary-color;
+}
+
+
 
 	/* -----MOBILE-----*/
 
@@ -1926,6 +1944,7 @@ table .rightText{
 			display: flex;
 			justify-content: center;
 		}
+
 		.reminder,
 		.adminContact{
 			text-align: center;
@@ -1937,6 +1956,12 @@ table .rightText{
 
 		.adminContact{
 			margin-bottom: 10%;
+		}
+
+		/*--legal notice----*/
+
+		.articleTitle{
+			font-size: 2rem;
 		}
 	}
 

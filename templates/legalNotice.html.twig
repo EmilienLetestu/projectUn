@@ -7,7 +7,7 @@
 
     <div class="container-fluid">
         {% for term in termList %}
-            <h3>{{ term.title }}
+            <h3 class="articleTitle">{{ term.title }}
                 <i class="fa fa-caret-right toggleIcon" aria-hidden="true" id="toggle-{{ term.id }}"></i>
             </h3>
             <div class="termBody" id="term-{{ term.id }}" style="display: none">
@@ -15,6 +15,7 @@
                      {{ term.article|raw }}
                  </div>
             </div>
+            <hr class="termBreak">
         {% endfor %}
     </div>
 
