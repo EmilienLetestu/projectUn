@@ -63,7 +63,7 @@
         <i class="fa fa-times closeModal"></i>
         {{ form_start(form ,{'attr':{'id':'newTopicForm'}}) }}
         <div class="form-group row">
-            {{ form_label(form.type) }}
+            {{ form_label(form.type) }}<span class="req">*</span>
             {{ form_widget(form.type) }}
             <span class="invalid_sign" id="invalid_topic_icon" style="display: none">
                 <i class="fa fa-times" aria-hidden="true"></i>

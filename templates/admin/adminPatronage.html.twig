@@ -63,7 +63,7 @@
         <i class="fa fa-times closeModal"></i>
         {{ form_start(form ,{'attr':{'id':'newPatronageForm'}}) }}
         <div class="form-group row">
-            {{ form_label(form.organization) }}
+            {{ form_label(form.organization) }}<span class="req">*</span>
             {{ form_widget(form.organization) }}
             <span class="invalid_sign" id="invalid_patronage_icon" style="display: none">
                 <i class="fa fa-times" aria-hidden="true"></i>
