@@ -34,12 +34,12 @@ class AddLegalType extends AbstractType
                   'constraints' => [new NotBlank()
                   ],
                   'required'    => false,
-                  'label'       => 'Abstract'
+                  'label'       => 'Article'
             ])
             ->add('status',ChoiceType::class,[
                 'constraints' => [new NotBlank()
                 ],
-                'choices' => ['Save and publish'   => 'published',
+                'choices' => ['Save and publish'  => 'published',
                               'Work in progress'  => 'wip',
                 ],
                 'placeholder' => 'Choose a status',
