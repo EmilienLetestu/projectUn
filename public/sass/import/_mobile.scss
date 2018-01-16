@@ -1033,6 +1033,9 @@ h1,
 .panner{
 	position: relative;
 	top: -200px;
+	i{
+		font-size: 35px;
+	}
 
 }
 /*------browse-------*/
@@ -1314,7 +1317,7 @@ table .rightText{
 }
 
 #modalAdmin{
-	height: 350px;
+	min-height: 400px;
 }
 
 #newTopicForm,
@@ -1323,20 +1326,27 @@ table .rightText{
 	width: 80%;
 	margin-left: 10%;
 	margin-right: 10%;
-	label{
-		color: $secondary-color;
+	.row:last-of-type{
+		text-align: center;
+		padding-top: 30px;
 	}
 	.btn{
-		border-color: $secondary-color;
-		background-color: transparent !important;
-		color: $secondary-color;
+		border: none;
+		background-color: $secondary-color;
+		color: #FFFFFF;
+		padding: 15px 30px;
 	}
 	.btn:hover{
-		border: none;
-		background-color: $secondary-color !important;
-		color: #FFFFFF;
+		border: solid 1px $secondary-color;
+		background-color: #FFFFFF !important;
+		color: $secondary-color;
 	}
 }
+
+#updateAdministrator input:focus{
+	border-bottom-color: $secondary-color ;
+}
+
 #newTopicForm,
 #newPatronageForm{
 	padding: 10%;
