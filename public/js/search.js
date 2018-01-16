@@ -5,10 +5,7 @@ $(document).ready(function () {
 
 
     var path = window.location.pathname;
-
     var split = path.split("/");
-
-
 
     if(split.length === 8)
     {
@@ -21,6 +18,10 @@ $(document).ready(function () {
         country   !== 'all' ? $('#search_country').val(country) : null;
         topic     !== 'all' ? $('#search_topic').val(topic) : null;
         patronage !== 'all' ? $('#search_patronage').val(patronage) : null;
-    }
+        $("#resetBtn").show();
 
+        if($(window).width() < 768) {
+            $("#browseStories").css('padding-top', '20%');
+        }
+    }
 });

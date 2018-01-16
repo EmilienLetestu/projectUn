@@ -28,6 +28,10 @@
                 <i class="fa fa-search " aria-hidden="true"></i>
                 search
             </button>
+            <a class="btn nostyle" id="resetBtn" href="{{ path('browse', {'pageNumber':1})}}" style="display:none;">
+                <i class="fa fa-refresh"></i>
+                reset filters
+            </a>
         </div>
         {{ form_end(filter) }}
     </div>
@@ -69,6 +73,7 @@
                 {% endfor %}
             </ul>
         </div>
+
     {% endif %}
 {% endblock %}
 
