@@ -24,6 +24,11 @@
                     <i class="fa fa-link pull-right" aria-hidden="true"> External links</i>
                 </div>
                 {% endif %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('adminEditStory',{'id' : story.id}) }}" class="editFront">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                {% endif %}
             </div>
         </div>
         {% if previous != null %}
@@ -52,12 +57,12 @@
                     {{ story.contactEmail }}
                 </li>
                 <li class="list-inline-item">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {{ story.contactPLace | default('----------------------') }}
-                </li>
-                <li class="list-inline-item">
                     <i class="fa fa-mobile" aria-hidden="true"></i>
                     {{ story.contactPhone | default('----------------------') }}
+                </li>
+                <li class="list-inline-item">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    {{ story.contactPLace | default('----------------------') }}
                 </li>
             </ul>
     </div>

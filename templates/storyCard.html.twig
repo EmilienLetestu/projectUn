@@ -5,7 +5,7 @@
             <div class="cardHeader">
                 <h3>{{ story.title }}</h3>
             </div>
-            <p>{{ story.abstract|slice(0,150)|striptags}}....</p>
+            <p>{{ story.abstract|slice(0,100)|striptags}}....</p>
             <div class="cardLink">
                 <a href="{{ path('story',{'storyId':story.id}) }}" class="btn">Read story</a>
             </div>
@@ -18,6 +18,11 @@
                     <li class="list-inline-item">
                         <i class="fa fa-user-o" aria-hidden="true"></i>
                         {{ story.user.name}} {{ story.user.surname}}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('adminByUser',{'id': story.user.id}) }}" class="linkToAdmin">
+                                <i class="fa fa-info"></i>
+                            </a>
+                        {% endif %}
                     </li>
                     <li class="list-inline-item">
                         <i class="fa fa-globe" aria-hidden="true"></i>

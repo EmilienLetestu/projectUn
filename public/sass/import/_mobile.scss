@@ -224,7 +224,8 @@ a.btn.btn-default.edit:hover{
 	}
 }
 
-a.btn.btn-default.delete{
+a.btn.btn-default.delete
+{
 	background-color: #F54041;
 	border-color: transparent;
 	i{
@@ -237,6 +238,17 @@ a.btn.btn-default.delete:hover{
 	border-color: #F54041;
 	i{
 		color: #F54041;
+	}
+}
+
+a.editFront{
+	position: absolute;
+}
+
+a.editFront:hover,
+a.editFront:focus{
+	i{
+		color: $primary-color !important;
 	}
 }
 
@@ -1039,6 +1051,14 @@ h1,
 	}
 
 }
+
+.linkToAdmin{
+	font-size: 0.7rem;
+	float: left;
+	i{
+		color: $primary-color;
+	}
+}
 /*------browse-------*/
 #introBrowse {
 	margin-top: 90px;
@@ -1725,7 +1745,7 @@ table .rightText{
 		#contact{
 			padding-top: 0;
 			background-color: #FFFFFF;
-			margin-top: -3%;
+			margin-top: 10%;
 			ul{
 				display: grid;
 				padding: 0 5%;
@@ -1742,11 +1762,11 @@ table .rightText{
 				margin-left: -1px;
 			}
 			i.fa.fa-map-marker{
-				padding-right: 27px;
+				padding-right: 22px;
 				margin-left: 4px;
 			}
 			i.fa.fa-mobile{
-				padding-right: 28px;
+				padding-right: 25px;
 				margin-left: 6px;
 			}
 		}
