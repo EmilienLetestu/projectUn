@@ -1490,9 +1490,12 @@ table .rightText{
 		}
 
 		#filterHome{
-			padding: 0!important;
 			.form-inline{
 				padding-left: 0!important;
+			}
+			.form-group{
+				padding-left: 0;
+				padding-right: 0;
 			}
 			select{
 				margin-bottom: 5%;
@@ -1584,8 +1587,11 @@ table .rightText{
 		}
 		.homeStories .cardHolder{
 			flex-flow: nowrap;
-			overflow: scroll;
 			justify-content: flex-start;
+		}
+
+		.homeStories .slider{
+			overflow-x: hidden;
 		}
 
 		/*------story-------*/

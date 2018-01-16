@@ -7,6 +7,12 @@ $(document).ready(function () {
         scrollStep = 5,
         parent = $(".slider");
 
+
+
+    if(window.location.pathname === '/' && $(window).width() > 700) {
+       $(".panner").remove();
+    }
+
     //Start the scrolling process
     $(".panner").on("mouseenter touchstart", function () {
         var data = $(this).data('scrollModifier'),
