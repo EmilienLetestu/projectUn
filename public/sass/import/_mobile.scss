@@ -1508,9 +1508,12 @@ table .rightText{
 			height: 0;
 		}
 
-		.alert p{
-			font-size: 1.2rem;
+		.alert {
 			top: 50px;
+			p {
+				font-size: 1.2rem;
+				top: 50px;
+			}
 		}
 
 		.navbar i{
@@ -1615,6 +1618,7 @@ table .rightText{
 		.pictLink{
 			padding: 5px 50px;
 		}
+		
 		/*-------   browse   --------*/
 
 		#introBrowse{
@@ -1848,7 +1852,7 @@ table .rightText{
 		.modalUrl,
 		.modalForm{
 			width: 96%;
-			top: 25%;
+			top: 15%;
 			left: 2%;
 			right: 2%;
 		}
@@ -1869,6 +1873,11 @@ table .rightText{
 
 		#patronage{
 			padding-right: 16px !important;
+		}
+
+		#patronageForm,
+		#topicForm{
+			height: 230px;
 		}
 
 		#topic{
@@ -1977,6 +1986,16 @@ table .rightText{
 				font-size: 1.5rem;
 			}
 		}
+
+		.reminder{
+			margin-top: 50px;
+			margin-bottom: 50px;
+		}
+
+		.entityTable{
+			margin-bottom: 50px;
+		}
+
 
 		.adminContact{
 			margin-bottom: 10%;

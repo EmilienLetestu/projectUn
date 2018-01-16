@@ -28,7 +28,7 @@
             <tr>
                 {% for patronage in patronageList %}
                 <td>
-                    {{ patronage.id }}
+                    <span class="mobileUx">Id #</span>{{ patronage.id }}
                 </td>
                 <td id="{{ 'entityType'~patronage.id }}">
                     {{ patronage.organization }}
