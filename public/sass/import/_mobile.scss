@@ -912,9 +912,21 @@ h1,
 }
 
 /*form validation*/
+
+
 .invalid{
-	margin-left: -5%;
+	position: absolute;
+	left: 15px;
 }
+
+.modalForm .invalid{
+	left: 135px !important;
+}
+
+#updateAdministrator .invalid{
+	left: 100px !important;
+}
+
 .invalid,
 .invalid_sign {
 	color: #F54041;
@@ -1861,6 +1873,14 @@ table .rightText{
 			margin: 0 !important;
 		}
 
+		.modalForm .invalid {
+			left: 90px !important;
+		}
+
+		#updateAdministrator .invalid{
+			left: 75px !important;
+		}
+
 		/*--add story----*/
 		.storyCard p{
 			min-height: 150px;
@@ -1869,14 +1889,10 @@ table .rightText{
 			max-width: 90%;
 		}
 
-		.well{
-			padding: 0!important;
-		}
-		.invalid{
-			margin-left: -10%;
-		}
-		.invalid_sign{
-			left:97%
+
+		#registerForm .invalid_sign,
+		#registerForm .valid_sign{
+			left:85%
 		}
 		.storyCount{
 			margin-top: 15%;

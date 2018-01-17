@@ -69,7 +69,7 @@
 
             <div class="form-group row col-md-12">
                 {{ form_label(form.profession) }}
-                {{ form_widget(form.profession ,{'attr':{'class':'form-control'}}) }}
+                {{ form_widget(form.profession) }}
                 {{ form_errors(form.profession,{'attr':{'class':'invalid'}}) }}
             </div>
             <div class="form-group row col-md-12">
@@ -77,12 +77,6 @@
                 {{ form_widget(form.engagement ,{'attr':{'rows':'10'}}) }}
                 {{ form_errors(form.engagement,{'attr':{'class':'invalid'}}) }}
                 <span id="wordCount"> 0/300 </span>
-                <span class="invalid_sign" id="invalid_engagement_icon" style="display: none">
-                    <i class="fa fa-times" aria-hidden="true"></i>
-                </span>
-                <span class="valid_sign" id="valid_engagement_icon" style="display: none">
-                    <i class="fa fa-check" aria-hidden="true"></i>
-                </span>
                 <span class="invalid" id="invalid_engagement" style="display: none">Up to 300 words</span>
             </div>
             <div class="form-group row col-md-12">

@@ -135,16 +135,12 @@ $(document).ready(function () {
         if(words > 300)
         {
             engagement.css('border-color','#F54041');
-            $('#invalid_engagement').show();
-            $('#invalid_engagement_icon').show();
             $('#valid_engagement_icon').hide();
             validate = false;
         }
         else
         {
             engagement.css('border-color','#5fdda1');
-            $('#invalid_engagement').hide();
-            $('#invalid_engagement_icon').hide();
             $('#valid_engagement_icon').show();
         }
         return validate;
