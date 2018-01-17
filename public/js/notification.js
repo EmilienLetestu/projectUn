@@ -7,12 +7,15 @@ $(document).ready(function () {
 
   notif === '' ?  $('.notification').remove() : null;
 
+  if($(".notification").length){
 
+      $(window).scroll(function () {
+          $(".notification").remove();
+      })
+  }
 
   $('#closeNotif').click(function () {
-     $('.notification').remove();
-})
-
-
+      $('.notification').remove();
+    })
 
 });

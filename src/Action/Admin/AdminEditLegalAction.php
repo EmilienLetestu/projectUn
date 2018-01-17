@@ -77,7 +77,7 @@ class AdminEditLegalAction
 
             $this->session
                 ->getFlashBag()
-                ->add('success','Story has been updated')
+                ->add('success','Article has been updated')
             ;
 
             return new RedirectResponse(

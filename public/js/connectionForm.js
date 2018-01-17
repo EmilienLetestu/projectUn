@@ -38,12 +38,16 @@ $(document).ready(function () {
 
     $('#registerBtn').click(function () {
 
-        var name    = $('#register_name');
-        var surname = $('#register_surname');
-        var pswd    = $('#register_pswd');
-        var confirm = $('#register_confirmPswd');
-        var email   = $('#register_email');
-        var validate = true;
+        var name       = $('#register_name');
+        var surname    = $('#register_surname');
+        var pswd       = $('#register_pswd');
+        var confirm    = $('#register_confirmPswd');
+        var email      = $('#register_email');
+        var engagement = $('#register_engagement');
+        var wordCount  = $('#wordCount').text();
+        var getWords   = wordCount.split('/');
+        var words      = parseInt(getWords[0]);
+        var validate   = true;
 
         if(name.val().length < 3)
         {
@@ -127,6 +131,21 @@ $(document).ready(function () {
             $('#invalid_email').hide();
             $('#invalid_email_icon').hide();
             $('#valid_email_icon').show();
+        }
+        if(words > 300)
+        {
+            engagement.css('border-color','#F54041');
+            $('#invalid_engagement').show();
+            $('#invalid_engagement_icon').show();
+            $('#valid_engagement_icon').hide();
+            validate = false;
+        }
+        else
+        {
+            engagement.css('border-color','#5fdda1');
+            $('#invalid_engagement').hide();
+            $('#invalid_engagement_icon').hide();
+            $('#valid_engagement_icon').show();
         }
         return validate;
 

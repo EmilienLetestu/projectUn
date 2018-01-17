@@ -41,9 +41,8 @@ services:
         tags:
             - 'controller.service_arguments'
 
-
-   # App\EventListener\:
-   #     resource: '../src/EventListener'
-   #     tags:
-   #        - { name: kernel.event_listener, event: kernel.exception }
-   #    public: true
+    App\EventListener\:
+        resource: '../src/EventListener'
+        tags:
+            - { name: kernel.event_listener, event: kernel.exception }
+        public: true

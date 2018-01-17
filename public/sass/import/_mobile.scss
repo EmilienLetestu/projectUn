@@ -153,7 +153,7 @@ textarea:focus{
 
 .notification{
 	position: fixed;
-	top: 50px;
+	top: 90px;
 	z-index: 1;
 	width: 100%;
 	background: #c9453c;
@@ -639,6 +639,12 @@ h1,
 	}
 	border-color: $secondary-color-dark !important;
 	color: $secondary-color-dark !important;
+}
+
+#previousBtn,
+#nextBtn{
+	position: absolute;
+	bottom: 190px;
 }
 
 
@@ -1535,6 +1541,10 @@ table .rightText{
 			}
 		}
 
+		.notification{
+			top: 50px;
+		}
+
 		.navbar i{
 			font-size: 30px;
 		}
@@ -1661,6 +1671,18 @@ table .rightText{
 			}
 		}
 
+		#previousBtn,
+		#nextBtn{
+			bottom: 100px;
+		}
+
+		#previousBtn{
+			left:10px;
+		}
+
+		#nextBtn{
+			right:10px;
+		}
 		/*------- story card --------*/
 		#storyCard h1{
 			font-size: 2rem;
