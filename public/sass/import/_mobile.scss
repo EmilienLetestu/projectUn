@@ -647,6 +647,10 @@ h1,
 	bottom: 190px;
 }
 
+#nextBtn{
+	right:10px;
+}
+
 
 #nextStory,
 #prevStory{
@@ -1535,6 +1539,7 @@ table .rightText{
 
 		.alert {
 			top: 50px;
+			z-index: 3;
 			p {
 				font-size: 1.2rem;
 				top: 50px;
