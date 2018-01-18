@@ -43,14 +43,14 @@ class StoryType extends AbstractType
                                  new WordLimit(['limit'=>70])
                 ],
                 'required'    => false,
-                'label'       => 'Abstract'
+                'label'       => 'Abstract (70 words max.)'
             ])
             ->add('plot', TextareaType::class,[
                 'constraints' =>[new NotBlank(),
                                  new WordLimit(['limit'=>200])
                 ],
                 'required'    => false,
-                'label'       => 'Project narrative'
+                'label'       => 'Project narrative (200 words max)'
             ])
             ->add('contactEmail', EmailType::class,[
                 'constraints' => [new NotBlank(),
@@ -129,7 +129,8 @@ class StoryType extends AbstractType
                 'allow_delete' => true,
                 'by_reference' => false,
                 'mapped'       => false,
-                'required'     => false
+                'required'     => false,
+                'label'        => 'External links'
             ])
         ;
     }

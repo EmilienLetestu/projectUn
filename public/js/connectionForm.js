@@ -177,9 +177,7 @@ $(document).ready(function () {
             return validate;
 
         });
-
     }
-
 
     //lost password form
     if(path[1] === 'lost-password'){
@@ -208,7 +206,6 @@ $(document).ready(function () {
     }
 
     //new password form
-
     if(path.length > 2){
         $('#newPswdBtn').click(function (){
 
@@ -255,7 +252,6 @@ $(document).ready(function () {
             }
             return validate;
         });
-
     }
 });
 
