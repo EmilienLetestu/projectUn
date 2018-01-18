@@ -13,9 +13,11 @@ use Symfony\Bundle\FrameworkBundle\Tests\TestCase;
 
 class TermTest extends TestCase
 {
+
     public function testTerm()
     {
-        $term    = new Term();
+        //generate object
+        $term = new Term();
 
         $title       = 'lorem ipsum';
         $status      = 'published';
@@ -27,7 +29,8 @@ class TermTest extends TestCase
         modum disseminata post adhibens iam plebeiis nullum cuncta haec parcens honoratis disseminata urbium modum parcens post bonis 
         vexabat post omnibus parcens bonis post nec orientis primatibus disseminata urbium post omnibus modum.';
 
-        $today       = new \DateTime(date('Y-m-d'));
+        //crate test data
+        $today = new \DateTime(date('Y-m-d'));
 
         $term->setTitle($title);
         $term->setStatus($status);
@@ -44,3 +47,4 @@ class TermTest extends TestCase
 
     }
 }
+

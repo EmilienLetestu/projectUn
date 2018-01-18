@@ -16,7 +16,7 @@ class PatronageTest extends TestCase
     public function testPatronage()
     {
         //test 1 data
-        $organization = 'association';
+        $organization = 'emilien letestu';
 
         // create object
         $patronage = new Patronage();
