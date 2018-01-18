@@ -37,7 +37,7 @@
                 Unvalidated stories  <span class="count pull-right"> {{ totalStory - totalValidated[0]|join('|') }} </span>
             </li>
             <li>
-                Average publication per user  <span class="count pull-right"> {{ totalValidated[0]|join('|')/roleEdit }} </span>
+                Average publication per user  <span class="count pull-right"> {{ roleEdit != 0 ? totalValidated[0]|join('|')/roleEdit : 0 }} </span>
             </li>
         </ul>
     </div>
