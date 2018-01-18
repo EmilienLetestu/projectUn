@@ -25,7 +25,6 @@ $(document).ready(function () {
     }
 
     $(window).scroll(function() {
-
         $("#open").stop().hide().fadeIn();
     });
 
