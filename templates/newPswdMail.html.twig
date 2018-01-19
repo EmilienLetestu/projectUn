@@ -9,21 +9,19 @@
         }
     </style>
 </head>
-<body>
+    <body>
+        <h1>Renew your password</h1>
 
-<h1>Renew your password</h1>
+        <h3>Hello {{ name }} {{ surname }},</h3>
 
-<h3>Hello {{ name }} {{ surname }},</h3>
+        <p>to renew your password, please click the link below</p>
 
-<p>to renew your password, please click the link below</p>
+        <a href="http://localhost:8000/lost-password/{{ expireOn }}/{{ email }}/{{ token }}">Renew password</a>
 
-<a href="http://localhost:8000/lost-password/{{ expireOn }}/{{ email }}/{{ token }}">Renew password</a>
+        <p>Thanks for your trust, we hope you enjoy using our services</p>
 
-<p>Thanks for your trust, we hope you enjoy using our services</p>
+        <p>The "Climate stories bank" team.</p>
 
-<p>"Climate stories bank" staff.</p>
-
-<p class="disclaimer">This e-mail was automatically generated, if you received it by mistake we apologize for inconvenience</p>
-
-</body>
+        <p class="disclaimer">This e-mail was automatically generated, if you received it by mistake we apologize for inconvenience</p>
+    </body>
 </html>
