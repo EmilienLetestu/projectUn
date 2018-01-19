@@ -11,21 +11,19 @@
 </head>
 <body>
 
-<h1>Modification du mot de passe</h1>
+<h1>Renew your password</h1>
 
-<h3>Bonjour {{ name }} {{ surname }},</h3>
+<h3>Hello {{ name }} {{ surname }},</h3>
 
+<p>to renew your password, please click the link below</p>
 
-<p>vous avez signalé avoir oublié votre mot de passe, pour choisir un nouveau mot de passe cliquez sur le lien ci-dessous</p>
+<a href="http://localhost:8000/lost-password/{{ expireOn }}/{{ email }}/{{ token }}">Renew password</a>
 
-<a href="http://localhost:8000/lost-password/{{ expireOn }}/{{ email }}/{{ token }}">Nouveau mot de passe</a>
+<p>Thanks for your trust, we hope you enjoy using our services</p>
 
-<p>Nous vous remercions de votre confiance et espèrons que vous passer d'agréables en utilisant nos services</p>
+<p>"Climate stories bank" staff.</p>
 
-<p>L'équipe "climate stories".</p>
-
-<p class="disclaimer"> Cet e-mail est généré automatiquement s'il vous est parvenu par erreur
-    veuillez nous en excuser et ne pas en tenir compte</p>
+<p class="disclaimer">This e-mail was automatically generated, if you received it by mistake we apologize for inconvenience</p>
 
 </body>
 </html>
