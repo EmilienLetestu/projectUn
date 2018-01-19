@@ -9,22 +9,20 @@
         }
     </style>
 </head>
-<body>
+    <body>
 
-<h1>Activation de votre compte</h1>
+        <h1>Verify your account</h1>
 
-<h3>Bonjour {{ name }} {{ surname }},</h3>
+        <h3>Hello {{ name }} {{ surname }},</h3>
 
+        <p>You've just registered on "Climate stories bank", please click the link below to verify and activate it :</p>
 
-<p>vous avez récemment créé un compte et vous devez maintenant l'activer grâce au lien ci-dessous:</p>
+        <a href="http://localhost:8000/validation/{{ expireOn }}/{{ email }}/{{ token }}">verify my account</a>
 
-<a href="http://localhost:8000/validation/{{ expireOn }}/{{ email }}/{{ token }}">activer le compte</a>
+        <p>Thanks for your trust, we hope you will enjoy using our services</p>
 
-<p>Nous vous remercions de votre confiance et vous souhaitons une bonne utilisation de nôtre service</p>
+        <p>The "Climate stories bank" team.</p>
 
-<p>L'équipe "climate stories".</p>
-
-<p class="disclaimer"> Cet e-mail est généré automatiquement s'il vous est parvenu par erreur
-    veuillez nous en excuser et ne pas en tenir compte</p>
-</body>
+        <p class="disclaimer">This e-mail was automatically generated, if you received it by mistake we apologize for inconvenience</p>
+    </body>
 </html>
