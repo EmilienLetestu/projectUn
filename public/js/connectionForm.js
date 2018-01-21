@@ -1,5 +1,5 @@
 /**
- * Created by Emilien on 25/10/2017.
+ * Created by Emilien on 25/10/2017
  */
 $(document).ready(function () {
 
