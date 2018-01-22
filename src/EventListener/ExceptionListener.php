@@ -40,21 +40,27 @@ class ExceptionListener
 
         switch (true){
             case($exception instanceof HttpExceptionInterface && $exception->getStatusCode() === 404):
-                $template = $this->twig->render('error.html.twig', [
-                        'message' => 'This page doesn\'t exist yet !']
-                );
+                 $template = $this->twig
+                                  ->render('error.html.twig',[
+                                      'message' => 'This page doesn\'t exist yet !'
+                                  ])
+                 ;
                 $response->setContent($template);
                 break;
             case($exception instanceof HttpExceptionInterface && $exception->getStatusCode() === 403):
-                $template = $this->twig->render('error.html.twig', [
-                        'message' => 'Sorry but you\'re not allowed to access this page']
-                );
+                 $template = $this->twig
+                                  ->render('error.html.twig',[
+                                      'message' => 'Sorry but you\'re not allowed to access this page'
+                                  ])
+                 ;
                 $response->setContent($template);
                 break;
-            default:$template = $this->twig->render('error.html.twig',[
-                    'message' => 'We are experiencing technical issues, please try again later on.']
-            );
-                $response->setContent($template);
+            default:$template = $this->twig
+                                     ->render('error.html.twig',[
+                                         'message' => 'We are experiencing technical issues, please try again later on.'
+                                     ])
+            ;
+            $response->setContent($template);
         }
         return $event->setResponse($response);
     }
