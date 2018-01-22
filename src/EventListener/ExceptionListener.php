@@ -40,27 +40,30 @@ class ExceptionListener
 
         switch (true){
             case($exception instanceof HttpExceptionInterface && $exception->getStatusCode() === 404):
-                 $template = $this->twig
-                                  ->render('error.html.twig',[
-                                      'message' => 'This page doesn\'t exist yet !'
-                                  ])
-                 ;
-                $response->setContent($template);
+                $response->setContent(
+                           $this->twig
+                                ->render('error.html.twig',[
+                                    'message' => 'This page doesn\'t exist yet !'
+                                ]
+                           )
+                );
                 break;
             case($exception instanceof HttpExceptionInterface && $exception->getStatusCode() === 403):
-                 $template = $this->twig
-                                  ->render('error.html.twig',[
-                                      'message' => 'Sorry but you\'re not allowed to access this page'
-                                  ])
-                 ;
-                $response->setContent($template);
+                $response->setContent(
+                          $this->twig
+                               ->render('error.html.twig',[
+                                    'message' => 'Sorry but you\'re not allowed to access this page'
+                               ]
+                          )
+                );
                 break;
-            default:$template = $this->twig
-                                     ->render('error.html.twig',[
+            default:$response->setContent(
+                               $this->twig
+                                    ->render('error.html.twig',[
                                          'message' => 'We are experiencing technical issues, please try again later on.'
-                                     ])
-            ;
-            $response->setContent($template);
+                                    ]
+                               )
+            );
         }
         return $event->setResponse($response);
     }
