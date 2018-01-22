@@ -655,7 +655,10 @@ h1,
 #nextStory,
 #prevStory{
 	position: absolute;
-	top:20%;
+	top:19.5%;
+	i{
+		font-size: 48px;
+	}
 }
 
 #prevStory{
@@ -1133,6 +1136,10 @@ h1,
 	padding-top: 10%;
 }
 
+#adminStoryTitle{
+	margin-bottom: 5%;
+}
+
 h1.titleNoPadding{
 	padding-bottom: 0 !important;
 }
@@ -1265,6 +1272,12 @@ table .rightText{
 	margin-bottom: 3%;
 	color: $secondary-color;
 }
+
+#unactivatedAccount,
+#unpublishedStories{
+	margin-left: 200px;
+}
+
 #adminNav a {
 	padding: 8px 8px 8px 0;
 	text-decoration: none;
@@ -1796,7 +1809,10 @@ table .rightText{
 
 		#prevStory,
 		#nextStory{
-			top: 2%;
+			top: 2.15%;
+			i{
+				font-size: inherit;
+			}
 		}
 
 		#contact{
@@ -2052,6 +2068,21 @@ table .rightText{
 
 		.adminContact{
 			margin-bottom: 10%;
+		}
+
+		.filterList{
+			margin-bottom: 12%;
+			h3{
+				font-size: 2.2rem;
+			}
+			label{
+				font-size: 1.3rem;
+			}
+		}
+
+		#unactivatedAccount,
+		#unpublishedStories{
+			margin-left: 5%;
 		}
 
 		/*--legal notice----*/
