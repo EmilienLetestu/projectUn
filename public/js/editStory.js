@@ -7,6 +7,4 @@ $(document).ready(function () {
     $('#editPlot textarea').val(originalPlot);
     $('#editAbstract textarea').val(originalAbstract);
     $('#editTitle input').val(originalTitle);
-
-
 });
