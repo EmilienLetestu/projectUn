@@ -272,4 +272,21 @@ class StoryRepository extends EntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findStory($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('s');
+        $queryBuilder
+            ->where('s.id = :id')
+            ->setParameter('id',$id)
+        ;
+        return $queryBuilder
+            ->getQuery()
+           ->getOneOrNullResult()
+        ;
+   }
 }

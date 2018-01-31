@@ -40,9 +40,11 @@ class AdminByStoryAction
     {
         $repository = $this->doctrine->getRepository(Story::class);
 
-        return $responder($repository->findOneBy([
-                'id'=>$request->attributes->get('id')
-            ])
+        return
+            $responder(
+                $repository->findStory(
+                $request->attributes->get('id')
+            )
         );
     }
 }

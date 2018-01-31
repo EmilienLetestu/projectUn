@@ -34,7 +34,7 @@ class StoryAction
         $repoStory = $this->doctrine->getRepository(Story::class);
         $id        = $request->attributes->get('storyId');
 
-        $story = $repoStory->findOneBy(['id'=>$id]);
+        $story = $repoStory->findStory($id);
 
         return $responder(
             $story,

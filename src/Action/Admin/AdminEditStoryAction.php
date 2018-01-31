@@ -61,7 +61,7 @@ class AdminEditStoryAction
         $id = $request->attributes->get('id');
         $story = $this->doctrine
                       ->getRepository(Story::class)
-                      ->findOneBy(['id' => $id])
+                      ->findStory($id)
         ;
 
         $form = $this->formFactory
