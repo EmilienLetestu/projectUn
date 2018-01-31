@@ -1409,7 +1409,8 @@ table .rightText{
 }
 
 #modalAdmin{
-	min-height: 400px;
+	min-height: 550px;
+	top:20%;
 }
 
 #newTopicForm,
@@ -1974,6 +1975,11 @@ table .rightText{
 			top: 15%;
 			left: 2%;
 			right: 2%;
+		}
+
+		#modalAdmin{
+			top: 10%;
+			min-height: 500px;
 		}
 
         /*---admin----*/

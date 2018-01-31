@@ -27,6 +27,15 @@ class AdministratorCredentialHandler implements AdministratorCredentialHandlerIn
                 $user->setEmail($form->get('email')->getData()) :
                 null
             ;
+            $form->get('name')->getData() !== null ?
+                $user->setName($form->get('name')->getData()) :
+                null
+            ;
+            $form->get('surname')->getData() !== null ?
+                $user->setSurname($form->get('surname')->getData()) :
+                null
+            ;
+
             $user->setPswd($form->get('pswd')->getData());
 
             return true;
