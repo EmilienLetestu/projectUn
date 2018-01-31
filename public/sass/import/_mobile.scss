@@ -50,7 +50,7 @@ mark {
 	background: #ff0;
 }
 
-body{
+html *{
 	font-family: $primary-typo;
 }
 
@@ -74,7 +74,7 @@ h3,h4,h5{
 	font-size: $font-size-sub;
 }
 
-p,a {
+p,a,tr{
 	font-family: $primary-typo;
 	font-weight: $font-weight-p;
 	font-size: $font-size-p;
@@ -1177,6 +1177,23 @@ h1.titleNoPadding{
 .entityTable th,
 .entityTable{
 	border: solid 1px $secondary-color !important;
+}
+
+.done .fa-exclamation-triangle{
+	display: none;
+}
+
+.fa-exclamation-triangle{
+	color: orange !important;
+	padding-left: 10px;
+}
+
+#filters{
+	width: 300px;
+	padding: 5px;
+	border-radius: 5px;
+	border: solid 1px;
+	font-size: 1.8rem;
 }
 
 .entityTable{

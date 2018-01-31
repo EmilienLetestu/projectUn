@@ -8,11 +8,14 @@
     <div class="container-fluid adminList">
 
         <div class="filterList">
-            <h3>Filters</h3>
-            <input type="checkbox" id="activatedAccount" name="activated" value="unactivated">
-            <label for="activatedAccount">Activated accounts</label>
-            <input type="checkbox" id="unactivatedAccount" name="activated" value="activated">
-            <label for="unactivatedAccount">Unactivated accounts</label>
+            <select id="filters">
+                <option value=" " selected="selected">choose a filter</option>
+                <option value="activated">activated account</option>
+                <option value="unactivated">unactivated account</option>
+                <option value="onHold">request on hold</option>
+                <option value="user">user role</option>
+                <option value="edit">edit role</option>
+             </select>
         </div>
 
         <table class="table">
@@ -40,12 +43,14 @@
             </thead>
             <tbody>
             {% for user in userList %}
-                <tr class="{{ user.activated == 1 ? 'activated' : 'unactivated' }}">
+                {% set status = user.activated == 1 ? 'activated' : 'unactivated' %}
+                {% set onHold = user.beenProcessed == 1 ? 'done' : 'onHold'%}
+                <tr class="{{ status }} {{ onHold }} {{ user.role|lower }}">
                     <td>
                         <span class="mobileUx">Id #</span>{{ user.id }}
                     </td>
-                    <td>
-                        {{ user.fullname }}
+                    <td class="{{ onHold }}">
+                        {{ user.fullname }}<i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
                     </td>
                     <td>
                         {{ user.email }}

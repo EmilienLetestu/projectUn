@@ -34,7 +34,7 @@ class AdminEditLegalResponder
     public function __invoke($term, FormView $form)
     {
         return new Response(
-            $this->twig->render('admin\AdminEditLegal.html.twig',[
+            $this->twig->render('admin\adminEditLegal.html.twig',[
                 'term' => $term,
                 'form'  => $form
             ])
