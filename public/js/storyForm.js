@@ -113,7 +113,7 @@ $(document).ready(function () {
             $('#invalid_place_icon').hide();
             $('#valid_place_icon').show();
         }
-        if(phone.val().length !==0 && !phoneRegex.test(phone.val())) {
+        if(phone.val().length !==0 && !phoneRegex.test(phone.val().replace(/\s/g, ''))){
             phone.css('border-color','#F54041');
             $('#invalid_phone').show();
             $('#invalid_phone_icon').show();
