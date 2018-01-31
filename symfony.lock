@@ -10,5 +10,14 @@
             "version": "2.4",
             "ref": "f2c3a6246cb5f36176f870bdc2e5f5b3cf6c454c"
         }
+    },
+    "symfony/polyfill-apcu": {
+        "version": "v1.6.0"
+    },
+    "symfony/polyfill-php56": {
+        "version": "v1.6.0"
+    },
+    "symfony/polyfill-util": {
+        "version": "v1.6.0"
     }
 }
