@@ -13,7 +13,7 @@ $(document).ready(function () {
         $('.modalForm').hide();
         $('.modalOverlay').hide();
 
-        if(hidden.val() !== " ")
+        if(hidden.val() !== " " && path !== '/admin')
         {
             $('.modalForm input[type=hidden]').val(' ');
             $('.modalForm input[type=text]').val(' ');
