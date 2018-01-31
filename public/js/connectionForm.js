@@ -32,7 +32,7 @@ $(document).ready(function () {
     }
 
     if(path[1] === 'register'){
-        $('#invalid_pswd').show();
+        $('#invalid_pswd').show().css('color','#6a6a6a');
 
         if($('#register_claimEdit').is(':checked')){
 
