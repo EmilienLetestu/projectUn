@@ -46,7 +46,7 @@ class BrowseAction
        $limit = 6;
        $filter = $this->formFactory->create(SearchType::class);
 
-       //get current page number from url param => todo param session
+       //get current page number from url param
        $pageNumber = $request->attributes->get('pageNumber');
        $worldArea  = $request->attributes->get('worldArea');
        $country    = $request->attributes->get('country');

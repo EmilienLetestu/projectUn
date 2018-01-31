@@ -115,4 +115,43 @@ class UserRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function findUser($id)
+    {
+        $queryBuilder = $this->createQueryBuilder('u');
+        $queryBuilder
+            ->where('u.id = :id')
+            ->setParameter('id',$id)
+        ;
+
+        return $queryBuilder
+             ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
+    /**
+     * @param $email
+     * @param $token
+     * @return mixed
+     */
+    public function findForSecurity($email, $token)
+    {
+        $queryBuilder = $this->createQueryBuilder('u');
+        $queryBuilder
+            ->andWhere('u.email = :email')
+            ->andWhere('u.confirmationToken = :token')
+            ->setParameter('email',$email)
+            ->setParameter('token',$token)
+       ;
+
+        return $queryBuilder
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
+    }
+
 }

@@ -66,10 +66,7 @@ class ActivateAction
         $date = $request->attributes->get('expireOn');
 
         $repository = $this->doctrine->getRepository(User::class);
-        $user = $repository->findOneBy([
-            'email' => $email,
-            'confirmationToken' => $token
-        ]);
+        $user = $repository->findForSecurity($email, $token);
 
         $stillValid = $this->tools->isLinkStillValid($date);
 

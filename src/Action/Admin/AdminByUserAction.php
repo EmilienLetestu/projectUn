@@ -29,13 +29,22 @@ class AdminByUserAction
     }
 
 
+    /**
+     * @param Request $request
+     * @param AdminByUserResponder $responder
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function __invoke(Request $request,AdminByUserResponder $responder)
     {
         $repository = $this->doctrine->getRepository(User::class);
 
-        return $responder($repository->findOneBy([
-            'id' => $request->attributes->get('id')
-        ]));
+        return
+            $responder(
+                $repository->findUser(
+                    $request->attributes->get('id')
+                )
+            )
+        ;
     }
 
 }

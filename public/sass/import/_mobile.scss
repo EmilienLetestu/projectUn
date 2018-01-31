@@ -1539,7 +1539,32 @@ table .rightText{
 	color: $primary-color;
 }
 
+/*--- error page ------*/
 
+.msgErrorPage{
+	text-align: center;
+	margin-top: 20%;
+	p{
+		font-size: 3rem;
+	}
+}
+
+.backToHome{
+	text-align: center;
+	margin-top: 5%;
+	a{
+		padding: 5px 50px !important;
+		margin-right: 10px;
+		height: 45px !important;
+		line-height: 35px;
+	}
+	a:hover,
+	a:focus{
+		color: $secondary-color !important;
+		background-color: transparent !important;
+		border: 1px solid $secondary-color !important;
+	}
+}
 
 	/* -----MOBILE-----*/
 
@@ -2110,6 +2135,17 @@ table .rightText{
 
 		.articleTitle{
 			font-size: 2rem;
+		}
+
+		/*--- error page ------*/
+		.msgErrorPage{
+			margin-top: 50%;
+			p{
+				font-size: 2.5rem;
+			}
+		}
+		.backToHome{
+			margin-top: 25%;
 		}
 	}
 

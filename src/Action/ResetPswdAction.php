@@ -73,10 +73,7 @@ class ResetPswdAction
 
         //check if data from db match url
         $repository = $this->doctrine->getRepository(User::class);
-        $user       = $repository->findOneBy([
-            'email'              => $email,
-            'confirmationToken'  => $token
-        ]);
+        $user       = $repository->findForSecurity($email, $token);
 
         if(!$user) {
             $this->session
