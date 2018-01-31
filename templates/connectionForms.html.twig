@@ -2,13 +2,13 @@
 
 {% block body %}
       {% if app.request.get('_route') == 'login' %}
+        {% if error %}
+              <div class="alert alert-warning">{{ error.message }}</div>
+        {% endif %}
         <div class="connectionTitle">
            <h1>PLEASE SIGN IN</h1>
         </div>
         <div class="container-fluid connectionForm">
-        {% if error %}
-            <div class="alert alert-warning">{{ error.message }}</div>
-        {% endif %}
             <form action="{{ path('login_check') }}" method="post">
                 <div class="form-group row col-md-12">
                     <label for="username">Email</label>
