@@ -65,7 +65,7 @@ class AdminEditLegalAction
 
         $term = $this->doctrine
             ->getRepository(Term::class)
-            ->findOneBy(['id' => $id])
+            ->findWithId($id)
         ;
 
         $form = $this->formFactory

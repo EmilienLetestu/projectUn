@@ -39,7 +39,7 @@ class EditTopicHandler implements EditTopicHandlerInterface
             if($form->get('topicId')->getData() !== null)
             {
                 $repository = $this->doctrine->getRepository(Topic::class);
-                $topic = $repository->find($form->get('topicId')->getData());
+                $topic = $repository->findTopic($form->get('topicId')->getData());
                 $topic->setType($form->get('type')->getData());
             }
 

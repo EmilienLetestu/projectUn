@@ -36,7 +36,7 @@ class LegalNoticeAction
         return($responder(
             $this->doctrine
                  ->getRepository(Term::class)
-                 ->findBy(['status'=>'published'])
+                 ->findAllWithStatus('published')
         ));
     }
 }

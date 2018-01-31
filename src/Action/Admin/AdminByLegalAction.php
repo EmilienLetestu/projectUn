@@ -32,9 +32,12 @@ class AdminByLegalAction
     {
         $repository = $this->doctrine->getRepository(Term::class);
 
-        return $responder($repository->findOneBy([
-            'id' => $request->attributes->get('id')
-        ]));
+        return
+            $responder(
+                $repository->findWithId(
+                    $request->attributes->get('id')
+                )
+        );
     }
 
 }

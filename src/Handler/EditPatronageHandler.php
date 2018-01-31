@@ -40,7 +40,7 @@ class EditPatronageHandler implements EditPatronageHandlerInterface
             if($form->get('patronageId')->getData() !== null)
             {
                 $repository = $this->doctrine->getRepository(Patronage::class);
-                $patronage = $repository->find($form->get('patronageId')->getData());
+                $patronage = $repository->findPatronage($form->get('patronageId')->getData());
                 $patronage->setOrganization($form->get('organization')->getData());
             }
 

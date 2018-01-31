@@ -1,6 +1,7 @@
 App\Entity\Topic:
     type: entity
     table: topic
+    repositoryClass: App\Repository\TopicRepository
     id:
         id:
             type: integer

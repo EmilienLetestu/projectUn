@@ -1,6 +1,7 @@
 App\Entity\Term:
     type: entity
     table: term
+    repositoryClass: App\Repository\TermRepository
     id:
         id:
             type: integer

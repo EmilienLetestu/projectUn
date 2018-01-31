@@ -1,6 +1,7 @@
 App\Entity\Patronage:
     type: entity
     table: patronage
+    repositoryClass: App\Repository\PatronageRepository
     id:
         id:
             type: integer
