@@ -1578,6 +1578,14 @@ table .rightText{
 
 	@media (max-width: 640px) {
 
+		.footer {
+			padding-top: 8%;
+			ul,
+			a{
+				font-size: 1.3rem !important;
+			}
+		}
+
 		#connection{
 			display: flex;
 			justify-content: space-between;
