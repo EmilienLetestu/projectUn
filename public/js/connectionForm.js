@@ -31,6 +31,12 @@ $(document).ready(function () {
         });
     }
 
+    if(path[1] === 'login'){
+        if($('.alert-warning').length && $('.alert-warning').html()==='User account is disabled.'){
+            $('.alert-warning').html('Please activate you\'re account first, check your mail box');
+        }
+    }
+
     if(path[1] === 'register'){
         $('#invalid_pswd').show().css('color','#6a6a6a');
 
