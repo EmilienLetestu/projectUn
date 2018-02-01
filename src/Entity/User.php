@@ -299,6 +299,7 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
     /**
+     * in order to implement ban system or soft delete later on
      * @param $deactivated
      * @return User
      */
