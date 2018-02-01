@@ -14,4 +14,8 @@ $(document).ready(function () {
         path[1] === 'admin' ? $("#adminPath a").attr('id','active') : null;
     }
 
+    $('.fa-home').on('click touchstart', function() {
+        window.location.pathname = ('/');
+    })
+
 });
