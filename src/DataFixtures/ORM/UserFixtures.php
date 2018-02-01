@@ -30,8 +30,12 @@ class UserFixtures extends Fixture
         $user->setRole('ADMIN');
         $user->setConfirmationToken(40);
         $user->setRegisteredOn('Y-m-d');
+        $user->setClaimEdit(false);
+        $user->setBeenProcessed(true);
+        $user->setDeactivated(false);
+        $user->setProfession(null);
+        $user->setEngagement(null);
         $manager->persist($user);
-
         $manager->flush();
     }
 }
