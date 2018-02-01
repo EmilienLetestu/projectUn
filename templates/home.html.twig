@@ -49,16 +49,16 @@
     <div class="container-fluid" id="filterHome">
         {{ form_start(filter,{'attr':{'class':'form-inline'}, 'action': path('search') }) }}
         <div class="form-group col-lg-3">
-            {{ form_widget(filter.topic ,{'attr':{'class':'form-control'}}) }}
+            {{ form_widget(filter.topic) }}
         </div>
         <div class="form-group col-lg-3">
-            {{ form_widget(filter.patronage,{'attr':{'class':'form-control'}}) }}
+            {{ form_widget(filter.patronage) }}
         </div>
         <div class="form-group col-lg-3">
-            {{ form_widget(filter.worldArea,{'attr':{'class':'form-control'}}) }}
+            {{ form_widget(filter.worldArea) }}
         </div>
         <div class="form-group col-lg-3">
-            {{ form_widget(filter.country ,{'attr':{'class':'form-control'}}) }}
+            {{ form_widget(filter.country) }}
         </div>
         <div class="row" id="filterHomeBtn">
             <button class="btn btn-success" type="submit">
