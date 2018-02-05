@@ -130,7 +130,7 @@ class NotificationManager
      */
     public function approvalNotification(User $user)
     {
-        $type = $user->getRole() === 'EDIT' ? 4 : 3;
+        $type = $user->getRole() === 'EDIT' ? 3 : 4;
         $this->notifyUser($type,$user);
         $user->setBeenProcessed(true);
 
