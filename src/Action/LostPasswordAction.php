@@ -101,3 +101,4 @@ class LostPasswordAction
         return $responder($form->createView());
     }
 }
+

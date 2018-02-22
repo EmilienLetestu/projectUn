@@ -94,3 +94,4 @@ class Mail
         return $message;
     }
 }
+

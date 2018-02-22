@@ -109,3 +109,4 @@ class Url
        return $alt['host'];
     }
 }
+

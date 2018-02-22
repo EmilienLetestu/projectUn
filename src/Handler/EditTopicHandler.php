@@ -53,3 +53,4 @@ class EditTopicHandler implements EditTopicHandlerInterface
         return false;
     }
 }
+

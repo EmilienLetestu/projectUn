@@ -51,3 +51,4 @@ class SearchType extends AbstractType
            ]);
     }
 }
+

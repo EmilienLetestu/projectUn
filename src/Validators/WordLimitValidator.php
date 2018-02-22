@@ -26,3 +26,4 @@ class WordLimitValidator extends ConstraintValidator
 
     }
 }
+

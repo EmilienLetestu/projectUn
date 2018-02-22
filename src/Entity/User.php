@@ -517,3 +517,4 @@ class User implements AdvancedUserInterface, \Serializable
     }
 
 }
+

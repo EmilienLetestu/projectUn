@@ -107,3 +107,4 @@ class ActivateAction
         return $responder('/login');
     }
 }
+

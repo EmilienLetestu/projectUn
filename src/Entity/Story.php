@@ -488,3 +488,4 @@ class Story implements \Serializable
         return $worldArea[$this->getWorldArea()];
     }
 }
+

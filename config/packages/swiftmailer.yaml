@@ -5,3 +5,4 @@ swiftmailer:
     encryption: '%env(MAILER_ENCRYPTION)%'
     username: '%env(MAILER_USERNAME)%'
     password: '%env(MAILER_PASSWORD)%'
+

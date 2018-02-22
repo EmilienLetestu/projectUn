@@ -86,3 +86,4 @@ class AdminEditStoryAction
         return $responder($story, $form->createView());
     }
 }
+

@@ -57,3 +57,4 @@ class UserTest extends TestCase
         static::assertEquals(["ROLE_USER"],$user->getRoles());
     }
 }
+

@@ -72,3 +72,4 @@ class AddStoryAction
         return $responder($form->createView());
     }
 }
+

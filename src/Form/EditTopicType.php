@@ -40,3 +40,4 @@ class EditTopicType extends AbstractType
         $resolver->setDefaults(['data_class' => 'App\Entity\Topic']);
     }
 }
+

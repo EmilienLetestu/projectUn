@@ -22,3 +22,4 @@ class TopicTest extends TestCase
         static::assertEquals('Seas',$topic->getType());
     }
 }
+

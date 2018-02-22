@@ -31,3 +31,4 @@ class NotificationTypeExtension extends \Twig_Extension
 
     }
 }
+

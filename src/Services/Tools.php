@@ -25,3 +25,4 @@ class Tools
         return $diff < 2 ? true : false;
     }
 }
+

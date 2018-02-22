@@ -8,3 +8,4 @@ $(document).ready(function () {
     $('#editAbstract textarea').val(originalAbstract);
     $('#editTitle input').val(originalTitle);
 });
+

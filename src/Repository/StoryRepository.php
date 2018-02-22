@@ -290,3 +290,4 @@ class StoryRepository extends EntityRepository
         ;
    }
 }
+

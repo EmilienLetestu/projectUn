@@ -24,3 +24,4 @@ class CountryNameExtension extends \Twig_Extension
       return Intl::getRegionBundle()->getCountryName($isoCode);
     }
 }
+
